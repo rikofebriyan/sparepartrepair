@@ -17,8 +17,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('fontawesome/css/fontawesome.min.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('fontawesome/css/brands.min.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('fontawesome/css/solid.min.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('jquery.dataTables.min.css') }}">
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/riko.css') }}">
 
 
@@ -102,9 +101,8 @@
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="{{ asset('jquery.dataTables.min.js') }}"></script>
-{{-- <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> --}}
+<script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
 
 <script>
     $(document).ready(function() {
