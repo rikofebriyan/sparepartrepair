@@ -2,11 +2,9 @@
 
 
 @section('content')
-    <CENTER>
-        <div class="container-fluid">
-            <H2>PART REPAIR PROGRESS</H2>
-        </div>
-    </CENTER>
+    <div class="container-fluid">
+        <H2>PART REPAIR</H2>
+    </div>
 
     @if ($message = Session::get('success'))
         <h6 class="alert alert-success">
@@ -23,33 +21,24 @@
                 <thead>
                     <tr>
                         <th scope="col">id</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Reg / SP</th>
-                        <th scope="col">Machine Name</th>
-                        <th scope="col">Line Name</th>
-                        <th scope="col">Part Name</th>
-                        <th scope="col">Part Type</th>
-                        <th scope="col">Serial No</th>
-                        <th scope="col">Maker</th>
-                        <th scope="col">Problem</th>
-                        <th scope="col">ampere</th>
-                        <th scope="col">meger</th>
-                        <th scope="col">pressure</th>
-                        <th scope="col">flow</th>
-                        <th scope="col">temperature</th>
-                        <th scope="col">rpm</th>
-                        <th scope="col">ohm</th>
-                        <th scope="col">volt</th>
-                        <th scope="col">flatness</th>
-                        <th scope="col">gather</th>
-                        <th scope="col">load</th>
-                        <th scope="col">runout</th>
-                        <th scope="col">type_of_part</th>
-                        <th scope="col">sparepart_ETA</th>
-                        <th scope="col">part_price</th>
-                        <th scope="col">stock_sparepart</th>
-                        <th scope="col">urgency</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">form_input_id</th>
+                        <th scope="col">place_of_repair</th>
+                        <th scope="col">analisa</th>
+                        <th scope="col">action</th>
+                        <th scope="col">pic_repair</th>
+                        <th scope="col">plan_start_repair</th>
+                        <th scope="col">plan_finish_repair</th>
+                        <th scope="col">actual_start_repair</th>
+                        <th scope="col">actual_finish_repair</th>
+                        <th scope="col">total_time_repair</th>
+                        <th scope="col">labour_cost</th>
+                        <th scope="col">judgement</th>
+                        <th scope="col">subcont_name</th>
+                        <th scope="col">quotation</th>
+                        <th scope="col">nomor_pp</th>
+                        <th scope="col">nomor_po</th>
+                        <th scope="col">estimasi_selesai</th>
+                        <th scope="col">status_repair</th>
                         <th scope="col">Create At</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -58,33 +47,24 @@
                     @forelse ($reqtzy as $req)
                         <tr>
                             <td>{{ $req->id }}</td>
-                            <td>{{ $req->nama }}</td>
-                            <td>{{ $req->reg }}</td>
-                            <td>{{ $req->machine_name }}</td>
-                            <td>{{ $req->line_name }}</td>
-                            <td>{{ $req->part_name }}</td>
-                            <td>{{ $req->part_type }}</td>
-                            <td>{{ $req->serial_no }}</td>
-                            <td>{{ $req->maker }}</td>
-                            <td>{{ $req->problem }}</td>
-                            <td>{{ $req->ampere }}</td>
-                            <td>{{ $req->meger }}</td>
-                            <td>{{ $req->pressure }}</td>
-                            <td>{{ $req->flow }}</td>
-                            <td>{{ $req->temperature }}</td>
-                            <td>{{ $req->rpm }}</td>
-                            <td>{{ $req->ohm }}</td>
-                            <td>{{ $req->volt }}</td>
-                            <td>{{ $req->flatness }}</td>
-                            <td>{{ $req->gather }}</td>
-                            <td>{{ $req->load }}</td>
-                            <td>{{ $req->runout }}</td>
-                            <td>{{ $req->type_of_part }}</td>
-                            <td>{{ $req->sparepart_ETA }}</td>
-                            <td>{{ $req->part_price }}</td>
-                            <td>{{ $req->stock_sparepart }}</td>
-                            <td>{{ $req->urgency }}</td>
-                            <td>{{ $req->status }}</td>
+                            <td>{{ $req->form_input_id }}</td>
+                            <td>{{ $req->place_of_repair }}</td>
+                            <td>{{ $req->analisa }}</td>
+                            <td>{{ $req->action }}</td>
+                            <td>{{ $req->pic_repair }}</td>
+                            <td>{{ $req->plan_start_repair }}</td>
+                            <td>{{ $req->plan_finish_repair }}</td>
+                            <td>{{ $req->actual_start_repair }}</td>
+                            <td>{{ $req->actual_finish_repair }}</td>
+                            <td>{{ $req->total_time_repair }}</td>
+                            <td>{{ $req->labour_cost }}</td>
+                            <td>{{ $req->judgement }}</td>
+                            <td>{{ $req->subcont_name }}</td>
+                            <td>{{ $req->quotation }}</td>
+                            <td>{{ $req->nomor_pp }}</td>
+                            <td>{{ $req->nomor_po }}</td>
+                            <td>{{ $req->estimasi_selesai }}</td>
+                            <td>{{ $req->status_repair }}</td>
                             <td>{{ $req->created_at->format('d-m-Y') }}</td>
                             <td class="text-center">
                                 <a class="btn btn-success"
