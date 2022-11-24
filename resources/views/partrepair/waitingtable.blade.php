@@ -20,7 +20,7 @@
             <a href="#" class="btn btn-md btn-success mb-3 float-right">New
                 Post</a>
 
-            <table id="example" class="table table-striped nowrap overflow-auto display">
+            <table id="myTable" class="table table-striped nowrap overflow-auto display">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
