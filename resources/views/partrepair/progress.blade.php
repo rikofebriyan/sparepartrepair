@@ -293,7 +293,16 @@
                                                     class="col-sm-3 col-form-label">status_repair</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="status_repair"
-                                                        name="status_repair" value="Waiting" required>
+                                                        name="status_repair" value="Progress Admin" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row invisible">
+                                                <label for="form_input_id"
+                                                    class="col-sm-3 col-form-label">form_input_id</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="form_input_id"
+                                                        name="form_input_id" value="{{ $modelrepair->id }}" required>
                                                 </div>
                                             </div>
 

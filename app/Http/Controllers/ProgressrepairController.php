@@ -104,7 +104,7 @@ class ProgressrepairController extends Controller
     public function destroy($id)
     {
         
-        Waitingrepair::find($id)->delete();
+        Progressrepair::find($id)->delete();
         return redirect()->route('partrepair.progresstable.index')->with('success','Task removed successfully');
     }
 }
