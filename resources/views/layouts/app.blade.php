@@ -106,7 +106,11 @@
 
 <script>
     $(document).ready(function() {
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            order: [
+                [0, 'desc']
+            ],
+        });
     });
 </script>
 
