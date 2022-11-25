@@ -66,8 +66,8 @@ class ProgressrepairController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Waitingrepair::find($id);
-        return view('partrepair.repairman', [
+        $partrepair = Progressrepair::find($id);
+        return view('partrepair.progresspemakaian', [
             'modelrepair'    => $partrepair,
         ]);
     }
