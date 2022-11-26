@@ -17,9 +17,11 @@
             <a href="#" class="btn btn-md btn-success mb-3 float-right">New
                 Post</a>
 
-            <table id="example" class="table table-striped nowrap overflow-auto display">
+            <table id="myTable" class="table table-striped nowrap overflow-auto display">
                 <thead>
                     <tr>
+
+                        <th scope="col">Action</th>
                         <th scope="col">id</th>
                         <th scope="col">form_input_id</th>
                         <th scope="col">place_of_repair</th>
@@ -40,12 +42,23 @@
                         <th scope="col">estimasi_selesai</th>
                         <th scope="col">status_repair</th>
                         <th scope="col">Create At</th>
-                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($reqtzy as $req)
                         <tr>
+                            <td class="text-center">
+                                <a class="btn btn-success"
+                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
+                                    --bs-btn-font-size: .75rem;""
+                                    href="{{ route('partrepair.progresstable.show', $req->id) }}">PROGRESS</a>
+                                {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresstable.destroy', $req->id], 'style' => 'display:inline']) }}
+                                {{ Form::submit('Delete', [
+                                    'class' => 'btn btn-danger',
+                                    'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem',
+                                ]) }}
+                                {{ Form::close() }}
+                            </td>
                             <td>{{ $req->id }}</td>
                             <td>{{ $req->form_input_id }}</td>
                             <td>{{ $req->place_of_repair }}</td>
@@ -66,13 +79,6 @@
                             <td>{{ $req->estimasi_selesai }}</td>
                             <td>{{ $req->status_repair }}</td>
                             <td>{{ $req->created_at->format('d-m-Y') }}</td>
-                            <td class="text-center">
-                                <a class="btn btn-success"
-                                    href="{{ route('partrepair.progresstable.show', $req->id) }}">PROGRESS</a>
-                                {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresstable.destroy', $req->id], 'style' => 'display:inline']) }}
-                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                                {{ Form::close() }}
-                            </td>
                         </tr>
                     @empty
                         <tr>
