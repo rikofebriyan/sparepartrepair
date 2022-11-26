@@ -47,8 +47,8 @@
                                 <a class="btn btn-success"
                                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
                                     --bs-btn-font-size: .75rem;""
-                                    href="{{ route('partrepair.progresstable.show', $req->id) }}">PROGRESS</a>
-                                {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresstable.destroy', $req->id], 'style' => 'display:inline']) }}
+                                    href="{{ route('partrepair.progresspemakaian.show', $req->id) }}">PROGRESS</a>
+                                {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresspemakaian.destroy', $req->id], 'style' => 'display:inline']) }}
                                 {{ Form::submit('Delete', [
                                     'class' => 'btn btn-danger',
                                     'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem',

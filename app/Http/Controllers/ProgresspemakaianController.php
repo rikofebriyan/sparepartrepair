@@ -92,6 +92,7 @@ class ProgresspemakaianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Progresspemakaian::find($id)->delete();
+        return redirect()->route('partrepair.progresspemakaian.index')->with('success','Task removed successfully');
     }
 }

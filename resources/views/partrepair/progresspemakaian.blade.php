@@ -15,7 +15,6 @@
                     </button>
                 </h2>
 
-                {{-- {{ Form::open(['route' => 'partrepair.progresstable.store', 'method' => 'POST']) }} --}}
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
