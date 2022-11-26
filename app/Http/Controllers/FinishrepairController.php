@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Progresspemakaian;
+use App\Finishrepair;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ProgresspemakaianController extends Controller
+class FinishrepairController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ProgresspemakaianController extends Controller
      */
     public function index()
     {
-        $partr = Progresspemakaian::all()->sortByDesc('id');
-        return view('partrepair.progresspemakaiantable', [
+        $partr = Finishrepair::all()->sortByDesc('id');
+        return view('partrepair.finishrepairtable', [
             'reqtzy' => $partr,
         ]);
     }
@@ -42,12 +42,12 @@ class ProgresspemakaianController extends Controller
     {
         // validated input request
         $this->validate($request, [
-            'form_progress_id' => 'required',
+            'form_trial_id' => 'required',
         ]);
 
         // create new task
-        Progresspemakaian::create($request->all());
-        return redirect()->route('partrepair.progresspemakaian.index')->with('success', 'Your task added successfully!');
+        Finishrepair::create($request->all());
+        return redirect()->route('partrepair.finishrepair.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -58,10 +58,7 @@ class ProgresspemakaianController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Progresspemakaian::find($id);
-        return view('partrepair.progresstrial', [
-            'modelrepair'    => $partrepair,
-        ]);
+        //
     }
 
     /**
@@ -95,7 +92,6 @@ class ProgresspemakaianController extends Controller
      */
     public function destroy($id)
     {
-        Progresspemakaian::find($id)->delete();
-        return redirect()->route('partrepair.progresspemakaian.index')->with('success','Task removed successfully');
+        //
     }
 }

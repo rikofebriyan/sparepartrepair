@@ -24,19 +24,10 @@
                         <th scope="col">Action</th>
                         <th scope="col">id</th>
                         <th scope="col">form_progress_id</th>
-                        <th scope="col">item_code</th>
-                        <th scope="col">item_name</th>
-                        <th scope="col">description</th>
-                        <th scope="col">maker</th>
-                        <th scope="col">qty</th>
-                        <th scope="col">price</th>
-                        <th scope="col">total_price</th>
-                        <th scope="col">status_part</th>
-                        <th scope="col">quotation</th>
-                        <th scope="col">nomor_pp</th>
-                        <th scope="col">nomor_po</th>
-                        <th scope="col">estimasi_kedatangan</th>
-                        <th scope="col">status_kedatangan</th>
+                        <th scope="col">id_standard_pengecekan</th>
+                        <th scope="col">standard_pengecekan</th>
+                        <th scope="col">actual_pengecekan</th>
+                        <th scope="col">judgement</th>
                         <th scope="col">Create At</th>
                     </tr>
                 </thead>
@@ -47,8 +38,8 @@
                                 <a class="btn btn-success"
                                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
                                     --bs-btn-font-size: .75rem;""
-                                    href="{{ route('partrepair.progresspemakaian.show', $req->id) }}">PROGRESS</a>
-                                {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresspemakaian.destroy', $req->id], 'style' => 'display:inline']) }}
+                                    href="{{ route('partrepair.progresstrial.show', $req->id) }}">PROGRESS</a>
+                                {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresstrial.destroy', $req->id], 'style' => 'display:inline']) }}
                                 {{ Form::submit('Delete', [
                                     'class' => 'btn btn-danger',
                                     'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem',
@@ -57,19 +48,10 @@
                             </td>
                             <td>{{ $req->id }}</td>
                             <td>{{ $req->form_progress_id }}</td>
-                            <td>{{ $req->item_code }}</td>
-                            <td>{{ $req->item_name }}</td>
-                            <td>{{ $req->description }}</td>
-                            <td>{{ $req->maker }}</td>
-                            <td>{{ $req->qty }}</td>
-                            <td>{{ $req->price }}</td>
-                            <td>{{ $req->total_price }}</td>
-                            <td>{{ $req->status_part }}</td>
-                            <td>{{ $req->quotation }}</td>
-                            <td>{{ $req->nomor_pp }}</td>
-                            <td>{{ $req->nomor_po }}</td>
-                            <td>{{ $req->estimasi_kedatangan }}</td>
-                            <td>{{ $req->status_kedatangan }}</td>
+                            <td>{{ $req->id_standard_pengecekan }}</td>
+                            <td>{{ $req->standard_pengecekan }}</td>
+                            <td>{{ $req->actual_pengecekan }}</td>
+                            <td>{{ $req->judgement }}</td>
                             <td>{{ $req->created_at->format('d-m-Y') }}</td>
                         </tr>
                     @empty

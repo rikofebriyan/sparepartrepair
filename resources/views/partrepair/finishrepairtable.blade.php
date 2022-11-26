@@ -40,7 +40,7 @@
                         <th scope="col">Create At</th>
                     </tr>
                 </thead>
-                <tbody>
+                {{-- <tbody>
                     @forelse ($reqtzy as $req)
                         <tr>
                             <td class="text-center">
@@ -77,7 +77,7 @@
                             <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
                         </tr>
                     @endforelse
-                </tbody>
+                </tbody> --}}
             </table>
         </div>
     </div>

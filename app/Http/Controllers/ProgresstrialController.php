@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Progresspemakaian;
+use App\Progresstrial;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ProgresspemakaianController extends Controller
+class ProgresstrialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ProgresspemakaianController extends Controller
      */
     public function index()
     {
-        $partr = Progresspemakaian::all()->sortByDesc('id');
-        return view('partrepair.progresspemakaiantable', [
+        $partr = Progresstrial::all()->sortByDesc('id');
+        return view('partrepair.progresstrialtable', [
             'reqtzy' => $partr,
         ]);
     }
@@ -46,8 +46,8 @@ class ProgresspemakaianController extends Controller
         ]);
 
         // create new task
-        Progresspemakaian::create($request->all());
-        return redirect()->route('partrepair.progresspemakaian.index')->with('success', 'Your task added successfully!');
+        Progresstrial::create($request->all());
+        return redirect()->route('partrepair.progresstrial.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -58,8 +58,8 @@ class ProgresspemakaianController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Progresspemakaian::find($id);
-        return view('partrepair.progresstrial', [
+        $partrepair = Progresstrial::find($id);
+        return view('partrepair.formfinishrepair', [
             'modelrepair'    => $partrepair,
         ]);
     }
@@ -95,7 +95,7 @@ class ProgresspemakaianController extends Controller
      */
     public function destroy($id)
     {
-        Progresspemakaian::find($id)->delete();
-        return redirect()->route('partrepair.progresspemakaian.index')->with('success','Task removed successfully');
+        Progresstrial::find($id)->delete();
+        return redirect()->route('partrepair.progresstrial.index')->with('success','Task removed successfully');
     }
 }
