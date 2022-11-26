@@ -22,4 +22,5 @@ Route::get('/partrepair', 'PartrepairController@index');
 Route::get('/partrepair/request', 'PartrepairController@request');
 Route::resource('partrepair/waitingtable', 'WaitingrepairController');
 Route::resource('partrepair/progresstable', 'ProgressrepairController');
+Route::resource('partrepair/progresspemakaian', 'ProgresspemakaianController');
 Route::resource('tasks', 'TaskController');

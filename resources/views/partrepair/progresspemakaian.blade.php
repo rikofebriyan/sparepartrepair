@@ -394,7 +394,6 @@
                     <div class="accordion-body">
 
                         {{-- form input --}}
-                        <input type="hidden" name="form_input_id" id="form_input_id" value="">
 
                         <div class="container-fluid justify-content-center py-0">
                             <div class="container-fluid">
@@ -519,16 +518,16 @@
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="status kedatangan" class="col-sm-3 col-form-label">status
-                                                    kedatangan</label>
+                                                <label for="status_kedatangan"
+                                                    class="col-sm-3 col-form-label">status_kedatangan</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="status kedatangan"
-                                                        name="status kedatangan" value="" required>
+                                                    <input type="text" class="form-control" id="status_kedatangan"
+                                                        name="status_kedatangan" value="" required>
                                                 </div>
                                             </div>
 
                                             <button type="submit" class="btn btn-md btn-primary">Save</button>
-                                            <a href="{{ route('partrepair.progresstable.index') }}"
+                                            <a href="{{ route('partrepair.progresspemakaian.index') }}"
                                                 class="btn btn-md btn-secondary">back</a>
                                         </div>
                                     </div>
