@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('/auth/login');
-});
 
 Route::auth();
+
+Route::get('/', function () {
+    return view('/Auth/login');
+});
 
 Route::get('/home', 'HomeController@index');
 Route::get('/partrepair', 'PartrepairController@index');

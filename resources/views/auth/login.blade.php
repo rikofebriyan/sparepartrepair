@@ -1,92 +1,89 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Spare Part System</title>
+    <!-- Styles -->
+    <link href="{{ asset('assets/css/main/app.css') }}" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+</head>
 
-                        <form role="form" method="POST" action="{{ url('/login') }}">
-                            {{ csrf_field() }}
+<body>
+    <div id="auth">
 
+        <div class="row h-100">
+            <div class="col-lg-6 col-12">
+                <div id="auth-left">
+                    <div class="card">
+                        <a href="index.html"><img class="rounded mx-auto d-block" src="assets/images/logo/logo.svg"
+                                width="160" height="80" alt="Logo"></a>
+                    </div>
+                    <center>
+                        <h1>Spare Part Repair</h1>
 
-                            <div class="row mb-4{{ $errors->has('NPK') ? ' has-error' : '' }}">
-                                <label for="NPK" class="col-md-4 col-form-label">NPK</label>
+                        <p>Silahkan Login menggunakan NPK anda</p>
+                    </center>
+                    <form role="form" method="POST" action="{{ url('/login') }}">
+                        {{ csrf_field() }}
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="NPK" name="NPK" class="form-control form-control-xl"
+                                placeholder="NPK" value="{{ old('NPK') }}">
+                            <div class="form-control-icon">
 
-                                <div class="col-md-8">
-                                    <input id="NPK" type="text" class="form-control" name="NPK"
-                                        value="{{ old('NPK') }}">
+                                @if ($errors->has('NPK'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('NPK') }}</strong>
+                                    </span>
+                                @endif
 
-                                    @if ($errors->has('NPK'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('NPK') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                                <i class="bi bi-person"></i>
                             </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="password" id="password" name="password" class="form-control form-control-xl"
+                                placeholder="Password">
 
-                            <div class="row mb-4{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 col-form-label">Password</label>
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
 
-                                <div class="col-md-8">
-                                    <input id="password" type="password" class="form-control" name="password">
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                            <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
                             </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember">
-                                        <label class="form-check-label" for="remember">
-                                            Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary text-white">
-                                        Login
-                                    </button>
-
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                        Forgot your Password?
-                                    </a>
-                                </div>
-                            </div>
-
-                            {{-- <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-sign-in"></i> Login
-                                    </button>
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your
-                                        Password?</a>
-                                </div>
-                            </div> --}}
-                        </form>
+                        </div>
+                        <div class="form-check form-check-lg d-flex align-items-end">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault"
+                                name="remember">
+                            <label class="form-check-label text-gray-600" for="remember">
+                                Keep me logged in
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                    </form>
+                    <div class="text-center mt-5 text-lg fs-5">
+                        <p class="text-gray-600">Don't have an account? <a hhref="{{ url('/register') }}"
+                                class="font-bold">Sign
+                                up</a>.</p>
+                        <p><a class="font-bold" href="{{ url('/password/reset') }}">Forgot password?</a>.</p>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div id="auth-right">
+
+                </div>
+            </div>
         </div>
+
     </div>
-@endsection
+</body>
+
+</html>
