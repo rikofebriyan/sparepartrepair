@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="col">
 
-                                        <div class="p-3 border bg-light">
+                                        <div class="p-3 border">
 
                                             <div class="mb-3 row">
                                                 <label for="maker" class="col-sm-3 col-form-label">maker</label>
@@ -187,7 +187,6 @@
                     <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         02. SPAREPART REPAIR -> PROGRESS FORM
-
                     </button>
                 </h3>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -304,7 +303,7 @@
                                     </div>
                                     <div class="col">
 
-                                        <div class="p-3 border bg-light">
+                                        <div class="p-3 border">
 
                                             <div class="mb-3 row">
                                                 <label for="labour_cost"
@@ -472,7 +471,7 @@
                                     </div>
                                     <div class="col">
 
-                                        <div class="p-3 border bg-light">
+                                        <div class="p-3 border">
 
                                             <div class="mb-3 row">
                                                 <label for="status_part"
