@@ -14,11 +14,11 @@ class CreateFinishrepairsTable extends Migration
     {
         Schema::create('finishrepairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('form_trial_id')->nullable();
-            $table->string('judgement')->nullable();
-            $table->string('no_code_repair')->nullable();
-            $table->string('delivery_date')->nullable();
             $table->timestamps();
+            $table->foreign('form_input_id');
+            $table->string('code_part_repair');
+            $table->dateTime('delivery_date');
+            $table->foreign('pic_delivery');
         });
     }
 

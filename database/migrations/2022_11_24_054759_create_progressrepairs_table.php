@@ -14,25 +14,24 @@ class CreateProgressrepairsTable extends Migration
     {
         Schema::create('progressrepairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('form_input_id')->nullable();
-            $table->string('place_of_repair')->nullable();
-            $table->string('analisa')->nullable();
-            $table->string('action')->nullable();
-            $table->string('pic_repair')->nullable();
-            $table->string('plan_start_repair')->nullable();
-            $table->string('plan_finish_repair')->nullable();
-            $table->string('actual_start_repair')->nullable();
-            $table->string('actual_finish_repair')->nullable();
-            $table->string('total_time_repair')->nullable();
-            $table->text('labour_cost')->nullable();
-            $table->string('judgement')->nullable();
-            $table->string('subcont_name')->nullable();
-            $table->string('quotation')->nullable();
-            $table->string('nomor_pp')->nullable();
-            $table->string('nomor_po')->nullable();
-            $table->string('estimasi_selesai')->nullable();
-            $table->string('status_repair')->nullable();
             $table->timestamps();
+            $table->foreign('form_input_id');
+            $table->string('place_of_repair');
+            $table->text('analisa');
+            $table->text('action');
+            $table->foreign('pic_repair');
+            $table->dateTime('plan_start_repair');
+            $table->dateTime('plan_finish_repair');
+            $table->dateTime('actual_start_repair');
+            $table->dateTime('actual_finish_repair');
+            $table->float('total_time_repair');
+            $table->integer('labour_cost');
+            $table->string('judgement');
+            $table->foreign('subcont_name');
+            $table->string('quotation');
+            $table->string('nomor_pp');
+            $table->string('nomor_po');
+            $table->dateTime('estimasi_selesai');
         });
     }
 
