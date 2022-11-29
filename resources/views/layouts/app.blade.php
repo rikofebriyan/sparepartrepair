@@ -118,184 +118,9 @@
 
 
 
-                        <li class="menu-item active has-sub">
-                            <a href="#" class='menu-link'>
-                                <span><i class="bi bi-grid-1x2-fill"></i> Layouts</span>
-                            </a>
-                            <div class="submenu ">
-                                <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                <div class="submenu-group-wrapper">
 
 
-                                    <ul class="submenu-group">
 
-                                        <li class="submenu-item  ">
-                                            <a href="layout-default.html" class='submenu-link'>Default Layout</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="layout-vertical-1-column.html" class='submenu-link'>1
-                                                Column</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="layout-vertical-navbar.html" class='submenu-link'>Vertical
-                                                Navbar</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="layout-rtl.html" class='submenu-link'>RTL Layout</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item active ">
-                                            <a href="layout-horizontal.html" class='submenu-link'>Horizontal
-                                                Menu</a>
-
-
-                                        </li>
-
-                                    </ul>
-
-
-                                </div>
-                            </div>
-                        </li>
-
-
-
-                        <li class="menu-item  has-sub">
-                            <a href="#" class='menu-link'>
-                                <span><i class="bi bi-file-earmark-medical-fill"></i> Forms</span>
-                            </a>
-                            <div class="submenu ">
-                                <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                <div class="submenu-group-wrapper">
-
-
-                                    <ul class="submenu-group">
-
-                                        <li class="submenu-item  has-sub">
-                                            <a href="#" class='submenu-link'>Form Elements</a>
-
-
-                                            <!-- 3 Level Submenu -->
-                                            <ul class="subsubmenu">
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-element-input.html"
-                                                        class="subsubmenu-link">Input</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-element-input-group.html"
-                                                        class="subsubmenu-link">Input
-                                                        Group</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-element-select.html"
-                                                        class="subsubmenu-link">Select</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-element-radio.html"
-                                                        class="subsubmenu-link">Radio</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-element-checkbox.html"
-                                                        class="subsubmenu-link">Checkbox</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-element-textarea.html"
-                                                        class="subsubmenu-link">Textarea</a>
-                                                </li>
-
-                                            </ul>
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="form-layout.html" class='submenu-link'>Form Layout</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  has-sub">
-                                            <a href="#" class='submenu-link'>Form Validation</a>
-
-
-                                            <!-- 3 Level Submenu -->
-                                            <ul class="subsubmenu">
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-validation-parsley.html"
-                                                        class="subsubmenu-link">Parsley</a>
-                                                </li>
-
-                                            </ul>
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  has-sub">
-                                            <a href="#" class='submenu-link'>Form Editor</a>
-
-
-                                            <!-- 3 Level Submenu -->
-                                            <ul class="subsubmenu">
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-editor-quill.html" class="subsubmenu-link">Quill</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-editor-ckeditor.html"
-                                                        class="subsubmenu-link">CKEditor</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-editor-summernote.html"
-                                                        class="subsubmenu-link">Summernote</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="form-editor-tinymce.html"
-                                                        class="subsubmenu-link">TinyMCE</a>
-                                                </li>
-
-                                            </ul>
-
-                                        </li>
-
-                                    </ul>
-
-
-                                </div>
-                            </div>
-                        </li>
 
 
 
@@ -311,7 +136,7 @@
                                     <ul class="submenu-group">
 
                                         <li class="submenu-item  ">
-                                            <a href="table.html" class='submenu-link'>Table</a>
+                                            <a href="/partrepair/waitingtable" class='submenu-link'>Waiting</a>
 
 
                                         </li>
@@ -319,7 +144,7 @@
 
 
                                         <li class="submenu-item  ">
-                                            <a href="table-datatable.html" class='submenu-link'>Datatable</a>
+                                            <a href="/partrepair/progresstable" class='submenu-link'>Progress</a>
 
 
                                         </li>
@@ -327,8 +152,21 @@
 
 
                                         <li class="submenu-item  ">
-                                            <a href="table-datatable-jquery.html" class='submenu-link'>Datatable
-                                                (jQuery)</a>
+                                            <a href="/partrepair/progresspemakaian" class='submenu-link'>Progress
+                                                Pemakaian</a>
+
+
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="/partrepair/progresstrial" class='submenu-link'>Progress
+                                                Pemakaian</a>
+
+
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="/partrepair/finishrepair" class='submenu-link'>Finish</a>
 
 
                                         </li>

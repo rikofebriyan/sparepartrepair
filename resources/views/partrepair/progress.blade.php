@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="col">
 
-                                        <div class="p-3 border bg-light">
+                                        <div class="p-3 border">
 
                                             <div class="mb-3 row">
                                                 <label for="maker" class="col-sm-3 col-form-label">maker</label>
