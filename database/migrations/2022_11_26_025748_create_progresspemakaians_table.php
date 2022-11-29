@@ -14,21 +14,21 @@ class CreateProgresspemakaiansTable extends Migration
     {
         Schema::create('progresspemakaians', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('form_progress_id')->nullable();
-            $table->string('item_code')->nullable();
-            $table->string('item_name')->nullable();
-            $table->string('description')->nullable();
-            $table->string('maker')->nullable();
-            $table->string('qty')->nullable();
-            $table->string('price')->nullable();
-            $table->string('total_price')->nullable();
-            $table->string('status_part')->nullable();
-            $table->string('quotation')->nullable();
-            $table->string('nomor_pp')->nullable();
-            $table->string('nomor_po')->nullable();
-            $table->string('estimasi_kedatangan')->nullable();
-            $table->string('status_kedatangan')->nullable();
             $table->timestamps();
+            $table->foreign('form_input_id');
+            $table->foreign('item_code');
+            $table->string('item_name');
+            $table->string('description');
+            $table->foreign('maker');
+            $table->integer('qty');
+            $table->integer('price');
+            $table->string('total_price');
+            $table->string('status_part');
+            $table->string('quotation');
+            $table->string('nomor_pp');
+            $table->string('nomor_po');
+            $table->dateTime('estimasi_kedatangan');
+            $table->string('status_kedatangan');
         });
     }
 

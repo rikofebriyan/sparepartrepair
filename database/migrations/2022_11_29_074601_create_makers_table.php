@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgresstrialsTable extends Migration
+class CreateMakersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,9 @@ class CreateProgresstrialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('progresstrials', function (Blueprint $table) {
+        Schema::create('makers', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->foreign('form_input_id');
-            $table->foreign('id_standard_pengecekan');
-            $table->string('standard_pengecekan');
-            $table->string('actual_pengecekan');
-            $table->string('judgement');
         });
     }
 
@@ -30,6 +25,6 @@ class CreateProgresstrialsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('progresstrials');
+        Schema::drop('makers');
     }
 }

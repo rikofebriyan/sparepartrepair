@@ -14,22 +14,25 @@ class CreateWaitingrepairsTable extends Migration
     {
         Schema::create('waitingrepairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_pic')->nullable();
-            $table->string('reg_sp')->nullable();
-            $table->string('section')->nullable();
-            $table->string('line')->nullable();
-            $table->string('machine')->nullable();
-            $table->string('item_code')->nullable();
-            $table->string('item_name')->nullable();
-            $table->string('item_type')->nullable();
-            $table->string('maker')->nullable();
-            $table->string('serial_number')->nullable();
-            $table->text('problem')->nullable();
-            $table->string('type_of_part')->nullable();
-            $table->string('price')->nullable();
-            $table->string('stock_spare_part')->nullable();
-            $table->string('status_repair')->nullable();
             $table->timestamps();
+            $table->dateTime('date');
+            $table->string('part_from');
+            $table->string('code_part_repair');
+            $table->string('reg_sp');
+            $table->foreign('section');
+            $table->foreign('line');
+            $table->foreign('machine');
+            $table->foreign('item_code');
+            $table->string('item_name');
+            $table->string('item_type');
+            $table->foreign('maker');
+            $table->string('serial_number');
+            $table->text('problem');
+            $table->string('nama_pic');
+            $table->string('type_of_part');
+            $table->string('price');
+            $table->string('stock_spare_part');
+            $table->string('status_repair');
         });
     }
 
