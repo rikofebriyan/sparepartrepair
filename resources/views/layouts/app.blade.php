@@ -14,6 +14,9 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
+    {{-- <link type="text/css" rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/pages/simple-datatables.css') }}"> --}}
 
 
 
@@ -644,10 +647,13 @@
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
-
-{{-- <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('assets/extensions/simple-datatables/umd/simple-datatables.js') }}">
+</script>
+<script type="text/javascript" src="{{ asset('assets/js/pages/simple-datatables.js') }}"></script> --}}
 <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script> --}}
+<script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
+
+{{-- <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> --}}
 
 <script>
     $(document).ready(function() {
