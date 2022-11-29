@@ -25,7 +25,7 @@
             <div class="header-top">
                 <div class="container">
                     <div class="card my-0">
-                        <a href="/home"><img width="160" height="40" src="assets/images/logo/logo.png"
+                        <a href="/home"><img width="120" height="30" src="assets/images/logo/logo.png"
                                 alt="Logo"></a>
                     </div>
                     <div class="header-top-right">
@@ -79,7 +79,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="auth-login.html">Logout</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                         </div>
 
