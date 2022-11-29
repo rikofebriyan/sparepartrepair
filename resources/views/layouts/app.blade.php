@@ -21,11 +21,11 @@
 <body id="app">
 
     <div id="main" class="layout-horizontal">
-        <header class="mb-5">
+        <header class="mb-4">
             <div class="header-top">
                 <div class="container">
                     <div class="card my-0">
-                        <a href="index.html"><img width="160" height="40" src="assets/images/logo/logo.png"
+                        <a href="/home"><img width="160" height="40" src="assets/images/logo/logo.png"
                                 alt="Logo"></a>
                     </div>
                     <div class="header-top-right">
@@ -97,7 +97,7 @@
 
 
                         <li class="menu-item  ">
-                            <a href="index.html" class='menu-link'>
+                            <a href="/home" class='menu-link'>
                                 <span><i class="bi bi-grid-fill"></i> Dashboard</span>
                             </a>
                         </li>
@@ -793,7 +793,7 @@
 
 
 
-        <div id="main">
+        <div id="app">
             @yield('content')
         </div>
 
