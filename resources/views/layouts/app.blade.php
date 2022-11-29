@@ -8,9 +8,12 @@
 
     <title>Laravel</title>
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/main/app.css">
+    {{-- <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
-    <link rel="stylesheet" href="assets/css/shared/iconly.css">
+    <link rel="stylesheet" href="assets/css/shared/iconly.css"> --}}
+    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
 
 
 
@@ -25,8 +28,8 @@
             <div class="header-top">
                 <div class="container">
                     <div class="card my-0">
-                        <a href="/home"><img width="120" height="30" src="assets/images/logo/logo.png"
-                                alt="Logo"></a>
+                        <a href="/home"><img width="120" height="30"
+                                src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"></a>
                     </div>
                     <div class="header-top-right">
 
@@ -66,7 +69,7 @@
                                 class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="avatar avatar-md2">
-                                    <img src="assets/images/faces/1.jpg" alt="Avatar">
+                                    <img src="{{ asset('assets/images/faces/1.jpg') }}" alt="Avatar">
                                 </div>
                                 <div class="text">
                                     <h6 class="user-dropdown-name">{{ Auth::user()->name }}</h6>
@@ -104,182 +107,10 @@
 
 
 
-                        <li class="menu-item  has-sub">
-                            <a href="#" class='menu-link'>
-                                <span><i class="bi bi-stack"></i> Components</span>
+                        <li class="menu-item  ">
+                            <a href="/partrepair/request" class='menu-link'>
+                                <span><i class="bi bi-stack"></i> Repair Ticket</span>
                             </a>
-                            <div class="submenu ">
-                                <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                <div class="submenu-group-wrapper">
-
-
-                                    <ul class="submenu-group">
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-alert.html" class='submenu-link'>Alert</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-badge.html" class='submenu-link'>Badge</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-breadcrumb.html" class='submenu-link'>Breadcrumb</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-button.html" class='submenu-link'>Button</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-card.html" class='submenu-link'>Card</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-carousel.html" class='submenu-link'>Carousel</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-collapse.html" class='submenu-link'>Collapse</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-dropdown.html" class='submenu-link'>Dropdown</a>
-
-
-                                        </li>
-
-                                    </ul>
-
-
-
-                                    <ul class="submenu-group">
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-list-group.html" class='submenu-link'>List Group</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-modal.html" class='submenu-link'>Modal</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-navs.html" class='submenu-link'>Navs</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-pagination.html" class='submenu-link'>Pagination</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-progress.html" class='submenu-link'>Progress</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-spinner.html" class='submenu-link'>Spinner</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  ">
-                                            <a href="component-tooltip.html" class='submenu-link'>Tooltip</a>
-
-
-                                        </li>
-
-
-
-                                        <li class="submenu-item  has-sub">
-                                            <a href="#" class='submenu-link'>Extra Components</a>
-
-
-                                            <!-- 3 Level Submenu -->
-                                            <ul class="subsubmenu">
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="extra-component-avatar.html"
-                                                        class="subsubmenu-link">Avatar</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="extra-component-sweetalert.html"
-                                                        class="subsubmenu-link">Sweet Alert</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="extra-component-toastify.html"
-                                                        class="subsubmenu-link">Toastify</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="extra-component-rating.html"
-                                                        class="subsubmenu-link">Rating</a>
-                                                </li>
-
-                                                <li class="subsubmenu-item ">
-                                                    <a href="extra-component-divider.html"
-                                                        class="subsubmenu-link">Divider</a>
-                                                </li>
-
-                                            </ul>
-
-                                        </li>
-
-                                    </ul>
-
-
-                                </div>
-                            </div>
                         </li>
 
 
@@ -800,12 +631,16 @@
 </body>
 
 <!-- Scripts -->
-<script src="assets/js/bootstrap.js"></script>
-<script src="assets/js/app.js"></script>
+{{-- <script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/app.js"></script> --}}
 
 <!-- Need: Apexcharts -->
-<script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
-<script src="assets/js/pages/dashboard.js"></script>
+{{-- <script src="assets/extensions/apexcharts/apexcharts.min.js"></script> --}}
+{{-- <script src="assets/js/pages/dashboard.js"></script> --}}
+<script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
