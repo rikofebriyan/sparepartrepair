@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Maker;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

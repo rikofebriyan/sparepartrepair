@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryCode;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
