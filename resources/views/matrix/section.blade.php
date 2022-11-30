@@ -40,10 +40,45 @@
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-success"
-                                        href="{{ route('partrepair.waitingtable.show', $req->id) }}">PROGRESS</a>
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', $req->id], 'style' => 'display:inline']) }}
-                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn icon btn-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#asu{{ $req->id }}">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+
+                                    <!-- Modal Update Barang-->
+
+                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.section.update', $task->id]]) !!}
+                                    <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
+                                        aria-labelledby="modalUpdateBarang" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Update Barang</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group mt-2">
+                                                        <label for="name" class="text-light">name</label>
+                                                        <input type="text" id="name" name="name"
+                                                            class="form-control" value="{{ $req->id }}" required>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Perbarui Data</button>
+                                                    <!--END FORM UPDATE BARANG-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Modal UPDATE Barang-->
+                                    {{-- <a href="{{ route('partrepair.waitingtable.show', $req->id) }}"
+                                        class="btn icon btn-primary btn-sm"><i class="bi bi-pencil"></i></a> --}}
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.section.destroy', $req->id], 'style' => 'display:inline']) }}
+                                    <button type="submit" class="btn icon btn-danger btn-sm"><i
+                                            class="bi bi-trash3"></i></button>
+                                    {{-- {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }} --}}
                                     {{ Form::close() }}
                                 </td>
                             </tr>

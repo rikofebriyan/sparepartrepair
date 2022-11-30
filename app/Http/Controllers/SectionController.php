@@ -73,7 +73,8 @@ class SectionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $partr = Task::find($id);
+        return view('matrix.section.index', compact('matrix.section'));
     }
 
     /**
@@ -85,7 +86,11 @@ class SectionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Section::find($id)->update($request->all());
+        return redirect()->route('matrix.section.index')->with('success','Section updated successfully');
     }
 
     /**
@@ -96,6 +101,7 @@ class SectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Section::find($id)->delete();
+        return redirect()->route('matrix.section.index')->with('success','Task removed successfully');
     }
 }
