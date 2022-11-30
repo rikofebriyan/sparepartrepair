@@ -3,16 +3,16 @@
 
 
 @section('content')
-    @if ($message = Session::get('success'))
-        <h6 class="alert alert-success">
-            {{ $message }}
-        </h6>
-    @endif
     <CENTER>
         <div class="container-fluid">
             <H2>SECTION TABLE</H2>
         </div>
     </CENTER>
+    @if ($message = Session::get('success'))
+        <h6 class="alert alert-success">
+            {{ $message }}
+        </h6>
+    @endif
 
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
@@ -39,16 +39,13 @@
                                 <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
-                                <td class="text-center">
+                                <td class="text-center d-flex d-inline">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn icon btn-primary btn-sm" data-bs-toggle="modal"
+                                    <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
                                         data-bs-target="#asu{{ $req->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-
-                                    <!-- Modal Update Barang-->
-
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.section.update', $task->id]]) !!}
+                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.section.update', $req->id]]) !!}
                                     <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
                                         aria-labelledby="modalUpdateBarang" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -62,9 +59,9 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-group mt-2">
-                                                        <label for="name" class="text-light">name</label>
+                                                        <label for="name">Name</label>
                                                         <input type="text" id="name" name="name"
-                                                            class="form-control" value="{{ $req->id }}" required>
+                                                            class="form-control" value="{{ $req->name }}" required>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
                                                     <!--END FORM UPDATE BARANG-->
@@ -72,13 +69,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End Modal UPDATE Barang-->
-                                    {{-- <a href="{{ route('partrepair.waitingtable.show', $req->id) }}"
-                                        class="btn icon btn-primary btn-sm"><i class="bi bi-pencil"></i></a> --}}
+                                    {!! Form::close() !!}
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.section.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
-                                    {{-- {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }} --}}
                                     {{ Form::close() }}
                                 </td>
                             </tr>
@@ -106,7 +100,7 @@
                 <div class="modal-body">
 
                     <div class="form-group mt-2">
-                        <label for="name" class="text-light">name</label>
+                        <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
 
