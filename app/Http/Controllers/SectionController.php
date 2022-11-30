@@ -9,6 +9,10 @@ use App\Http\Requests;
 
 class SectionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,10 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $partr = Section::all()->sortByDesc('id');
+        return view('matrix.section', [
+            'reqtzy' => $partr,
+        ]);
     }
 
     /**
@@ -37,7 +44,14 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        // create new task
+        Section::create($request->all());
+        return redirect()->route('matrix.section.index')->with('success', 'Your task added successfully!');
     }
 
     /**

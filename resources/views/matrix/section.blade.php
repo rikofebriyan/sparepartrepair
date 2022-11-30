@@ -10,59 +10,35 @@
     @endif
     <CENTER>
         <div class="container-fluid">
-            <H2>PART REPAIR : WAITING TABLE </H2>
+            <H2>SECTION TABLE</H2>
         </div>
     </CENTER>
 
-
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
-            <a href="#" class="btn btn-md btn-success mb-3 float-right">New
-                Post</a>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Add New Section
+            </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
                     <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Nama PIC</th>
-                            <th scope="col">Reg / SP</th>
-                            <th scope="col">Section</th>
-                            <th scope="col">Line Name</th>
-                            <th scope="col">Machine Name</th>
-                            <th scope="col">Item Code</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Item Type</th>
-                            <th scope="col">Maker</th>
-                            <th scope="col">Serial_No</th>
-                            <th scope="col">Type Of Part</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Stock Spare Part</th>
-                            <th scope="col">Problem</th>
-                            <th scope="col">Status Repair</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">name</th>
+                            <th scope="col">created_at</th>
+                            <th scope="col">updated_at</th>
+                            <th scope="col">action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
-                                <td>{{ $req->nama_pic }}</td>
-                                <td>{{ $req->reg_sp }}</td>
-                                <td>{{ $req->section }}</td>
-                                <td>{{ $req->line }}</td>
-                                <td>{{ $req->machine }}</td>
-                                <td>{{ $req->item_code }}</td>
-                                <td>{{ $req->item_name }}</td>
-                                <td>{{ $req->item_type }}</td>
-                                <td>{{ $req->maker }}</td>
-                                <td>{{ $req->serial_number }}</td>
-                                <td>{{ $req->type_of_part }}</td>
-                                <td>{{ $req->price }}</td>
-                                <td>{{ $req->stock_spare_part }}</td>
-                                <td>{{ $req->problem }}</td>
-                                <td>{{ $req->status_repair }}</td>
+                                <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-success"
                                         href="{{ route('partrepair.waitingtable.show', $req->id) }}">PROGRESS</a>
@@ -81,4 +57,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+
+    {{ Form::open(['route' => 'matrix.section.store', 'method' => 'POST']) }}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group mt-2">
+                        <label for="name" class="text-light">name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ Form::close() }}
 @endsection
