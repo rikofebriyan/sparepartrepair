@@ -15,6 +15,7 @@ class CreateCategoryCodesTable extends Migration
         Schema::create('category_codes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('category');
         });
     }
 

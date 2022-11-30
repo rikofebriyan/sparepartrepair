@@ -15,6 +15,12 @@ class CreateRepairKitsTable extends Migration
         Schema::create('repair_kits', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->foreign('master_spare_part_id');
+            $table->string('item_code');
+            $table->string('item_name');
+            $table->string('description');
+            $table->foreign('maker');
+            $table->integer('qty');
         });
     }
 

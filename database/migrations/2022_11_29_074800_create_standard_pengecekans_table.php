@@ -15,6 +15,9 @@ class CreateStandardPengecekansTable extends Migration
         Schema::create('standard_pengecekans', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->foreign('master_spare_part_id');
+            $table->foreign('item_standard_id');
+            $table->string('string');
         });
     }
 
