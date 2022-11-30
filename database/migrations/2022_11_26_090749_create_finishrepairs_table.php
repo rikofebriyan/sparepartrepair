@@ -15,10 +15,10 @@ class CreateFinishrepairsTable extends Migration
         Schema::create('finishrepairs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->foreign('form_input_id');
+            $table->integer('form_input_id');
             $table->string('code_part_repair');
             $table->dateTime('delivery_date');
-            $table->foreign('pic_delivery');
+            $table->integer('pic_delivery');
         });
     }
 

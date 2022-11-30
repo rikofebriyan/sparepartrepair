@@ -15,8 +15,8 @@ class CreateProgresstrialsTable extends Migration
         Schema::create('progresstrials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->foreign('form_input_id');
-            $table->foreign('id_standard_pengecekan');
+            $table->string('form_input_id');
+            $table->string('id_standard_pengecekan');
             $table->string('standard_pengecekan');
             $table->string('actual_pengecekan');
             $table->string('judgement');

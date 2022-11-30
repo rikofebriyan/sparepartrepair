@@ -15,11 +15,11 @@ class CreateProgresspemakaiansTable extends Migration
         Schema::create('progresspemakaians', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->foreign('form_input_id');
-            $table->foreign('item_code');
+            $table->integer('form_input_id');
+            $table->integer('item_code');
             $table->string('item_name');
             $table->string('description');
-            $table->foreign('maker');
+            $table->integer('maker');
             $table->integer('qty');
             $table->integer('price');
             $table->string('total_price');
