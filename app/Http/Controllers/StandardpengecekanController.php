@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\MasterSparePart;
+use App\ItemStandard;
 use App\StandardPengecekan;
 use Illuminate\Http\Request;
 
@@ -9,6 +11,10 @@ use App\Http\Requests;
 
 class StandardpengecekanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,14 @@ class StandardpengecekanController extends Controller
      */
     public function index()
     {
-        //
+        $tabel2 = MasterSparePart::all();
+        $tabel3 = ItemStandard::all();
+        $partr = StandardPengecekan::all()->sortByDesc('id');
+        return view('matrix.standard_pengecekan', [
+            'reqtzy' => $partr,
+            'tab2' => $tabel2,
+            'tab3' => $tabel3,
+        ]);
     }
 
     /**
@@ -37,7 +50,14 @@ class StandardpengecekanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'standard_pengecekan' => 'required',
+        ]);
+
+        // create new task
+        StandardPengecekan::create($request->all());
+        return redirect()->route('matrix.standard_pengecekan.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -59,7 +79,6 @@ class StandardpengecekanController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +90,11 @@ class StandardpengecekanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'standard_pengecekan' => 'required',
+        ]);
+        StandardPengecekan::find($id)->update($request->all());
+        return redirect()->route('matrix.standard_pengecekan.index')->with('success','StandardPengecekan updated successfully');
     }
 
     /**
@@ -82,6 +105,7 @@ class StandardpengecekanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        StandardPengecekan::find($id)->delete();
+        return redirect()->route('matrix.standard_pengecekan.index')->with('success','Task removed successfully');
     }
 }
