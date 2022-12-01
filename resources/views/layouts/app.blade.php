@@ -116,7 +116,7 @@
 
                         <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
-                                <span><i class="bi bi-table"></i> Matrix</span>
+                                <span><i class="bi bi-table"></i> Master Data</span>
                             </a>
                             <div class="submenu ">
                                 <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->

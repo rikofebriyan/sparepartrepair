@@ -39,8 +39,6 @@
                                 <td>{{ $req->master_spare_part_id }}</td>
                                 <td>{{ $req->item_standard_id }}</td>
                                 <td>{{ $req->standard_pengecekan }}</td>
-                                <td>{{ $req->order_qty }}</td>
-                                <td>{{ $req->account_no }}</td>
 
 
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
