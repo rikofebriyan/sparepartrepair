@@ -15,6 +15,7 @@ class CreateItemStandardsTable extends Migration
         Schema::create('item_standards', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('item_standard');
         });
     }
 

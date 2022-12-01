@@ -15,6 +15,10 @@ class CreateSubcontsTable extends Migration
         Schema::create('subconts', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name');
+            $table->text('alamat');
+            $table->string('email');
+            $table->string('contact');
         });
     }
 

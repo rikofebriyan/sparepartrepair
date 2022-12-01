@@ -11,15 +11,15 @@
                 <h3 class="accordion-header" id="panelsStayOpen-headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                        aria-controls="panelsStayOpen-collapseOne">
-                        <H4>
-                            <b> SPAREPART REPAIR REQUEST FORM </b>
-                        </H4>
+                        aria-controls="panelsStayOpen-collapseOne" style="font-size: 1.3rem; font-weight:bold;">
+
+                        SPAREPART REPAIR REQUEST FORM
+
                     </button>
                 </h3>
 
                 {{-- {{ Form::open(['route' => 'partrepair.progresstable.store', 'method' => 'POST']) }} --}}
-                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                <div style="color: black" id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
                     aria-labelledby="panelsStayOpen-headingOne">
                     <div class="accordion-body">
                         <div class="container-fluid justify-content-center py-0">
@@ -191,13 +191,13 @@
                 <h3 class="accordion-header" id="panelsStayOpen-headingTwo">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true"
-                        aria-controls="panelsStayOpen-collapseTwo">
-                        <H4>
-                            <b> SPAREPART REPAIR -> PROGRESS FORM (ADMIN) </b>
-                        </H4>
+                        aria-controls="panelsStayOpen-collapseTwo" style="font-size: 1.3rem; font-weight:bold;">
+
+                        SPAREPART REPAIR -> PROGRESS FORM (ADMIN)
+
                     </button>
                 </h3>
-                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
+                <div style="color: black" id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
                     aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
 
@@ -311,7 +311,7 @@
                                     </div>
                                     <div class="col">
 
-                                        <div class="p-3 border bg-light">
+                                        <div class="p-3 border">
 
                                             <div class="mb-3 row">
                                                 <label for="labour_cost"

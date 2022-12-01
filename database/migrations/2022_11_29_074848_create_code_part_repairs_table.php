@@ -15,6 +15,9 @@ class CreateCodePartRepairsTable extends Migration
         Schema::create('code_part_repairs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('category');
+            $table->integer('number');
+            $table->string('code_part_repair');
         });
     }
 
