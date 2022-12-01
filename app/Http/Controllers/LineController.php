@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Section;
 use App\Line;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,14 @@ class LineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request);
+        $sectionr = Section::all();
         $partr = Line::all()->sortByDesc('id');
         return view('matrix.line', [
             'reqtzy' => $partr,
+            'sectzy' => $sectionr,
         ]);
     }
 
@@ -47,6 +51,7 @@ class LineController extends Controller
         // validated input request
         $this->validate($request, [
             'name' => 'required',
+            'section_id' => 'required',
         ]);
 
         // create new task

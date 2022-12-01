@@ -26,6 +26,7 @@
                     <thead>
                         <tr>
                             <th scope="col">id</th>
+                            <th scope="col">BU</th>
                             <th scope="col">Section ID</th>
                             <th scope="col">name</th>
                             <th scope="col">created_at</th>
@@ -37,6 +38,7 @@
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
+                                <td>{{ $req->bu }}</td>
                                 <td>{{ $req->section_id }}</td>
                                 <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
@@ -118,8 +120,14 @@
                     </div>
                     <div class="form-group mt-2">
                         <label for="section_id">Section ID</label>
-                        <input type="text" id="section_id" name="section_id" class="form-control" value=""
-                            required>
+                        <select name="section_id" id="section_id" class="form-control">
+                            <option value="" disabled selected>
+                                choose
+                            </option>
+                            @foreach ($sectzy as $sec)
+                                <option value="{{ $sec->id }}">{{ $sec->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group mt-2">
                         <label for="name">Name</label>
