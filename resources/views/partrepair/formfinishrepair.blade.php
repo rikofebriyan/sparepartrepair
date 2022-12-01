@@ -227,8 +227,8 @@
                                                         Part</label>
                                                     <div class="col-sm-9">
                                                         <select class="form-select mb-3 choices" id="item_code"
-                                                            name="item_code" data-live-search="true" required>
-                                                            <option selected></option>
+                                                            name="item_code" required>
+                                                            <option selected disabled>Pilih Spare Part ...</option>
                                                             <option value="1">Cylinder</option>
                                                             <option value="2">Motor</option>
                                                             <option value="3">Pump</option>
@@ -258,22 +258,26 @@
                                                         </div>
 
                                                         <div class="input-group">
-                                                            <select class="form-control" id="maker" name="maker"
-                                                                required>
-                                                                <option selected disabled>Maker ...</option>
-                                                                <option value="1">SMC</option>
-                                                                <option value="2">IAI</option>
-                                                                <option value="3">CKD</option>
-                                                                <option value="4">Fanuc</option>
-                                                            </select>
-                                                            <select class="form-control" id="type_of_part"
-                                                                name="type_of_part" required>
-                                                                <option selected disabled>Type Of Part ...</option>
-                                                                <option value="1">Mechanic</option>
-                                                                <option value="2">Hydraulic</option>
-                                                                <option value="3">Pneumatic</option>
-                                                                <option value="4">Electric</option>
-                                                            </select>
+                                                            <div class="col-6">
+                                                                <select class="form-control choices" id="maker"
+                                                                    name="maker" required>
+                                                                    <option selected disabled>Maker ...</option>
+                                                                    <option value="1">SMC</option>
+                                                                    <option value="2">IAI</option>
+                                                                    <option value="3">CKD</option>
+                                                                    <option value="4">Fanuc</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <select class="form-control choices" id="type_of_part"
+                                                                    name="type_of_part" required>
+                                                                    <option selected disabled>Type Of Part ...</option>
+                                                                    <option value="1">Mechanic</option>
+                                                                    <option value="2">Hydraulic</option>
+                                                                    <option value="3">Pneumatic</option>
+                                                                    <option value="4">Electric</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -406,7 +410,7 @@
                 <h3 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        02. SPAREPART REPAIR -> PROGRESS FORM
+                        02. ON PROGRESS REPAIR
                     </button>
                 </h3>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -423,100 +427,144 @@
                                         <div class="p-3 border">
 
                                             <div class="mb-3 row">
-                                                <label for="place_of_repair"
-                                                    class="col-sm-3 col-form-label">place_of_repair</label>
+                                                <label for="place_of_repair" class="col-sm-3 col-form-label">Place
+                                                    Repair</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="place_of_repair"
-                                                        name="place_of_repair" value="" required>
+                                                    {{-- <input type="text" class="form-control" id="place_of_repair"
+                                                        name="place_of_repair" value="" required> --}}
+                                                    <select class="form-select choices" id="place_of_repair"
+                                                        name="place_of_repair" required>
+                                                        <option selected disabled>Pilih ...</option>
+                                                        <option value="1">In House</option>
+                                                        <option value="2">In Subcont</option>
+                                                        <option value="3">Trade In</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="analisa" class="col-sm-3 col-form-label">analisa</label>
+                                                <label for="analisa" class="col-sm-3 col-form-label">Analisa</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="analisa"
-                                                        name="analisa" value="" required>
+                                                    {{-- <input type="text" class="form-control" id="analisa"
+                                                        name="analisa" value="" required> --}}
+                                                    <textarea class="form-control" id="analisa" name="analisa" rows="3" placeholder="Input Analisa" required></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="action" class="col-sm-3 col-form-label">action</label>
+                                                <label for="action" class="col-sm-3 col-form-label">Action</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="action"
-                                                        name="action" value="" required>
+                                                    {{-- <input type="text" class="form-control" id="action"
+                                                        name="action" value="" required> --}}
+                                                    <textarea class="form-control" id="action" name="action" rows="3" placeholder="Input Analisa" required></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="pic_repair" class="col-sm-3 col-form-label">pic_repair</label>
+                                                <label for="judgement" class="col-sm-3 col-form-label">Judgement</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="pic_repair"
-                                                        name="pic_repair" value="" required>
+                                                    {{-- <input type="text" class="form-control" id="judgement"
+                                                        name="judgement" value="" required> --}}
+                                                    <select class="form-select choices" id="judgement" name="judgement"
+                                                        required>
+                                                        <option selected disabled>Pilih ...</option>
+                                                        <option value="1">Continue Repair</option>
+                                                        <option value="2">Scrap</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="plan_start_repair"
-                                                    class="col-sm-3 col-form-label">plan_start_repair</label>
+                                                <label for="pic_repair" class="col-sm-3 col-form-label">PIC Repair</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="plan_start_repair"
-                                                        name="plan_start_repair" value="" required>
+                                                    {{-- <input type="text" class="form-control" id="pic_repair"
+                                                        name="pic_repair" value="" required> --}}
+                                                    <select class="form-select choices" id="pic_repair" name="pic_repair"
+                                                        required>
+                                                        <option selected disabled>Pilih ...</option>
+                                                        <option value="1">Riko</option>
+                                                        <option value="2">Febriyan</option>
+                                                        <option value="3">Omov</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="plan_finish_repair"
-                                                    class="col-sm-3 col-form-label">plan_finish_repair</label>
+                                                <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start
+                                                    Repair</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="plan_finish_repair"
-                                                        name="plan_finish_repair" value="" required>
+                                                    <input type="datetime-local" class="form-control"
+                                                        id="plan_start_repair" name="plan_start_repair" value=""
+                                                        required>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="actual_start_repair"
-                                                    class="col-sm-3 col-form-label">actual_start_repair</label>
+                                                <label for="plan_finish_repair" class="col-sm-3 col-form-label">Plan
+                                                    Finish Repair</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="actual_start_repair"
-                                                        name="actual_start_repair" value="" required>
+                                                    <input type="datetime-local" class="form-control"
+                                                        id="plan_finish_repair" name="plan_finish_repair" value=""
+                                                        required>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="actual_finish_repair"
-                                                    class="col-sm-3 col-form-label">actual_finish_repair</label>
+                                                <label for="actual_start_repair" class="col-sm-3 col-form-label">Actual
+                                                    Start Repair</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="actual_finish_repair"
-                                                        name="actual_finish_repair" value="" required>
+                                                    <input type="datetime-local" class="form-control"
+                                                        id="actual_start_repair" name="actual_start_repair"
+                                                        value="" required>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="total_time_repair"
-                                                    class="col-sm-3 col-form-label">total_time_repair</label>
+                                                <label for="actual_finish_repair" class="col-sm-3 col-form-label">Actual
+                                                    Finish Repair</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="total_time_repair"
-                                                        name="total_time_repair" value="" required>
+                                                    <input type="datetime-local" class="form-control"
+                                                        id="actual_finish_repair" name="actual_finish_repair"
+                                                        value="" required>
                                                 </div>
                                             </div>
 
-                                            <div class="mb-3 row invisible">
+                                            <div class="mb-3 row">
+                                                <label for="total_time_repair" class="col-sm-3 col-form-label">Total Time
+                                                    Repair</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control bg-light"
+                                                        id="total_time_repair" name="total_time_repair" value=""
+                                                        required readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="labour_cost" class="col-sm-3 col-form-label">Labour
+                                                    Cost</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control bg-light" id="labour_cost"
+                                                        name="labour_cost" value="" required readonly>
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="mb-3 row invisible">
                                                 <label for="status_repair"
                                                     class="col-sm-3 col-form-label">status_repair</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="status_repair"
                                                         name="status_repair" value="Progress Admin" required>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="mb-3 row invisible">
+                                            {{-- <div class="mb-3 row invisible">
                                                 <label for="form_input_id"
                                                     class="col-sm-3 col-form-label">form_input_id</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="form_input_id"
                                                         name="form_input_id" value="{{ $modelrepair->id }}" required>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
 
                                         </div>
@@ -525,7 +573,7 @@
 
                                         <div class="p-3 border bg-light">
 
-                                            <div class="mb-3 row">
+                                            {{-- <div class="mb-3 row">
                                                 <label for="labour_cost"
                                                     class="col-sm-3 col-form-label">labour_cost</label>
                                                 <div class="col-sm-9">
@@ -540,19 +588,26 @@
                                                     <input type="text" class="form-control" id="judgement"
                                                         name="judgement" value="" required>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="mb-3 row">
-                                                <label for="subcont_name"
-                                                    class="col-sm-3 col-form-label">subcont_name</label>
+                                                <label for="subcont_name" class="col-sm-3 col-form-label">Subcont
+                                                    Name</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="subcont_name"
-                                                        name="subcont_name" value="" required>
+                                                    {{-- <input type="text" class="form-control" id="subcont_name"
+                                                        name="subcont_name" value="" required> --}}
+                                                    <select class="form-select choices" id="subcont_name"
+                                                        name="subcont_name" required>
+                                                        <option selected disabled>Pilih ...</option>
+                                                        <option value="1">PTS</option>
+                                                        <option value="2">Yuasa</option>
+                                                        <option value="3">Minezawa</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="quotation" class="col-sm-3 col-form-label">quotation</label>
+                                                <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="quotation"
                                                         name="quotation" value="" required>
@@ -560,7 +615,7 @@
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="nomor_pp" class="col-sm-3 col-form-label">nomor_pp</label>
+                                                <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="nomor_pp"
                                                         name="nomor_pp" value="" required>
@@ -568,7 +623,7 @@
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="nomor_po" class="col-sm-3 col-form-label">nomor_po</label>
+                                                <label for="nomor_po" class="col-sm-3 col-form-label">Nomor PO</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="nomor_po"
                                                         name="nomor_po" value="" required>
@@ -576,11 +631,12 @@
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="estimasi_selesai"
-                                                    class="col-sm-3 col-form-label">estimasi_selesai</label>
+                                                <label for="estimasi_selesai" class="col-sm-3 col-form-label">Estimasi
+                                                    Selesai</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="estimasi_selesai"
-                                                        name="estimasi_selesai" value="" required>
+                                                    <input type="datetime-local" class="form-control"
+                                                        id="estimasi_selesai" name="estimasi_selesai" value=""
+                                                        required>
                                                 </div>
                                             </div>
 
@@ -603,7 +659,7 @@
                 <h3 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        03. PLANNED REPAIR FORM
+                        03. PREPARATION SEAL KIT
                     </button>
                 </h3>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="HeadingThree"
@@ -614,7 +670,59 @@
 
                         <div class="container-fluid justify-content-center py-0">
                             <div class="container-fluid">
-                                <div class="row gx-3">
+                                <div class="mb-3">
+                                    <button class="btn btn-primary">Add Part</button>
+                                </div>
+                                <table id="myTable" class="table table-striped nowrap overflow-auto display">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Item Code</th>
+                                            <th scope="col">Item Name</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Maker</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Total Price</th>
+                                            <th scope="col">Status Part</th>
+                                            <th scope="col">Quotation</th>
+                                            <th scope="col">Nomor PP</th>
+                                            <th scope="col">Nomor PO</th>
+                                            <th scope="col">Estimasi Kedatangan</th>
+                                            <th scope="col">Status Kedatangan</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for ($i = 0; $i < 5; $i++)
+                                            <tr>
+                                                <td>RE202211300001</td>
+                                                <td>Seal Kit</td>
+                                                <td>CDM2B32-PS01</td>
+                                                <td>SMC</td>
+                                                <td>1 pcs</td>
+                                                <td>Rp 3.000.000</td>
+                                                <td>Rp 3.000.000</td>
+                                                <td>Not Ready</td>
+                                                <td>123456789-Quo</td>
+                                                <td>T4720-HS0001</td>
+                                                <td>50100875</td>
+                                                <td>30 Nov 2022</td>
+                                                <td>
+                                                    <a class="rounded-pill bg-secondary text-dark text-center px-2">Belum
+                                                        Datang</a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-success"
+                                                        href="{{ route('partrepair.progresstrial.show', '2') }}">Edit</a>
+                                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', '2'], 'style' => 'display:inline']) }}
+                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                    {{ Form::close() }}
+                                                </td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                                {{-- <div class="row gx-3">
                                     <div class="col">
                                         <div class="p-3 border">
 
@@ -748,7 +856,7 @@
                                                 class="btn btn-md btn-secondary">back</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -771,7 +879,40 @@
 
                         <div class="container-fluid justify-content-center py-0">
                             <div class="container-fluid">
-                                <div class="row gx-3">
+                                <div class="mb-3">
+                                    <button class="btn btn-primary">Add item Pengecekan</button>
+                                </div>
+                                <table id="myTable" class="table table-striped nowrap overflow-auto display">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Item Pengecekan</th>
+                                            <th scope="col">Standard</th>
+                                            <th scope="col">Actual</th>
+                                            <th scope="col">Judgement</th>
+                                            <th scope="col" class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for ($i = 0; $i < 5; $i++)
+                                            <tr>
+                                                <td>Ampere</td>
+                                                <td>5 A</td>
+                                                <td>3 A</td>
+                                                <td>
+                                                    <a class="rounded-pill bg-success text-dark text-center px-2">Good</a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-success"
+                                                        href="{{ route('partrepair.progresstrial.show', '2') }}">Edit</a>
+                                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', '2'], 'style' => 'display:inline']) }}
+                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                    {{ Form::close() }}
+                                                </td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                                {{-- <div class="row gx-3">
                                     <div class="col">
                                         <div class="p-3 border">
 
@@ -830,7 +971,7 @@
                                                 class="btn btn-md btn-secondary">back</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -857,29 +998,29 @@
                         <div class="container-fluid justify-content-center py-0">
                             <div class="container-fluid">
                                 <div class="row gx-3">
-                                    <div class="col">
+                                    <div class="col-6">
                                         <div class="p-3 border">
 
-                                            <div class="mb-3 row">
-                                                <label for="form_trial_id"
-                                                    class="col-sm-3 col-form-label">form_trial_id</label>
+                                            {{-- <div class="mb-3 row">
+                                                <label for="form_input_id"
+                                                    class="col-sm-3 col-form-label">form_input_id</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="form_trial_id"
-                                                        name="form_trial_id" value="" required>
+                                                    <input type="text" class="form-control" id="form_input_id"
+                                                        name="form_input_id" value="" required>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="mb-3 row">
+                                            {{-- <div class="mb-3 row">
                                                 <label for="judgement" class="col-sm-3 col-form-label">judgement</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="judgement"
                                                         name="judgement" value="" required>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="mb-3 row">
-                                                <label for="no_code_repair"
-                                                    class="col-sm-3 col-form-label">no_code_repair</label>
+                                                <label for="no_code_repair" class="col-sm-3 col-form-label">Code Part
+                                                    Repair</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" id="no_code_repair"
                                                         name="no_code_repair" value="" required>
@@ -887,25 +1028,47 @@
                                             </div>
 
                                             <div class="mb-3 row">
-                                                <label for="delivery_date"
-                                                    class="col-sm-3 col-form-label">delivery_date</label>
+                                                <label for="delivery_date" class="col-sm-3 col-form-label">Delivery
+                                                    Date</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="delivery_date"
+                                                    <input type="datetime-local" class="form-control" id="delivery_date"
                                                         name="delivery_date" value="" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <label for="pic_repair" class="col-sm-3 col-form-label">PIC
+                                                    Delivery</label>
+                                                <div class="col-sm-9">
+                                                    {{-- <input type="text" class="form-control" id="pic_repair"
+                                                        name="pic_repair" value="" required> --}}
+                                                    <select class="form-select choices" id="pic_repair" name="pic_repair"
+                                                        required>
+                                                        <option selected disabled>Pilih ...</option>
+                                                        <option value="1">Riko</option>
+                                                        <option value="2">Febriyan</option>
+                                                        <option value="3">Omov</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 row">
+                                                <div class="p-3">
+                                                    <button type="submit" class="btn btn-md btn-primary">Save</button>
+                                                    <a href="{{ route('partrepair.finishrepair.index') }}"
+                                                        class="btn btn-md btn-secondary">back</a>
                                                 </div>
                                             </div>
 
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    {{-- <div class="col">
 
                                         <div class="p-3 border bg-light">
 
-                                            <button type="submit" class="btn btn-md btn-primary">Save</button>
-                                            <a href="{{ route('partrepair.finishrepair.index') }}"
-                                                class="btn btn-md btn-secondary">back</a>
+   
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
