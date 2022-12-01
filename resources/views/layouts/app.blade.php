@@ -118,18 +118,15 @@
                         </li>
 
                         <li class="menu-item  ">
-                            <a href="/partrepair/waitingtable" class='menu-link'><i class="bi bi-table"></i>Waiting Repair</a>
-
-
+                            <a href="/partrepair/waitingtable" class='menu-link'>
+                                <span><i class="bi bi-table"></i> Waiting Repair</a></span>
                         </li>
 
-
-
-
-
-
-
-                        {{-- <li class="menu-item  has-sub">
+                        <li class="menu-item  ">
+                            <a href="{{ 'index.html' }}" class='menu-link'>
+                                <span><i class="bi bi-stack"></i> Lihat Template</span>
+                            </a>
+                        </li {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-table"></i> Table</span>
                             </a>
@@ -181,11 +178,7 @@
 
                                 </div>
                             </div>
-                        </li> --}}
-
-
-
-                        {{-- <li class="menu-item  has-sub">
+                        </li> --}} {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-plus-square-fill"></i> Extras</span>
                             </a>
@@ -278,11 +271,7 @@
 
                                 </div>
                             </div>
-                        </li> --}}
-
-
-
-                        {{-- <li class="menu-item  has-sub">
+                        </li> --}} {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-file-earmark-fill"></i> Pages</span>
                             </a>
@@ -414,11 +403,7 @@
 
                                 </div>
                             </div>
-                        </li> --}}
-
-
-
-                        {{-- <li class="menu-item  has-sub">
+                        </li> --}} {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-life-preserver"></i> Support</span>
                             </a>
@@ -460,9 +445,7 @@
                                 </div>
                             </div>
                         </li> --}}
-
-
-                    </ul>
+                            </ul>
                 </div>
             </nav>
 
