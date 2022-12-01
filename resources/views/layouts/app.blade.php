@@ -17,6 +17,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
     {{-- <link type="text/css" rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/pages/simple-datatables.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
 
 
 
@@ -112,8 +113,14 @@
 
                         <li class="menu-item  ">
                             <a href="/partrepair/request" class='menu-link'>
-                                <span><i class="bi bi-stack"></i> Repair Ticket</span>
+                                <span><i class="bi bi-stack"></i> Create Repair Ticket</span>
                             </a>
+                        </li>
+
+                        <li class="menu-item  ">
+                            <a href="/partrepair/waitingtable" class='menu-link'><i class="bi bi-table"></i>Waiting Repair</a>
+
+
                         </li>
 
 
@@ -122,9 +129,7 @@
 
 
 
-
-
-                        <li class="menu-item  has-sub">
+                        {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-table"></i> Table</span>
                             </a>
@@ -176,11 +181,11 @@
 
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
 
 
-                        <li class="menu-item  has-sub">
+                        {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-plus-square-fill"></i> Extras</span>
                             </a>
@@ -273,11 +278,11 @@
 
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
 
 
-                        <li class="menu-item  has-sub">
+                        {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-file-earmark-fill"></i> Pages</span>
                             </a>
@@ -409,11 +414,11 @@
 
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
 
 
-                        <li class="menu-item  has-sub">
+                        {{-- <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-life-preserver"></i> Support</span>
                             </a>
@@ -454,7 +459,7 @@
 
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
 
                     </ul>
@@ -492,6 +497,10 @@
 <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
 
 {{-- <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> --}}
+<script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+<script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
+
+@yield('script')
 
 <script>
     $(document).ready(function() {
@@ -499,7 +508,7 @@
             order: [
                 [0, 'desc']
             ],
-            scrollX: true,
+            // scrollX: true,
         });
     });
 </script>

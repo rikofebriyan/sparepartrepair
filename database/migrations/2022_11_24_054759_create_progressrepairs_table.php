@@ -15,11 +15,11 @@ class CreateProgressrepairsTable extends Migration
         Schema::create('progressrepairs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->foreign('form_input_id');
+            $table->integer('form_input_id');
             $table->string('place_of_repair');
             $table->text('analisa');
             $table->text('action');
-            $table->foreign('pic_repair');
+            $table->integer('pic_repair');
             $table->dateTime('plan_start_repair');
             $table->dateTime('plan_finish_repair');
             $table->dateTime('actual_start_repair');
@@ -27,7 +27,7 @@ class CreateProgressrepairsTable extends Migration
             $table->float('total_time_repair');
             $table->integer('labour_cost');
             $table->string('judgement');
-            $table->foreign('subcont_name');
+            $table->integer('subcont_name');
             $table->string('quotation');
             $table->string('nomor_pp');
             $table->string('nomor_po');

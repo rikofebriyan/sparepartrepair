@@ -19,13 +19,13 @@ class CreateWaitingrepairsTable extends Migration
             $table->string('part_from');
             $table->string('code_part_repair');
             $table->string('reg_sp');
-            $table->foreign('section');
-            $table->foreign('line');
-            $table->foreign('machine');
-            $table->foreign('item_code');
+            $table->integer('section');
+            $table->integer('line');
+            $table->integer('machine');
+            $table->integer('item_code');
             $table->string('item_name');
             $table->string('item_type');
-            $table->foreign('maker');
+            $table->integer('maker');
             $table->string('serial_number');
             $table->text('problem');
             $table->string('nama_pic');
