@@ -8,19 +8,11 @@
 
     <title>Laravel</title>
     <!-- Styles -->
-    {{-- <link rel="stylesheet" href="assets/css/main/app.css">
-    <link rel="stylesheet" href="assets/css/main/app-dark.css">
-    <link rel="stylesheet" href="assets/css/shared/iconly.css"> --}}
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
-    {{-- <link type="text/css" rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/pages/simple-datatables.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
-
-
-
 
 </head>
 <script src="{{ asset('assets/js/initTheme.js') }}"></script>
@@ -119,7 +111,89 @@
 
                         <li class="menu-item  ">
                             <a href="/partrepair/waitingtable" class='menu-link'>
-                                <span><i class="bi bi-table"></i> Waiting Repair</a></span>
+                                <span><i class="bi bi-table"></i> Table</a></span>
+                        </li>
+
+                        <li class="menu-item  has-sub">
+                            <a href="#" class='menu-link'>
+                                <span><i class="bi bi-table"></i> Matrix</span>
+                            </a>
+                            <div class="submenu ">
+                                <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                                <div class="submenu-group-wrapper">
+
+
+                                    <ul class="submenu-group">
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/user') }}" class='submenu-link'>User</a>
+
+
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/section') }}" class='submenu-link'>Section</a>
+
+
+                                        </li>
+
+
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/line') }}" class='submenu-link'>Line</a>
+
+
+                                        </li>
+
+
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/machine') }}" class='submenu-link'>Machine</a>
+
+
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/master_spare_part') }}"
+                                                class='submenu-link'>Master Spare Part</a>
+
+
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/standard_pengecekan') }}"
+                                                class='submenu-link'>Standard Pengecekan</a>
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/repair_kit') }}" class='submenu-link'>Repair
+                                                Kit</a>
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/item_standard') }}" class='submenu-link'>Item
+                                                Standard</a>
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/category_code') }}"
+                                                class='submenu-link'>Category
+                                                Code</a>
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/maker') }}" class='submenu-link'>Maker</a>
+                                        </li>
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('matrix/subcont') }}" class='submenu-link'>Subcont</a>
+                                        </li>
+
+                                    </ul>
+
+
+                                </div>
+                            </div>
                         </li>
 
                         <li class="menu-item  ">
@@ -167,7 +241,7 @@
 <script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
 
 @yield('script')
-
+{{-- 
 <script>
     $(document).ready(function() {
         $('#myTable').DataTable({
@@ -177,6 +251,6 @@
             // scrollX: true,
         });
     });
-</script>
+</script> --}}
 
 </html>
