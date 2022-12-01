@@ -6,6 +6,7 @@ use App\Progresstrial;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class ProgresstrialController extends Controller
 {
