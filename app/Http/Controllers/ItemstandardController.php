@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use App\Line;
 use App\ItemStandard;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,10 @@ use App\Http\Requests;
 
 class ItemstandardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,12 @@ class ItemstandardController extends Controller
      */
     public function index()
     {
-        //
+        // $tabel2 = Line::all();
+        $partr = ItemStandard::all()->sortByDesc('id');
+        return view('matrix.item_standard', [
+            'reqtzy' => $partr,
+            // 'tab2' => $tabel2,
+        ]);
     }
 
     /**
@@ -37,7 +47,14 @@ class ItemstandardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'item_standard' => 'required',
+        ]);
+
+        // create new task
+        ItemStandard::create($request->all());
+        return redirect()->route('matrix.item_standard.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -59,7 +76,6 @@ class ItemstandardController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +87,11 @@ class ItemstandardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'item_standard' => 'required',
+        ]);
+        ItemStandard::find($id)->update($request->all());
+        return redirect()->route('matrix.item_standard.index')->with('success','ItemStandard updated successfully');
     }
 
     /**
@@ -82,6 +102,7 @@ class ItemstandardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ItemStandard::find($id)->delete();
+        return redirect()->route('matrix.item_standard.index')->with('success','Task removed successfully');
     }
 }
