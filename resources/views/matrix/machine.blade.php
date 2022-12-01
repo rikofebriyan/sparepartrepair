@@ -5,7 +5,7 @@
 @section('content')
     <CENTER>
         <div class="container-fluid">
-            <H2>LINE TABLE</H2>
+            <H2>MACHINE TABLE</H2>
         </div>
     </CENTER>
     @if ($message = Session::get('success'))
