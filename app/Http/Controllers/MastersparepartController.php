@@ -88,7 +88,7 @@ class MastersparepartController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'item_name' => 'required',
         ]);
         MasterSparePart::find($id)->update($request->all());
         return redirect()->route('matrix.master_spare_part.index')->with('success','MasterSparePart updated successfully');

@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-
 @section('content')
     <CENTER>
         <div class="container-fluid">
@@ -59,7 +57,6 @@
                                 <td>{{ $req->account_no }}</td>
 
 
-
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
@@ -68,7 +65,7 @@
                                         data-bs-target="#asu{{ $req->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.machine.update', $req->id]]) !!}
+                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.master_spare_part.update', $req->id]]) !!}
                                     <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
                                         aria-labelledby="modalUpdateBarang" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -182,7 +179,7 @@
                                         </div>
                                     </div>
                                     {!! Form::close() !!}
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.machine.destroy', $req->id], 'style' => 'display:inline']) }}
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.master_spare_part.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
                                     {{ Form::close() }}
