@@ -5,7 +5,7 @@
 @section('content')
     <CENTER>
         <div class="container-fluid">
-            <H2>SECTION TABLE</H2>
+            <H2>MACHINE TABLE</H2>
         </div>
     </CENTER>
     @if ($message = Session::get('success'))
@@ -25,8 +25,9 @@
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
                     <thead>
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">name</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Line ID</th>
+                            <th scope="col">Name</th>
                             <th scope="col">created_at</th>
                             <th scope="col">updated_at</th>
                             <th scope="col">action</th>
@@ -36,6 +37,7 @@
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
+                                <td>{{ $req->line_id }}</td>
                                 <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
@@ -45,7 +47,7 @@
                                         data-bs-target="#asu{{ $req->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.section.update', $req->id]]) !!}
+                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.machine.update', $req->id]]) !!}
                                     <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
                                         aria-labelledby="modalUpdateBarang" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -58,6 +60,22 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
+
+                                                    {{-- FORM COLUMN 1 --}}
+                                                    <div class="form-group mt-2">
+                                                        <label for="line_id">Section ID</label>
+                                                        <select name="line_id" id="line_id" class="form-control">
+                                                            <option value="" disabled selected>
+                                                                choose
+                                                            </option>
+                                                            @foreach ($tab2 as $tab)
+                                                                <option value="{{ $tab->id }}">{{ $tab->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    {{-- FORM COLUMN 2 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="name">Name</label>
                                                         <input type="text" id="name" name="name"
@@ -70,7 +88,7 @@
                                         </div>
                                     </div>
                                     {!! Form::close() !!}
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.section.destroy', $req->id], 'style' => 'display:inline']) }}
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.machine.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
                                     {{ Form::close() }}
@@ -89,7 +107,7 @@
 
     <!-- Modal -->
 
-    {{ Form::open(['route' => 'matrix.section.store', 'method' => 'POST']) }}
+    {{ Form::open(['route' => 'matrix.machine.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -99,6 +117,21 @@
                 </div>
                 <div class="modal-body">
 
+                    {{-- FORM COLUMN 1 --}}
+                    <div class="form-group mt-2">
+                        <label for="line_id">Section ID</label>
+                        <select name="line_id" id="line_id" class="form-control">
+                            <option value="" disabled selected>
+                                choose
+                            </option>
+                            @foreach ($tab2 as $tab)
+                                <option value="{{ $tab->id }}">{{ $tab->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- FORM COLUMN 2 --}}
                     <div class="form-group mt-2">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
