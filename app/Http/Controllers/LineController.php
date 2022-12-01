@@ -9,6 +9,10 @@ use App\Http\Requests;
 
 class LineController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,10 @@ class LineController extends Controller
      */
     public function index()
     {
-        //
+        $partr = Line::all()->sortByDesc('id');
+        return view('matrix.line', [
+            'reqtzy' => $partr,
+        ]);
     }
 
     /**
@@ -37,7 +44,14 @@ class LineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        // create new task
+        Line::create($request->all());
+        return redirect()->route('matrix.line.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -59,7 +73,6 @@ class LineController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +84,11 @@ class LineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Line::find($id)->update($request->all());
+        return redirect()->route('matrix.line.index')->with('success','Line updated successfully');
     }
 
     /**
@@ -82,6 +99,7 @@ class LineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Line::find($id)->delete();
+        return redirect()->route('matrix.line.index')->with('success','Task removed successfully');
     }
 }
