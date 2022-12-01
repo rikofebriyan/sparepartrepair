@@ -70,8 +70,15 @@
                                                     </div>
                                                     <div class="form-group mt-2">
                                                         <label for="section_id">Section ID</label>
-                                                        <input type="text" id="section_id" name="section_id"
-                                                            class="form-control" value="{{ $req->section_id }}" required>
+                                                        <select name="section_id" id="section_id" class="form-control">
+                                                            <option value="" disabled selected>
+                                                                choose
+                                                            </option>
+                                                            @foreach ($sectzy as $sec)
+                                                                <option value="{{ $sec->id }}">{{ $sec->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="form-group mt-2">
                                                         <label for="name">Name</label>

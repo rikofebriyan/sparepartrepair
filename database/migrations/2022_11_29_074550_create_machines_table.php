@@ -16,6 +16,7 @@ class CreateMachinesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
+            $table->string('line_id');
         });
     }
 
