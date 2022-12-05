@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use App\Line;
 use App\Maker;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,10 @@ use App\Http\Requests;
 
 class MakerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,12 @@ class MakerController extends Controller
      */
     public function index()
     {
-        //
+        // $tabel2 = Line::all();
+        $partr = Maker::all()->sortByDesc('id');
+        return view('matrix.maker', [
+            'reqtzy' => $partr,
+            // 'tab2' => $tabel2,
+        ]);
     }
 
     /**
@@ -37,7 +47,14 @@ class MakerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        // create new task
+        Maker::create($request->all());
+        return redirect()->route('matrix.maker.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -59,7 +76,6 @@ class MakerController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +87,11 @@ class MakerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Maker::find($id)->update($request->all());
+        return redirect()->route('matrix.maker.index')->with('success','Maker updated successfully');
     }
 
     /**
@@ -82,6 +102,7 @@ class MakerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Maker::find($id)->delete();
+        return redirect()->route('matrix.maker.index')->with('success','Task removed successfully');
     }
 }
