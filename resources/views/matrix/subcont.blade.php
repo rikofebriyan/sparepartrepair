@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
-
-
 @section('content')
     <CENTER>
         <div class="container-fluid">
-            <H2>SECTION TABLE</H2>
+            <H2>SUBCONT TABLE</H2>
         </div>
     </CENTER>
     @if ($message = Session::get('success'))
@@ -25,8 +23,11 @@
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
                     <thead>
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">name</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
                             <th scope="col">created_at</th>
                             <th scope="col">updated_at</th>
                             <th scope="col">action</th>
@@ -37,6 +38,11 @@
                             <tr>
                                 <td>{{ $req->id }}</td>
                                 <td>{{ $req->name }}</td>
+                                <td>{{ $req->alamat }}</td>
+                                <td>{{ $req->email }}</td>
+                                <td>{{ $req->contact }}</td>
+
+
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
@@ -45,7 +51,7 @@
                                         data-bs-target="#asu{{ $req->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.section.update', $req->id]]) !!}
+                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.subcont.update', $req->id]]) !!}
                                     <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
                                         aria-labelledby="modalUpdateBarang" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -58,11 +64,38 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
+
+
+                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="name">Name</label>
                                                         <input type="text" id="name" name="name"
                                                             class="form-control" value="{{ $req->name }}" required>
                                                     </div>
+
+                                                    {{-- FORM COLUMN 1 --}}
+                                                    <div class="form-group mt-2">
+                                                        <label for="alamat">Alamat</label>
+                                                        <input type="text" id="alamat" name="alamat"
+                                                            class="form-control" value="{{ $req->alamat }}" required>
+                                                    </div>
+
+                                                    {{-- FORM COLUMN 1 --}}
+                                                    <div class="form-group mt-2">
+                                                        <label for="email">Email</label>
+                                                        <input type="email" id="email" name="email"
+                                                            class="form-control" value="{{ $req->email }}" required>
+                                                    </div>
+
+                                                    {{-- FORM COLUMN 1 --}}
+                                                    <div class="form-group mt-2">
+                                                        <label for="contact">Contact</label>
+                                                        <input type="text" id="contact" name="contact"
+                                                            class="form-control" value="{{ $req->contact }}" required>
+                                                    </div>
+
+
+
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
                                                     <!--END FORM UPDATE BARANG-->
                                                 </div>
@@ -70,7 +103,7 @@
                                         </div>
                                     </div>
                                     {!! Form::close() !!}
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.section.destroy', $req->id], 'style' => 'display:inline']) }}
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.subcont.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
                                     {{ Form::close() }}
@@ -89,7 +122,7 @@
 
     <!-- Modal -->
 
-    {{ Form::open(['route' => 'matrix.section.store', 'method' => 'POST']) }}
+    {{ Form::open(['route' => 'matrix.subcont.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -99,10 +132,31 @@
                 </div>
                 <div class="modal-body">
 
+
+                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
+
+                    {{-- FORM COLUMN 1 --}}
+                    <div class="form-group mt-2">
+                        <label for="alamat">Alamat</label>
+                        <input type="text" id="alamat" name="alamat" class="form-control" required>
+                    </div>
+
+                    {{-- FORM COLUMN 1 --}}
+                    <div class="form-group mt-2">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    {{-- FORM COLUMN 1 --}}
+                    <div class="form-group mt-2">
+                        <label for="contact">Contact</label>
+                        <input type="text" id="contact" name="contact" class="form-control" required>
+                    </div>
+
 
                 </div>
                 <div class="modal-footer">

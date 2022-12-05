@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use App\Line;
 use App\Subcont;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,10 @@ use App\Http\Requests;
 
 class SubcontController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,12 @@ class SubcontController extends Controller
      */
     public function index()
     {
-        //
+        // $tabel2 = Line::all();
+        $partr = Subcont::all()->sortByDesc('id');
+        return view('matrix.subcont', [
+            'reqtzy' => $partr,
+            // 'tab2' => $tabel2,
+        ]);
     }
 
     /**
@@ -37,7 +47,14 @@ class SubcontController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        // create new task
+        Subcont::create($request->all());
+        return redirect()->route('matrix.subcont.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -59,7 +76,6 @@ class SubcontController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +87,11 @@ class SubcontController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Subcont::find($id)->update($request->all());
+        return redirect()->route('matrix.subcont.index')->with('success','Subcont updated successfully');
     }
 
     /**
@@ -82,6 +102,7 @@ class SubcontController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Subcont::find($id)->delete();
+        return redirect()->route('matrix.subcont.index')->with('success','Task removed successfully');
     }
 }
