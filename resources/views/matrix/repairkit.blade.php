@@ -206,7 +206,7 @@
                             </option>
                             @foreach ($tab3 as $tabw)
                                 <option value="{{ $tabw->id }}">
-                                    {{ $tabw->item_standard }}
+                                    {{ $tabw->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -214,9 +214,9 @@
 
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
-                        <label for="standard_pengecekan">standard_pengecekan</label>
-                        <input type="text" id="standard_pengecekan" name="standard_pengecekan" class="form-control"
-                            value="" required>
+                        <label for="qty">qty</label>
+                        <input type="text" id="qty" name="qty" class="form-control" value=""
+                            required>
                     </div>
 
                 </div>
