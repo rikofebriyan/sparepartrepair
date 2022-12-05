@@ -151,20 +151,6 @@
                                                             class="form-control" value="{{ $req->order_qty }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 1 --}}
-                                                    {{-- <div class="form-group mt-2">
-                                                        <label for="line_id">Section ID</label>
-                                                        <select name="line_id" id="line_id" class="form-control">
-                                                            <option value="" disabled selected>
-                                                                choose
-                                                            </option>
-                                                            @foreach ($tab2 as $tab)
-                                                                <option value="{{ $tab->id }}">{{ $tab->name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div> --}}
-
                                                     {{-- FORM COLUMN 11 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="account_no">account_no</label>
