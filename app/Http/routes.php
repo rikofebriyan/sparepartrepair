@@ -39,3 +39,6 @@ Route::resource('matrix/item_standard', 'ItemstandardController');
 Route::resource('matrix/code_part_repair', 'CodepartrepairController');
 Route::resource('matrix/category_code', 'CategorycodeController');
 Route::resource('matrix/user', 'UserController');
+
+Route::get('/ajax', 'InfoController@index');
+Route::get('/getline', 'InfoController@getline');

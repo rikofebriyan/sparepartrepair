@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Line;
+use App\Section;
+use App\MasterSparePart;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,8 +33,16 @@ class PartrepairController extends Controller
         return view('partrepair.index');
     }
 
-    public function request()
+    public function request(Request $request)
     {
-        return view('partrepair.request');
+        $section = Section::all();
+        $line = Line::all();
+        // $line = Line::all()->where('section_id', $request->get('id'));
+        $partr = MasterSparePart::all()->sortByDesc('id');
+        return view('partrepair.request', [
+            'reqtzy' => $partr,
+            'section' => $section,
+            'line' => $line
+        ]);
     }
 }
