@@ -301,6 +301,3 @@
         });
     </script>
 @endsection
-
-
-@endsection
