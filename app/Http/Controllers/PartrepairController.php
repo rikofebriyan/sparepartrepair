@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Maker;
+use App\User;
 use App\Machine;
 use App\Line;
 use App\Section;
@@ -41,18 +43,12 @@ class PartrepairController extends Controller
         $tahun     = date ('Y');
         $bulan = date('m');
         $tanggal    = date('d');
-        $noUrutAkhir = Waitingrepair::max('reg_sp');
+        $noUrutAkhir = Waitingrepair::count('reg_sp');
         $no = 1;
         if($noUrutAkhir) {
-        echo "No urut surat di database : " . $noUrutAkhir;
-        echo "<br>";
-        echo "Pake Format : " . $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", abs($noUrutAkhir + 1)) ;
         $ticket = $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", abs($noUrutAkhir + 1)) ;
         }
          else {
-        echo "No urut surat di database : 0" ;
-        echo "<br>";
-        echo "Pake Format : " . $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", $no) ;
         $ticket = $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", $no) ;
         }
 
@@ -60,6 +56,8 @@ class PartrepairController extends Controller
 
 
 
+        $maker = Maker::all();
+        $user = User::all();
         $machine = Machine::all();
         $section = Section::all();
         $line = Line::all();
@@ -71,6 +69,8 @@ class PartrepairController extends Controller
             'line' => $line,
             'machine' => $machine,
             'ticket' => $ticket,
+            'user' => $user,
+            'maker' => $maker,
         ]);
     }
 }

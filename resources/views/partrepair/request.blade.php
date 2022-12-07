@@ -17,54 +17,43 @@
                             <div class="mb-3 row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Date Created</label>
                                 <div class="col-sm-9">
-                                    <input type="datetime-local" class="form-control" id="tanggal">
+                                    <input type="datetime-local" class="form-control" id="tanggal" name="date"
+                                        value="{{ Carbon\Carbon::now() }}" readonly>
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
-                                <label for="parts_from" class="col-sm-3 col-form-label">Parts From</label>
-                                <div class="col-sm-9">
+                                <label for="parts_from" class="col-sm-3 col-form-label">Apakah part pernah di
+                                    repair?</label>
+                                <div class="col-sm-9 col-form-label">
 
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault1" onclick="formChoice(0)">
+                                        <input class="form-check-input" type="radio" name="part_from"
+                                            id="flexRadioDefault1" onclick="formChoice(0)" value="Belum Pernah Repair">
                                         <label class="form-check-label" for="flexRadioDefault1">
-                                            New
+                                            Belum Pernah Repair
                                         </label>
                                     </div>
                                     <div class="form-check-inline">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                            id="flexRadioDefault2" onclick="formChoice(1)">
+                                        <input class="form-check-input" type="radio" name="part_from"
+                                            id="flexRadioDefault2" onclick="formChoice(1)" value="Pernah Repair">
                                         <label class="form-check-label" for="flexRadioDefault2">
-                                            Bekas Repair
+                                            Pernah di Repair
                                         </label>
                                     </div>
 
                                 </div>
                             </div>
-                            {{-- <select class="form-select" id="parts_from" name="parts_from" >
-                                        <option selected disabled>Pilih ...</option>
-                                        <option value="1">New</option>
-                                        <option value="2">Repair</option>
-                                    </select>
-                                </div>
-                            </div> --}}
-                            {{-- <input type="radio" name="rad1" onclick="formChoice(0)"> Business URL
-                            <input type="text" name="businessSite" id="field1" value="input1">
-                            <input type="radio" name="rad1" onclick="formChoice(1)"> I don't have a website but here
-                            are some sites I like!
-                            <input type="text" name="businessSite" id="field2" value="input2"> --}}
 
                             <div class="mb-3 row" id="field2" style="display: none">
                                 <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
                                     Repair</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control mb-3" name="code_part_repair"
-                                        placeholder="Input Kode Part Repair">
+                                    <input type="text" class="form-control mb-3" placeholder="Input Kode Part Repair">
 
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="number_of_repair"
-                                            name="number_of_repair" placeholder="Number of Repair" readonly>
+                                            placeholder="Number of Repair" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +61,6 @@
                             <div class="mb-3 row">
                                 <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                                 <div class="col-sm-9">
-                                    {{-- <input type="text" class="form-control" id="item_code" name="item_code" > --}}
                                     <select class="form-select mb-3 choices" onchange="isi_otomatis()" id="isiotomatis"
                                         name="item_name" data-live-search="true">
                                         <option selected></option>
@@ -103,10 +91,14 @@
                                     <div class="input-group">
                                         <select class="form-control" id="maker" name="maker">
                                             <option selected disabled>Maker ...</option>
-                                            <option value="1">SMC</option>
+                                            @foreach ($maker as $mak)
+                                                <option value="{{ $mak->id }}">{{ $mak->name }}
+                                                </option>
+                                            @endforeach
+                                            {{-- <option value="1">SMC</option>
                                             <option value="2">IAI</option>
                                             <option value="3">CKD</option>
-                                            <option value="4">Fanuc</option>
+                                            <option value="4">Fanuc</option> --}}
                                         </select>
                                         <select class="form-control" id="type_of_part" name="type_of_part">
                                             <option selected disabled>Type Of Part ...</option>
@@ -166,16 +158,8 @@
                             <div class="mb-3 row">
                                 <label for="machine" class="col-sm-3 col-form-label">Machine</label>
                                 <div class="col-sm-9">
-                                    {{-- <input type="text" class="form-control" id="machine" name="machine" > --}}
                                     <select class="form-select" id="machine" name="machine">
                                         <option selected disabled>Pilih ...</option>
-                                        <option value="1">DCM 7</option>
-                                        <option value="2">FCY10</option>
-                                        <option value="3">OP10 Centering</option>
-                                        <option value="4">Shaft Swash Assy #1</option>
-                                        <option value="5">Shigiya 4</option>
-                                        <option value="6">Helium Leak Test</option>
-                                        <option value="7">Gap Check</option>
                                     </select>
                                 </div>
                             </div>
@@ -183,12 +167,10 @@
                             <div class="mb-3 row">
                                 <label for="status_repair" class="col-sm-3 col-form-label">Status Repair</label>
                                 <div class="col-sm-9">
-                                    {{-- <input type="text" class="form-control" id="status_repair" name="status_repair"
-                                        value="Waiting" > --}}
                                     <select class="form-control" id="status_repair" name="status_repair">
                                         <option selected disabled>Pilih ...</option>
-                                        <option value="1">Normal</option>
-                                        <option value="2">Urgent</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Urgent">Urgent</option>
                                     </select>
                                 </div>
                             </div>
@@ -198,8 +180,11 @@
                                 <div class="col-sm-9">
                                     <select class="form-control" id="nama_pic" name="nama_pic">
                                         <option selected disabled>Pilih ...</option>
-                                        <option value="1">Riko</option>
-                                        <option value="2">Febriyan</option>
+                                        @foreach ($user as $us)
+                                            <option value="{{ $us->id }}">{{ $us->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     </select>
                                 </div>
                             </div>
@@ -209,6 +194,14 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="reg_sp" name="reg_sp"
                                         value="{{ $ticket }}" readonly>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="progress" class="col-sm-3 col-form-label">Progress</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="progress" name="progress"
+                                        value="Waiting" readonly>
                                 </div>
                             </div>
 

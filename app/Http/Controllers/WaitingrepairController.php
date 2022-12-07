@@ -48,9 +48,10 @@ class WaitingrepairController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // validated input request
         $this->validate($request, [
-            'nama_pic' => 'required',
+            'problem' => 'required',
         ]);
 
         // create new task
