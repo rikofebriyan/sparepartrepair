@@ -41,18 +41,19 @@ class PartrepairController extends Controller
         $tahun     = date ('Y');
         $bulan = date('m');
         $tanggal    = date('d');
-        $asd = $post->created_at->month;
-        $noUrutAkhir = Waitingrepair::max('reg_sp')->where($asd, '1');
+        $noUrutAkhir = Waitingrepair::max('reg_sp');
         $no = 1;
         if($noUrutAkhir) {
         echo "No urut surat di database : " . $noUrutAkhir;
         echo "<br>";
         echo "Pake Format : " . $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", abs($noUrutAkhir + 1)) ;
+        $ticket = $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", abs($noUrutAkhir + 1)) ;
         }
          else {
         echo "No urut surat di database : 0" ;
         echo "<br>";
         echo "Pake Format : " . $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", $no) ;
+        $ticket = $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", $no) ;
         }
 
 
@@ -69,6 +70,7 @@ class PartrepairController extends Controller
             'section' => $section,
             'line' => $line,
             'machine' => $machine,
+            'ticket' => $ticket,
         ]);
     }
 }

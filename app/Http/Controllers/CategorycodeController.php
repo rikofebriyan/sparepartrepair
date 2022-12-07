@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+// use App\Line;
 use App\CategoryCode;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class CategorycodeController extends Controller
+class CategoryCodeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,12 @@ class CategorycodeController extends Controller
      */
     public function index()
     {
-        //
+        // $tabel2 = Line::all();
+        $partr = CategoryCode::all()->sortByDesc('id');
+        return view('matrix.category_code', [
+            'reqtzy' => $partr,
+            // 'tab2' => $tabel2,
+        ]);
     }
 
     /**
@@ -37,7 +47,14 @@ class CategorycodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validated input request
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
+
+        // create new task
+        CategoryCode::create($request->all());
+        return redirect()->route('matrix.category_code.index')->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -59,7 +76,6 @@ class CategorycodeController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -71,7 +87,11 @@ class CategorycodeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
+        CategoryCode::find($id)->update($request->all());
+        return redirect()->route('matrix.category_code.index')->with('success','CategoryCode updated successfully');
     }
 
     /**
@@ -82,6 +102,7 @@ class CategorycodeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CategoryCode::find($id)->delete();
+        return redirect()->route('matrix.category_code.index')->with('success','Task removed successfully');
     }
 }

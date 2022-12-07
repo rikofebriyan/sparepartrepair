@@ -17,7 +17,7 @@
                             <div class="mb-3 row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Date Created</label>
                                 <div class="col-sm-9">
-                                    <input type="datetime-local" class="form-control" id="tanggal" name="tanggal">
+                                    <input type="datetime-local" class="form-control" id="tanggal">
                                 </div>
                             </div>
 
@@ -208,7 +208,7 @@
                                 <label for="reg_sp" class="col-sm-3 col-form-label">Ticket Number</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="reg_sp" name="reg_sp"
-                                        value="" readonly>
+                                        value="{{ $ticket }}" readonly>
                                 </div>
                             </div>
 
