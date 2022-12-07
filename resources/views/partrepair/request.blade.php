@@ -63,7 +63,7 @@
                                         placeholder="Input Kode Part Repair">
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light" id="number_of_repair"
+                                        <input type="text" class="form-control" id="number_of_repair"
                                             name="number_of_repair" placeholder="Number of Repair" readonly>
                                     </div>
                                 </div>
@@ -83,21 +83,21 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light" id="item_code" name="item_code"
+                                        <input type="text" class="form-control" id="item_code" name="item_code"
                                             placeholder="Item Code" readonly>
-                                        <input type="text" class="form-control bg-light" id="item_name" name="item_name"
+                                        <input type="text" class="form-control" id="item_name" name="item_name"
                                             placeholder="Item Name" readonly>
                                     </div>
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light" id="description"
-                                            name="item_type" placeholder="Item Type" readonly>
+                                        <input type="text" class="form-control" id="description" name="item_type"
+                                            placeholder="Item Type" readonly>
                                     </div>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light" id="price" name="price"
+                                        <input type="text" class="form-control" id="price" name="price"
                                             placeholder="Price" readonly>
-                                        <input type="text" class="form-control bg-light" id="qty"
-                                            name="stock_spare_part" placeholder="Stock" readonly>
+                                        <input type="text" class="form-control" id="qty" name="stock_spare_part"
+                                            placeholder="Stock" readonly>
                                     </div>
 
                                     <div class="input-group">
@@ -207,8 +207,8 @@
                             <div class="mb-3 row">
                                 <label for="reg_sp" class="col-sm-3 col-form-label">Ticket Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control bg-light" id="reg_sp" name="reg_sp"
-                                        readonly>
+                                    <input type="text" class="form-control" id="reg_sp" name="reg_sp"
+                                        value="" readonly>
                                 </div>
                             </div>
 
@@ -242,8 +242,6 @@
             });
         }
     </script>
-
-    <!-- Notifikasi menggunakan flash session data -->
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -264,8 +262,6 @@
             return;
         }
     </script>
-
-    {{-- <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $('#section').on('change', function() {
@@ -281,6 +277,29 @@
                         console.log(result)
                         $.each(result, function(id, value) {
                             $('#line').append('<option value="' + id + '">' +
+                                value + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#line').on('change', function() {
+                var lineId = $('#line option:selected').val()
+                $.ajax({
+                    type: 'GET',
+                    url: '/getmachine/?lineId=' + lineId,
+                    dataType: 'JSON',
+                    success: function(result) {
+                        $('#machine').empty()
+                        $('#machine').append(
+                            '<option value="" disabled selected>Choose</option>')
+                        console.log(result)
+                        $.each(result, function(id, value) {
+                            $('#machine').append('<option value="' + id + '">' +
                                 value + '</option>');
                         });
                     }

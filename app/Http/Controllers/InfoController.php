@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Machine;
 use App\Line;
 use App\MasterSparePart;
 use Illuminate\Http\Request;
@@ -35,6 +36,13 @@ class InfoController extends Controller
         $sectionId = $request->get('sectionId');
         $line = Line::all()->where('section_id', $sectionId)->pluck('name', 'id');
         return response()->json($line);
-        // echo json_encode($line);
+    }
+
+    
+    public function getmachine(Request $request)
+    {
+        $lineId = $request->get('lineId');
+        $machine = Machine::all()->where('line_id', $lineId)->pluck('name', 'id');
+        return response()->json($machine);
     }
 }
