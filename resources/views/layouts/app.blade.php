@@ -20,7 +20,7 @@
 <body id="app">
 
     <div id="main" class="layout-horizontal">
-        <header class="mb-4">
+        <header class="mb-2">
             <div class="header-top">
                 <div class="container">
                     <div class="card my-0">

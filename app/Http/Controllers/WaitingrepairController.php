@@ -74,9 +74,11 @@ class WaitingrepairController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Waitingrepair::find($id);
+
+        
+        $waitingrepair = Waitingrepair::find($id);
         return view('partrepair.progress', [
-            'modelrepair'    => $partrepair,
+            'waitingrepair'    => $waitingrepair,
         ]);
     }
 
