@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Line;
+use App\Section;
 use App\Waitingrepair;
 use Illuminate\Http\Request;
 
@@ -53,10 +55,15 @@ class WaitingrepairController extends Controller
         $this->validate($request, [
             'problem' => 'required',
         ]);
-
-        // create new task
-        Waitingrepair::create($request->all());
+        
+        $line = Line::where('id', $request->get('line'))->first();
+        $section = Section::where('id', $request->get('section'))->first();
+        $data = $request->all();
+        $data['section'] = $section->name;
+        $data['line'] = $line->name;
+        Waitingrepair::create($data);
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
+        
     }
 
     /**

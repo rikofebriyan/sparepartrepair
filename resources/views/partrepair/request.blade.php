@@ -65,8 +65,9 @@
                                         name="item_name" data-live-search="true">
                                         <option selected></option>
                                         @foreach ($reqtzy as $req)
-                                            <option value="{{ $req->id }}">{{ $req->item_name }} |
-                                                {{ $req->item_code }}
+                                            <option value="{{ $req->id }}"> {{ $req->item_code }} |
+                                                {{ $req->item_name }} |
+                                                {{ $req->description }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -92,7 +93,7 @@
                                         <select class="form-control" id="maker" name="maker">
                                             <option selected disabled>Maker ...</option>
                                             @foreach ($maker as $mak)
-                                                <option value="{{ $mak->id }}">{{ $mak->name }}
+                                                <option value="{{ $mak->name }}">{{ $mak->name }}
                                                 </option>
                                             @endforeach
                                             {{-- <option value="1">SMC</option>
@@ -181,7 +182,7 @@
                                     <select class="form-control" id="nama_pic" name="nama_pic">
                                         <option selected disabled>Pilih ...</option>
                                         @foreach ($user as $us)
-                                            <option value="{{ $us->id }}">{{ $us->name }}
+                                            <option value="{{ $us->name }}">{{ $us->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -216,6 +217,7 @@
         {{ Form::close() }}
 
     </div>
+@endsection
 @section('script')
     <script type="text/javascript">
         function isi_otomatis() {
@@ -292,7 +294,7 @@
                             '<option value="" disabled selected>Choose</option>')
                         console.log(result)
                         $.each(result, function(id, value) {
-                            $('#machine').append('<option value="' + id + '">' +
+                            $('#machine').append('<option value="' + value + '">' +
                                 value + '</option>');
                         });
                     }
