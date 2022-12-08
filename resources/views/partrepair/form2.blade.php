@@ -1,210 +1,193 @@
-<div class="container-fluid justify-content-center py-0">
-    <div class="container-fluid">
-        <div class="row gx-3">
-            <div class="col">
-                <div class="p-3 border">
+<div class="container-fluid justify-content-center p-0">
+    <div class="row gx-3">
+        <div class="col">
+            <div class="p-3 border">
 
-                    <div class="mb-3 row">
-                        <label for="tanggal" class="col-sm-3 col-form-label">Date
-                            Created</label>
-                        <div class="col-sm-9">
-                            <input type="datetime-local" class="form-control" id="tanggal" name="date"
-                                value="{{ Carbon\Carbon::now() }}" readonly>
-                        </div>
+                <div class="mb-3 row">
+                    <label for="place_of_repair" class="col-sm-3 col-form-label">Place
+                        Repair</label>
+                    <div class="col-sm-9">
+                        {{-- <input type="text" class="form-control" id="place_of_repair"
+                                                        name="place_of_repair" value="" required> --}}
+                        <select class="form-select choices" id="place_of_repair" name="place_of_repair" required>
+                            <option selected disabled>Pilih ...</option>
+                            <option value="1">In House</option>
+                            <option value="2">In Subcont</option>
+                            <option value="3">Trade In</option>
+                        </select>
                     </div>
-
-                    <div class="mb-3 row">
-                        <label for="parts_from" class="col-sm-3 col-form-label">Apakah part
-                            pernah di
-                            repair?</label>
-                        <div class="col-sm-9 col-form-label">
-
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="part_from" id="flexRadioDefault1"
-                                    value="Belum Pernah Repair">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Belum Pernah Repair
-                                </label>
-                            </div>
-                            <div class="form-check-inline">
-                                <input class="form-check-input" type="radio" name="part_from" id="flexRadioDefault2"
-                                    value="Pernah Repair">
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Pernah di Repair
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row" id="field2" style="display: none">
-                        <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
-                            Repair</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control mb-3" placeholder="Input Kode Part Repair">
-
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="number_of_repair"
-                                    placeholder="Number of Repair" readonly>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="item_code" class="col-sm-3 col-form-label">Spare
-                            Part</label>
-                        <div class="col-sm-9">
-                            <select class="form-select mb-3 choices" id="isiotomatis" name="item_name"
-                                data-live-search="true">
-                                <option selected></option>
-                                {{-- @foreach ($reqtzy as $req)
-                                    <option value="{{ $req->id }}"> {{ $req->item_code }} |
-                                        {{ $req->item_name }} |
-                                        {{ $req->description }}
-                                    </option>
-                                @endforeach --}}
-                            </select>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="item_code" name="item_code"
-                                    placeholder="Item Code" readonly>
-                                <input type="text" class="form-control" id="item_name" name="item_name"
-                                    placeholder="Item Name" readonly>
-                            </div>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="description" name="item_type"
-                                    placeholder="Item Type" readonly>
-                            </div>
-
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="price" name="price"
-                                    placeholder="Price" readonly>
-                                <input type="text" class="form-control" id="qty" name="stock_spare_part"
-                                    placeholder="Stock" readonly>
-                            </div>
-
-                            <div class="input-group">
-                                <select class="form-control" id="maker" name="maker">
-                                    <option selected disabled>Maker ...</option>
-                                    {{-- @foreach ($maker as $mak)
-                                        <option value="{{ $mak->name }}">{{ $mak->name }}
-                                        </option>
-                                    @endforeach --}}
-                                    {{-- <option value="1">SMC</option>
-                <option value="2">IAI</option>
-                <option value="3">CKD</option>
-                <option value="4">Fanuc</option> --}}
-                                </select>
-                                <select class="form-control" id="type_of_part" name="type_of_part">
-                                    <option selected disabled>Type Of Part ...</option>
-                                    <option value="1">Mechanic</option>
-                                    <option value="2">Hydraulic</option>
-                                    <option value="3">Pneumatic</option>
-                                    <option value="4">Electric</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="mb-3 row">
-                        <label for="serial_number" class="col-sm-3 col-form-label">Serial
-                            Number</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="serial_number" name="serial_number"
-                                placeholder="Input Serial Number">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="problem" class="col-sm-3 col-form-label">Problem</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" id="problem" name="problem" rows="4" placeholder="Input Detail Problem"></textarea>
-                        </div>
-                    </div>
-
-
-
                 </div>
+
+                <div class="mb-3 row">
+                    <label for="analisa" class="col-sm-3 col-form-label">Analisa</label>
+                    <div class="col-sm-9">
+                        {{-- <input type="text" class="form-control" id="analisa"
+                                                        name="analisa" value="" required> --}}
+                        <textarea class="form-control" id="analisa" name="analisa" rows="3" placeholder="Input Analisa" required></textarea>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="action" class="col-sm-3 col-form-label">Action</label>
+                    <div class="col-sm-9">
+                        {{-- <input type="text" class="form-control" id="action"
+                                                        name="action" value="" required> --}}
+                        <textarea class="form-control" id="action" name="action" rows="3" placeholder="Input Analisa" required></textarea>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="judgement" class="col-sm-3 col-form-label">Judgement</label>
+                    <div class="col-sm-9">
+                        {{-- <input type="text" class="form-control" id="judgement"
+                                                        name="judgement" value="" required> --}}
+                        <select class="form-select choices" id="judgement" name="judgement" required>
+                            <option selected disabled>Pilih ...</option>
+                            <option value="1">Continue Repair</option>
+                            <option value="2">Scrap</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="pic_repair" class="col-sm-3 col-form-label">PIC Repair</label>
+                    <div class="col-sm-9">
+                        {{-- <input type="text" class="form-control" id="pic_repair"
+                                                        name="pic_repair" value="" required> --}}
+                        <select class="form-select choices" id="pic_repair" name="pic_repair" required>
+                            <option selected disabled>Pilih ...</option>
+                            <option value="1">Riko</option>
+                            <option value="2">Febriyan</option>
+                            <option value="3">Omov</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start
+                        Repair</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="plan_start_repair"
+                            name="plan_start_repair" value="" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="plan_finish_repair" class="col-sm-3 col-form-label">Plan
+                        Finish Repair</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="plan_finish_repair"
+                            name="plan_finish_repair" value="" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="actual_start_repair" class="col-sm-3 col-form-label">Actual
+                        Start Repair</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="actual_start_repair"
+                            name="actual_start_repair" value="" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="actual_finish_repair" class="col-sm-3 col-form-label">Actual
+                        Finish Repair</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="actual_finish_repair"
+                            name="actual_finish_repair" value="" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="total_time_repair" class="col-sm-3 col-form-label">Total Time
+                        Repair</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="total_time_repair" name="total_time_repair"
+                            value="" required readonly>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="labour_cost" class="col-sm-3 col-form-label">Labour
+                        Cost</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="labour_cost" name="labour_cost"
+                            value="" required readonly>
+                    </div>
+                </div>
+
+                {{-- <div class="mb-3 row invisible">
+                                                <label for="status_repair"
+                                                    class="col-sm-3 col-form-label">status_repair</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="status_repair"
+                                                        name="status_repair" value="Progress Admin" required>
+                                                </div>
+                                            </div> --}}
+
+                {{-- <div class="mb-3 row invisible">
+                                                <label for="form_input_id"
+                                                    class="col-sm-3 col-form-label">form_input_id</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="form_input_id"
+                                                        name="form_input_id" value="{{ $modelrepair->id }}" required>
+                                                </div>
+                                            </div> --}}
+
+
             </div>
-            <div class="col">
-                <div class="p-3 border">
-                    <div class="mb-3 row">
-                        <label for="section" class="col-sm-3 col-form-label">Section</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="section" name="section">
-                                <option selected disabled>Pilih ...</option>
-                                {{-- @foreach ($section as $sec)
-                                    <option value="{{ $sec->id }}">{{ $sec->name }}
-                                    </option>
-                                @endforeach --}}
-                            </select>
-                        </div>
+        </div>
+        <div class="col">
+            <div class="p-3 border">
+                <div class="mb-3 row">
+                    <label for="subcont_name" class="col-sm-3 col-form-label">Subcont
+                        Name</label>
+                    <div class="col-sm-9">
+                        <select class="form-select choices" id="subcont_name" name="subcont_name" required>
+                            <option selected disabled>Pilih ...</option>
+                            <option value="PTS">PTS</option>
+                            <option value="Yuasa">Yuasa</option>
+                            <option value="Minezawa">Minezawa</option>
+                        </select>
                     </div>
-
-                    <div class="mb-3 row">
-                        <label for="line" class="col-sm-3 col-form-label">Line</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="line" name="line">
-                                <option value="" disabled selected>Pilih ...</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="machine" class="col-sm-3 col-form-label">Machine</label>
-                        <div class="col-sm-9">
-                            <select class="form-select" id="machine" name="machine">
-                                <option selected disabled>Pilih ...</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="status_repair" class="col-sm-3 col-form-label">Status
-                            Repair</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" id="status_repair" name="status_repair">
-                                <option selected disabled>Pilih ...</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Urgent">Urgent</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="nama_pic" class="col-sm-3 col-form-label">PIC User</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" id="nama_pic" name="nama_pic">
-                                <option selected disabled>Pilih ...</option>
-                                {{-- @foreach ($user as $us)
-                                    <option value="{{ $us->name }}">{{ $us->name }}
-                                    </option>
-                                @endforeach --}}
-                            </select>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="reg_sp" class="col-sm-3 col-form-label">Ticket
-                            Number</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="reg_sp" name="reg_sp" value=""
-                                readonly>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="progress" class="col-sm-3 col-form-label">Progress</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="progress" name="progress"
-                                value="Waiting" readonly>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-md btn-primary">Save</button>
-                    <a href="{{ route('partrepair.waitingtable.index') }}" class="btn btn-md btn-secondary">back</a>
                 </div>
+
+                <div class="mb-3 row">
+                    <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="quotation" name="quotation" value=""
+                            required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nomor_pp" name="nomor_pp" value=""
+                            required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="nomor_po" class="col-sm-3 col-form-label">Nomor PO</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nomor_po" name="nomor_po" value=""
+                            required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="estimasi_selesai" class="col-sm-3 col-form-label">Estimasi
+                        Selesai</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="estimasi_selesai"
+                            name="estimasi_selesai" value="" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-md btn-primary">Save</button>
+                <a href="{{ route('partrepair.progresstable.index') }}" class="btn btn-md btn-secondary">back</a>
             </div>
         </div>
     </div>
