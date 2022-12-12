@@ -42,15 +42,25 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="pic_repair" class="col-sm-3 col-form-label">PIC Repair</label>
-                    <div class="col-sm-9">
-                        <select class="form-select choices" id="pic_repair" name="pic_repair" required>
+                    <div class="col-sm-3">
+                        <label for="pic_repair" class="col-form-label">PIC Repair</label>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-select choices" id="isiotomatis" onchange="isi_otomatis()" name="pic_repair"
+                            required>
                             <option value="">Pilih ...</option>
                             @foreach ($user as $us)
                                 <option value="{{ $us->name }}">{{ $us->name }}
                                 </option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="col-sm-1 ">
+                        <label for="pic_repair" class="col-form-label">Cost</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="labour_cost" name="labour_cost"
+                            placeholder="Labour Cost" readonly>
                     </div>
                 </div>
 
@@ -100,14 +110,6 @@
                     <label for="total_time_repair" class="col-sm-6 col-form-label">Hours</label>
                 </div>
 
-                <div class="mb-3 row">
-                    <label for="labour_cost" class="col-sm-3 col-form-label">Labour
-                        Cost</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="labour_cost" name="labour_cost"
-                            value="" required readonly>
-                    </div>
-                </div>
 
 
             </div>

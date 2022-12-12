@@ -47,6 +47,21 @@
         </div>
     @endsection
     @section('script')
+        <script type="text/javascript">
+            function isi_otomatis() {
+                var labour_id = $("#isiotomatis").val();
+                $.ajax({
+                    url: '/getlabour',
+                    data: "labour_id=" + labour_id,
+                    success: function(data) {
+                        var json = data,
+                            obj = JSON.parse(json);
+                        $('#labour_cost').val(obj.labour_cost);
+                    }
+                });
+            }
+        </script>
+
         <script>
             $(function() {
                 $("#datepicker2").datepicker();

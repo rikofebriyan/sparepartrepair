@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Machine;
 use App\Line;
 use App\MasterSparePart;
@@ -44,5 +45,14 @@ class InfoController extends Controller
         $lineId = $request->get('lineId');
         $machine = Machine::all()->where('line_id', $lineId)->pluck('name', 'id');
         return response()->json($machine);
+    }
+
+    
+    public function getlabour(Request $request)
+    {
+        $labour_id = $request->get('labour_id');
+        $data = User::where('name', $labour_id)->get();
+        $withoutbrackets = trim($data, '[]');
+        echo $withoutbrackets;
     }
 }

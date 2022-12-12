@@ -43,3 +43,4 @@ Route::resource('matrix/user', 'UserController');
 Route::get('/ajax', 'InfoController@index');
 Route::get('/getline', 'InfoController@getline');
 Route::get('/getmachine', 'InfoController@getmachine');
+Route::get('/getlabour', 'InfoController@getlabour');
