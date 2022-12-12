@@ -13,23 +13,23 @@
             <div class="card-content">
                 <div class="card-body py-2">
                     <div class="list-group list-group-horizontal-sm my-1 py-0 text-center" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-sunday-list" data-bs-toggle="list"
-                            href="#list-sunday" role="tab">Option 1</a>
-                        <a class="list-group-item list-group-item-action" id="list-monday-list" data-bs-toggle="list"
-                            href="#list-monday" role="tab">Option 2</a>
+                        <a class="list-group-item list-group-item-action" id="list-sunday-list" data-bs-toggle="list"
+                            href="#list-sunday" role="tab">Request Form</a>
+                        <a class="list-group-item list-group-item-action active" id="list-monday-list" data-bs-toggle="list"
+                            href="#list-monday" role="tab">Progress Form</a>
                         <a class="list-group-item list-group-item-action" id="list-tuesday-list" data-bs-toggle="list"
-                            href="#list-tuesday" role="tab">Option 3</a>
+                            href="#list-tuesday" role="tab">Order Part Seal Kit</a>
                         <a class="list-group-item list-group-item-action" id="list-4-list" data-bs-toggle="list"
-                            href="#list-4" role="tab">Option 3</a>
+                            href="#list-4" role="tab">Trial</a>
                         <a class="list-group-item list-group-item-action" id="list-5-list" data-bs-toggle="list"
-                            href="#list-5" role="tab">Option 3</a>
+                            href="#list-5" role="tab">Finish Form</a>
                     </div>
                     <div class="tab-content text-justify">
-                        <div class="tab-pane fade show active" id="list-sunday" role="tabpanel"
-                            aria-labelledby="list-sunday-list">
+                        <div class="tab-pane fade" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
                             @include('partrepair.form1')
                         </div>
-                        <div class="tab-pane fade" id="list-monday" role="tabpanel" aria-labelledby="list-monday-list">
+                        <div class="tab-pane fade  show active" id="list-monday" role="tabpanel"
+                            aria-labelledby="list-monday-list">
                             @include('partrepair.form2')
                         </div>
                         <div class="tab-pane fade" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
@@ -76,5 +76,17 @@
                     $('#selisih').val(age);
                 });
             }
+        </script>
+
+
+        <script>
+            $('#showsubcont').change(function() {
+                var val = $(this).val();
+                if (val === "Subcont") {
+                    $('#subcont').show();
+                } else
+                    $('#subcont').hide();
+
+            });
         </script>
     @endsection

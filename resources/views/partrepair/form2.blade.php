@@ -1,3 +1,4 @@
+{{ Form::open(['route' => 'partrepair.progresstable.store', 'method' => 'POST']) }}
 <div class="container-fluid justify-content-center p-0">
     <div class="row gx-3">
         <div class="col">
@@ -7,10 +8,10 @@
                     <label for="place_of_repair" class="col-sm-3 col-form-label">Place
                         Repair</label>
                     <div class="col-sm-9">
-                        <select class="form-select choices" id="place_of_repair" name="place_of_repair" required>
+                        <select class="form-select choices" id="showsubcont" name="place_of_repair" required>
                             <option value="">Pilih ...</option>
                             <option value="In House">In House</option>
-                            <option value="In Subcont">In Subcont</option>
+                            <option value="Subcont">Subcont</option>
                             <option value="Trade In">Trade In</option>
                         </select>
                     </div>
@@ -19,14 +20,14 @@
                 <div class="mb-3 row">
                     <label for="analisa" class="col-sm-3 col-form-label">Analisa</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="analisa" name="analisa" rows="3" placeholder="Input Analisa" required></textarea>
+                        <textarea class="form-control" id="analisa" name="analisa" rows="5" placeholder="Input Analisa" required></textarea>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
                     <label for="action" class="col-sm-3 col-form-label">Action</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="action" name="action" rows="3" placeholder="Input Analisa" required></textarea>
+                        <textarea class="form-control" id="action" name="action" rows="5" placeholder="Input Analisa" required></textarea>
                     </div>
                 </div>
 
@@ -64,6 +65,18 @@
                     </div>
                 </div>
 
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-md btn-primary">Save</button>
+                    <a href="{{ route('partrepair.progresstable.index') }}" class="btn btn-md btn-secondary">back</a>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="p-3 border">
                 <div class="mb-3 row">
                     <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start
                         Repair</label>
@@ -109,13 +122,8 @@
                     </div>
                     <label for="total_time_repair" class="col-sm-6 col-form-label">Hours</label>
                 </div>
-
-
-
             </div>
-        </div>
-        <div class="col">
-            <div class="p-3 border">
+            <div class="p-3 border mt-3" id="subcont" style="display: none">
                 <div class="mb-3 row">
                     <label for="subcont_name" class="col-sm-3 col-form-label">Subcont
                         Name</label>
@@ -163,9 +171,9 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-md btn-primary">Save</button>
-                <a href="{{ route('partrepair.progresstable.index') }}" class="btn btn-md btn-secondary">back</a>
             </div>
+
         </div>
     </div>
 </div>
+{{ Form::close() }}
