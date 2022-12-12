@@ -15,23 +15,23 @@ class CreateProgressrepairsTable extends Migration
         Schema::create('progressrepairs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('form_input_id');
-            $table->string('place_of_repair');
-            $table->text('analisa');
-            $table->text('action');
-            $table->integer('pic_repair');
-            $table->dateTime('plan_start_repair');
-            $table->dateTime('plan_finish_repair');
-            $table->dateTime('actual_start_repair');
-            $table->dateTime('actual_finish_repair');
-            $table->float('total_time_repair');
-            $table->integer('labour_cost');
-            $table->string('judgement');
-            $table->integer('subcont_name');
-            $table->string('quotation');
-            $table->string('nomor_pp');
-            $table->string('nomor_po');
-            $table->dateTime('estimasi_selesai');
+            $table->integer('form_input_id')->nullable();
+            $table->string('place_of_repair')->nullable();
+            $table->text('analisa')->nullable();
+            $table->text('action')->nullable();
+            $table->string('pic_repair')->nullable();
+            $table->dateTime('plan_start_repair')->nullable();
+            $table->dateTime('plan_finish_repair')->nullable();
+            $table->dateTime('actual_start_repair')->nullable();
+            $table->dateTime('actual_finish_repair')->nullable();
+            $table->float('total_time_repair')->nullable();
+            $table->integer('labour_cost')->nullable();
+            $table->string('judgement')->nullable();
+            $table->string('subcont_name')->nullable();
+            $table->string('quotation')->nullable();
+            $table->string('nomor_pp')->nullable();
+            $table->string('nomor_po')->nullable();
+            $table->dateTime('estimasi_selesai')->nullable();
         });
     }
 

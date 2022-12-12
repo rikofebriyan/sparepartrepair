@@ -52,7 +52,7 @@ class WaitingrepairController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        dd($request);
         // validated input request
         $this->validate($request, [
             'problem' => 'required',
