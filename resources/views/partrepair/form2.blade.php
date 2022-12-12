@@ -7,13 +7,11 @@
                     <label for="place_of_repair" class="col-sm-3 col-form-label">Place
                         Repair</label>
                     <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" id="place_of_repair"
-                                                        name="place_of_repair" value="" required> --}}
                         <select class="form-select choices" id="place_of_repair" name="place_of_repair" required>
-                            <option selected disabled>Pilih ...</option>
-                            <option value="1">In House</option>
-                            <option value="2">In Subcont</option>
-                            <option value="3">Trade In</option>
+                            <option value="">Pilih ...</option>
+                            <option value="In House">In House</option>
+                            <option value="In Subcont">In Subcont</option>
+                            <option value="Trade In">Trade In</option>
                         </select>
                     </div>
                 </div>
@@ -21,8 +19,6 @@
                 <div class="mb-3 row">
                     <label for="analisa" class="col-sm-3 col-form-label">Analisa</label>
                     <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" id="analisa"
-                                                        name="analisa" value="" required> --}}
                         <textarea class="form-control" id="analisa" name="analisa" rows="3" placeholder="Input Analisa" required></textarea>
                     </div>
                 </div>
@@ -30,8 +26,6 @@
                 <div class="mb-3 row">
                     <label for="action" class="col-sm-3 col-form-label">Action</label>
                     <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" id="action"
-                                                        name="action" value="" required> --}}
                         <textarea class="form-control" id="action" name="action" rows="3" placeholder="Input Analisa" required></textarea>
                     </div>
                 </div>
@@ -39,12 +33,10 @@
                 <div class="mb-3 row">
                     <label for="judgement" class="col-sm-3 col-form-label">Judgement</label>
                     <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" id="judgement"
-                                                        name="judgement" value="" required> --}}
                         <select class="form-select choices" id="judgement" name="judgement" required>
-                            <option selected disabled>Pilih ...</option>
-                            <option value="1">Continue Repair</option>
-                            <option value="2">Scrap</option>
+                            <option value="">Pilih ...</option>
+                            <option value="Continue Repair">Continue Repair</option>
+                            <option value="Scrap">Scrap</option>
                         </select>
                     </div>
                 </div>
@@ -52,13 +44,12 @@
                 <div class="mb-3 row">
                     <label for="pic_repair" class="col-sm-3 col-form-label">PIC Repair</label>
                     <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" id="pic_repair"
-                                                        name="pic_repair" value="" required> --}}
                         <select class="form-select choices" id="pic_repair" name="pic_repair" required>
-                            <option selected disabled>Pilih ...</option>
-                            <option value="1">Riko</option>
-                            <option value="2">Febriyan</option>
-                            <option value="3">Omov</option>
+                            <option value="">Pilih ...</option>
+                            @foreach ($user as $us)
+                                <option value="{{ $us->name }}">{{ $us->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -67,8 +58,8 @@
                     <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start
                         Repair</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control" id="plan_start_repair"
-                            name="plan_start_repair" value="" required>
+                        <input type="datetime-local" class="form-control" name="plan_start_repair" value=""
+                            required>
                     </div>
                 </div>
 
@@ -76,8 +67,8 @@
                     <label for="plan_finish_repair" class="col-sm-3 col-form-label">Plan
                         Finish Repair</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control" id="plan_finish_repair"
-                            name="plan_finish_repair" value="" required>
+                        <input type="datetime-local" class="form-control" name="plan_finish_repair" value=""
+                            required>
                     </div>
                 </div>
 
@@ -85,8 +76,8 @@
                     <label for="actual_start_repair" class="col-sm-3 col-form-label">Actual
                         Start Repair</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control" id="actual_start_repair"
-                            name="actual_start_repair" value="" required>
+                        <input type="datetime-local" class="form-control asu" id="datepicker" name="actual_start_repair"
+                            value="" required>
                     </div>
                 </div>
 
@@ -94,18 +85,19 @@
                     <label for="actual_finish_repair" class="col-sm-3 col-form-label">Actual
                         Finish Repair</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control" id="actual_finish_repair"
+                        <input type="datetime-local" class="form-control asu" id="datepicker2"
                             name="actual_finish_repair" value="" required>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="total_time_repair" class="col-sm-3 col-form-label">Total Time
+                    <label for="total_time_repair" class="col-sm-3 col-form-label">Actual Time
                         Repair</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="total_time_repair" name="total_time_repair"
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="selisih" name="total_time_repair"
                             value="" required readonly>
                     </div>
+                    <label for="total_time_repair" class="col-sm-6 col-form-label">Hours</label>
                 </div>
 
                 <div class="mb-3 row">
@@ -127,10 +119,11 @@
                         Name</label>
                     <div class="col-sm-9">
                         <select class="form-select choices" id="subcont_name" name="subcont_name" required>
-                            <option selected disabled>Pilih ...</option>
-                            <option value="PTS">PTS</option>
-                            <option value="Yuasa">Yuasa</option>
-                            <option value="Minezawa">Minezawa</option>
+                            <option value="">Pilih ...</option>
+                            @foreach ($subcont as $sub)
+                                <option value="{{ $sub->name }}">{{ $sub->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

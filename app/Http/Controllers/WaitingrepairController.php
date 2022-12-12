@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Subcont;
 use App\Line;
 use App\Section;
 use App\Waitingrepair;
@@ -76,9 +78,13 @@ class WaitingrepairController extends Controller
     {
 
         
+        $subcont = Subcont::all();
+        $user = User::all();
         $waitingrepair = Waitingrepair::find($id);
         return view('partrepair.progress', [
             'waitingrepair'    => $waitingrepair,
+            'user'    => $user,
+            'subcont'    => $subcont,
         ]);
     }
 

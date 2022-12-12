@@ -64,6 +64,21 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('labour_cost') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">Labour Cost</label>
+
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" name="labour_cost"
+                                        value="{{ old('labour_cost') }}">
+
+                                    @if ($errors->has('labour_cost'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('labour_cost') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-md-4 control-label">Password</label>
 
