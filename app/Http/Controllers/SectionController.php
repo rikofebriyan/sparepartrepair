@@ -73,8 +73,6 @@ class SectionController extends Controller
      */
     public function edit($id)
     {
-        $partr = Task::find($id);
-        return view('matrix.section.index', compact('matrix.section'));
     }
 
     /**
