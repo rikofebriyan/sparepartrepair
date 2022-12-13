@@ -23,9 +23,9 @@
                 <a class="me-2">Flow Repair : </a>
                 <a class="rounded-pill bg-secondary text-dark text-center px-2">Waiting</a>
                 <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
-                <a class="rounded-pill bg-info text-dark text-center px-2">Seal Kit</a>
-                <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
                 <a class="rounded-pill bg-warning text-dark text-center px-2">On Progress</a>
+                <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
+                <a class="rounded-pill bg-info text-dark text-center px-2">Seal Kit</a>
                 <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
                 <a class="rounded-pill bg-primary text-dark text-center px-2">Trial</a>
                 <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
@@ -84,13 +84,34 @@
                                 <td>{{ $req->item_name }}</td>
                                 <td>{{ $req->problem }}</td>
                                 <td>{{ $req->status_repair }}</td>
-                                <td><a class="rounded-pill bg-secondary text-dark text-center px-2">{{ $req->progress }}</a>
+                                <td>
+                                    @if ($req->progress == 'Waiting')
+                                        <a
+                                            class="rounded-pill bg-secondary text-dark text-center px-2">{{ $req->progress }}</a>
+                                    @elseif ($req->progress == 'On Progress')
+                                        <a
+                                            class="rounded-pill bg-warning text-dark text-center px-2">{{ $req->progress }}</a>
+                                    @else
+                                        <a class="rounded-pill bg-info text-dark text-center px-2">{{ $req->progress }}</a>
+                                    @endif
+
                                 </td>
                                 <td class="text-center">
-                                    <a class="btn btn-success"
-                                        href="{{ route('partrepair.waitingtable.show', $req->id) }}">PROGRESS</a>
+                                    @if ($req->progress == 'Waiting')
+                                        <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Waiting</a>
+                                    @elseif($req->progress == 'On Progress')
+                                        <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">On Progress</a>
+                                    @else
+                                        <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Seal Kit</a>
+                                    @endif
+
+                                    {{-- <a class="btn btn-success"
+                                        href="{{ route('partrepair.waitingtable.show', $req->id) }}">PROGRESS</a> --}}
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', $req->id], 'style' => 'display:inline']) }}
-                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) }}
                                     {{ Form::close() }}
                                 </td>
                             </tr>
