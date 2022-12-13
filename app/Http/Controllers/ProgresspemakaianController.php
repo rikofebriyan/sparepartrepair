@@ -42,12 +42,12 @@ class ProgresspemakaianController extends Controller
     {
         // validated input request
         $this->validate($request, [
-            'form_progress_id' => 'required',
+            'item_code' => 'required',
         ]);
 
         // create new task
         Progresspemakaian::create($request->all());
-        return redirect()->route('partrepair.progresspemakaian.index')->with('success', 'Your task added successfully!');
+        // return with('success', 'Your task added successfully!');
     }
 
     /**
