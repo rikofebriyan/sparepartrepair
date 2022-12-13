@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\User;
+use App\Subcont;
+use App\Line;
+use App\Section;
 use App\Waitingrepair;
 use App\Progressrepair;
+use App\Progresspemakaian;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -84,9 +90,20 @@ class ProgressrepairController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Progressrepair::find($id);
+        
+        $subcont = Subcont::all();
+        $user = User::all();
+        $progresspemakaian = Progresspemakaian::all();
+        $waitingrepair = Waitingrepair::find($id);
+        $progressrepair = Progressrepair::where('form_input_id', $id)->first();
+        // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
+        // dd($progressrepair);
         return view('partrepair.progresspemakaian', [
-            'modelrepair'    => $partrepair,
+            'waitingrepair'    => $waitingrepair,
+            'progressrepair'    => $progressrepair,
+            'user'    => $user,
+            'subcont'    => $subcont,
+            'progresspemakaian'    => $progresspemakaian,
         ]);
     }
 

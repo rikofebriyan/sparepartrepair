@@ -1,10 +1,19 @@
 <div class="container-fluid justify-content-center py-0">
     <div class="mb-3">
+
+        @if ($message = Session::get('success'))
+            <h6 class="alert alert-success">
+                {{ $message }}
+            </h6>
+        @endif
+
         <button class="btn btn-primary">Add Part</button>
     </div>
     <table id="myTable" class="table table-striped nowrap overflow-auto display">
         <thead>
             <tr>
+
+                <th scope="col">Action</th>
                 <th scope="col">Item Code</th>
                 <th scope="col">Item Name</th>
                 <th scope="col">Description</th>
@@ -18,36 +27,42 @@
                 <th scope="col">Nomor PO</th>
                 <th scope="col">Estimasi Kedatangan</th>
                 <th scope="col">Status Kedatangan</th>
-                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            @for ($i = 0; $i < 5; $i++)
+            @forelse ($progresspemakaian as $req)
                 <tr>
-                    <td>RE202211300001</td>
-                    <td>Seal Kit</td>
-                    <td>CDM2B32-PS01</td>
-                    <td>SMC</td>
-                    <td>1 pcs</td>
-                    <td>Rp 3.000.000</td>
-                    <td>Rp 3.000.000</td>
-                    <td>Not Ready</td>
-                    <td>123456789-Quo</td>
-                    <td>T4720-HS0001</td>
-                    <td>50100875</td>
-                    <td>30 Nov 2022</td>
-                    <td>
-                        <a class="rounded-pill bg-secondary text-dark text-center px-2">Belum
-                            Datang</a>
-                    </td>
                     <td class="text-center">
-                        <a class="btn btn-success" href="{{ route('partrepair.progresstrial.show', '2') }}">Edit</a>
-                        {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', '2'], 'style' => 'display:inline']) }}
-                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                        <a class="btn btn-success"
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem;
+                                --bs-btn-font-size: .75rem;""
+                            href="{{ route('partrepair.progresspemakaian.show', $req->id) }}">PROGRESS</a>
+                        {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.progresspemakaian.destroy', $req->id], 'style' => 'display:inline']) }}
+                        {{ Form::submit('Delete', [
+                            'class' => 'btn btn-danger',
+                            'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem',
+                        ]) }}
                         {{ Form::close() }}
                     </td>
+                    <td>{{ $req->item_code }}</td>
+                    <td>{{ $req->item_name }}</td>
+                    <td>{{ $req->description }}</td>
+                    <td>{{ $req->maker }}</td>
+                    <td>{{ $req->qty }}</td>
+                    <td>{{ $req->price }}</td>
+                    <td>{{ $req->total_price }}</td>
+                    <td>{{ $req->status_part }}</td>
+                    <td>{{ $req->quotation }}</td>
+                    <td>{{ $req->nomor_pp }}</td>
+                    <td>{{ $req->nomor_po }}</td>
+                    <td>{{ $req->estimasi_kedatangan }}</td>
+                    <td>{{ $req->status_kedatangan }}</td>
                 </tr>
-            @endfor
+            @empty
+                <tr>
+                    <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

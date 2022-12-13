@@ -67,6 +67,7 @@
                     </tbody> --}}
                     <thead>
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Ticket No</th>
                             <th scope="col">Date Created</th>
                             <th scope="col">Spare Part</th>
@@ -79,6 +80,7 @@
                     <tbody>
                         @forelse ($reqtzy as $req)
                             <tr>
+                                <td>{{ $req->id }}</td>
                                 <td>{{ $req->reg_sp }}</td>
                                 <td>{{ $req->date }}</td>
                                 <td>{{ $req->item_name }}</td>
@@ -102,7 +104,7 @@
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Waiting</a>
                                     @elseif($req->progress == 'On Progress')
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">On Progress</a>
+                                            href="{{ route('partrepair.progresstable.show', $req->id) }}">On Progress</a>
                                     @else
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Seal Kit</a>
