@@ -64,7 +64,6 @@ class ProgressrepairController extends Controller
         $data['actual_start_repair'] = Carbon::parse($request->actual_start_repair)->format('Y-m-d H:i:s');
         $data['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair)->format('Y-m-d H:i:s');
         $data['estimasi_selesai'] = Carbon::parse($request->estimasi_selesai)->format('Y-m-d H:i:s');
-
         Progressrepair::create($data);
 
         $request2 = Waitingrepair::find($request->form_input_id);
