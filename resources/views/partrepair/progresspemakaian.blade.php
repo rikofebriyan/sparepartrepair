@@ -64,7 +64,6 @@
                 });
             }
         </script>
-
         <script>
             $('#price2, #qty2').change(function() {
                 var price2 = parseFloat($('#price2').val()) || 0;
@@ -72,8 +71,6 @@
 
                 $('#total_price').val(price2 * qty2);
             });
-
-
             $('#price2, #qty2').keyup(function() {
                 var price2 = parseFloat($('#price2').val()) || 0;
                 var qty2 = parseFloat($('#qty2').val()) || 0;
@@ -81,8 +78,6 @@
                 $('#total_price').val(price2 * qty2);
             });
         </script>
-
-
         <script>
             $('#status_part2').change(function() {
                 var val = $(this).val();
@@ -90,7 +85,43 @@
                     $('#notready').show();
                 } else
                     $('#notready').hide();
+            });
+        </script>
+        <script>
+            // function funcChoice(x) {
+            //     if (x == 0)
+            //         $('#field3, #fieldsealkit, #fieldrepair').css('display', 'none');
+            //     else
+            //         $('#field3, #fieldsealkit, #fieldrepair').css('display', 'flex');
+            //     return;
+            // }
 
+            $(document).ready(function() {
+                $('#ya').click(function() {
+                    $('#field3').css('display', 'flex');
+                    $('#fieldsealkit').removeClass("disabled");
+                    $('#fieldrepair').addClass("disabled");
+                });
+            });
+
+            $(document).ready(function() {
+                $('#tidak').click(function() {
+                    $('#field3').css('display', 'none');
+                    $('#fieldrepair').removeClass("disabled");
+                    $('#fieldsealkit').addClass("disabled");
+                });
+            });
+        </script>
+
+
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable({
+                    order: [
+                        [0, 'desc']
+                    ],
+                    // scrollX: true,
+                });
             });
         </script>
     @endsection
