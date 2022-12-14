@@ -49,43 +49,47 @@
     @section('script')
         <script type="text/javascript">
             function isi_otomatis() {
-                var labour_id = $("#isiotomatis").val();
+                var item_name = $("#isiotomatis2").val();
                 $.ajax({
-                    url: '/getlabour',
-                    data: "labour_id=" + labour_id,
+                    url: '/ajax',
+                    data: "item_name=" + item_name,
                     success: function(data) {
                         var json = data,
                             obj = JSON.parse(json);
-                        $('#labour_cost').val(obj.labour_cost);
+                        $('#item_name2').val(obj.item_name);
+                        $('#item_code2').val(obj.item_code);
+                        $('#description2').val(obj.description);
+                        $('#price2').val(obj.price);
                     }
                 });
             }
         </script>
 
         <script>
-            $(function() {
-                $("#datepicker2").datepicker();
-                $("#datepicker").datepicker();
+            $('#price2, #qty2').change(function() {
+                var price2 = parseFloat($('#price2').val()) || 0;
+                var qty2 = parseFloat($('#qty2').val()) || 0;
+
+                $('#total_price').val(price2 * qty2);
             });
 
-            window.onload = function() {
-                $('#datepicker2').on('change', function() {
-                    var dob = new Date(datepicker.value);
-                    var today = new Date(datepicker2.value);
-                    var age = ((today - dob) / (60 * 60 * 1000)).toFixed(1);
-                    $('#selisih').val(age);
-                });
-            }
+
+            $('#price2, #qty2').keyup(function() {
+                var price2 = parseFloat($('#price2').val()) || 0;
+                var qty2 = parseFloat($('#qty2').val()) || 0;
+
+                $('#total_price').val(price2 * qty2);
+            });
         </script>
 
 
         <script>
-            $('#showsubcont').change(function() {
+            $('#status_part2').change(function() {
                 var val = $(this).val();
-                if (val === "Subcont") {
-                    $('#subcont').show();
+                if (val === "Not Ready") {
+                    $('#notready').show();
                 } else
-                    $('#subcont').hide();
+                    $('#notready').hide();
 
             });
         </script>

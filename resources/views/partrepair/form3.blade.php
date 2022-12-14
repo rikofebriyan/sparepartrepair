@@ -76,119 +76,120 @@
             <div class="col">
                 <div class="p-3 border">
 
+                    <input type="hidden" name="form_input_id" id="form_input_id" value="{{ $waitingrepair->id }}">
 
                     <div class="mb-3 row">
-                        <label for="form_input_id" class="col-sm-3 col-form-label">form_input_id</label>
+                        <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="form_input_id" name="form_input_id"
-                                value="">
+                            <select class="form-select mb-3 choices" onchange="isi_otomatis()" id="isiotomatis2"
+                                name="item_name" data-live-search="true">
+                                <option selected></option>
+                                @foreach ($mastersparepart as $req)
+                                    <option value="{{ $req->id }}">{{ $req->item_code }}
+                                        |
+                                        {{ $req->item_name }} |
+                                        {{ $req->description }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="item_code2" name="item_code"
+                                    placeholder="Item Code" readonly>
+                                <input type="text" class="form-control" id="item_name2" name="item_name"
+                                    placeholder="Item Name" readonly>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="description2" name="description"
+                                    placeholder="description" readonly>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="price2" name="price"
+                                    placeholder="Price" readonly>
+                            </div>
+
+                            <div class="input-group">
+                                <select class="form-control" id="maker" name="maker">
+                                    <option selected disabled>Maker ...</option>
+                                    @foreach ($maker as $mak)
+                                        <option value="{{ $mak->name }}">{{ $mak->name }}
+                                        </option>
+                                    @endforeach
+                                    {{-- <option value="1">SMC</option>
+                                    <option value="2">IAI</option>
+                                    <option value="3">CKD</option>
+                                    <option value="4">Fanuc</option> --}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 row">
+                        <label for="qty" class="col-sm-3 col-form-label">Qty</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="qty2" name="qty" value="">
                         </div>
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="item_code" class="col-sm-3 col-form-label">item_code</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="item_code" name="item_code" value="">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="item_name" class="col-sm-3 col-form-label">item_name</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="item_name" name="item_name" value="">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="description" class="col-sm-3 col-form-label">description</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="description" name="description"
-                                value="">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="maker" class="col-sm-3 col-form-label">maker</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="maker" name="maker" value="">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="qty" class="col-sm-3 col-form-label">qty</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="qty" name="qty" value="">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="price" class="col-sm-3 col-form-label">price</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="price" name="price" value="">
-                        </div>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="total_price" class="col-sm-3 col-form-label">total_price</label>
+                        <label for="total_price" class="col-sm-3 col-form-label">Total Price</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="total_price" name="total_price"
                                 value="">
                         </div>
                     </div>
 
-
                 </div>
             </div>
             <div class="col">
 
                 <div class="p-3 border">
-
                     <div class="mb-3 row">
-                        <label for="status_part" class="col-sm-3 col-form-label">status_part</label>
+                        <label for="quotation" class="col-sm-3 col-form-label">Status Part</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="status_part" name="status_part"
-                                value="">
+                            <select class="form-control" id="status_part2" name="status_part">
+                                <option value="" selected disabled>Status Part ...</option>
+                                <option value="Ready">Ready</option>
+                                <option value="Not Ready">Not Ready</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
-                        <label for="quotation" class="col-sm-3 col-form-label">quotation</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="quotation" name="quotation"
-                                value="">
-                        </div>
-                    </div>
 
-                    <div class="mb-3 row">
-                        <label for="nomor_pp" class="col-sm-3 col-form-label">nomor_pp</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nomor_pp" name="nomor_pp"
-                                value="">
+                    <div id="notready" style="display: none">
+                        <div class="mb-3 row">
+                            <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="quotation" name="quotation"
+                                    value="">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="mb-3 row">
-                        <label for="nomor_po" class="col-sm-3 col-form-label">nomor_po</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nomor_po" name="nomor_po"
-                                value="">
+                        <div class="mb-3 row">
+                            <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="nomor_pp" name="nomor_pp"
+                                    value="">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="mb-3 row">
-                        <label for="estimasi_kedatangan" class="col-sm-3 col-form-label">estimasi_kedatangan</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="estimasi_kedatangan"
-                                name="estimasi_kedatangan" value="">
+                        <div class="mb-3 row">
+                            <label for="nomor_po" class="col-sm-3 col-form-label">Nomor PO</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="nomor_po" name="nomor_po"
+                                    value="">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="mb-3 row">
-                        <label for="status_kedatangan" class="col-sm-3 col-form-label">status_kedatangan</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="status_kedatangan"
-                                name="status_kedatangan" value="">
+                        <div class="mb-3 row">
+                            <label for="estimasi_kedatangan" class="col-sm-3 col-form-label">Estimasi Datang</label>
+                            <div class="col-sm-9">
+                                <input type="datetime-local" class="form-control" id="estimasi_kedatangan"
+                                    name="estimasi_kedatangan" value="">
+                            </div>
                         </div>
+
                     </div>
 
                     <button type="submit" class="btn btn-md btn-primary">Save</button>

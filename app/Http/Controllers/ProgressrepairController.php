@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\User;
+use App\Maker;
 use App\Subcont;
 use App\Line;
 use App\Section;
 use App\Waitingrepair;
 use App\Progressrepair;
 use App\Progresspemakaian;
+use App\MasterSparePart;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -91,6 +93,8 @@ class ProgressrepairController extends Controller
     public function show($id)
     {
         
+        $mastersparepart = MasterSparePart::all();
+        $maker = Maker::all();
         $subcont = Subcont::all();
         $user = User::all();
         $progresspemakaian = Progresspemakaian::all();
@@ -103,6 +107,8 @@ class ProgressrepairController extends Controller
             'progressrepair'    => $progressrepair,
             'user'    => $user,
             'subcont'    => $subcont,
+            'maker'    => $maker,
+            'mastersparepart'    => $mastersparepart,
             'progresspemakaian'    => $progresspemakaian,
         ]);
     }

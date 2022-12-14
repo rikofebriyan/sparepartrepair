@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Progresspemakaian;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,12 @@ class ProgresspemakaianController extends Controller
         ]);
 
         // create new task
-        Progresspemakaian::create($request->all());
+        
+        $data = $request->all();
+        $data['estimasi_kedatangan'] = Carbon::parse($request->estimasi_kedatangan)->format('Y-m-d H:i:s');
+        Progresspemakaian::create($data);
+        // Progresspemakaian::create($request->all());
+        return redirect()->back()->with('success','Task added successfully');
         // return with('success', 'Your task added successfully!');
     }
 
@@ -96,6 +102,8 @@ class ProgresspemakaianController extends Controller
     public function destroy($id)
     {
         Progresspemakaian::find($id)->delete();
-        return redirect()->route('partrepair.progresspemakaian.index')->with('success','Task removed successfully');
+        // Alert::success('success','Task removed successfully');
+        // return back();
+        return redirect()->back()->with('success','Task removed successfully');
     }
 }
