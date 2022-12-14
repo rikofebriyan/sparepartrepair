@@ -16,7 +16,7 @@ class CreateProgresspemakaiansTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('form_input_id');
-            $table->integer('item_code');
+            $table->string('item_code');
             $table->string('item_name');
             $table->string('description');
             $table->integer('maker');
@@ -28,7 +28,6 @@ class CreateProgresspemakaiansTable extends Migration
             $table->string('nomor_pp');
             $table->string('nomor_po');
             $table->dateTime('estimasi_kedatangan');
-            $table->string('status_kedatangan');
         });
     }
 
