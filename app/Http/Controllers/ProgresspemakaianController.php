@@ -47,9 +47,11 @@ class ProgresspemakaianController extends Controller
         ]);
 
         // create new task
-        
         $data = $request->all();
+        
+        if ($request->estimasi_kedatangan != null) {
         $data['estimasi_kedatangan'] = Carbon::parse($request->estimasi_kedatangan)->format('Y-m-d H:i:s');
+        } else {$data['estimasi_kedatangan'] = null;}
         Progresspemakaian::create($data);
         // Progresspemakaian::create($request->all());
         return redirect()->back()->with('success','Task added successfully');
