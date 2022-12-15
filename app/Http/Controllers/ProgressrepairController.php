@@ -93,7 +93,9 @@ class ProgressrepairController extends Controller
     public function show($id)
     {
         
-        $ready = Progresspemakaian::where('status_part','=', 'Ready')->count();
+        $ready = Progresspemakaian::where('status_part','=', 'Ready')
+        ->where('form_input_id', $id)
+        ->count();
         $countid = Progresspemakaian::where('form_input_id', $id)->count();
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();

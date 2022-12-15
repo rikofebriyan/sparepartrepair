@@ -71,7 +71,12 @@
                                             </option>
                                         @endforeach
                                     </select>
+
+
+
                                     <div class="input-group">
+
+                                        <input type="hidden" class="form-control" name="item_id" id="item_id">
                                         <input type="text" class="form-control" id="item_code" name="item_code"
                                             placeholder="Item Code" readonly>
                                         <input type="text" class="form-control" id="item_name" name="item_name"
@@ -228,6 +233,7 @@
                 success: function(data) {
                     var json = data,
                         obj = JSON.parse(json);
+                    $('#item_id').val(obj.id);
                     $('#item_name').val(obj.item_name);
                     $('#item_code').val(obj.item_code);
                     $('#description').val(obj.description);

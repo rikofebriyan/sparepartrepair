@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use App\Maker;
 use App\Subcont;
@@ -68,6 +69,13 @@ class ProgresstrialController extends Controller
      */
     public function show($id)
     {
+
+        $users = DB::table('standard_pengecekans')
+            ->join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
+            ->select('standard_pengecekans.*', 'item_standards.item_standard')
+            ->get();
+            dd($users);
+
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();
         $subcont = Subcont::all();

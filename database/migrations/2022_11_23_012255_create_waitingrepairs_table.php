@@ -23,6 +23,7 @@ class CreateWaitingrepairsTable extends Migration
             $table->string('section')->nullable();
             $table->string('line')->nullable();
             $table->string('machine')->nullable();
+            $table->string('item_id')->nullable();
             $table->string('item_code')->nullable();
             $table->string('item_name')->nullable();
             $table->string('item_type')->nullable();
