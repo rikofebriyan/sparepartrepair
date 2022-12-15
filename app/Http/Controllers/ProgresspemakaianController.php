@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Waitingrepair;
 use App\Progresspemakaian;
 use Illuminate\Http\Request;
 
@@ -66,10 +67,11 @@ class ProgresspemakaianController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Progresspemakaian::find($id);
-        return view('partrepair.progresstrial', [
-            'modelrepair'    => $partrepair,
-        ]);
+        
+        $request2 = Waitingrepair::find($id);
+        $request2->progress = 'Seal Kit';
+        $request2->save();
+        return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
     }
 
     /**

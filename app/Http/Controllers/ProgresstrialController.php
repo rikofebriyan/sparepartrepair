@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Maker;
+use App\Subcont;
+use App\Line;
+use App\Section;
+use App\Waitingrepair;
+use App\Progressrepair;
+use App\Progresspemakaian;
+use App\MasterSparePart;
 use App\Progresstrial;
 use Illuminate\Http\Request;
 
@@ -59,9 +68,23 @@ class ProgresstrialController extends Controller
      */
     public function show($id)
     {
-        $partrepair = Progresstrial::find($id);
-        return view('partrepair.formfinishrepair', [
-            'modelrepair'    => $partrepair,
+        $mastersparepart = MasterSparePart::all();
+        $maker = Maker::all();
+        $subcont = Subcont::all();
+        $user = User::all();
+        $progresspemakaian = Progresspemakaian::all();
+        $waitingrepair = Waitingrepair::find($id);
+        $progressrepair = Progresspemakaian::where('form_input_id', $id)->first();
+        // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
+        // dd($progressrepair);
+        return view('partrepair.progresstrial', [
+            'waitingrepair'    => $waitingrepair,
+            'progressrepair'    => $progressrepair,
+            'user'    => $user,
+            'subcont'    => $subcont,
+            'maker'    => $maker,
+            'mastersparepart'    => $mastersparepart,
+            'progresspemakaian'    => $progresspemakaian,
         ]);
     }
 

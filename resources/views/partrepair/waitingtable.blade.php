@@ -107,7 +107,7 @@
                                             href="{{ route('partrepair.progresstable.show', $req->id) }}">On Progress</a>
                                     @else
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Seal Kit</a>
+                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}">Seal Kit</a>
                                     @endif
 
                                     {{-- <a class="btn btn-success"
