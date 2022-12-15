@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\StandardPengecekan;
 use App\User;
 use App\Maker;
 use App\Subcont;
@@ -52,12 +53,35 @@ class ProgresstrialController extends Controller
     public function store(Request $request)
     {
         // validated input request
-        $this->validate($request, [
-            'form_progress_id' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'actual_pengecekan' => 'required',
+        // ]);
+        // $request = [
+        //     ['actual_pengecekan'=>'Coder 1', 'judgement'=> '4096'],
+        //     ['actual_pengecekan'=>'Coder 2', 'judgement'=> '2048'],
+        //     //...
+        // ];
+        // dd($request);
+        $actual_pengecekan = $request->actual_pengecekan;
+        $judgement= $request->judgement;
 
+    
+        $result = array();
+        foreach ($_POST['actual_pengecekan'] as $key => $val) {
+            $result[] = array(
+                'actual_pengecekan' => $_POST['actual_pengecekan'][$key],
+                'judgement' => $_POST['judgement'][$key]
+            );
+        }
+            // dd($result);
+
+        // Progresstrial::create($request);
+
+    
+        Progresstrial::insert($result);
+        // DB::table('Progresstrials')->insert($data);
         // create new task
-        Progresstrial::create($request->all());
+        // Progresstrial::create($request->all());
         return redirect()->route('partrepair.progresstrial.index')->with('success', 'Your task added successfully!');
     }
 
@@ -70,11 +94,10 @@ class ProgresstrialController extends Controller
     public function show($id)
     {
 
-        $users = DB::table('standard_pengecekans')
-            ->join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
+        $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
             ->select('standard_pengecekans.*', 'item_standards.item_standard')
             ->get();
-            dd($users);
+            // dd($join);
 
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();
@@ -93,6 +116,7 @@ class ProgresstrialController extends Controller
             'maker'    => $maker,
             'mastersparepart'    => $mastersparepart,
             'progresspemakaian'    => $progresspemakaian,
+            'join'    => $join,
         ]);
     }
 
