@@ -28,16 +28,29 @@
     </div>
     <div class="mb-3 row">
         <div class="d-grid gap-2 col">
-            <button id="fieldsealkit" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+            <button id="fieldsealkit" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">TAMBAHKAN SEAL KIT</button>
         </div>
-        <div class="d-grid gap-2 col">
-            <button id="fieldrepair" class="btn btn-primary btn-lg disabled">REPAIR & TRIAL
+        <div id="fieldrepair" class="d-grid gap-2 col d-none">
+            <button class="btn btn-primary">REPAIR & TRIAL
                 >>></button>
         </div>
+
+        @if ($countid == 0)
+        @elseif ($countid > $ready)
+            <div class="d-grid gap-2 col d-none">
+                <button class="btn btn-primary">REPAIR & TRIAL
+                    >>></button>
+            </div>
+        @elseif ($countid == $ready)
+            <div class="d-grid gap-2 col">
+                <button class="btn btn-primary">REPAIR & TRIAL
+                    >>></button>
+            </div>
+        @endif
     </div>
 
-    <div id="field3">
+    <div id="field3" class="mb-3">
         <table id="myTable" class="table table-striped nowrap overflow-auto display">
             <thead>
                 <tr>
@@ -93,6 +106,7 @@
             </tbody>
         </table>
     </div>
+
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">

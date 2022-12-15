@@ -94,6 +94,7 @@ class ProgressrepairController extends Controller
     {
         
         $ready = Progresspemakaian::where('status_part','=', 'Ready')->count();
+        $countid = Progresspemakaian::where('form_input_id', $id)->count();
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();
         $subcont = Subcont::all();
@@ -112,6 +113,7 @@ class ProgressrepairController extends Controller
             'mastersparepart'    => $mastersparepart,
             'progresspemakaian'    => $progresspemakaian,
             'ready'    => $ready,
+            'countid'    => $countid,
         ]);
     }
 

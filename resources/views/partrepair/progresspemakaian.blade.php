@@ -99,15 +99,15 @@
             $(document).ready(function() {
                 $('#ya').click(function() {
                     $('#field3').css('display', 'flex');
+                    $('#fieldrepair').addClass("d-none");
                     $('#fieldsealkit').removeClass("disabled");
-                    $('#fieldrepair').addClass("disabled");
                 });
             });
 
             $(document).ready(function() {
                 $('#tidak').click(function() {
                     $('#field3').css('display', 'none');
-                    $('#fieldrepair').removeClass("disabled");
+                    $('#fieldrepair').removeClass("d-none");
                     $('#fieldsealkit').addClass("disabled");
                 });
             });
