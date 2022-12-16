@@ -68,7 +68,8 @@
                                             {{-- <option value="{{ $req->id }}">[{{ $req->item_code }}]
                                                 [{{ $req->item_name }}] [{{ $req->description }}]
                                             </option> --}}
-                                            <option value="{{ $req->id }}">{{ $req->item_code }} --- {{ $req->item_name }} --- {{ $req->description }}
+                                            <option value="{{ $req->id }}">{{ $req->item_code }} ---
+                                                {{ $req->item_name }} --- {{ $req->description }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -156,7 +157,7 @@
                             <div class="mb-3 row">
                                 <label for="line" class="col-sm-3 col-form-label">Line</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" id="line" name="line">
+                                    <select class="form-select" id="lineline" name="line">
                                         <option value="" disabled selected>Pilih ...</option>
                                     </select>
                                 </div>
@@ -273,12 +274,12 @@
                     url: '/getline/?sectionId=' + sectionId,
                     dataType: 'JSON',
                     success: function(result) {
-                        $('#line').empty()
-                        $('#line').append(
+                        $('#lineline').empty()
+                        $('#lineline').append(
                             '<option value="" disabled selected>Choose</option>')
                         console.log(result)
                         $.each(result, function(id, value) {
-                            $('#line').append('<option value="' + id + '">' +
+                            $('#lineline').append('<option value="' + id + '">' +
                                 value + '</option>');
                         });
                     }
@@ -289,8 +290,8 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#line').on('change', function() {
-                var lineId = $('#line option:selected').val()
+            $('#lineline').on('change', function() {
+                var lineId = $('#lineline option:selected').val()
                 $.ajax({
                     type: 'GET',
                     url: '/getmachine/?lineId=' + lineId,
