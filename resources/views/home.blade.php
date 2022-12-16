@@ -27,7 +27,7 @@
                                         </div> --}}
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
                                             <h6 class="text-muted font-semibold">Input</h6>
-                                            <h6 class="font-extrabold mb-0">353 pcs</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $counting['total'] }} pcs</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                         </div> --}}
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
                                             <h6 class="text-muted font-semibold">Waiting</h6>
-                                            <h6 class="font-extrabold mb-0">100 Pcs</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $counting['Waiting'] }} Pcs</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                         </div> --}}
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
                                             <h6 class="text-muted font-semibold">Analisa</h6>
-                                            <h6 class="font-extrabold mb-0">4 Pcs</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $counting['On Progress'] }} Pcs</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                         </div> --}}
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
                                             <h6 class="text-muted font-semibold">Prep. Seal Kit</h6>
-                                            <h6 class="font-extrabold mb-0">112 Pcs</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $counting['Seal Kit'] }} Pcs</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                                         </div> --}}
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
                                             <h6 class="text-muted font-semibold">Trial</h6>
-                                            <h6 class="font-extrabold mb-0">112 Pcs</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $counting['Trial'] }} Pcs</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                         </div> --}}
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
                                             <h6 class="text-muted font-semibold">Finish</h6>
-                                            <h6 class="font-extrabold mb-0">112 Pcs</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $counting['Finish'] }} Pcs</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                         <div class="col-12">
                             <div class="card">
                                 {{-- <div class="card-header">
-                                    <h4>Qty Repair Graphic</h4>
+                                    <h4 class="text-center">On Progress Repair</h4>
                                 </div> --}}
                                 <div class="card-body">
                                     {{-- <div id="chart-qty-repair"></div> --}}
@@ -235,31 +235,59 @@
             series: [{
                 name: 'Waiting',
                 type: 'column',
-                data: [44, 55, 41, 67, 22]
+                data: [
+                    @foreach ($qty['Waiting'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }, {
-                name: 'Analisa',
+                name: 'On Progress',
                 type: 'column',
-                data: [13, 23, 20, 8, 13]
+                data: [
+                    @foreach ($qty['On Progress'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }, {
                 name: 'Prep. Seal Kit',
                 type: 'column',
-                data: [11, 17, 15, 15, 21]
+                data: [
+                    @foreach ($qty['Seal Kit'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }, {
                 name: 'Trial',
                 type: 'column',
-                data: [21, 7, 25, 13, 22]
+                data: [
+                    @foreach ($qty['Trial'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }, {
                 name: 'Finish',
                 type: 'column',
-                data: [15, 17, 35, 23, 20]
+                data: [
+                    @foreach ($qty['Finish'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }, {
                 name: 'Scrap',
                 type: 'column',
-                data: [0, 0, 2, 1, 3]
+                data: [
+                    @foreach ($qty['Scrap'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }, {
                 name: 'Input',
                 type: 'line',
-                data: [104, 119, 137, 123, 102]
+                data: [
+                    @foreach ($qty['total'] as $index => $key)
+                        {{ $key }},
+                    @endforeach
+                ]
             }],
             colors: [
                 '#fd7e14',
