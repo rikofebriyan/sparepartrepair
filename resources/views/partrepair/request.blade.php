@@ -65,9 +65,10 @@
                                         name="item_name" data-live-search="true">
                                         <option selected></option>
                                         @foreach ($reqtzy as $req)
-                                            <option value="{{ $req->id }}"> {{ $req->item_code }} |
-                                                {{ $req->item_name }} |
-                                                {{ $req->description }}
+                                            {{-- <option value="{{ $req->id }}">[{{ $req->item_code }}]
+                                                [{{ $req->item_name }}] [{{ $req->description }}]
+                                            </option> --}}
+                                            <option value="{{ $req->id }}">{{ $req->item_code }} --- {{ $req->item_name }} --- {{ $req->description }}
                                             </option>
                                         @endforeach
                                     </select>
