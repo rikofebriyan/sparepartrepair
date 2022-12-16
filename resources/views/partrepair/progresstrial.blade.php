@@ -63,20 +63,31 @@
                 });
             }
         </script>
+        {{-- 
+        {{ $in = 1 }}
+        @foreach ($in as $i) --}}
         <script>
-            $('#price2, #qty2').change(function() {
-                var price2 = parseFloat($('#price2').val()) || 0;
-                var qty2 = parseFloat($('#qty2').val()) || 0;
-
-                $('#total_price').val(price2 * qty2);
-            });
-            $('#price2, #qty2').keyup(function() {
-                var price2 = parseFloat($('#price2').val()) || 0;
-                var qty2 = parseFloat($('#qty2').val()) || 0;
-
-                $('#total_price').val(price2 * qty2);
-            });
+            for (let i = 0; i < 10; i++) {
+                $(document).ready(function() {
+                    $('#actual' + i).keyup(function() {
+                        var actual = Number($(this).val());
+                        var actual2 = $(this).val();
+                        var standard = Number($('#standard' + i).val());
+                        var standard2 = $('#standard' + i).val();
+                        if (actual2 == standard2) {
+                            // alert("ok");
+                            $('#judge' + i).val('OK');
+                        } else if (actual >= standard) {
+                            $('#judge' + i).val('OK');
+                        } else
+                            $('#judge' + i).val('NG');
+                    });
+                });
+            }
         </script>
+
+        {{-- {{ $i++ }}
+        @endforeach --}}
         <script>
             $('#status_part2').change(function() {
                 var val = $(this).val();
@@ -123,4 +134,6 @@
                 });
             });
         </script>
-    @endsection
+
+        <script>
+        @endsection
