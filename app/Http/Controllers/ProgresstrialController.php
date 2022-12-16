@@ -82,7 +82,7 @@ class ProgresstrialController extends Controller
         // DB::table('Progresstrials')->insert($data);
         // create new task
         // Progresstrial::create($request->all());
-        return redirect()->route('partrepair.progresstrial.index')->with('success', 'Your task added successfully!');
+        return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
     }
 
     /**
