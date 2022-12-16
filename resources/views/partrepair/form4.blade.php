@@ -52,6 +52,5 @@
 
         <button type="submit" class="btn btn-md btn-primary">Save</button>
         {{ Form::close() }}
-        <input type="text" name="asdasdasda" id="asdasdasd" class="form-control" placeholder="Actual">
     </div>
 </div>
