@@ -36,10 +36,10 @@
                             @include('partrepair.form3')
                         </div>
                         <div class="tab-pane fade" id="list-4" role="tabpanel" aria-labelledby="list-4-list">
-                            @include('partrepair.form4')
+                            {{-- @include('partrepair.form4') --}}
                         </div>
                         <div class="tab-pane fade" id="list-5" role="tabpanel" aria-labelledby="list-5-list">
-                            @include('partrepair.form5')
+                            {{-- @include('partrepair.form5') --}}
                         </div>
                     </div>
                 </div>
