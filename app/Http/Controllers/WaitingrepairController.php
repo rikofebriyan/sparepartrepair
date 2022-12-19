@@ -80,11 +80,16 @@ class WaitingrepairController extends Controller
         
         $subcont = Subcont::all();
         $user = User::all();
-        $waitingrepair = Waitingrepair::find($id);
+        $waitingrepair = Waitingrepair::find($id); 
+        $tradeinddisc = 0.7;
+        $price = $waitingrepair->price;
+        $tradeincost = $tradeinddisc * $price;
+        // dd($tradeincost);
         return view('partrepair.progress', [
             'waitingrepair'    => $waitingrepair,
             'user'    => $user,
             'subcont'    => $subcont,
+            'tradeincost'    => $tradeincost,
         ]);
     }
 

@@ -26,6 +26,7 @@ class CreateProgressrepairsTable extends Migration
             $table->dateTime('actual_finish_repair')->nullable();
             $table->float('total_time_repair')->nullable();
             $table->integer('labour_cost')->nullable();
+            $table->integer('tradein')->nullable();
             $table->string('judgement')->nullable();
             $table->string('subcont_name')->nullable();
             $table->string('quotation')->nullable();

@@ -82,9 +82,12 @@
         <script>
             $('#showsubcont').change(function() {
                 var val = $(this).val();
+                var tradeincost = <?php echo $tradeincost; ?>;
                 if (val === "Subcont") {
                     $('#subcont').show();
-                } else
+                } else if (val === "Trade In")
+                    $('#tradein').val(tradeincost);
+                else
                     $('#subcont').hide();
 
             });

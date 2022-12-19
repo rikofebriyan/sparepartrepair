@@ -10,7 +10,7 @@
                 <div class="mb-3 row">
                     <label for="place_of_repair" class="col-sm-3 col-form-label">Place
                         Repair</label>
-                    <div class="col-sm-9">
+                    <div class="col-sm-5">
                         <select class="form-select choices" id="showsubcont" name="place_of_repair">
                             <option value="">Pilih ...</option>
                             <option value="In House">In House</option>
@@ -18,7 +18,16 @@
                             <option value="Trade In">Trade In</option>
                         </select>
                     </div>
+                    <div class="col-sm-1 ">
+                        <label for="tradein" class="col-form-label">Cost</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="tradein" name="tradein"
+                            placeholder="Trade In Cost" readonly>
+                    </div>
                 </div>
+
+
 
                 <div class="mb-3 row">
                     <label for="analisa" class="col-sm-3 col-form-label">Analisa</label>
@@ -100,8 +109,8 @@
                     <label for="actual_start_repair" class="col-sm-3 col-form-label">Actual
                         Start Repair</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control asu" id="datepicker" name="actual_start_repair"
-                            value="">
+                        <input type="datetime-local" class="form-control asu" id="datepicker"
+                            name="actual_start_repair" value="">
                     </div>
                 </div>
 
