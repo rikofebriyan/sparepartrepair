@@ -83,6 +83,8 @@ class WaitingrepairController extends Controller
         $waitingrepair = Waitingrepair::find($id); 
         $tradeinddisc = 0.7;
         $price = $waitingrepair->price;
+        $price = $waitingrepair->price;
+        // dd($price);
         $tradeincost = $tradeinddisc * $price;
         // dd($tradeincost);
         return view('partrepair.progress', [
