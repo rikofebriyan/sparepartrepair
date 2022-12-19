@@ -6,6 +6,7 @@ use App\Finishrepair;
 use App\User;
 use App\Machine;
 use App\Line;
+use App\Waitingrepair;
 use App\MasterSparePart;
 use Illuminate\Http\Request;
 
@@ -57,6 +58,7 @@ class InfoController extends Controller
         $withoutbrackets = trim($data, '[]');
         echo $withoutbrackets;
     }
+    
 
     public function getNumberOfRepair(Request $request)
     {

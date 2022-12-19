@@ -20,16 +20,16 @@
             {{-- <a href="#" class="btn btn-md btn-success mb-3 float-right">New
                 Post</a> --}}
             <div class="d-flex d-inline justify-content-end mb-3">
-                <a class="me-2">Flow Repair : </a>
-                <a class="rounded-pill bg-secondary text-dark text-center px-2">Waiting</a>
-                <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
-                <a class="rounded-pill bg-warning text-dark text-center px-2">On Progress</a>
-                <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
-                <a class="rounded-pill bg-info text-dark text-center px-2">Seal Kit</a>
-                <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
-                <a class="rounded-pill bg-primary text-dark text-center px-2">Trial</a>
-                <a class="px-2"><i class="fa-solid fa-arrow-right"></i></a>
-                <a class="rounded-pill bg-success text-dark text-center px-2">Finish</a>
+                <div class="me-2">Flow Repair : </div>
+                <div class="rounded-pill bg-secondary text-white text-center px-2">Waiting</div>
+                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="rounded-pill bg-warning text-white text-center px-2">On Progress</div>
+                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="rounded-pill bg-info text-white text-center px-2">Seal Kit</div>
+                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="rounded-pill bg-primary text-white text-center px-2">Trial</div>
+                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="rounded-pill bg-success text-white text-center px-2">Finish</div>
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -88,13 +88,21 @@
                                 <td>{{ $req->status_repair }}</td>
                                 <td>
                                     @if ($req->progress == 'Waiting')
-                                        <a
-                                            class="rounded-pill bg-secondary text-dark text-center px-2">{{ $req->progress }}</a>
+                                        <div class="rounded-pill bg-secondary text-white text-center px-2">
+                                            {{ $req->progress }}</div>
                                     @elseif ($req->progress == 'On Progress')
-                                        <a
-                                            class="rounded-pill bg-warning text-dark text-center px-2">{{ $req->progress }}</a>
-                                    @else
-                                        <a class="rounded-pill bg-info text-dark text-center px-2">{{ $req->progress }}</a>
+                                        <div class="rounded-pill bg-warning text-white text-center px-2">
+                                            {{ $req->progress }}
+                                        </div>
+                                    @elseif ($req->progress == 'Seal Kit')
+                                        <div class="rounded-pill bg-info text-white text-center px-2">{{ $req->progress }}
+                                        </div>
+                                    @elseif ($req->progress == 'Trial')
+                                        <div class="rounded-pill bg-primary text-white text-center px-2">
+                                            {{ $req->progress }}</div>
+                                    @elseif ($req->progress == 'Finish')
+                                        <div class="rounded-pill bg-success text-white text-center px-2">
+                                            {{ $req->progress }}</div>
                                     @endif
 
                                 </td>
@@ -111,9 +119,8 @@
                                     @elseif($req->progress == 'Trial')
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('partrepair.finishrepair.show', $req->id) }}">To Finish</a>
-                                    @else
-                                        <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}"></a>
+                                    @elseif($req->progress == 'Finish')
+                                        <a class="btn btn-success btn-sm">Finished</a>
                                     @endif
 
                                     {{-- <a class="btn btn-success"

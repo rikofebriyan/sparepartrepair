@@ -1,3 +1,4 @@
+{{ Form::open(['route' => 'partrepair.finishrepair.store', 'method' => 'POST']) }}
 <div class="container-fluid justify-content-center py-0">
     <div class="row gx-3">
         <div class="col-6">
@@ -20,11 +21,13 @@
                         </div>
                     </div> --}}
 
+                <input type="hidden" name="form_input_id" id="form_input_id" value="{{ $progressrepair->form_input_id }}">
+
                 <div class="mb-3 row">
-                    <label for="no_code_repair" class="col-sm-3 col-form-label">Code Part
+                    <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
                         Repair</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="no_code_repair" name="no_code_repair"
+                        <input type="text" class="form-control" id="code_part_repair" name="code_part_repair"
                             value="" required>
                     </div>
                 </div>
@@ -39,19 +42,20 @@
                 </div>
 
                 <div class="mb-3 row">
-                    <label for="pic_repair" class="col-sm-3 col-form-label">PIC
+                    <label for="pic_delivery" class="col-sm-3 col-form-label">PIC
                         Delivery</label>
                     <div class="col-sm-9">
-                        {{-- <input type="text" class="form-control" id="pic_repair"
-                                name="pic_repair" value="" required> --}}
-                        <select class="form-select choices" id="pic_repair" name="pic_repair" required>
-                            <option selected disabled>Pilih ...</option>
-                            <option value="1">Riko</option>
-                            <option value="2">Febriyan</option>
-                            <option value="3">Omov</option>
+                        <select class="form-select choices" id="isiotomatis" onchange="isi_otomatis()"
+                            name="pic_delivery">
+                            <option value="">Pilih ...</option>
+                            @foreach ($user as $us)
+                                <option value="{{ $us->name }}">{{ $us->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
+
 
                 <div class="mb-3 row">
                     <div class="p-3">
@@ -71,3 +75,5 @@
             </div> --}}
     </div>
 </div>
+
+{{ Form::close() }}
