@@ -82,8 +82,7 @@
                             $('#judge' + i).val('OK');
                             $('#judgeok').show();
                         } else
-                            $('#judge' + i).val('NG');
-                        $('#judgeok').hide();
+                            $('#judgeok').hide();
                     });
                 });
             }
