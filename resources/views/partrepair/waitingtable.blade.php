@@ -101,13 +101,19 @@
                                 <td class="text-center">
                                     @if ($req->progress == 'Waiting')
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Waiting</a>
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Progress</a>
                                     @elseif($req->progress == 'On Progress')
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstable.show', $req->id) }}">On Progress</a>
+                                            href="{{ route('partrepair.progresstable.show', $req->id) }}">To Seal Kit</a>
+                                    @elseif($req->progress == 'Seal Kit')
+                                        <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}">To Trial</a>
+                                    @elseif($req->progress == 'Trial')
+                                        <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.finishrepair.show', $req->id) }}">To Finish</a>
                                     @else
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}">Seal Kit</a>
+                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}"></a>
                                     @endif
 
                                     {{-- <a class="btn btn-success"
