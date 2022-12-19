@@ -92,7 +92,6 @@ class ProgressrepairController extends Controller
      */
     public function show($id)
     {
-        
         $ready = Progresspemakaian::where('status_part','=', 'Ready')
         ->where('form_input_id', $id)
         ->count();
@@ -101,7 +100,8 @@ class ProgressrepairController extends Controller
         $maker = Maker::all();
         $subcont = Subcont::all();
         $user = User::all();
-        $progresspemakaian = Progresspemakaian::all();
+        // $progresspemakaian = Progresspemakaian::all(); // original riko febriyan omov
+        $progresspemakaian = Progresspemakaian::where('form_input_id', $id)->get();
         $waitingrepair = Waitingrepair::find($id);
         $progressrepair = Progressrepair::where('form_input_id', $id)->first();
         // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
