@@ -2,14 +2,14 @@
     <div class="mb-3">
 
         @if ($message = Session::get('success'))
-            <h6 class="alert alert-success">
+            {{-- <h6 class="alert alert-success">
                 {{ $message }}
-            </h6>
+            </h6> --}}
         @endif
 
 
     </div>
-    <div class="alert alert-primary fw-bold">
+    <div class="alert alert-primary fw-bold @if ($progresspemakaian->count() > 0) d-none @endif">
         <center>APAKAH PART REPAIR BUTUH ORDER SEAL KIT?</center>
         <center>
             <div class="form-check-inline">
@@ -145,8 +145,8 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="item_code2" name="item_code"
                                                 placeholder="Item Code" readonly>
-                                            <input type="text" class="form-control" id="item_name2" name="item_name"
-                                                placeholder="Item Name" readonly>
+                                            <input type="text" class="form-control" id="item_name2"
+                                                name="item_name" placeholder="Item Name" readonly>
                                         </div>
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="description2"

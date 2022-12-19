@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/toastify-js/src/toastify.css') }}">
 
 </head>
 <script src="{{ asset('assets/js/initTheme.js') }}"></script>
@@ -229,10 +230,11 @@
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
 <script src="{{ asset('js/jquery.number.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
 <script>
     $(document).ready(function() {
-        $('.number').number(true)
-        $('.number2').number(true, 2)
+        $('input.number').number(true)
+        $('input.number2').number(true, 2)
 
     });
 </script>

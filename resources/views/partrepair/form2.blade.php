@@ -171,6 +171,10 @@
 
             </div>
 
+            <div class="p-3 border mt-3" id="tradeIn" style="display: none">
+
+            </div>
+
         </div>
     </div>
 </div>

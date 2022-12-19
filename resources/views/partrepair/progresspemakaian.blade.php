@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <div class="card">
             <div class="card-header py-2 my-0">
                 <center>
@@ -45,83 +44,97 @@
                 </div>
             </div>
         </div>
-    @endsection
-    @section('script')
-        <script type="text/javascript">
-            function isi_otomatis() {
-                var item_name = $("#isiotomatis2").val();
-                $.ajax({
-                    url: '/ajax',
-                    data: "item_name=" + item_name,
-                    success: function(data) {
-                        var json = data,
-                            obj = JSON.parse(json);
-                        $('#item_name2').val(obj.item_name);
-                        $('#item_code2').val(obj.item_code);
-                        $('#description2').val(obj.description);
-                        $('#price2').val(obj.price);
-                    }
-                });
-            }
-        </script>
+    </div>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        function isi_otomatis() {
+            var item_name = $("#isiotomatis2").val();
+            $.ajax({
+                url: '/ajax',
+                data: "item_name=" + item_name,
+                success: function(data) {
+                    var json = data,
+                        obj = JSON.parse(json);
+                    $('#item_name2').val(obj.item_name);
+                    $('#item_code2').val(obj.item_code);
+                    $('#description2').val(obj.description);
+                    $('#price2').val(obj.price);
+                }
+            });
+        }
+    </script>
+    <script>
+        $('#price2, #qty2').change(function() {
+            var price2 = parseFloat($('#price2').val()) || 0;
+            var qty2 = parseFloat($('#qty2').val()) || 0;
+
+            $('#total_price').val(price2 * qty2);
+        });
+        $('#price2, #qty2').keyup(function() {
+            var price2 = parseFloat($('#price2').val()) || 0;
+            var qty2 = parseFloat($('#qty2').val()) || 0;
+
+            $('#total_price').val(price2 * qty2);
+        });
+    </script>
+    <script>
+        $('#status_part2').change(function() {
+            var val = $(this).val();
+            if (val === "Not Ready") {
+                $('#notready').show();
+            } else
+                $('#notready').hide();
+        });
+    </script>
+    <script>
+        // function funcChoice(x) {
+        //     if (x == 0)
+        //         $('#field3, #fieldsealkit, #fieldrepair').css('display', 'none');
+        //     else
+        //         $('#field3, #fieldsealkit, #fieldrepair').css('display', 'flex');
+        //     return;
+        // }
+
+        $(document).ready(function() {
+            $('#ya').click(function() {
+                $('#field3').css('display', 'flex');
+                $('#fieldrepair').addClass("d-none");
+                $('#fieldsealkit').removeClass("disabled");
+            });
+        });
+
+        $(document).ready(function() {
+            $('#tidak').click(function() {
+                $('#field3').css('display', 'none');
+                $('#fieldrepair').removeClass("d-none");
+                $('#fieldsealkit').addClass("disabled");
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+                // scrollX: true,
+            });
+        });
+    </script>
+
+    @if ($message = Session::get('success'))
         <script>
-            $('#price2, #qty2').change(function() {
-                var price2 = parseFloat($('#price2').val()) || 0;
-                var qty2 = parseFloat($('#qty2').val()) || 0;
-
-                $('#total_price').val(price2 * qty2);
-            });
-            $('#price2, #qty2').keyup(function() {
-                var price2 = parseFloat($('#price2').val()) || 0;
-                var qty2 = parseFloat($('#qty2').val()) || 0;
-
-                $('#total_price').val(price2 * qty2);
-            });
+            Toastify({
+                text: "{{ $message }}",
+                duration: 2500,
+                close: true,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#4fbe87",
+            }).showToast()
         </script>
-        <script>
-            $('#status_part2').change(function() {
-                var val = $(this).val();
-                if (val === "Not Ready") {
-                    $('#notready').show();
-                } else
-                    $('#notready').hide();
-            });
-        </script>
-        <script>
-            // function funcChoice(x) {
-            //     if (x == 0)
-            //         $('#field3, #fieldsealkit, #fieldrepair').css('display', 'none');
-            //     else
-            //         $('#field3, #fieldsealkit, #fieldrepair').css('display', 'flex');
-            //     return;
-            // }
-
-            $(document).ready(function() {
-                $('#ya').click(function() {
-                    $('#field3').css('display', 'flex');
-                    $('#fieldrepair').addClass("d-none");
-                    $('#fieldsealkit').removeClass("disabled");
-                });
-            });
-
-            $(document).ready(function() {
-                $('#tidak').click(function() {
-                    $('#field3').css('display', 'none');
-                    $('#fieldrepair').removeClass("d-none");
-                    $('#fieldsealkit').addClass("disabled");
-                });
-            });
-        </script>
-
-
-        <script>
-            $(document).ready(function() {
-                $('#myTable').DataTable({
-                    order: [
-                        [0, 'desc']
-                    ],
-                    // scrollX: true,
-                });
-            });
-        </script>
-    @endsection
+    @endif
+@endsection

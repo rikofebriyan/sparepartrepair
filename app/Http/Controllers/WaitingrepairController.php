@@ -52,7 +52,6 @@ class WaitingrepairController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         // validated input request
         $this->validate($request, [
             'problem' => 'required',
@@ -63,6 +62,7 @@ class WaitingrepairController extends Controller
         $data = $request->all();
         $data['section'] = $section->name;
         $data['line'] = $line->name;
+        $data['price'] = intval(preg_replace('/[^\d.]/', '', $request->price));
         Waitingrepair::create($data);
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         

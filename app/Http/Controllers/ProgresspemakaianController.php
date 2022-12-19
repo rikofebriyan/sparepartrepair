@@ -67,7 +67,6 @@ class ProgresspemakaianController extends Controller
      */
     public function show($id)
     {
-        
         $request2 = Waitingrepair::find($id);
         $request2->progress = 'Seal Kit';
         $request2->save();
