@@ -55,12 +55,19 @@ class FinishrepairController extends Controller
     {
         // validated input request
         $this->validate($request, [
-            'form_trial_id' => 'required',
+            'form_input_id' => 'required',
         ]);
 
         // create new task
-        Finishrepair::create($request->all());
+        // Finishrepair::create($request->all());
+        $data = $request->all();
+        $data['delivery_date'] = Carbon::parse($request->delivery_date)->format('Y-m-d H:i:s');
+        Finishrepair::create($data);
+        $request2 = Waitingrepair::find($request->form_input_id)->first();
+        $request2->progress = 'Finish';
+        $request2->save();
         return redirect()->route('partrepair.finishrepair.index')->with('success', 'Your task added successfully!');
+
     }
 
     /**

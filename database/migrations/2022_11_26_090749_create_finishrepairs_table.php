@@ -18,7 +18,7 @@ class CreateFinishrepairsTable extends Migration
             $table->integer('form_input_id');
             $table->string('code_part_repair');
             $table->dateTime('delivery_date');
-            $table->integer('pic_delivery');
+            $table->string('pic_delivery');
         });
     }
 
