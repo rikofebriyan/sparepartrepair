@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Finishrepair;
 use App\User;
 use App\Machine;
 use App\Line;
@@ -28,7 +29,8 @@ class InfoController extends Controller
     public function getInfo($nim)
     {
     $data = MasterSparePart::all()->where('id', $nim);
-    return Response::json(['success'=>true, 'data'=>$data]);
+    // return Response::json(['success'=>true, 'data'=>$data]);
+    return Response()->json(['success'=>true, 'data'=>$data]);
     }
 
     
@@ -54,5 +56,11 @@ class InfoController extends Controller
         $data = User::where('name', $labour_id)->get();
         $withoutbrackets = trim($data, '[]');
         echo $withoutbrackets;
+    }
+
+    public function getNumberOfRepair(Request $request)
+    {
+        $finishRepair = Finishrepair::where('code_part_repair', $request->codePartRepair)->count();
+        return response()->json($finishRepair);
     }
 }
