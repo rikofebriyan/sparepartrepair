@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Spare Part Repair System</title>
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
@@ -218,7 +218,7 @@
 
 <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{asset('assets/js/pages/ui-apexchart.js')}}"></script>
+<script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
@@ -227,8 +227,15 @@
 <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
 <script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
-
+<script src="{{ asset('js/jquery.number.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.number').number(true)
+        $('.number2').number(true, 2)
+
+    });
+</script>
 @yield('script')
 
 </html>
