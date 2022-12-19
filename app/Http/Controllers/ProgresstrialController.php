@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Carbon\Carbon;
 use App\StandardPengecekan;
 use App\User;
 use App\Maker;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 class ProgresstrialController extends Controller
 {
     /**
-     * Display a listing of the resource.
+ * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -52,36 +53,48 @@ class ProgresstrialController extends Controller
      */
     public function store(Request $request)
     {
-        // validated input request
-        // $this->validate($request, [
-        //     'actual_pengecekan' => 'required',
-        // ]);
-        // $request = [
-        //     ['actual_pengecekan'=>'Coder 1', 'judgement'=> '4096'],
-        //     ['actual_pengecekan'=>'Coder 2', 'judgement'=> '2048'],
-        //     //...
-        // ];
-        // dd($request);
+        $ok = 'OK';
+        $request->request->add(['value' => $ok]);
+        $this->validate($request, [
+            'judgement' => 'required|min:2',
+        ]);
+        
         $actual_pengecekan = $request->actual_pengecekan;
         $judgement= $request->judgement;
 
-    
-        $result = array();
-        foreach ($_POST['actual_pengecekan'] as $key => $val) {
-            $result[] = array(
-                'actual_pengecekan' => $_POST['actual_pengecekan'][$key],
-                'judgement' => $_POST['judgement'][$key]
-            );
-        }
-            // dd($result);
+        foreach($request['actual_pengecekan'] as $key => $val) {
+        Progresstrial::create([
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'form_input_id' => $request['form_input_id'][$key],
+            'id_standard_pengecekan' => $request['id_standard_pengecekan'][$key],
+            'standard_pengecekan' => $request['standard_pengecekan'][$key],
+            'actual_pengecekan' => $request['actual_pengecekan'][$key],
+            'judgement' => $request['judgement'][$key],
+        ]);
+    }
 
-        // Progresstrial::create($request);
+        // $request = array();
+        // foreach ($_POST['actual_pengecekan'] as $key => $val) {
+        //     $request[] = array(
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now(),
+        //         'form_input_id' => $_POST['form_input_id'][$key],
+        //         'id_standard_pengecekan' => $_POST['id_standard_pengecekan'][$key],
+        //         'standard_pengecekan' => $_POST['standard_pengecekan'][$key],
+        //         'actual_pengecekan' => $_POST['actual_pengecekan'][$key],
+        //         'judgement' => $_POST['judgement'][$key]
+        //     );
+        // }
+        // Progresstrial::insert($request);
 
-    
-        Progresstrial::insert($result);
-        // DB::table('Progresstrials')->insert($data);
-        // create new task
-        // Progresstrial::create($request->all());
+        // dd($request);
+
+        $request2 = Waitingrepair::find($request->form_input_id)->first();
+        $request2->progress = 'Trial';
+        $request2->save();
+        // Waitingrepair::update($request2);
+        // dd($request2);
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
     }
 

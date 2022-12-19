@@ -131,7 +131,8 @@
                             <div class="mb-3 row">
                                 <label for="problem" class="col-sm-3 col-form-label">Problem</label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" id="problem" name="problem" rows="4" placeholder="Input Detail Problem"></textarea>
+                                    <textarea class="form-control" id="problem" name="problem" rows="4" placeholder="Input Detail Problem"
+                                        required></textarea>
                                 </div>
                             </div>
 
