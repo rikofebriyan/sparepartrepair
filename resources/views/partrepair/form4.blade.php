@@ -18,29 +18,24 @@
                 <?php $i = 1; ?>
                 @forelse ($join as $joi)
                     <tr>
-                        <td>{{ $joi->id }}</td>
-                        <td>{{ $joi->item_standard }}</td>
-                        <td><input type="text" id="{{ 'standard' . $i }}" value="{{ $joi->standard_pengecekan }}"
-                                class="form-control" readonly>
+                        <td>{{ $joi->id }}
+                            <input type="hidden" name="form_input_id[]" id="form_input_id"
+                                value="{{ $progressrepair->form_input_id }}">
+                        </td>
+                        <td>{{ $joi->item_standard }}
+                            <input type="hidden" name="id_standard_pengecekan[]" id="id_standard_pengecekan"
+                                value="{{ $joi->item_standard_id }}">
+                        </td>
+                        <td><input type="text" id="{{ 'standard' . $i }}" name="standard_pengecekan[]"
+                                value="{{ $joi->standard_pengecekan }}" class="form-control" readonly>
                         </td>
                         <td><input type="text" name="actual_pengecekan[]" id={{ 'actual' . $i }} class="form-control"
-                                placeholder="Actual">
+                                placeholder="Actual" required>
                         <td><input type="text" name="judgement[]" id={{ 'judge' . $i }} class="form-control"
-                                placeholder="Judgement" readonly>
+                                placeholder="Judgement" readonly required>
                         </td>
 
                     </tr>
-                    {{-- <script>
-                        $('#actual2').keyup(function() {
-                            var actual = $(this).val();
-                            var standard = $('#standard2').val();
-                            if (actual == standard) {
-                                // alert("ok");
-                                $('#judge2').val('ok');
-                            } else
-                                $('#judge2').val('ng');
-                        });
-                    </script> --}}
                     <?php $i++; ?>
                 @empty
                     <tr>
@@ -50,7 +45,7 @@
             </tbody>
         </table>
 
-        <button type="submit" class="btn btn-md btn-primary">Save</button>
+        <button id="judgeok" type="submit" class="btn btn-md btn-primary" style="display: none">Save</button>
         {{ Form::close() }}
     </div>
 </div>

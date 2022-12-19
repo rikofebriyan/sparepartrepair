@@ -69,7 +69,7 @@
         <script>
             for (let i = 0; i < 10; i++) {
                 $(document).ready(function() {
-                    $('#actual' + i).keyup(function() {
+                    $('#actual' + i).change(function() {
                         var actual = Number($(this).val());
                         var actual2 = $(this).val();
                         var standard = Number($('#standard' + i).val());
@@ -77,10 +77,12 @@
                         if (actual2 == standard2) {
                             // alert("ok");
                             $('#judge' + i).val('OK');
+                            $('#judgeok').show();
                         } else if (actual >= standard) {
                             $('#judge' + i).val('OK');
+                            $('#judgeok').show();
                         } else
-                            $('#judge' + i).val('NG');
+                            $('#judgeok').hide();
                     });
                 });
             }
