@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use Carbon\Carbon;
+
+use App\ItemStandard;
 use App\StandardPengecekan;
 use App\User;
 use App\Maker;
@@ -107,11 +109,16 @@ class ProgresstrialController extends Controller
     public function show($id)
     {
 
+        $asu = Waitingrepair::where('id',$id)->first();
+        // dd($asu->item_id);
         $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
             ->select('standard_pengecekans.*', 'item_standards.item_standard')
+            ->where('standard_pengecekans.master_spare_part_id',$asu->item_id)
             ->get();
             // dd($join);
 
+        $itemstandard = ItemStandard::all();
+        // dd($itemstandard);
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();
         $subcont = Subcont::all();
@@ -119,6 +126,7 @@ class ProgresstrialController extends Controller
         $progresspemakaian = Progresspemakaian::all();
         $waitingrepair = Waitingrepair::find($id);
         $progressrepair = Progresspemakaian::where('form_input_id', $id)->first();
+        // dd($progressrepair);
         // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
         // dd($progressrepair);
         return view('partrepair.progresstrial', [
@@ -129,6 +137,8 @@ class ProgresstrialController extends Controller
             'maker'    => $maker,
             'mastersparepart'    => $mastersparepart,
             'progresspemakaian'    => $progresspemakaian,
+            'itemstandard'    => $itemstandard,
+            'asu'    => $asu,
             'join'    => $join,
         ]);
     }

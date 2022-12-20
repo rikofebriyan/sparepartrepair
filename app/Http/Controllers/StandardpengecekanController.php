@@ -57,7 +57,7 @@ class StandardpengecekanController extends Controller
 
         // create new task
         StandardPengecekan::create($request->all());
-        return redirect()->route('matrix.standard_pengecekan.index')->with('success', 'Your task added successfully!');
+        return redirect()->back()->with('success', 'Your task added successfully!');
     }
 
     /**

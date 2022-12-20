@@ -81,7 +81,7 @@ class WaitingrepairController extends Controller
         $subcont = Subcont::all();
         $user = User::all();
         $waitingrepair = Waitingrepair::find($id); 
-        $tradeinddisc = 0.7;
+        $tradeinddisc = 0.3;
         $price = $waitingrepair->price;
         $price = $waitingrepair->price;
         // dd($price);
