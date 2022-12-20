@@ -17,10 +17,8 @@ class InfoController extends Controller
 
     public function index()
     {
-        // dd($id);
         $item_name = $_GET['item_name'];
-        $data = MasterSparePart::where('id', $item_name)->get();
-        // echo json_encode($data);
+        $data = MasterSparePart::where('code_item_description', $item_name)->get();
         $withoutbrackets = trim($data, '[]');
         echo $withoutbrackets;
     }
