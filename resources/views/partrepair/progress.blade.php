@@ -33,13 +33,13 @@
                             @include('partrepair.form2')
                         </div>
                         <div class="tab-pane fade" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
-                            {{-- @include('partrepair.form3') --}}
+                            @include('partrepair.form3')
                         </div>
                         <div class="tab-pane fade" id="list-4" role="tabpanel" aria-labelledby="list-4-list">
-                            {{-- @include('partrepair.form4') --}}
+                            @include('partrepair.form4')
                         </div>
                         <div class="tab-pane fade" id="list-5" role="tabpanel" aria-labelledby="list-5-list">
-                            {{-- @include('partrepair.form5') --}}
+                            @include('partrepair.form5')
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,21 @@
                         var json = data,
                             obj = JSON.parse(json);
                         $('#labour_cost').val(obj.labour_cost);
+                    }
+                });
+            }
+
+            function isi_otomatis_part() {
+                var item_name = $("#isiotomatis2").val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/ajax/?item_name=' + item_name,
+                    dataType: 'JSON',
+                    success: function(data) {
+                        $('#item_name2').val(data.item_name);
+                        $('#item_code2').val(data.item_code);
+                        $('#description2').val(data.description);
+                        $('#price2').val(data.price);
                     }
                 });
             }
@@ -90,6 +105,21 @@
                 else
                     $('#subcont').hide();
 
+            });
+        </script>
+
+        <script>
+            $('#price2, #qty2').change(function() {
+                var price2 = parseFloat($('#price2').val()) || 0;
+                var qty2 = parseFloat($('#qty2').val()) || 0;
+
+                $('#total_price').val(price2 * qty2);
+            });
+            $('#price2, #qty2').keyup(function() {
+                var price2 = parseFloat($('#price2').val()) || 0;
+                var qty2 = parseFloat($('#qty2').val()) || 0;
+
+                $('#total_price').val(price2 * qty2);
             });
         </script>
     @endsection

@@ -3,11 +3,11 @@
 
 
 @section('content')
-    @if ($message = Session::get('success'))
+    {{-- @if ($message = Session::get('success'))
         <h6 class="alert alert-success">
             {{ $message }}
         </h6>
-    @endif
+    @endif --}}
     <CENTER>
         <div class="container-fluid">
             <H2>PART REPAIR : WAITING TABLE </H2>
@@ -140,4 +140,19 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @if ($message = Session::get('success'))
+        <script>
+            Toastify({
+                text: "{{ $message }}",
+                duration: 2500,
+                close: true,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#4fbe87",
+            }).showToast()
+        </script>
+    @endif
 @endsection

@@ -59,7 +59,7 @@
                                         <label for="number_of_repair" class="col-sm-3 col-form-label ms-3">Times</label>
                                         <div id="number_of_repairFeedback" class="invalid-feedback">
                                             Part Has Been Repaired Over 5 Times. Please Scrap!
-                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -67,17 +67,17 @@
                             <div class="mb-3 row">
                                 <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select mb-3 choices" onchange="isi_otomatis()" id="isiotomatis"
-                                        name="item_name" data-live-search="true" required>
-                                        <option selected></option>
-                                        @foreach ($reqtzy as $req)
-                                            {{-- <option value="{{ $req->id }}">{{ $req->item_code }} ---
-                                                {{ $req->item_name }} --- {{ $req->description }}
-                                            </option> --}}
-                                            <option value="{{ $req->code_item_description }}">{{ $req->item_code }} | {{ $req->item_name }} | {{ $req->description }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    <div id="field3" class="mb-3">
+                                        <select class="form-select choices" onchange="isi_otomatis()" id="isiotomatis"
+                                            name="item_name" data-live-search="true">
+                                            <option selected></option>
+                                            @foreach ($reqtzy as $req)
+                                                <option value="{{ $req->code_item_description }}">{{ $req->item_code }} |
+                                                    {{ $req->item_name }} | {{ $req->description }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
 
 
@@ -232,19 +232,18 @@
         function isi_otomatis() {
             var item_name = $("#isiotomatis").val();
             $.ajax({
-                url: '/ajax',
-                data: "item_name=" + item_name,
+                type: 'GET',
+                url: '/ajax/?item_name='+ item_name,
+                dataType: 'JSON',
                 success: function(data) {
-                    var json = data,
-                        obj = JSON.parse(json);
-                    $('#item_id').val(obj.id);
-                    $('#item_name').val(obj.item_name);
-                    $('#item_code').val(obj.item_code);
-                    $('#description').val(obj.description);
-                    $('#qty').val(obj.qty);
-                    $('#price').val(obj.price);
+                    $('#item_id').val(data.id);
+                    $('#item_name').val(data.item_name);
+                    $('#item_code').val(data.item_code);
+                    $('#description').val(data.description);
+                    $('#qty').val(data.qty);
+                    $('#price').val(data.price);
 
-                    if (obj.qty == 0) {
+                    if (data.qty == 0) {
                         $('#status_repair').empty()
                         $('#status_repair').append(`
                             <option disabled>Pilih ...</option>
@@ -280,12 +279,66 @@
                 $('#field2').css('display', 'none');
                 $('#code_part_repair').val('')
                 $('#number_of_repair').val('')
+                $('#field3').removeClass('d-none')
+
+                $('#item_code').val('')
+                $('#item_name').val('')
+                $('#description').val('')
+
+                $('#price').val('')
+                $('#qty').val('')
+
+                getMaker()
+                getTypeOfPart()
                 return
-            }
-            else {
+            } else {
                 $('#field2').css('display', 'flex');
+                $('#field3').addClass('d-none')
+
+                $('#item_code').val('')
+                $('#item_name').val('')
+                $('#description').val('')
+
+                $('#price').val('')
+                $('#qty').val('')
+
+                getMaker()
+                getTypeOfPart()
                 return;
             }
+        }
+
+        function getMaker() {
+            $.ajax({
+                type: 'GET',
+                url: '/getMaker',
+                dataType: 'JSON',
+                success: function(result) {
+                    $('#maker').empty()
+                    $('#maker').append(`<option selected disabled>Maker ...</option>`)
+                    $.each(result, function(id, value) {
+                        $('#maker').append('<option value="' + value.id + '">' +
+                            value.name + '</option>');
+                    });
+                }
+            });
+        }
+
+        function getTypeOfPart() {
+            $.ajax({
+                type: 'GET',
+                url: '/getTypeOfPart',
+                dataType: 'JSON',
+                success: function(result) {
+                    $('#type_of_part').empty()
+                    $('#type_of_part').append(
+                        `<option selected disabled>Type Of Part ...</option>`)
+                    $.each(result, function(id, value) {
+                        $('#type_of_part').append('<option value="' + id + '">' +
+                            value + '</option>');
+                    });
+                }
+            });
         }
     </script>
     <script type="text/javascript">
@@ -339,13 +392,47 @@
                     url: '/get-number-of-repair/?codePartRepair=' + codePartRepair,
                     dataType: 'JSON',
                     success: function(result) {
-                        $('#number_of_repair').val(result)
-                        if (result > 5) {
+                        console.log(result)
+                        $('#number_of_repair').val(result['finishRepair'])
+                        if (result['finishRepair'] > 5) {
                             $('#number_of_repair').addClass('is-invalid')
                             $('#btnSubmitFormInput').prop('disabled', true)
                         } else {
                             $('#number_of_repair').removeClass('is-invalid')
                             $('#btnSubmitFormInput').prop('disabled', false)
+
+                            $('#item_code').val(result['dataRepair'].item_code)
+                            $('#item_name').val(result['dataRepair'].item_name)
+                            $('#description').val(result['dataRepair'].item_type)
+
+                            $('#price').val(result['dataPart'].price)
+                            $('#qty').val(result['dataPart'].qty)
+
+                            $('#maker').empty()
+                            $('#type_of_part').empty()
+                            $('#maker').append(`<option disabled>Maker ...</option>`)
+                            $('#type_of_part').append(
+                                `<option disabled>Type Of Part ...</option>`)
+
+                            $.each(result['maker'], function(id, data) {
+                                if (data.id == result['dataRepair'].maker) {
+                                    selected = 'selected'
+                                } else {
+                                    selected = ''
+                                }
+                                $('#maker').append(`<option value="${data.id}" ` +
+                                    selected + `>${data.name}</option>`)
+                            });
+
+                            $.each(result['typeOfPart'], function(id, part) {
+                                if (part == result['dataRepair'].type_of_part) {
+                                    selected = 'selected'
+                                } else {
+                                    selected = ''
+                                }
+                                $('#type_of_part').append(`<option value="${id}" ` +
+                                    selected + `>${part}</option>`)
+                            });
                         }
                     }
                 });

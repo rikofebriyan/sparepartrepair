@@ -131,14 +131,17 @@
                                 <div class="mb-3 row">
                                     <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                                     <div class="col-sm-9">
-                                        <select class="form-select mb-3 choices" onchange="isi_otomatis()"
+                                        <select class="form-select mb-3 choices" onchange="isi_otomatis_part()"
                                             id="isiotomatis2" name="item_name" data-live-search="true">
                                             <option selected></option>
                                             @foreach ($mastersparepart as $req)
-                                                <option value="{{ $req->id }}">{{ $req->item_code }}
+                                                {{-- <option value="{{ $req->id }}">{{ $req->item_code }}
                                                     |
                                                     {{ $req->item_name }} |
                                                     {{ $req->description }}
+                                                </option> --}}
+                                                <option value="{{ $req->code_item_description }}">{{ $req->item_code }} |
+                                                    {{ $req->item_name }} | {{ $req->description }}
                                                 </option>
                                             @endforeach
                                         </select>

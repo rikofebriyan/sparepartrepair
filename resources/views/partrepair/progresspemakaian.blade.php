@@ -48,18 +48,32 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+        // function isi_otomatis() {
+        //     var item_name = $("#isiotomatis2").val();
+        //     $.ajax({
+        //         url: '/ajax',
+        //         data: "item_name=" + item_name,
+        //         success: function(data) {
+        //             var json = data,
+        //                 obj = JSON.parse(json);
+        //             $('#item_name2').val(obj.item_name);
+        //             $('#item_code2').val(obj.item_code);
+        //             $('#description2').val(obj.description);
+        //             $('#price2').val(obj.price);
+        //         }
+        //     });
+        // }
         function isi_otomatis() {
             var item_name = $("#isiotomatis2").val();
             $.ajax({
-                url: '/ajax',
-                data: "item_name=" + item_name,
+                type: 'GET',
+                url: '/ajax/?item_name='+ item_name,
+                dataType: 'JSON',
                 success: function(data) {
-                    var json = data,
-                        obj = JSON.parse(json);
-                    $('#item_name2').val(obj.item_name);
-                    $('#item_code2').val(obj.item_code);
-                    $('#description2').val(obj.description);
-                    $('#price2').val(obj.price);
+                    $('#item_name2').val(data.item_name);
+                    $('#item_code2').val(data.item_code);
+                    $('#description2').val(data.description);
+                    $('#price2').val(data.price);
                 }
             });
         }

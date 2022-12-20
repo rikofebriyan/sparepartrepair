@@ -11,28 +11,33 @@ use App\MasterSparePart;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Maker;
 
 class InfoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $item_name = $_GET['item_name'];
-        $data = MasterSparePart::where('code_item_description', $item_name)->get();
-        $withoutbrackets = trim($data, '[]');
-        echo $withoutbrackets;
+        // $item_name = $_GET['item_name'];
+        // $data = MasterSparePart::where('code_item_description', $item_name)->get();
+        // $withoutbrackets = trim($data, '[]');
+        // echo $withoutbrackets;
+
+        $data = MasterSparePart::where('code_item_description', $request->item_name)->first();
+        return response()->json($data);
+
     }
 
 
 
     public function getInfo($nim)
     {
-    $data = MasterSparePart::all()->where('id', $nim);
-    // return Response::json(['success'=>true, 'data'=>$data]);
-    return Response()->json(['success'=>true, 'data'=>$data]);
+        $data = MasterSparePart::all()->where('id', $nim);
+        // return Response::json(['success'=>true, 'data'=>$data]);
+        return Response()->json(['success' => true, 'data' => $data]);
     }
 
-    
+
     public function getline(Request $request)
     {
         $sectionId = $request->get('sectionId');
@@ -40,7 +45,7 @@ class InfoController extends Controller
         return response()->json($line);
     }
 
-    
+
     public function getmachine(Request $request)
     {
         $lineId = $request->get('lineId');
@@ -48,7 +53,7 @@ class InfoController extends Controller
         return response()->json($machine);
     }
 
-    
+
     public function getlabour(Request $request)
     {
         $labour_id = $request->get('labour_id');
@@ -56,11 +61,51 @@ class InfoController extends Controller
         $withoutbrackets = trim($data, '[]');
         echo $withoutbrackets;
     }
-    
+
 
     public function getNumberOfRepair(Request $request)
     {
-        $finishRepair = Finishrepair::where('code_part_repair', $request->codePartRepair)->count();
-        return response()->json($finishRepair);
+        $finishRepair = Finishrepair::where('code_part_repair', $request->codePartRepair)->get();
+        if ($finishRepair->count() > 0) {
+            $ticket = Waitingrepair::where('id', $finishRepair->last()->form_input_id)->first();
+            $masterSparePart = MasterSparePart::where('id', $ticket->item_id)->first();
+            $maker = Maker::all();
+            $typeOfPart = [
+                1 => 'Mechanic',
+                2 => 'Electric',
+                3 => 'Hydraulic',
+                4 => 'Pneumatic',
+            ];
+        } else {
+            $ticket = [];
+            $masterSparePart = [];
+            $maker = [];
+            $typeOfPart = [];
+        }
+
+        return response()->json([
+            'finishRepair' => $finishRepair->count(),
+            'dataRepair' => $ticket,
+            'dataPart' => $masterSparePart,
+            'maker' => $maker,
+            'typeOfPart' => $typeOfPart,
+        ]);
+    }
+
+    public function getMaker()
+    {
+        $maker = Maker::all();
+        return response()->json($maker);
+    }
+
+    public function getTypeOfPart()
+    {
+        $typeOfPart = [
+            1 => 'Mechanic',
+            2 => 'Electric',
+            3 => 'Hydraulic',
+            4 => 'Pneumatic',
+        ];
+        return response()->json($typeOfPart);
     }
 }

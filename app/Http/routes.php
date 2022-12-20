@@ -45,3 +45,5 @@ Route::get('/getline', 'InfoController@getline');
 Route::get('/getmachine', 'InfoController@getmachine');
 Route::get('/getlabour', 'InfoController@getlabour');
 Route::get('/get-number-of-repair', 'InfoController@getNumberOfRepair');
+Route::get('/getMaker', 'InfoController@getMaker');
+Route::get('/getTypeOfPart', 'InfoController@getTypeOfPart');

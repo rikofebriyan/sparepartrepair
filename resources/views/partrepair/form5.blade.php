@@ -21,7 +21,7 @@
                         </div>
                     </div> --}}
 
-                <input type="hidden" name="form_input_id" id="form_input_id" value="{{ $progressrepair->form_input_id }}">
+                <input type="hidden" name="form_input_id" id="form_input_id" value="{{ $waitingrepair->form_input_id }}">
 
                 <div class="mb-3 row">
                     <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
