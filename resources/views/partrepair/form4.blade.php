@@ -13,6 +13,7 @@
                     <th scope="col">Standard</th>
                     <th scope="col">Actual</th>
                     <th scope="col">Judgement</th>
+                    {{-- <th scope="col">Action</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,63 @@
                         <td><input type="text" name="judgement[]" id={{ 'judge' . $i }} class="form-control"
                                 placeholder="Judgement" readonly required>
                         </td>
+                        {{-- <td class="text-center d-flex d-inline">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
+                                data-bs-target="#jemb{{ $joi->id }}">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            {!! Form::model($joi, ['method' => 'PATCH', 'route' => ['partrepair.progresstrial.update', $joi->id]]) !!}
+                            <div class="modal fade" id="jemb{{ $joi->id }}" tabindex="-1"
+                                aria-labelledby="modalUpdateBarang" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Update Barang</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="form-group mt-2">
+                                                <label for="master_spare_part_id">Master Spare Part ID</label>
+                                                <select name="master_spare_part_id" id="master_spare_part_id"
+                                                    class="form-control">
+                                                    <option value="{{ $asu->item_id }}">{{ $asu->item_name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group mt-2">
+                                                <label for="item_standard_id">Item Standard ID</label>
+                                                <select name="item_standard_id" id="item_standard_id"
+                                                    class="form-control">
+                                                    @foreach ($itemstandard as $tabw)
+                                                        <option value="{{ $tabw->id }}" selected>
+                                                            {{ $tabw->item_standard }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group mt-2">
+                                                <label for="standard_pengecekan">standard_pengecekan</label>
+                                                <input type="text" id="standard_pengecekan"
+                                                    name="standard_pengecekan" class="form-control"
+                                                    value="{{ $joi->standard_pengecekan }}" required>
+                                            </div>
+
+
+                                            <button type="submit" class="btn btn-primary">Perbarui Data</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
+
+                        </td> --}}
 
                     </tr>
                     <?php $i++; ?>
@@ -47,7 +105,7 @@
         </table>
 
         <button id="judgeok" type="submit" class="btn btn-md btn-primary" style="display: none">Save</button>
-        {{ Form::close() }}
+        {!! Form::close() !!}
     </div>
 </div>
 
@@ -64,7 +122,6 @@
             </div>
             <div class="modal-body">
 
-                {{-- FORM COLUMN 1 --}}
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Section ID</label>
                     <select name="master_spare_part_id" id="master_spare_part_id" class="form-control">
@@ -73,7 +130,6 @@
                     </select>
                 </div>
 
-                {{-- FORM COLUMN 1 --}}
                 <div class="form-group mt-2">
                     <label for="item_standard_id">Section ID</label>
                     <select name="item_standard_id" id="item_standard_id" class="form-control">
@@ -88,7 +144,6 @@
                     </select>
                 </div>
 
-                {{-- FORM COLUMN 1 --}}
                 <div class="form-group mt-2">
                     <label for="standard_pengecekan">standard_pengecekan</label>
                     <input type="text" id="standard_pengecekan" name="standard_pengecekan" class="form-control"

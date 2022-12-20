@@ -154,5 +154,15 @@
                 backgroundColor: "#4fbe87",
             }).showToast()
         </script>
+        
     @endif
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+            });
+        });
+    </script>
 @endsection
