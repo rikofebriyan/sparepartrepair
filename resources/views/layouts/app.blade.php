@@ -12,8 +12,10 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/toastify-js/src/toastify.css') }}">
+
+    {{-- choices --}}
+    <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
 
 </head>
 <script src="{{ asset('assets/js/initTheme.js') }}"></script>
@@ -225,7 +227,12 @@
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+
+{{-- choices --}}
+{{-- <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script> --}}
+<script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+
+
 <script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
 <script src="{{ asset('js/jquery.number.js') }}"></script>

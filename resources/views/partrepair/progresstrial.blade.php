@@ -69,7 +69,7 @@
         <script>
             for (let i = 0; i < 10; i++) {
                 $(document).ready(function() {
-                    $('#actual' + i).change(function() {
+                    $('#actual' + i).on('input', function() {
                         var actual = Number($(this).val());
                         var actual2 = $(this).val();
                         var standard = Number($('#standard' + i).val());

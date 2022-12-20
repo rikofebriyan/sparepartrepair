@@ -26,6 +26,7 @@ class CreateMasterSparePartsTable extends Migration
             $table->integer('order_point');
             $table->integer('order_qty');
             $table->integer('account_no');
+            $table->string('code_item_description');
         });
     }
 
