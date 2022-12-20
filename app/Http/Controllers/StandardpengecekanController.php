@@ -94,7 +94,7 @@ class StandardpengecekanController extends Controller
             'standard_pengecekan' => 'required',
         ]);
         StandardPengecekan::find($id)->update($request->all());
-        return redirect()->route('matrix.standard_pengecekan.index')->with('success','StandardPengecekan updated successfully');
+        return redirect()->back()->with('success','StandardPengecekan updated successfully');
     }
 
     /**

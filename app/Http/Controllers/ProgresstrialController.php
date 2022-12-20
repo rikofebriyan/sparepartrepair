@@ -55,6 +55,7 @@ class ProgresstrialController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $ok = 'OK';
         $request->request->add(['value' => $ok]);
         $this->validate($request, [
@@ -163,7 +164,11 @@ class ProgresstrialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'standard_pengecekan' => 'required',
+        ]);
+        StandardPengecekan::find($id)->update($request->all());
+        return redirect()->back()->with('success','StandardPengecekan updated successfully');
     }
 
     /**
