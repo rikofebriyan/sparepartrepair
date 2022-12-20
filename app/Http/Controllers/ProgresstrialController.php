@@ -107,8 +107,11 @@ class ProgresstrialController extends Controller
     public function show($id)
     {
 
+        $asu = Waitingrepair::where('id',$id)->first();
+        // dd($asu);
         $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
             ->select('standard_pengecekans.*', 'item_standards.item_standard')
+            ->where('standard_pengecekans.master_spare_part_id',$asu->item_id)
             ->get();
             // dd($join);
 
