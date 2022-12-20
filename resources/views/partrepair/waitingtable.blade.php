@@ -111,14 +111,20 @@
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Progress</a>
                                     @elseif($req->progress == 'On Progress')
+                                        {{-- <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.progresstable.show', $req->id) }}">To Seal Kit</a> --}}
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstable.show', $req->id) }}">To Seal Kit</a>
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Seal Kit</a>
                                     @elseif($req->progress == 'Seal Kit')
+                                        {{-- <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}">To Trial</a> --}}
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}">To Trial</a>
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Trial</a>
                                     @elseif($req->progress == 'Trial')
+                                        {{-- <a class="btn btn-success btn-sm"
+                                            href="{{ route('partrepair.finishrepair.show', $req->id) }}">To Finish</a> --}}
                                         <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.finishrepair.show', $req->id) }}">To Finish</a>
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Finish</a>
                                     @elseif($req->progress == 'Finish')
                                         <a class="btn btn-success btn-sm">Finished</a>
                                     @endif
@@ -154,7 +160,6 @@
                 backgroundColor: "#4fbe87",
             }).showToast()
         </script>
-        
     @endif
     <script>
         $(document).ready(function() {

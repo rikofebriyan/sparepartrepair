@@ -13,9 +13,9 @@
                     <div class="col-sm-5">
                         <select class="form-select choices" id="showsubcont" name="place_of_repair">
                             <option value="">Pilih ...</option>
-                            <option value="In House">In House</option>
-                            <option value="Subcont">Subcont</option>
-                            <option value="Trade In">Trade In</option>
+                            <option value="In House" @if($progressrepair2->place_of_repair == 'In House') selected @endif>In House</option>
+                            <option value="Subcont" @if($progressrepair2->place_of_repair == 'Subcont') selected @endif>Subcont</option>
+                            <option value="Trade In" @if($progressrepair2->place_of_repair == 'Trade In') selected @endif>Trade In</option>
                         </select>
                     </div>
                     <div class="col-sm-1 ">
@@ -32,14 +32,14 @@
                 <div class="mb-3 row">
                     <label for="analisa" class="col-sm-3 col-form-label">Analisa</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="analisa" name="analisa" rows="5" placeholder="Input Analisa"></textarea>
+                        <textarea class="form-control" id="analisa" name="analisa" rows="5" placeholder="Input Analisa">{{ $progressrepair2->analisa }}</textarea>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
                     <label for="action" class="col-sm-3 col-form-label">Action</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="action" name="action" rows="5" placeholder="Input Analisa"></textarea>
+                        <textarea class="form-control" id="action" name="action" rows="5" placeholder="Input Action">{{ $progressrepair2->action }}</textarea>
                     </div>
                 </div>
 
@@ -48,8 +48,8 @@
                     <div class="col-sm-9">
                         <select class="form-select choices" id="judgement" name="judgement">
                             <option value="">Pilih ...</option>
-                            <option value="Continue Repair">Continue Repair</option>
-                            <option value="Scrap">Scrap</option>
+                            <option value="Continue Repair" @if($progressrepair2->judgement == 'Continue Repair') selected @endif>Continue Repair</option>
+                            <option value="Scrap" @if($progressrepair2->judgement == 'Scrap') selected @endif>Scrap</option>
                         </select>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                             name="pic_repair">
                             <option value="">Pilih ...</option>
                             @foreach ($user as $us)
-                                <option value="{{ $us->name }}">{{ $us->name }}
+                                <option value="{{ $us->name }}" @if($progressrepair2->pic_repair == $us->name) selected @endif>{{ $us->name }}
                                 </option>
                             @endforeach
                         </select>

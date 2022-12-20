@@ -15,6 +15,7 @@ use App\StandardPengecekan;
 use App\ItemStandard;
 
 use App\Http\Requests;
+use App\Progressrepair;
 
 class WaitingrepairController extends Controller
 {
@@ -69,7 +70,8 @@ class WaitingrepairController extends Controller
         $data['line'] = $line->name;
         $data['price'] = intval(preg_replace('/[^\d.]/', '', $request->price));
         Waitingrepair::create($data);
-        return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
+        // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
+        return redirect()->back()->with('success', 'Your task added successfully!');
     }
 
     /**
@@ -89,16 +91,27 @@ class WaitingrepairController extends Controller
         $price = $waitingrepair->price;
         $price = $waitingrepair->price;
         $tradeincost = $tradeinddisc * $price;
+        $progressrepair2 = Progressrepair::where('form_input_id', $waitingrepair->id)->first();
+
+        if ($progressrepair2 == null) {
+            $progressrepair2 = (object) ([
+                'place_of_repair' => '',
+                'analisa' => '',
+                'action' => '',
+                'pic_repair' => '',
+                'judgement' => ''
+            ]);
+        }
 
         // form 3
-        $progresspemakaian = Progresspemakaian::where('form_input_id', $id)->get();
-        $countid = Progresspemakaian::where('form_input_id', $id)->count();
+        $progresspemakaian = Progresspemakaian::where('form_input_id', $waitingrepair->id)->get();
+        $countid = Progresspemakaian::where('form_input_id', $waitingrepair->id)->count();
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();
         $ready = Progresspemakaian::where('status_part', '=', 'Ready')
-            ->where('form_input_id', $id)
+            ->where('form_input_id', $waitingrepair->id)
             ->count();
-        $countid = Progresspemakaian::where('form_input_id', $id)->count();
+        $countid = Progresspemakaian::where('form_input_id', $waitingrepair->id)->count();
 
         // form 4
         $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
@@ -128,6 +141,7 @@ class WaitingrepairController extends Controller
             'itemstandard'    => $itemstandard,
 
             'progressrepair'    => $progressrepair,
+            'progressrepair2' => $progressrepair2,
         ]);
     }
 
