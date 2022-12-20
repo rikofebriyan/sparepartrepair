@@ -13,7 +13,7 @@
                     <th scope="col">Standard</th>
                     <th scope="col">Actual</th>
                     <th scope="col">Judgement</th>
-                    <th scope="col">Action</th>
+                    {{-- <th scope="col">Action</th> --}}
                 </tr>
             </thead>
             <tbody>
