@@ -13,6 +13,7 @@
                 <div class="row gx-3">
                     <div class="col">
                         <div class="p-3 border">
+                            <input type="hidden" name="id" value="">
 
                             <div class="mb-3 row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Date Created</label>

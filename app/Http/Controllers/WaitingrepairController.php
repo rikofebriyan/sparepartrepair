@@ -15,6 +15,7 @@ use App\StandardPengecekan;
 use App\ItemStandard;
 
 use App\Http\Requests;
+use App\Machine;
 use App\Progressrepair;
 
 class WaitingrepairController extends Controller
@@ -58,6 +59,7 @@ class WaitingrepairController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         // validated input request
         $this->validate($request, [
             'problem' => 'required',
@@ -69,7 +71,13 @@ class WaitingrepairController extends Controller
         $data['section'] = $section->name;
         $data['line'] = $line->name;
         $data['price'] = intval(preg_replace('/[^\d.]/', '', $request->price));
-        Waitingrepair::create($data);
+
+        if ($request->get('id') != null) {
+            Waitingrepair::find($request->get('id'))->update($data);
+        } else {
+            Waitingrepair::create($data);
+        }
+
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->back()->with('success', 'Your task added successfully!');
     }
@@ -82,7 +90,6 @@ class WaitingrepairController extends Controller
      */
     public function show($id)
     {
-
         // form 2
         $subcont = Subcont::all();
         $user = User::all();
@@ -99,7 +106,25 @@ class WaitingrepairController extends Controller
                 'analisa' => '',
                 'action' => '',
                 'pic_repair' => '',
-                'judgement' => ''
+                'judgement' => '',
+                'plan_start_repair' => '',
+                'plan_finish_repair' => '',
+                'actual_start_repair' => '',
+                'actual_finish_repair' => '',
+                'total_time_repair' => '',
+                'labour_cost' => '',
+                'subcont_name' => '',
+                'judgement' => '',
+                'quotation' => '',
+                'subcont_cost' => '',
+                'lead_time' => '',
+                'time_period' => '',
+                'nomor_pp' => '',
+                'nomor_po' => '',
+                'plan_start_repair_subcont' => '',
+                'plan_finish_repair_subcont' => '',
+                'actual_start_repair_subcont' => '',
+                'actual_finish_repair_subcont' => '',
             ]);
         }
 
@@ -123,6 +148,16 @@ class WaitingrepairController extends Controller
         // form 5
         $progressrepair = $progresspemakaian->first();
 
+        // form 1
+        $sectionAll = Section::all();
+        $section = $sectionAll->where('name', $waitingrepair->section)->first();
+
+        $lineAll = Line::where('section_id', $section->id)->get();
+        $line = Line::where('name', $waitingrepair->line)->first();
+
+        $machineAll = Machine::where('line_id', $line->id)->get();
+        // $machine = Machine::where('name', $waitingrepair->machine)->first();
+
         return view('partrepair.progress', [
             'waitingrepair'    => $waitingrepair,
             'user'    => $user,
@@ -142,6 +177,10 @@ class WaitingrepairController extends Controller
 
             'progressrepair'    => $progressrepair,
             'progressrepair2' => $progressrepair2,
+
+            'section' => $sectionAll,
+            'line' => $lineAll,
+            'machine' => $machineAll,
         ]);
     }
 
