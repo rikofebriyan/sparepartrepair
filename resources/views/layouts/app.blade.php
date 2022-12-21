@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/toastify-js/src/toastify.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/frappe-gantt/dist/frappe-gantt.css') }}">
 
     {{-- choices --}}
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
