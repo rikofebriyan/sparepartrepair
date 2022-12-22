@@ -8,6 +8,7 @@ use App\StandardPengecekan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Progresstrial;
 
 class StandardpengecekanController extends Controller
 {
@@ -50,13 +51,30 @@ class StandardpengecekanController extends Controller
      */
     public function store(Request $request)
     {
+
         // validated input request
-        $this->validate($request, [
-            'standard_pengecekan' => 'required',
-        ]);
+        // $this->validate($request, [
+        //     'standard_pengecekan' => 'required',
+        // ]);
+        $data = [
+            'master_spare_part_id' => $request->master_spare_part_id,
+            'item_pengecekan_id' => $request->item_standard_id,
+            'operation' => $request->operation,
+            'standard_pengecekan_min' => $request->standard_pengecekan_min,
+            'standard_pengecekan_max' => $request->standard_pengecekan_max,
+            'unit_measurement' => $request->unit_measurement,
+        ];
 
         // create new task
-        StandardPengecekan::create($request->all());
+        StandardPengecekan::create($data);
+        Progresstrial::create([
+            'form_input_id' => $request->form_input_id,
+            'item_check_id' => $request->item_standard_id,
+            'operation' => $request->operation,
+            'standard_pengecekan_min' => $request->standard_pengecekan_min,
+            'standard_pengecekan_max' => $request->standard_pengecekan_max,
+            'unit_measurement' => $request->unit_measurement,
+        ]);
         return redirect()->back()->with('success', 'Your task added successfully!');
     }
 

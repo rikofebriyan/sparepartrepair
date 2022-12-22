@@ -17,7 +17,10 @@ class CreateProgresstrialsTable extends Migration
             $table->timestamps();
             $table->integer('form_input_id')->nullable();
             $table->integer('id_standard_pengecekan')->nullable();
-            $table->string('standard_pengecekan')->nullable();
+            $table->string('operation')->nullable();
+            $table->string('standard_pengecekan_min')->nullable();
+            $table->string('standard_pengecekan_max')->nullable();
+            $table->string('unit_measurement')->nullable();
             $table->string('actual_pengecekan')->nullable();
             $table->string('judgement')->nullable();
         });

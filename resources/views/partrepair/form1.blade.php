@@ -95,7 +95,7 @@
                             {{-- <input type="text" class="form-control" id="maker" name="maker" placeholder="maker"
                                 value="{{ $waitingrepair->maker }}" readonly> --}}
                             <select class="form-control" id="maker" name="maker">
-                                <option disabled>Maker ...</option>
+                                <option value="" selected>Maker ...</option>
                                 @foreach ($maker as $mak)
                                     <option value="{{ $mak->name }}"
                                         @if ($waitingrepair->maker == $mak->name) selected @endif>{{ $mak->name }}

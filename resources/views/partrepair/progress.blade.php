@@ -202,7 +202,7 @@
         </script>
     @endif
 
-    <script>
+    {{-- <script>
         for (let i = 0; i < 10; i++) {
             $(document).ready(function() {
                 $('#actual' + i).on('input', function() {
@@ -213,15 +213,120 @@
                     if (actual2 == standard2) {
                         // alert("ok");
                         $('#judge' + i).val('OK');
-                        $('#judgeok').show();
+                        // $('#judgeok').show();
                     } else if (actual >= standard) {
                         $('#judge' + i).val('OK');
-                        $('#judgeok').show();
+                        // $('#judgeok').show();
                     } else
-                        // $('#judge' + i).val('NG');
-                        $('#judgeok').hide();
+                        $('#judge' + i).val('NG');
+                    // $('#judgeok').hide();
                 });
             });
         }
+    </script> --}}
+
+    <script>
+        @foreach ($join as $joi)
+            $('#actual_pengecekan{{ $joi->id }}').on('input', function() {
+                var actual = $(this).val()
+                var standardMin = '{{ $joi->standard_pengecekan_min }}'
+                var standardMax = '{{ $joi->standard_pengecekan_max }}'
+                var operation = '{{ $joi->operation }}'
+
+                if (operation == 'Less Than') {
+                    if (actual < standardMax) {
+                        $('#judgement{{ $joi->id }}').val('OK')
+                    } else {
+                        $('#judgement{{ $joi->id }}').val('NG')
+                    }
+
+                    if (actual == '') {
+                        $('#judgement{{ $joi->id }}').val('')
+                    }
+
+                } else if (operation == 'Greater Than') {
+                    if (actual > standardMin) {
+                        $('#judgement{{ $joi->id }}').val('OK')
+                    } else {
+                        $('#judgement{{ $joi->id }}').val('NG')
+                    }
+
+                    if (actual == '') {
+                        $('#judgement{{ $joi->id }}').val('')
+                    }
+
+                } else if (operation == 'Between') {
+                    if (actual > standardMin && actual < standardMax) {
+                        $('#judgement{{ $joi->id }}').val('OK')
+                    } else {
+                        $('#judgement{{ $joi->id }}').val('NG')
+                    }
+
+                    if (actual == '') {
+                        $('#judgement{{ $joi->id }}').val('')
+                    }
+
+                } else if (operation == 'Equal') {
+                    if (actual == standardMin) {
+                        $('#judgement{{ $joi->id }}').val('OK')
+                    } else {
+                        $('#judgement{{ $joi->id }}').val('NG')
+                    }
+
+                    if (actual == '') {
+                        $('#judgement{{ $joi->id }}').val('')
+                    }
+
+                } else {
+                    alert('Operation Miss')
+                    $('#judgement{{ $joi->id }}').val('')
+
+                }
+
+            });
+        @endforeach
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#operation').on('change', function() {
+                var operation = $('#operation option:selected').val()
+
+                if (operation == 'Between') {
+                    $('#standard_pengecekan_min_div').show()
+                    $('#standard_pengecekan_max_div').show()
+                } else if (operation == 'Less Than') {
+                    $('#standard_pengecekan_min_div').hide()
+                    $('#standard_pengecekan_max_div').show()
+                } else if (operation == 'Greater Than') {
+                    $('#standard_pengecekan_min_div').show()
+                    $('#standard_pengecekan_max_div').hide()
+                } else if (operation == 'Equal') {
+                    $('#standard_pengecekan_min_div').show()
+                    $('#standard_pengecekan_max_div').hide()
+                } else {
+                    $('#standard_pengecekan_min_div').hide()
+                    $('#standard_pengecekan_max_div').hide()
+                }
+            });
+
+            $
+        });
+
+        $(document).ready(function() {
+            $('#ya').click(function() {
+                $('#field3').css('display', 'flex');
+                $('#fieldrepair').addClass("d-none");
+                $('#fieldsealkit').removeClass("disabled");
+            });
+        });
+
+        $(document).ready(function() {
+            $('#tidak').click(function() {
+                $('#field3').css('display', 'none');
+                $('#fieldrepair').removeClass("d-none");
+                $('#fieldsealkit').addClass("disabled");
+            });
+        });
     </script>
 @endsection

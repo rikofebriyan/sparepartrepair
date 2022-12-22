@@ -16,6 +16,23 @@ class CreateFinishrepairsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('form_input_id');
+            $table->integer('progressrepair_id');
+            $table->string('f_reg_sp');
+            $table->dateTime('f_date');
+            $table->string('f_item_name');
+            $table->string('f_item_type');
+            $table->string('f_maker');
+            $table->string('f_price');
+            $table->string('f_nama_pic');
+            $table->string('f_place_of_repair');
+            $table->text('f_analisa');
+            $table->text('f_action');
+            $table->string('f_subcont_cost');
+            $table->string('f_labour_cost');
+            $table->string('f_seal_kit_cost');
+            $table->string('f_total_cost_repair');
+            $table->string('f_total_cost_saving');
+
             $table->string('code_part_repair');
             $table->dateTime('delivery_date');
             $table->string('pic_delivery');

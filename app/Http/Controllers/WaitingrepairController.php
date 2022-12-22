@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Finishrepair;
 use App\User;
 use App\Subcont;
 use App\Line;
@@ -17,6 +18,7 @@ use App\ItemStandard;
 use App\Http\Requests;
 use App\Machine;
 use App\Progressrepair;
+use App\Progresstrial;
 
 class WaitingrepairController extends Controller
 {
@@ -59,7 +61,6 @@ class WaitingrepairController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         // validated input request
         $this->validate($request, [
             'problem' => 'required',
@@ -139,14 +140,57 @@ class WaitingrepairController extends Controller
         $countid = Progresspemakaian::where('form_input_id', $waitingrepair->id)->count();
 
         // form 4
-        $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_standard_id', '=', 'item_standards.id')
-            ->select('standard_pengecekans.*', 'item_standards.item_standard')
-            ->where('standard_pengecekans.master_spare_part_id', $waitingrepair->item_id)
+        // $actual = Progresstrial::where('form_input_id', $waitingrepair->id)->count();
+
+        // if ($actual > 0) {
+        //     $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
+        //         ->join('progresstrials', 'progresstrials.standard_pengecekan_id', '=', 'standard_pengecekans.id')
+        //         ->where('standard_pengecekans.master_spare_part_id', $waitingrepair->item_id)
+        //         // ->select('standard_pengecekans.*', 'item_standards.item_standard', 'progresstrials.*')
+        //         ->select('standard_pengecekans.*', 'item_standards.item_standard', 'progresstrials.actual_pengecekan', 'progresstrials.judgement')
+        //         ->get();
+        // } else {
+        //     $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
+        //         ->where('standard_pengecekans.master_spare_part_id', $waitingrepair->item_id)
+        //         ->select('standard_pengecekans.*', 'item_standards.item_standard')
+        //         ->get();
+        // }
+        $join = Progresstrial::where('form_input_id', $waitingrepair->id)
+            ->join('item_standards', 'item_standards.id', '=', 'progresstrials.item_check_id')
+            ->select('progresstrials.*', 'item_standards.item_standard')
             ->get();
+
+
         $itemstandard = ItemStandard::all();
 
         // form 5
         $progressrepair = $progresspemakaian->first();
+        $formFinish_waitingrepair = Waitingrepair::where('id', $id)->first();
+        $formFinish_progressrepair = Progressrepair::where('form_input_id', $formFinish_waitingrepair->id)->first();
+        $formFinish_progresspemakaian = Progresspemakaian::where('form_input_id', $formFinish_waitingrepair->id)->get();
+        $formFinish_progresstrial = Progresstrial::join('item_standards', 'progresstrials.item_check_id', '=', 'item_standards.id')
+            ->where('form_input_id', $formFinish_waitingrepair->id)
+            ->select('progresstrials.*', 'item_standards.item_standard')
+            ->get();
+
+        if($formFinish_progressrepair == null) {
+            $formFinish_progressrepair = (object) [
+                'place_of_repair' => '',
+                'subcont_cost' => 0,
+                'labour_cost' => 0,
+                'analisa' => '',
+                'action' => '',
+            ];
+        }
+
+        $formFinish_totalFinish = Finishrepair::where('form_input_id', $formFinish_waitingrepair->id)->first();
+        if($formFinish_totalFinish == null) {
+            $formFinish_totalFinish = (object) [
+                'code_part_repair' => '',
+                'delivery_date' => '',
+                'pic_delivery' => '',
+            ];
+        }
 
         // form 1
         $sectionAll = Section::all();
@@ -177,6 +221,11 @@ class WaitingrepairController extends Controller
 
             'progressrepair'    => $progressrepair,
             'progressrepair2' => $progressrepair2,
+            'formFinish_waitingrepair' => $formFinish_waitingrepair,
+            'formFinish_progressrepair' => $formFinish_progressrepair,
+            'formFinish_progresspemakaian' => $formFinish_progresspemakaian,
+            'formFinish_progresstrial' => $formFinish_progresstrial,
+            'formFinish_totalFinish' => $formFinish_totalFinish,
 
             'section' => $sectionAll,
             'line' => $lineAll,

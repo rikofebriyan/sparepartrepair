@@ -13,13 +13,13 @@
         <center>APAKAH PART REPAIR BUTUH ORDER SEAL KIT?</center>
         <center>
             <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="radio1" id="ya" value="" checked>
+                <input class="form-check-input" type="radio" name="radio1" id="ya" value="" @if ($countid > 0) checked @endif>
                 <label class="form-check-label" for="flexRadioDefault1">
                     YA
                 </label>
             </div>
             <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="radio1" id="tidak" value="">
+                <input class="form-check-input" type="radio" name="radio1" id="tidak" value="" @if ($countid == 0) checked @endif>
                 <label class="form-check-label" for="flexRadioDefault2">
                     TIDAK
                 </label>
@@ -31,12 +31,20 @@
             <button id="fieldsealkit" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">TAMBAHKAN SEAL KIT</button>
         </div>
-        <div id="fieldrepair" class="d-grid gap-2 col  d-none">
-            <button class="btn btn-primary">REPAIR & TRIAL
-                >>></button>
+        <div id="fieldrepair" class="d-grid gap-2 col @if ($countid == 0) d-block @else d-none @endif">
+            {{-- <button class="btn btn-primary">REPAIR & TRIAL
+                >>></button> --}}
+                <a href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
+                    class="btn btn-success">REPAIR & TRIAL
+                    >>></a>
         </div>
 
         @if ($countid == 0)
+            {{-- <div class="d-grid gap-2 col">
+                <a href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
+                    class="btn btn-success">REPAIR & TRIAL
+                    >>></a>
+            </div> --}}
         @elseif ($countid > $ready)
             <div class="d-grid gap-2 col">
                 <button class="btn btn-primary disabled">REPAIR & TRIAL
@@ -44,14 +52,14 @@
             </div>
         @elseif ($countid == $ready)
             <div class="d-grid gap-2 col">
-                <a href="{{ route('partrepair.progresspemakaian.show', $progressrepair->form_input_id) }}"
+                <a href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
                     class="btn btn-success">REPAIR & TRIAL
                     >>></a>
             </div>
         @endif
     </div>
 
-    <div id="field3" class="mb-3">
+    <div id="field3" class="mb-3" @if ($countid == 0) style="display: none;" @endif>
         <table id="myTable" class="table table-striped nowrap overflow-auto display">
             <thead>
                 <tr>
@@ -101,7 +109,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
+                        <td class="text-center text-mute" colspan="13">Data post tidak tersedia</td>
                     </tr>
                 @endforelse
             </tbody>
@@ -140,7 +148,8 @@
                                                     {{ $req->item_name }} |
                                                     {{ $req->description }}
                                                 </option> --}}
-                                                <option value="{{ $req->code_item_description }}">{{ $req->item_code }} |
+                                                <option value="{{ $req->code_item_description }}">
+                                                    {{ $req->item_code }} |
                                                     {{ $req->item_name }} | {{ $req->description }}
                                                 </option>
                                             @endforeach
@@ -148,8 +157,8 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="item_code2" name="item_code"
                                                 placeholder="Item Code" readonly>
-                                            <input type="text" class="form-control" id="item_name2"
-                                                name="item_name" placeholder="Item Name" readonly>
+                                            <input type="text" class="form-control" id="item_name2" name="item_name"
+                                                placeholder="Item Name" readonly>
                                         </div>
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="description2"

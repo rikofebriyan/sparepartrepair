@@ -16,8 +16,11 @@ class CreateStandardPengecekansTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('master_spare_part_id');
-            $table->integer('item_standard_id');
-            $table->string('standard_pengecekan');
+            $table->integer('item_pengecekan_id');
+            $table->string('operation');
+            $table->string('standard_pengecekan_min');
+            $table->string('standard_pengecekan_max');
+            $table->string('unit_measurement');
         });
     }
 
