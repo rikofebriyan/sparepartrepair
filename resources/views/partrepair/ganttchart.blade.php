@@ -173,13 +173,8 @@
         jQuery(document).ready(function() {
             jQuery('#hideshow').on('click', function(event) {
                 jQuery('#asu').toggle('hide');
-                // alert('ok');
             });
         });
-
-        // const d = 'asu';
-        // document.getElementById("demo").innerHTML = d;
-        // alert(d);
     </script>
 
     <script>
@@ -228,7 +223,7 @@
                         // console.log(config.w.globals.labels[config.dataPointIndex]);
                         // var x = console.log(config.w.globals.labels[config.dataPointIndex]);
                         // var y = console.log(config);
-                        console.log(data[config.dataPointIndex]);
+                        // console.log(data[config.dataPointIndex]);
                         $('#reg_sp').text(data[config.dataPointIndex].reg_sp);
                         $('#created_at').text(data[config.dataPointIndex].created_at);
                         $('#updated_at').text(data[config.dataPointIndex].updated_at);
