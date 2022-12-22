@@ -26,13 +26,14 @@ class CreateProgressrepairsTable extends Migration
             $table->dateTime('actual_finish_repair')->nullable();
             $table->float('total_time_repair')->nullable();
             $table->integer('labour_cost')->nullable();
-            $table->integer('tradein')->nullable();
-            $table->string('judgement')->nullable();
             $table->string('subcont_name')->nullable();
+            $table->string('judgement')->nullable();
             $table->string('quotation')->nullable();
+            $table->integer('subcont_cost')->nullable();
+            $table->integer('lead_time')->nullable();
+            $table->string('time_period')->nullable();
             $table->string('nomor_pp')->nullable();
             $table->string('nomor_po')->nullable();
-            $table->dateTime('estimasi_selesai')->nullable();
         });
     }
 

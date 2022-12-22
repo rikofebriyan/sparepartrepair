@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Maker;
+use App\Subcont;
 
 class InfoController extends Controller
 {
@@ -57,9 +58,10 @@ class InfoController extends Controller
     public function getlabour(Request $request)
     {
         $labour_id = $request->get('labour_id');
-        $data = User::where('name', $labour_id)->get();
-        $withoutbrackets = trim($data, '[]');
-        echo $withoutbrackets;
+        $data = User::where('name', $labour_id)->first();
+        // $withoutbrackets = trim($data, '[]');
+        // echo $withoutbrackets;
+        return response()->json($data);
     }
 
 
@@ -107,5 +109,11 @@ class InfoController extends Controller
             4 => 'Pneumatic',
         ];
         return response()->json($typeOfPart);
+    }
+
+    public function getSubcont()
+    {
+        $subcont = Subcont::all();
+        return response()->json($subcont);
     }
 }

@@ -15,111 +15,213 @@
                     <div class="list-group list-group-horizontal-sm my-1 py-0 text-center" role="tablist">
                         <a class="list-group-item list-group-item-action " id="list-sunday-list" data-bs-toggle="list"
                             href="#list-sunday" role="tab">Request Form</a>
-                        <a class="list-group-item list-group-item-action @if($waitingrepair->progress == 'Waiting') active  @endif" id="list-monday-list" data-bs-toggle="list"
-                            href="#list-monday" role="tab">Progress Form</a>
-                        <a class="list-group-item list-group-item-action @if($waitingrepair->progress == 'On Progress') active  @endif" id="list-tuesday-list" data-bs-toggle="list"
-                            href="#list-tuesday" role="tab">Order Part Seal Kit</a>
-                        <a class="list-group-item list-group-item-action @if($waitingrepair->progress == 'Seal Kit') active  @endif" id="list-4-list" data-bs-toggle="list"
-                            href="#list-4" role="tab">Trial</a>
-                        <a class="list-group-item list-group-item-action @if($waitingrepair->progress == 'Trial') active  @endif" id="list-5-list" data-bs-toggle="list"
-                            href="#list-5" role="tab">Finish Form</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Waiting') active @endif"
+                            id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress Form</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'On Progress') active @endif"
+                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab">Order Part Seal
+                            Kit</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif"
+                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab">Trial</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif"
+                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab">Finish Form</a>
                     </div>
-                    <div class="tab-content text-justify">
+                    <div class="tab-content text-justify py-2">
                         <div class="tab-pane fade" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
                             @include('partrepair.form1')
                         </div>
-                        <div class="tab-pane fade @if($waitingrepair->progress == 'Waiting') show active  @endif" id="list-monday" role="tabpanel"
-                            aria-labelledby="list-monday-list">
+                        <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-monday"
+                            role="tabpanel" aria-labelledby="list-monday-list">
                             @include('partrepair.form2')
                         </div>
-                        <div class="tab-pane fade @if($waitingrepair->progress == 'On Progress') show active  @endif" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
+                        <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-tuesday"
+                            role="tabpanel" aria-labelledby="list-tuesday-list">
                             @include('partrepair.form3')
                         </div>
-                        <div class="tab-pane fade @if($waitingrepair->progress == 'Seal Kit') show active  @endif" id="list-4" role="tabpanel" aria-labelledby="list-4-list">
+                        <div class="tab-pane fade @if ($waitingrepair->progress == 'Seal Kit') show active @endif" id="list-4"
+                            role="tabpanel" aria-labelledby="list-4-list">
                             @include('partrepair.form4')
                         </div>
-                        <div class="tab-pane fade @if($waitingrepair->progress == 'Trial') show active  @endif" id="list-5" role="tabpanel" aria-labelledby="list-5-list">
+                        <div class="tab-pane fade @if ($waitingrepair->progress == 'Trial') show active @endif" id="list-5"
+                            role="tabpanel" aria-labelledby="list-5-list">
                             @include('partrepair.form5')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
-    @section('script')
-        <script type="text/javascript">
-            function isi_otomatis() {
-                var labour_id = $("#isiotomatis").val();
-                $.ajax({
-                    url: '/getlabour',
-                    data: "labour_id=" + labour_id,
-                    success: function(data) {
-                        var json = data,
-                            obj = JSON.parse(json);
-                        $('#labour_cost').val(obj.labour_cost);
+    </div>
+@endsection
+@section('script')
+    <script type="text/javascript">
+        function isi_otomatis() {
+            var labour_id = $("#isiotomatis").val();
+            var total_time_repair = $('#selisih').val()
+            $.ajax({
+                type: 'GET',
+                url: '/getlabour',
+                data: "labour_id=" + labour_id,
+                dataType: 'JSON',
+                success: function(data) {
+                    console.log(data)
+                    if (total_time_repair > 0 && data.labour_cost > 0) {
+                        labourCost = total_time_repair * data.labour_cost
+
+                        $('#labour_cost').val(labourCost);
                     }
-                });
+                    // var json = data,
+                    //     obj = JSON.parse(json);
+                    // $('#labour_cost').val(obj.labour_cost);
+                }
+            });
+        }
+
+        function isi_otomatis_part() {
+            var item_name = $("#isiotomatis2").val();
+            $.ajax({
+                type: 'GET',
+                url: '/ajax/?item_name=' + item_name,
+                dataType: 'JSON',
+                success: function(data) {
+                    $('#item_name2').val(data.item_name);
+                    $('#item_code2').val(data.item_code);
+                    $('#description2').val(data.description);
+                    $('#price2').val(data.price);
+                }
+            });
+        }
+
+        function isi_otomatis_subcont() {
+            $.ajax({
+                type: 'GET',
+                url: '/getSubcont',
+                dataType: 'JSON',
+                success: function(data) {
+                    $('#subcont_name').empty()
+                    $('#subcont_name').append(`<option value="" selected>Pilih ...</option>`)
+                    $.each(data, function(id, value) {
+                        $('#subcont_name').append(`<option value="${value.id}">${value.name}</option>`)
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(function() {
+            $("#datepicker2").datepicker();
+            $("#datepicker").datepicker();
+        });
+
+        window.onload = function() {
+            $('#datepicker2').on('change', function() {
+                var dob = new Date(datepicker.value);
+                var today = new Date(datepicker2.value);
+                var age = ((today - dob) / (60 * 60 * 1000)).toFixed(1);
+                $('#selisih').val(age);
+
+                isi_otomatis()
+            });
+        }
+    </script>
+
+
+    <script>
+        $('#showsubcont').change(function() {
+            var val = $(this).val();
+            // var tradeincost = <?php echo $tradeincost; ?>;
+            if (val === "Subcont") {
+                $('#subcont').show()
+                $('#inHouse').hide()
+
+                $('#plan_start_repair').val('')
+                $('#plan_finish_repair').val('')
+                $('#datepicker').val('')
+                $('#datepicker2').val('')
+                $('#selisih').val('')
+                $('#labour_cost').val('')
+            } else if (val === "Trade In") {
+                $('#subcont').show()
+                $('#inHouse').hide()
+
+                $('#plan_start_repair').val('')
+                $('#plan_finish_repair').val('')
+                $('#datepicker').val('')
+                $('#datepicker2').val('')
+                $('#selisih').val('')
+                $('#labour_cost').val('')
+            } else {
+                $('#subcont').hide()
+                $('#inHouse').show()
+
+                $('#quotation').val('')
+                $('#subcont_cost').val('')
+                $('#lead_time').val('')
+                $('#nomor_pp').val('')
+                $('#nomor_po').val('')
+                $('#plan_start_repair_subcont').val('')
+                $('#plan_finish_repair_subcont').val('')
+                $('#actual_start_repair_subcont').val('')
+                $('#actual_finish_repair_subcont').val('')
+
+                $('#timePeriod').empty()
+                $('#timePeriod').append(`<option value="" selected>Pilih ...</option>`)
+                $('#timePeriod').append(`<option value="Week">Week</option>`)
+                $('#timePeriod').append(`<option value="Month">Month</option>`)
+
+                isi_otomatis_subcont()
             }
 
-            function isi_otomatis_part() {
-                var item_name = $("#isiotomatis2").val();
-                $.ajax({
-                    type: 'GET',
-                    url: '/ajax/?item_name=' + item_name,
-                    dataType: 'JSON',
-                    success: function(data) {
-                        $('#item_name2').val(data.item_name);
-                        $('#item_code2').val(data.item_code);
-                        $('#description2').val(data.description);
-                        $('#price2').val(data.price);
-                    }
+        });
+    </script>
+
+    <script>
+        $('#price2, #qty2').change(function() {
+            var price2 = parseFloat($('#price2').val()) || 0;
+            var qty2 = parseFloat($('#qty2').val()) || 0;
+
+            $('#total_price').val(price2 * qty2);
+        });
+        $('#price2, #qty2').keyup(function() {
+            var price2 = parseFloat($('#price2').val()) || 0;
+            var qty2 = parseFloat($('#qty2').val()) || 0;
+
+            $('#total_price').val(price2 * qty2);
+        });
+    </script>
+
+    @if ($message = Session::get('success'))
+        <script>
+            Toastify({
+                text: "{{ $message }}",
+                duration: 2500,
+                close: true,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#4fbe87",
+            }).showToast()
+        </script>
+    @endif
+
+    <script>
+        for (let i = 0; i < 10; i++) {
+            $(document).ready(function() {
+                $('#actual' + i).on('input', function() {
+                    var actual = Number($(this).val());
+                    var actual2 = $(this).val();
+                    var standard = Number($('#standard' + i).val());
+                    var standard2 = $('#standard' + i).val();
+                    if (actual2 == standard2) {
+                        // alert("ok");
+                        $('#judge' + i).val('OK');
+                        $('#judgeok').show();
+                    } else if (actual >= standard) {
+                        $('#judge' + i).val('OK');
+                        $('#judgeok').show();
+                    } else
+                        // $('#judge' + i).val('NG');
+                        $('#judgeok').hide();
                 });
-            }
-        </script>
-
-        <script>
-            $(function() {
-                $("#datepicker2").datepicker();
-                $("#datepicker").datepicker();
             });
-
-            window.onload = function() {
-                $('#datepicker2').on('change', function() {
-                    var dob = new Date(datepicker.value);
-                    var today = new Date(datepicker2.value);
-                    var age = ((today - dob) / (60 * 60 * 1000)).toFixed(1);
-                    $('#selisih').val(age);
-                });
-            }
-        </script>
-
-
-        <script>
-            $('#showsubcont').change(function() {
-                var val = $(this).val();
-                var tradeincost = <?php echo $tradeincost; ?>;
-                if (val === "Subcont") {
-                    $('#subcont').show();
-                } else if (val === "Trade In")
-                    $('#tradein').val(tradeincost);
-                else
-                    $('#subcont').hide();
-
-            });
-        </script>
-
-        <script>
-            $('#price2, #qty2').change(function() {
-                var price2 = parseFloat($('#price2').val()) || 0;
-                var qty2 = parseFloat($('#qty2').val()) || 0;
-
-                $('#total_price').val(price2 * qty2);
-            });
-            $('#price2, #qty2').keyup(function() {
-                var price2 = parseFloat($('#price2').val()) || 0;
-                var qty2 = parseFloat($('#qty2').val()) || 0;
-
-                $('#total_price').val(price2 * qty2);
-            });
-        </script>
-    @endsection
+        }
+    </script>
+@endsection

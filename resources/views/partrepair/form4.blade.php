@@ -1,6 +1,6 @@
 <div class="container-fluid justify-content-center py-0">
     <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
+        data-bs-target="#modalAddPengecekan">
         Add Standard Pengecekan
     </button>
     <div class="table-responsive-sm">
@@ -104,7 +104,7 @@
             </tbody>
         </table>
 
-        <button id="judgeok" type="submit" class="btn btn-md btn-primary" style="display: none">Save</button>
+        <button id="judgeok" type="submit" class="btn btn-md btn-primary">Save</button>
         {!! Form::close() !!}
     </div>
 </div>
@@ -113,11 +113,11 @@
 <!-- Modal -->
 
 {{ Form::open(['route' => 'matrix.standard_pengecekan.store', 'method' => 'POST']) }}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalAddPengecekan" tabindex="-1" aria-labelledby="modalAddPengecekanLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                <h1 class="modal-title fs-5" id="modalAddPengecekanLabel">Add New Section</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

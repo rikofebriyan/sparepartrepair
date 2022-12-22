@@ -57,29 +57,64 @@ class ProgressrepairController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($data);
+        // dd($request);
         // validated input request
-        $this->validate($request, [
-            'pic_repair' => 'required',
-        ]);
-
-        // Progressrepair::create($request->all());
+        // $this->validate($request, [
+        //     'place_of_repair' => 'required',
+        //     'analisa' => 'required',
+        //     'action' => 'required',
+        //     'judgement' => 'required',
+        //     'pic_repair' => 'required',
+        //     'plan_start_repair' => 'required',
+        //     'plan_finish_repair' => 'required',
+        // ]);
 
         $data = $request->all();
-        $data['plan_start_repair'] = Carbon::parse($request->plan_start_repair)->format('Y-m-d H:i:s');
-        $data['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair)->format('Y-m-d H:i:s');
-        $data['actual_start_repair'] = Carbon::parse($request->actual_start_repair)->format('Y-m-d H:i:s');
-        $data['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair)->format('Y-m-d H:i:s');
-        $data['estimasi_selesai'] = Carbon::parse($request->estimasi_selesai)->format('Y-m-d H:i:s');
-        Progressrepair::create($data);
+        $submit['form_input_id'] = $data['form_input_id'];
+        $submit['place_of_repair'] = $data['place_of_repair'];
+        $submit['analisa'] = $data['analisa'];
+        $submit['action'] = $data['action'];
+        $submit['judgement'] = $data['judgement'];
+        $submit['pic_repair'] = $data['pic_repair'];
+        $submit['plan_start_repair'] = $data['plan_start_repair'];
+        $submit['plan_finish_repair'] = $data['plan_finish_repair'];
+        $submit['actual_start_repair'] = $data['actual_start_repair'];
+        $submit['actual_finish_repair'] = $data['actual_finish_repair'];
+        $submit['total_time_repair'] = $data['total_time_repair'];
+        $submit['labour_cost'] =  intval(preg_replace('/[^\d.]/', '', $data['labour_cost']));
+        $submit['subcont_name'] = $data['subcont_name'];
+        $submit['quotation'] = $data['quotation'];
+        $submit['subcont_cost'] = $data['subcont_cost'];
+        $submit['lead_time'] = $data['lead_time'];
+        $submit['time_period'] = $data['time_period'];
+        $submit['nomor_pp'] = $data['nomor_pp'];
+        $submit['nomor_po'] = $data['nomor_po'];
+
+        if ($request->place_of_repair == "In House") {
+            $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair)->format('Y-m-d H:i:s');
+            $submit['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair)->format('Y-m-d H:i:s');
+            $submit['actual_start_repair'] = Carbon::parse($request->actual_start_repair)->format('Y-m-d H:i:s');
+            $submit['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair)->format('Y-m-d H:i:s');
+        } else  {
+            $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair_subcont)->format('Y-m-d H:i:s');
+            $submit['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair_subcont)->format('Y-m-d H:i:s');
+            $submit['actual_start_repair'] = Carbon::parse($request->actual_start_repair_subcont)->format('Y-m-d H:i:s');
+            $submit['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair_subcont)->format('Y-m-d H:i:s');
+        }
+
+        $query = Progressrepair::where('form_input_id', $request->form_input_id)->first();
+        // dd($query);
+        if ($query != null) {
+            // dd('ada');
+            Progressrepair::where('form_input_id', $request->form_input_id)->update($submit);
+        } else {
+            // dd('kosong');
+            Progressrepair::create($submit);
+        }
 
         $request2 = Waitingrepair::find($request->form_input_id);
         $request2->progress = 'On Progress';
         $request2->save();
-        
-        // dd($request2);
-
 
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->back()->with('success', 'Your task added successfully!');
