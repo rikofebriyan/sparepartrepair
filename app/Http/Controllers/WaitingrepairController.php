@@ -175,6 +175,7 @@ class WaitingrepairController extends Controller
 
         if($formFinish_progressrepair == null) {
             $formFinish_progressrepair = (object) [
+                'id' => '',
                 'place_of_repair' => '',
                 'subcont_cost' => 0,
                 'labour_cost' => 0,
@@ -201,7 +202,7 @@ class WaitingrepairController extends Controller
 
         $machineAll = Machine::where('line_id', $line->id)->get();
         // $machine = Machine::where('name', $waitingrepair->machine)->first();
-
+        // dd($waitingrepair);
         return view('partrepair.progress', [
             'waitingrepair'    => $waitingrepair,
             'user'    => $user,
