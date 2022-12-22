@@ -89,7 +89,7 @@
 
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Cost</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="created_at"></p>
+                    <p class="col-sm-9 align-items-center d-flex mb-0" id="price"></p>
                 </div>
 
             </div>
