@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="card col">
+    <div class="card border text-center mb-2">
+        <h3 class="m-2">GANTT CHART SCHEDULE REPAIR</h3>
+    </div>
+
+    <div class="row m-1">
+        <div class="card col border">
             <div id="gantt">
             </div>
         </div>
@@ -22,11 +26,13 @@
 
                 <hr class="m-2">
 
+                {{-- Name: <input type="text" id="testing" value="Mickey"> --}}
+                {{-- <p id="testing"></p> --}}
+
+
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">No. Ticket</label>
-                    <div class="col-sm-9 align-items-center d-flex">
-                        EW02140215
-                    </div>
+                    <p class="col-sm-9 align-items-center d-flex mb-0" id="testing"></p>
                 </div>
 
                 <div class="row">
@@ -98,63 +104,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <div class="page-content">
-            <section class="row my-4">
-                <div class="col-12 col-lg-10">
-                    <div class="row">
-                        <div class="page-heading d-flex justify-content-between">
-                            <div>
-                                <h3>On Progress Repair</h3>
-                            </div>
-                            <div>
-                                <input type="month" class="form-control fw-bold" name="filter_month" id="filter_month"
-                                    value="1989-11">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="page-heading">
-                                <h3>Graph</h3>
-                            </div>
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div id="chart-qty-repair">
-                                            <apexchart type="bar" height="350" :options="chartOptions"
-                                                :series="series"></apexchart>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div id="chart-cost-saving"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-            </section>
-        </div> --}}
 @endsection
 
 @section('script')
@@ -224,6 +173,8 @@
         gantt.change_view_mode('Day') // Quarter Day, Half Day, Day, Week, Month 
     </script> --}}
 
+
+
     <script>
         jQuery(document).ready(function() {
             jQuery('#hideshow').on('click', function(event) {
@@ -238,6 +189,8 @@
     </script>
 
     <script>
+        var data =
+            <?php echo json_encode($data); ?>;
         var options = {
             series: [{
                     name: 'Plan',
@@ -268,13 +221,19 @@
                 }
             ],
             chart: {
-                height: 600,
+                height: 1000,
                 type: 'rangeBar',
                 offsetY: '15',
                 events: {
                     dataPointSelection: function(event, chartContext, config) {
                         $('#asu').show();
-                        console.log(config.w.globals.labels[config.dataPointIndex]);
+                        // console.log(config.w.globals.labels[config.dataPointIndex]);
+                        // var x = console.log(config.w.globals.labels[config.dataPointIndex]);
+                        // var y = console.log(config);
+                        console.log(data[config.dataPointIndex].y);
+                        document.getElementById("testing").innerHTML = data[config.dataPointIndex].x;
+                        // $('#testing').val('OK');
+                        // document.write(data[0]);
                     }
                 }
             },
@@ -314,7 +273,23 @@
             xaxis: {
                 type: 'datetime',
                 position: 'top',
-            }
+            },
+            // tooltip: {
+            //     custom: function({
+            //         series,
+            //         seriesIndex,
+            //         dataPointIndex,
+            //         w
+            //     }) {
+            //         let title = w.globals.tooltip.tooltipTitle.outerHTML;
+            //         let items = "asdasdasd";
+            //         w.globals.tooltip.ttItems.forEach(x => {
+            //             items = items + x.outerHTML
+
+            //         })
+            //         return title + items;
+            //     }
+            // }
         };
 
         var chart = new ApexCharts(document.querySelector("#gantt"), options);

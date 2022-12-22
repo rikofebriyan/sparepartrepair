@@ -25,7 +25,7 @@ class GanttchartController extends Controller
      */
     public function index(Request $request)
     {
-        
+        $waitingrepair = Waitingrepair::all();
         $tester = DB::table('progressrepairs')
             ->whereMonth('created_at', '=', Carbon::now()->format('m'))
             ->whereYear('created_at', '=', Carbon::now()->format('Y'))
@@ -46,7 +46,7 @@ class GanttchartController extends Controller
                 'p' => '2019-03-07'
                         ];
         }
-        // dd($data);
+        // dd($data[0]);
 
 
         $dateNow = Carbon::now();
@@ -102,6 +102,7 @@ class GanttchartController extends Controller
             'date' => Carbon::now()->format('Y-m'),
             'counting' => $counting,
             'data' => $data,
+            'waitingrepair' => $waitingrepair,
         ]);
     }
 
