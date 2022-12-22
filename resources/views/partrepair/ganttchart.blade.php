@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
+@endsection
 @section('content')
     <div style="position: absolute; bottom: 15px; right: 10px; font-size: 12px">
         <a href="https://codepen.io/cjl750/pen/mXbMyo" target="_blank">based off of version 3</a>

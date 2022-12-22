@@ -16,7 +16,10 @@
 
     {{-- choices --}}
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
+
+    <div id="app">
+        @yield('css')
+    </div>
 
 </head>
 <script src="{{ asset('assets/js/initTheme.js') }}"></script>
