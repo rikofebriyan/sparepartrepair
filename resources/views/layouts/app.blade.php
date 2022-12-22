@@ -13,10 +13,10 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/extensions/toastify-js/src/toastify.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/extensions/frappe-gantt/dist/frappe-gantt.css') }}">
 
     {{-- choices --}}
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
 
 </head>
 <script src="{{ asset('assets/js/initTheme.js') }}"></script>
@@ -198,6 +198,12 @@
 
                                 </div>
                             </div>
+                        </li>
+
+                        <li class="menu-item  ">
+                            <a target="_blank" href="{{ asset('partrepair/ganttchart') }}" class='menu-link'>
+                                <span><i class="bi bi-stack"></i> Schedule Chart</span>
+                            </a>
                         </li>
 
                         <li class="menu-item  ">

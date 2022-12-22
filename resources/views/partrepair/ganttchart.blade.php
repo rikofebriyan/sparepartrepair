@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <div style="position: absolute; bottom: 15px; right: 10px; font-size: 12px">
+        <a href="https://codepen.io/cjl750/pen/mXbMyo" target="_blank">based off of version 3</a>
+    </div>
+
+
+
     <div class="card border text-center mb-2">
         <h3 class="m-2">GANTT CHART SCHEDULE REPAIR</h3>
     </div>
@@ -33,6 +39,42 @@
                 </div>
 
                 <hr class="m-2">
+
+                <div class="card">
+                    <div class="flex-parent">
+                        <div class="input-flex-container">
+                            <input type="radio" name="timeline-dot" data-description="1910">
+                            <div class="dot-info" data-description="1910">
+                                <span class="year">Waiting</span>
+                            </div>
+                            <input type="radio" name="timeline-dot" data-description="1920">
+                            <div class="dot-info" data-description="1920">
+                                <span class="year">Progress</span>
+                            </div>
+                            <input type="radio" name="timeline-dot" data-description="1930" checked>
+                            <div class="dot-info" data-description="1930">
+                                <span class="year">Order</span>
+                            </div>
+                            <input type="radio" name="timeline-dot" data-description="1940">
+                            <div class="dot-info" data-description="1940">
+                                <span class="year">Trial</span>
+                            </div>
+                            <input type="radio" name="timeline-dot" data-description="1950">
+                            <div class="dot-info" data-description="1950">
+                                <span class="year">Finish</span>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
 
                 {{-- Name: <input type="text" id="testing" value="Mickey"> --}}
                 {{-- <p id="testing"></p> --}}
