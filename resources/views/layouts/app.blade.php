@@ -17,9 +17,7 @@
     {{-- choices --}}
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
 
-    <div id="app">
-        @yield('css')
-    </div>
+    @yield('css')
 
 </head>
 <script src="{{ asset('assets/js/initTheme.js') }}"></script>
@@ -204,7 +202,7 @@
                         </li>
 
                         <li class="menu-item  ">
-                            <a target="_blank" href="{{ asset('partrepair/ganttchart') }}" class='menu-link'>
+                            <a href="{{ asset('partrepair/ganttchart') }}" class='menu-link'>
                                 <span><i class="bi bi-stack"></i> Schedule Chart</span>
                             </a>
                         </li>
