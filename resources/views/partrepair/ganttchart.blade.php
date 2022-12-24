@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <div style="position: absolute; bottom: 15px; right: 10px; font-size: 12px">
-        <a href="https://codepen.io/cjl750/pen/mXbMyo" target="_blank">based off of version 3</a>
+        <a href="" target="_blank">By Febriyan Omov</a>
     </div>
 
 
@@ -233,8 +233,8 @@
                             {
                                 x: '{{ $dt['id'] . ' ' . $dt['item_name'] }}',
                                 y: [
-                                    new Date('{{ $dt['created_at'] }}').getTime(),
-                                    new Date('{{ $dt['updated_at'] }}').getTime()
+                                    new Date('{{ $dt['plan_start_repair'] }}').getTime(),
+                                    new Date('{{ $dt['plan_finish_repair'] }}').getTime()
                                 ]
                             },
                         @endforeach
@@ -246,8 +246,8 @@
                         @foreach ($data as $dt)
                             {
                                 x: '{{ $dt['id'] . ' ' . $dt['item_name'] }}',
-                                y: [new Date('{{ $dt['created_at'] }}').getTime(),
-                                    new Date('{{ $dt['updated_at'] }}').getTime()
+                                y: [new Date('{{ $dt['actual_start_repair'] }}').getTime(),
+                                    new Date('{{ $dt['actual_finish_repair'] }}').getTime()
                                 ]
                             },
                         @endforeach
@@ -255,7 +255,7 @@
                 }
             ],
             chart: {
-                height: {{ $count }} * 60,
+                height: ({{ $count }} * 60) + 100,
                 type: 'rangeBar',
                 offsetY: '15',
                 events: {

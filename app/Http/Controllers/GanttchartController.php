@@ -28,7 +28,7 @@ class GanttchartController extends Controller
         $join = DB::table('waitingrepairs')
         ->join('progressrepairs', 'waitingrepairs.id', '=', 'progressrepairs.form_input_id')
         // ->join('progresspemakaians', 'waitingrepairs.id', '=', 'progresspemakaians.form_input_id')
-        ->select('waitingrepairs.*', 'progressrepairs.place_of_repair', 'progressrepairs.analisa','progressrepairs.action', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
+        ->select('waitingrepairs.*', 'progressrepairs.place_of_repair', 'progressrepairs.analisa','progressrepairs.action', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair', 'progressrepairs.actual_start_repair','progressrepairs.actual_finish_repair')
         ->get();
 
         $count = count(collect($join));
@@ -76,6 +76,8 @@ class GanttchartController extends Controller
                 'place_of_repair' => $value->place_of_repair,
                 'analisa' => $value->analisa,
                 'action' => $value->action,
+                'actual_start_repair' => $value->actual_start_repair,
+                'actual_finish_repair' => $value->actual_finish_repair,
                 'plan_start_repair' => $value->plan_start_repair,
                 'plan_finish_repair' => $value->plan_finish_repair
                         ];

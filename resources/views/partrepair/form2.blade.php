@@ -1,8 +1,8 @@
 {{ Form::open(['route' => 'partrepair.progresstable.store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
 <div class="container-fluid justify-content-center p-0">
     <div class="row gx-3">
-        <div class="col">
-            <div class="p-3 border">
+        <div class="col card border mx-2">
+            <div class="p-3">
                 <input type="hidden" name="form_input_id" id="form_input_id" value="{{ $waitingrepair->id }}">
 
                 <div class="mb-3 row">
@@ -58,8 +58,8 @@
                         <label for="pic_repair" class="col-form-label">PIC Repair</label>
                     </div>
                     <div class="col-sm-5">
-                        <select class="form-select choices" id="isiotomatis" onchange="isi_otomatis()"
-                            name="pic_repair" required>
+                        <select class="form-select choices" id="isiotomatis" onchange="isi_otomatis()" name="pic_repair"
+                            required>
                             <option value="">Pilih ...</option>
                             @foreach ($user as $us)
                                 <option value="{{ $us->name }}" @if ($progressrepair2->pic_repair == $us->name) selected @endif>
@@ -79,14 +79,16 @@
             </div>
         </div>
 
-        <div class="col">
-            <div class="p-3 border">
-                <div id="inHouse" @if($progressrepair2->place_of_repair == 'In House') style="display: block;" @else style="display: none;" @endif>
+        <div class="col card border mx-2">
+            <div class="p-3">
+                <div id="inHouse"
+                    @if ($progressrepair2->place_of_repair == 'In House') style="display: block;" @else style="display: none;" @endif>
                     <div class="mb-3 row">
                         <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start
                             Repair</label>
                         <div class="col-sm-9">
-                            <input type="datetime-local" class="form-control" name="plan_start_repair" id="plan_start_repair" value="{{ $progressrepair2->plan_start_repair }}">
+                            <input type="datetime-local" class="form-control" name="plan_start_repair"
+                                id="plan_start_repair" value="{{ $progressrepair2->plan_start_repair }}">
                         </div>
                     </div>
 
@@ -94,7 +96,8 @@
                         <label for="plan_finish_repair" class="col-sm-3 col-form-label">Plan
                             Finish Repair</label>
                         <div class="col-sm-9">
-                            <input type="datetime-local" class="form-control" name="plan_finish_repair" id="plan_finish_repair" value="{{ $progressrepair2->plan_finish_repair }}">
+                            <input type="datetime-local" class="form-control" name="plan_finish_repair"
+                                id="plan_finish_repair" value="{{ $progressrepair2->plan_finish_repair }}">
                         </div>
                     </div>
 
@@ -130,13 +133,14 @@
                             <label for="labour_cost" class="col-form-label">Labour Cost</label>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control number" id="labour_cost" name="labour_cost" value="{{ $progressrepair2->labour_cost }}"
-                                placeholder="Labour Cost" readonly>
+                            <input type="text" class="form-control number" id="labour_cost" name="labour_cost"
+                                value="{{ $progressrepair2->labour_cost }}" placeholder="Labour Cost" readonly>
                         </div>
                     </div>
                 </div>
 
-                <div id="subcont" @if($progressrepair2->place_of_repair == 'Subcont' || $progressrepair2->place_of_repair == 'Trade In') style="display: block;" @else style="display: none;" @endif>
+                <div id="subcont"
+                    @if ($progressrepair2->place_of_repair == 'Subcont' || $progressrepair2->place_of_repair == 'Trade In') style="display: block;" @else style="display: none;" @endif>
                     <div class="mb-3 row">
                         <label for="subcont_name" class="col-sm-3 col-form-label">Subcont
                             Name</label>
@@ -144,7 +148,8 @@
                             <select class="form-select" id="subcont_name" name="subcont_name">
                                 <option value="">Pilih ...</option>
                                 @foreach ($subcont as $sub)
-                                    <option value="{{ $sub->name }}" @if($progressrepair2->subcont_name == $sub->name) selected @endif>{{ $sub->name }}
+                                    <option value="{{ $sub->name }}"
+                                        @if ($progressrepair2->subcont_name == $sub->name) selected @endif>{{ $sub->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -176,12 +181,13 @@
                         <div class="col-sm-3">
                             <select class="form-select" name="time_period" id="time_period">
                                 <option value="" selected>Pilih ...</option>
-                                <option value="Week" @if($progressrepair2->time_period == 'Week') selected @endif>Weeks</option>
-                                <option value="Month" @if($progressrepair2->time_period == 'Month') selected @endif>Month</option>
+                                <option value="Week" @if ($progressrepair2->time_period == 'Week') selected @endif>Weeks</option>
+                                <option value="Month" @if ($progressrepair2->time_period == 'Month') selected @endif>Month
+                                </option>
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="mb-3 row">
                         <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
                         <div class="col-sm-9">
@@ -202,13 +208,14 @@
                         <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start
                             Repair</label>
                         <div class="col-sm-9">
-                            <input type="datetime-local" class="form-control" name="plan_start_repair_subcont" id="plan_start_repair_subcont"
-                                value="{{ $progressrepair2->plan_start_repair }}">
+                            <input type="datetime-local" class="form-control" name="plan_start_repair_subcont"
+                                id="plan_start_repair_subcont" value="{{ $progressrepair2->plan_start_repair }}">
                         </div>
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="plan_finish_repair_subcont" class="col-sm-3 col-form-label">Plan Finish Repair</label>
+                        <label for="plan_finish_repair_subcont" class="col-sm-3 col-form-label">Plan Finish
+                            Repair</label>
                         <div class="col-sm-9">
                             <input type="datetime-local" class="form-control" id="plan_finish_repair_subcont"
                                 name="plan_finish_repair_subcont" value="{{ $progressrepair2->plan_finish_repair }}">
@@ -219,16 +226,18 @@
                         <label for="actual_start_repair_subcont" class="col-sm-3 col-form-label">Actual Start
                             Repair</label>
                         <div class="col-sm-9">
-                            <input type="datetime-local" class="form-control" name="actual_start_repair_subcont" id="actual_start_repair_subcont" 
-                                value="{{ $progressrepair2->actual_start_repair }}">
+                            <input type="datetime-local" class="form-control" name="actual_start_repair_subcont"
+                                id="actual_start_repair_subcont" value="{{ $progressrepair2->actual_start_repair }}">
                         </div>
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="actual_finish_repair_subcont" class="col-sm-3 col-form-label">Actual Finish Repair</label>
+                        <label for="actual_finish_repair_subcont" class="col-sm-3 col-form-label">Actual Finish
+                            Repair</label>
                         <div class="col-sm-9">
                             <input type="datetime-local" class="form-control" id="actual_finish_repair_subcont"
-                                name="actual_finish_repair_subcont" value="{{ $progressrepair2->actual_finish_repair }}">
+                                name="actual_finish_repair_subcont"
+                                value="{{ $progressrepair2->actual_finish_repair }}">
                         </div>
                     </div>
                 </div>

@@ -80,7 +80,7 @@ class WaitingrepairController extends Controller
         }
 
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
-        return redirect()->back()->with('success', 'Your task added successfully!');
+        return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
     }
 
     /**

@@ -3,7 +3,7 @@
         data-bs-target="#modalAddPengecekan">
         Add Standard Pengecekan
     </button>
-    <div class="table-responsive-sm">
+    <div class="table-responsive-sm card border mt-0 p-3">
         {{ Form::open(['route' => 'partrepair.progresstrial.store', 'method' => 'POST']) }}
         <input type="hidden" name="form_input_id" value="{{ $waitingrepair->id }}">
         <input type="hidden" name="master_spare_part_id" value="{{ $waitingrepair->item_id }}">
@@ -30,13 +30,19 @@
                     <input type="hidden" name="standard_pengecekan_max{{ $joi->id }}" value="{{ $joi->standard_pengecekan_max }}">
                     <input type="hidden" name="unit_measurement{{ $joi->id }}" value="{{ $joi->unit_measurement }}"> --}}
                     <input type="hidden" name="data[{{ $joi->id }}][id]" value="{{ $joi->id }}">
-                    <input type="hidden" name="data[{{ $joi->id }}][form_input_id]" value="{{ $waitingrepair->id }}">
-                    <input type="hidden" name="data[{{ $joi->id }}][item_check_id]" value="{{ $joi->item_check_id }}">
+                    <input type="hidden" name="data[{{ $joi->id }}][form_input_id]"
+                        value="{{ $waitingrepair->id }}">
+                    <input type="hidden" name="data[{{ $joi->id }}][item_check_id]"
+                        value="{{ $joi->item_check_id }}">
                     <input type="hidden" name="data[{{ $joi->id }}][operation]" value="{{ $joi->operation }}">
-                    <input type="hidden" name="data[{{ $joi->id }}][standard_pengecekan_min]" value="{{ $joi->standard_pengecekan_min }}">
-                    <input type="hidden" name="data[{{ $joi->id }}][standard_pengecekan_max]" value="{{ $joi->standard_pengecekan_max }}">
-                    <input type="hidden" name="data[{{ $joi->id }}][unit_measurement]" value="{{ $joi->unit_measurement }}">
-                    <input type="hidden" name="data[{{ $joi->id }}][standard_pengecekan_id]" value="{{ $joi->id }}">
+                    <input type="hidden" name="data[{{ $joi->id }}][standard_pengecekan_min]"
+                        value="{{ $joi->standard_pengecekan_min }}">
+                    <input type="hidden" name="data[{{ $joi->id }}][standard_pengecekan_max]"
+                        value="{{ $joi->standard_pengecekan_max }}">
+                    <input type="hidden" name="data[{{ $joi->id }}][unit_measurement]"
+                        value="{{ $joi->unit_measurement }}">
+                    <input type="hidden" name="data[{{ $joi->id }}][standard_pengecekan_id]"
+                        value="{{ $joi->id }}">
 
                     <tr>
                         <td>{{ $joi->id }}</td>
@@ -46,11 +52,13 @@
                         <td>{{ $joi->standard_pengecekan_max }}</td>
                         <td>{{ $joi->unit_measurement }}</td>
                         <td>
-                            <input type="text" name="data[{{ $joi->id }}][actual_pengecekan]" id="actual_pengecekan{{ $joi->id }}" class="form-control"
-                                placeholder="Actual" value="{{ $joi->actual_pengecekan }}" required>
+                            <input type="text" name="data[{{ $joi->id }}][actual_pengecekan]"
+                                id="actual_pengecekan{{ $joi->id }}" class="form-control" placeholder="Actual"
+                                value="{{ $joi->actual_pengecekan }}" required>
                         </td>
-                        <td>    <input type="text" name="data[{{ $joi->id }}][judgement]" id="judgement{{ $joi->id }}" class="form-control"
-                            placeholder="Judgement" value="{{ $joi->judgement }}" required>
+                        <td> <input type="text" name="data[{{ $joi->id }}][judgement]"
+                                id="judgement{{ $joi->id }}" class="form-control" placeholder="Judgement"
+                                value="{{ $joi->judgement }}" required>
                         </td>
                     </tr>
                 @empty
@@ -70,7 +78,8 @@
 <!-- Modal -->
 
 {{ Form::open(['route' => 'matrix.standard_pengecekan.store', 'method' => 'POST']) }}
-<div class="modal fade" id="modalAddPengecekan" tabindex="-1" aria-labelledby="modalAddPengecekanLabel" aria-hidden="true">
+<div class="modal fade" id="modalAddPengecekan" tabindex="-1" aria-labelledby="modalAddPengecekanLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,14 +136,14 @@
 
                 <div id="standard_pengecekan_min_div" class="form-group mt-2">
                     <label for="standard_pengecekan_min">Standard Min</label>
-                    <input type="text" id="standard_pengecekan_min" name="standard_pengecekan_min" class="form-control"
-                        value="">
+                    <input type="text" id="standard_pengecekan_min" name="standard_pengecekan_min"
+                        class="form-control" value="">
                 </div>
 
                 <div id="standard_pengecekan_max_div" class="form-group mt-2">
                     <label for="standard_pengecekan_max">Standard Max</label>
-                    <input type="text" id="standard_pengecekan_max" name="standard_pengecekan_max" class="form-control"
-                        value="">
+                    <input type="text" id="standard_pengecekan_max" name="standard_pengecekan_max"
+                        class="form-control" value="">
                 </div>
 
                 <div class="form-group mt-2">
