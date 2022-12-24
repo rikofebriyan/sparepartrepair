@@ -29,7 +29,6 @@
                         Hide</a>
                 </div>
             </div>
-            {{-- <input type='button' id='hideshow' value='hide/show'> --}}
             <div class="p-3">
                 <div class="d-flex justify-content-between">
                     <div class="p-0">
@@ -46,23 +45,23 @@
                 <div class="card">
                     <div class="flex-parent">
                         <div class="input-flex-container">
-                            <input type="radio" name="timeline-dot" data-description="1910">
+                            <input type="radio" name="timeline-dot" data-description="1910" id="waiting">
                             <div class="dot-info" data-description="1910">
                                 <span class="year">Waiting</span>
                             </div>
-                            <input type="radio" name="timeline-dot" data-description="1920">
+                            <input type="radio" name="timeline-dot" data-description="1920" id="progress2">
                             <div class="dot-info" data-description="1920">
                                 <span class="year">Progress</span>
                             </div>
-                            <input type="radio" name="timeline-dot" data-description="1930" checked>
+                            <input type="radio" name="timeline-dot" data-description="1930" id="sealkit">
                             <div class="dot-info" data-description="1930">
                                 <span class="year">Order</span>
                             </div>
-                            <input type="radio" name="timeline-dot" data-description="1940">
+                            <input type="radio" name="timeline-dot" data-description="1940" id="trial">
                             <div class="dot-info" data-description="1940">
                                 <span class="year">Trial</span>
                             </div>
-                            <input type="radio" name="timeline-dot" data-description="1950">
+                            <input type="radio" name="timeline-dot" data-description="1950" id="finish">
                             <div class="dot-info" data-description="1950">
                                 <span class="year">Finish</span>
                             </div>
@@ -72,15 +71,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-                {{-- Name: <input type="text" id="testing" value="Mickey"> --}}
-                {{-- <p id="testing"></p> --}}
 
 
                 <div class="row">
@@ -294,6 +284,17 @@
                         $('#plan_start_repair').text(data[config.dataPointIndex].plan_start_repair);
                         $('#plan_finish_repair').text(data[config.dataPointIndex].plan_finish_repair);
                         $('#item_type').text(data[config.dataPointIndex].item_type);
+                        if (data[config.dataPointIndex].progress == "Finish") {
+                            $('#finish').prop("checked", true);
+                        } else if (data[config.dataPointIndex].progress == "Trial") {
+                            $('#trial').prop("checked", true);
+                        } else if (data[config.dataPointIndex].progress == "Seal Kit") {
+                            $('#sealkit').prop("checked", true);
+                        } else if (data[config.dataPointIndex].progress == "Progress") {
+                            $('#progress2').prop("checked", true);
+                        } else {
+                            $('#waiting').prop("checked", true);
+                        }
                     }
                 }
             },
