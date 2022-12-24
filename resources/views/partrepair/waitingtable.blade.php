@@ -21,15 +21,15 @@
                 Post</a> --}}
             <div class="d-flex d-inline justify-content-end mb-3">
                 <div class="me-2">Flow Repair : </div>
-                <div class="rounded-pill bg-secondary text-white text-center px-2">Waiting</div>
+                <button class="rounded-pill bg-secondary text-white text-center px-2" id="waiting">Waiting</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="rounded-pill bg-warning text-white text-center px-2">On Progress</div>
+                <button class="rounded-pill bg-warning text-white text-center px-2" id="progress">On Progress</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="rounded-pill bg-info text-white text-center px-2">Seal Kit</div>
+                <button class="rounded-pill bg-info text-white text-center px-2" id="sealkit">Seal Kit</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="rounded-pill bg-primary text-white text-center px-2">Trial</div>
+                <button class="rounded-pill bg-primary text-white text-center px-2" id="trial">Trial</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <div class="rounded-pill bg-success text-white text-center px-2">Finish</div>
+                <button class="rounded-pill bg-success text-white text-center px-2" id="finish">Finish</button>
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -167,6 +167,28 @@
                 order: [
                     [0, 'desc']
                 ],
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#myTable').DataTable();
+
+            $('#waiting').click(function() {
+                table.column(6).search('waiting').draw();
+            });
+            $('#progress').click(function() {
+                table.column(6).search('progress').draw();
+            });
+            $('#sealkit').click(function() {
+                table.column(6).search('Seal Kit').draw();
+            });
+            $('#trial').click(function() {
+                table.column(6).search('Trial').draw();
+            });
+            $('#finish').click(function() {
+                table.column(6).search('Finish').draw();
             });
         });
     </script>
