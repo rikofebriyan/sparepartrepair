@@ -59,7 +59,7 @@
 
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
-                                <td class="text-center d-flex d-inline">
+                                {{-- <td class="text-center d-flex d-inline">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
                                         data-bs-target="#asu{{ $req->id }}">
@@ -80,63 +80,63 @@
                                                 <div class="modal-body">
 
 
-                                                    {{-- FORM COLUMN 1 --}}
+                                                    <!-- FORM COLUMN 1 -->
                                                     <div class="form-group mt-2">
                                                         <label for="item_code">item_code</label>
                                                         <input type="text" id="item_code" name="item_code"
                                                             class="form-control" value="{{ $req->item_code }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 2 --}}
+                                                    <!-- FORM COLUMN 2 -->
                                                     <div class="form-group mt-2">
                                                         <label for="item_name">item_name</label>
                                                         <input type="text" id="item_name" name="item_name"
                                                             class="form-control" value="{{ $req->item_name }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 3 --}}
+                                                    <!-- FORM COLUMN 3 -->
                                                     <div class="form-group mt-2">
                                                         <label for="description">description</label>
                                                         <input type="text" id="description" name="description"
                                                             class="form-control" value="{{ $req->description }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 4 --}}
+                                                    <!-- FORM COLUMN 4 -->
                                                     <div class="form-group mt-2">
                                                         <label for="qty">qty</label>
                                                         <input type="text" id="qty" name="qty"
                                                             class="form-control" value="{{ $req->qty }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 5 --}}
+                                                    <!-- FORM COLUMN 5 -->
                                                     <div class="form-group mt-2">
                                                         <label for="price">price</label>
                                                         <input type="text" id="price" name="price"
                                                             class="form-control" value="{{ $req->price }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 6 --}}
+                                                    <!-- FORM COLUMN 6 -->
                                                     <div class="form-group mt-2">
                                                         <label for="status">status</label>
                                                         <input type="text" id="status" name="status"
                                                             class="form-control" value="{{ $req->status }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 7 --}}
+                                                    <!-- FORM COLUMN 7 -->
                                                     <div class="form-group mt-2">
                                                         <label for="wh_code">wh_code</label>
                                                         <input type="text" id="wh_code" name="wh_code"
                                                             class="form-control" value="{{ $req->wh_code }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 8 --}}
+                                                    <!-- FORM COLUMN 8 -->
                                                     <div class="form-group mt-2">
                                                         <label for="rack_code">rack_code</label>
                                                         <input type="text" id="rack_code" name="rack_code"
                                                             class="form-control" value="{{ $req->rack_code }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 9 --}}
+                                                    <!-- FORM COLUMN 9 -->
                                                     <div class="form-group mt-2">
                                                         <label for="order_point">order_point</label>
                                                         <input type="text" id="order_point" name="order_point"
@@ -144,14 +144,14 @@
                                                             required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 10 --}}
+                                                    <!-- FORM COLUMN 10 -->
                                                     <div class="form-group mt-2">
                                                         <label for="order_qty">order_qty</label>
                                                         <input type="text" id="order_qty" name="order_qty"
                                                             class="form-control" value="{{ $req->order_qty }}" required>
                                                     </div>
 
-                                                    {{-- FORM COLUMN 11 --}}
+                                                    <!-- FORM COLUMN 11 -->
                                                     <div class="form-group mt-2">
                                                         <label for="account_no">account_no</label>
                                                         <input type="text" id="account_no" name="account_no"
@@ -169,7 +169,7 @@
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
                                     {{ Form::close() }}
-                                </td>
+                                </td> --}}
                             </tr>
                         @empty
                             <tr>

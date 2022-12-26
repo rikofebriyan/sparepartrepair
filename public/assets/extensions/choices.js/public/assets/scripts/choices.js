@@ -3477,7 +3477,7 @@ exports.DEFAULT_CONFIG = {
   choices: [],
   silent: false,
   renderChoiceLimit: -1,
-  maxItemCount: -1,
+  maxItemCount: 20, // default -1
   addItems: true,
   addItemFilter: null,
   removeItems: true,
@@ -3489,8 +3489,8 @@ exports.DEFAULT_CONFIG = {
   searchEnabled: true,
   searchChoices: true,
   searchFloor: 1,
-  searchResultLimit: 4,
-  searchFields: ['label', 'value'],
+  searchResultLimit: 10, // default 10
+  searchFields: ['value'], // default ['label', 'value']
   position: 'auto',
   resetScrollPosition: true,
   shouldSort: true,
@@ -3518,7 +3518,8 @@ exports.DEFAULT_CONFIG = {
     return value1 === value2;
   },
   fuseOptions: {
-    includeScore: true
+    includeScore: true,
+    threshold: 0.3, // default tidak ada
   },
   callbackOnInit: null,
   callbackOnCreateTemplates: null,
