@@ -15,8 +15,9 @@ class CreateProgresstrialsTable extends Migration
         Schema::create('progresstrials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('item_check_id')->nullable();
             $table->integer('form_input_id')->nullable();
-            $table->integer('id_standard_pengecekan')->nullable();
+            $table->integer('standard_pengecekan_id')->nullable();
             $table->string('operation')->nullable();
             $table->string('standard_pengecekan_min')->nullable();
             $table->string('standard_pengecekan_max')->nullable();

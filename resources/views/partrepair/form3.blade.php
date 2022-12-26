@@ -1,42 +1,42 @@
 <div class="container-fluid justify-content-center py-0">
-    <div class="mb-3">
 
-        @if ($message = Session::get('success'))
-            {{-- <h6 class="alert alert-success">
+    @if ($message = Session::get('success'))
+        {{-- <h6 class="alert alert-success">
                 {{ $message }}
             </h6> --}}
-        @endif
+    @endif
 
 
-    </div>
-    <div class="alert alert-primary fw-bold @if ($progresspemakaian->count() > 0) d-none @endif">
-        <center>APAKAH PART REPAIR BUTUH ORDER SEAL KIT?</center>
-        <center>
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="radio1" id="ya" value="" @if ($countid > 0) checked @endif>
-                <label class="form-check-label" for="flexRadioDefault1">
-                    YA
-                </label>
-            </div>
-            <div class="form-check-inline">
-                <input class="form-check-input" type="radio" name="radio1" id="tidak" value="" @if ($countid == 0) checked @endif>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    TIDAK
-                </label>
-            </div>
-        </center>
-    </div>
-    <div class="mb-3 row">
+    <div class="row">
+        <div class="col-9 alert alert-primary fw-bold m-0 @if ($progresspemakaian->count() > 0) d-none @endif">
+            <center>APAKAH PART REPAIR BUTUH ORDER SEAL KIT?</center>
+            <center>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="radio1" id="ya" value=""
+                        @if ($countid > 0) checked @endif>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        YA
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="radio1" id="tidak" value=""
+                        @if ($countid == 0) checked @endif>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        TIDAK
+                    </label>
+                </div>
+            </center>
+        </div>
         <div class="d-grid gap-2 col">
             <button id="fieldsealkit" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">TAMBAHKAN SEAL KIT</button>
         </div>
-        <div id="fieldrepair" class="d-grid gap-2 col @if ($countid == 0) d-block @else d-none @endif">
+        <div class="d-grid gap-2 col @if ($countid == 0) d-block @else d-none @endif" id="fieldrepair">
             {{-- <button class="btn btn-primary">REPAIR & TRIAL
                 >>></button> --}}
-                <a href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
-                    class="btn btn-success">REPAIR & TRIAL
-                    >>></a>
+            <button href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
+                class="btn btn-success">REPAIR & TRIAL
+                >>></button>
         </div>
 
         @if ($countid == 0)
@@ -47,7 +47,7 @@
             </div> --}}
         @elseif ($countid > $ready)
             <div class="d-grid gap-2 col">
-                <button class="btn btn-primary disabled">REPAIR & TRIAL
+                <button class="btn btn-primary disabled text-center">REPAIR & TRIAL
                     >>></button>
             </div>
         @elseif ($countid == $ready)
@@ -59,7 +59,7 @@
         @endif
     </div>
 
-    <div id="field3" class="mb-3" @if ($countid == 0) style="display: none;" @endif>
+    <div id="field3" class="mt-2 p-3 card border" @if ($countid == 0) style="display: none;" @endif>
         <table id="myTable" class="table table-striped nowrap overflow-auto display">
             <thead>
                 <tr>

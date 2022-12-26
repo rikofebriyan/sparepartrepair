@@ -1,8 +1,8 @@
 {{ Form::open(['route' => 'partrepair.waitingtable.store', 'method' => 'POST']) }}
 <div class="container-fluid justify-content-center p-0">
     <div class="row gx-3">
-        <div class="col">
-            <div class="p-3 border">
+        <div class="card col border mx-2">
+            <div class="p-3">
                 <input type="hidden" name="id" value="{{ $waitingrepair->id }}">
 
                 <div class="mb-3 row">
@@ -84,8 +84,8 @@
                         </div>
 
                         <div class="input-group">
-                            <input type="text" class="form-control number" id="price" name="price" placeholder="Price"
-                                value="{{ $waitingrepair->price }}" readonly>
+                            <input type="text" class="form-control number" id="price" name="price"
+                                placeholder="Price" value="{{ $waitingrepair->price }}" readonly>
                             <input type="text" class="form-control" id="qty" name="stock_spare_part"
                                 placeholder="Stock" value="{{ $waitingrepair->stock_spare_part }}" readonly>
                         </div>
@@ -141,8 +141,8 @@
 
             </div>
         </div>
-        <div class="col">
-            <div class="p-3 border">
+        <div class="card col border mx-2">
+            <div class="p-3">
                 <div class="mb-3 row">
                     <label for="section" class="col-sm-3 col-form-label">Section</label>
                     <div class="col-sm-9">
@@ -225,7 +225,8 @@
                 <div class="mb-3 row">
                     <label for="progress" class="col-sm-3 col-form-label">Progress</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="progres" name="progress" value="{{ $waitingrepair->progress }}" readonly>
+                        <input type="text" class="form-control" id="progres" name="progress"
+                            value="{{ $waitingrepair->progress }}" readonly>
                     </div>
                 </div>
 

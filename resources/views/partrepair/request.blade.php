@@ -4,15 +4,17 @@
 @section('content')
     <div class="container-fluid">
 
-
-        <h3 class="text-center mb-3" style="font-size: 1.3rem; font-weight:bold;">SPAREPART REPAIR REQUEST FORM</h3>
+        <div class="card border text-center mb-2">
+            <h3 class="m-2">SPAREPART REPAIR REQUEST FORM</h3>
+        </div>
+        {{-- <h3 class="text-center mb-3" style="font-size: 1.3rem; font-weight:bold;">SPAREPART REPAIR REQUEST FORM</h3> --}}
 
         {{ Form::open(['route' => 'partrepair.waitingtable.store', 'method' => 'POST']) }}
         <div class="container-fluid justify-content-center py-0">
             <div class="container-fluid">
                 <div class="row gx-3">
-                    <div class="col">
-                        <div class="p-3 border">
+                    <div class="card col border m-2">
+                        <div class="p-3">
                             <input type="hidden" name="id" value="">
 
                             <div class="mb-3 row">
@@ -98,8 +100,8 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control number" id="price" name="price"
                                             placeholder="Price" readonly required>
-                                        <input type="text" class="form-control" id="qty" name="stock_spare_part"
-                                            placeholder="Stock" readonly required>
+                                        <input type="text" class="form-control" id="qty"
+                                            name="stock_spare_part" placeholder="Stock" readonly required>
                                     </div>
 
                                     <div class="input-group">
@@ -142,8 +144,8 @@
 
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="p-3 border">
+                    <div class="card col border m-2">
+                        <div class="p-3">
                             <div class="mb-3 row">
                                 <label for="section" class="col-sm-3 col-form-label">Section</label>
                                 <div class="col-sm-9">
@@ -234,7 +236,7 @@
             var item_name = $("#isiotomatis").val();
             $.ajax({
                 type: 'GET',
-                url: '/ajax/?item_name='+ item_name,
+                url: '/ajax/?item_name=' + item_name,
                 dataType: 'JSON',
                 success: function(data) {
                     $('#item_id').val(data.id);

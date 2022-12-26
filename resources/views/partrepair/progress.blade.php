@@ -4,10 +4,10 @@
 @section('content')
     <div class="container-fluid">
 
-        <div class="card">
-            <div class="card-header py-2 my-0">
+        <div class="card border m-0">
+            <div class="card-header py-2">
                 <center>
-                    <h4 class="card-title my-0">FORM SPARE PART REPAIR</h4>
+                    <h3 class="card-title mb-0 p-0">FORM SPARE PART REPAIR</h3>
                 </center>
             </div>
             <div class="card-content">
@@ -25,28 +25,28 @@
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif"
                             id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab">Finish Form</a>
                     </div>
-                    <div class="tab-content text-justify py-2">
-                        <div class="tab-pane fade" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
-                            @include('partrepair.form1')
-                        </div>
-                        <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-monday"
-                            role="tabpanel" aria-labelledby="list-monday-list">
-                            @include('partrepair.form2')
-                        </div>
-                        <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-tuesday"
-                            role="tabpanel" aria-labelledby="list-tuesday-list">
-                            @include('partrepair.form3')
-                        </div>
-                        <div class="tab-pane fade @if ($waitingrepair->progress == 'Seal Kit') show active @endif" id="list-4"
-                            role="tabpanel" aria-labelledby="list-4-list">
-                            @include('partrepair.form4')
-                        </div>
-                        <div class="tab-pane fade @if ($waitingrepair->progress == 'Trial') show active @endif" id="list-5"
-                            role="tabpanel" aria-labelledby="list-5-list">
-                            @include('partrepair.form5')
-                        </div>
-                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="tab-content text-justify py-2">
+            <div class="tab-pane fade" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
+                @include('partrepair.form1')
+            </div>
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-monday" role="tabpanel"
+                aria-labelledby="list-monday-list">
+                @include('partrepair.form2')
+            </div>
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-tuesday"
+                role="tabpanel" aria-labelledby="list-tuesday-list">
+                @include('partrepair.form3')
+            </div>
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Seal Kit') show active @endif" id="list-4" role="tabpanel"
+                aria-labelledby="list-4-list">
+                @include('partrepair.form4')
+            </div>
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Trial') show active @endif" id="list-5" role="tabpanel"
+                aria-labelledby="list-5-list">
+                @include('partrepair.form5')
             </div>
         </div>
     </div>
