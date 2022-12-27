@@ -202,7 +202,7 @@ class WaitingrepairController extends Controller
 
         $machineAll = Machine::where('line_id', $line->id)->get();
         // $machine = Machine::where('name', $waitingrepair->machine)->first();
-        // dd($waitingrepair);
+        // dd($progresspemakaian);
         return view('partrepair.progress', [
             'waitingrepair'    => $waitingrepair,
             'user'    => $user,
@@ -231,6 +231,7 @@ class WaitingrepairController extends Controller
             'section' => $sectionAll,
             'line' => $lineAll,
             'machine' => $machineAll,
+            
         ]);
     }
 

@@ -90,6 +90,23 @@
             });
         }
 
+        function isi_otomatis_part2() {
+            var item_name = $("#isiotomatis3").val();
+            $.ajax({
+                type: 'GET',
+                url: '/ajax/?item_name=' + item_name,
+                dataType: 'JSON',
+                success: function(data) {
+                    $('#item_name3').val(data.item_name);
+                    $('#item_code3').val(data.item_code);
+                    $('#description3').val(data.description);
+                    $('#price3').val(data.price);
+                }
+            });
+        }
+
+
+
         function isi_otomatis_subcont() {
             $.ajax({
                 type: 'GET',
@@ -99,7 +116,8 @@
                     $('#subcont_name').empty()
                     $('#subcont_name').append(`<option value="" selected>Pilih ...</option>`)
                     $.each(data, function(id, value) {
-                        $('#subcont_name').append(`<option value="${value.id}">${value.name}</option>`)
+                        $('#subcont_name').append(
+                            `<option value="${value.id}">${value.name}</option>`)
                     });
                 }
             });
@@ -175,16 +193,27 @@
     </script>
 
     <script>
+        $('#price3, #qty3').change(function() {
+            var price3 = parseFloat($('#price3').val()) || 0;
+            var qty3 = parseFloat($('#qty3').val()) || 0;
+            $('#total_price').val(price3 * qty3);
+        });
+        $('#price3, #qty3').keyup(function() {
+            var price3 = parseFloat($('#price3').val()) || 0;
+            var qty3 = parseFloat($('#qty3').val()) || 0;
+            $('#total_price2').val(price3 * qty3);
+        });
+    </script>
+
+    <script>
         $('#price2, #qty2').change(function() {
             var price2 = parseFloat($('#price2').val()) || 0;
             var qty2 = parseFloat($('#qty2').val()) || 0;
-
             $('#total_price').val(price2 * qty2);
         });
         $('#price2, #qty2').keyup(function() {
             var price2 = parseFloat($('#price2').val()) || 0;
             var qty2 = parseFloat($('#qty2').val()) || 0;
-
             $('#total_price').val(price2 * qty2);
         });
     </script>
@@ -327,6 +356,16 @@
                 $('#fieldrepair').removeClass("d-none");
                 $('#fieldsealkit').addClass("disabled");
             });
+        });
+    </script>
+
+    <script>
+        $('#status_partbaru').change(function() {
+            var val = $(this).val();
+            if (val === "Not Ready") {
+                $('#notready').show();
+            } else
+                $('#notready').hide();
         });
     </script>
 @endsection

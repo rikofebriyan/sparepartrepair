@@ -1,9 +1,6 @@
 <div class="container-fluid justify-content-center py-0">
-    <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
-        data-bs-target="#modalAddPengecekan">
-        Add Standard Pengecekan
-    </button>
-    <div class="table-responsive-sm card border mt-0 p-3">
+
+    <div class="table-responsive-sm card border mb-2 p-3">
         {{ Form::open(['route' => 'partrepair.progresstrial.store', 'method' => 'POST']) }}
         <input type="hidden" name="form_input_id" value="{{ $waitingrepair->id }}">
         <input type="hidden" name="master_spare_part_id" value="{{ $waitingrepair->item_id }}">
@@ -73,8 +70,15 @@
         {!! Form::close() !!}
     </div>
 </div>
-
-
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col d-grid gap-2 px-3">
+        <button type="button" class="btn btn-md btn-success" data-bs-toggle="modal"
+            data-bs-target="#modalAddPengecekan">
+            ADD STANDARD PENGECEKAN
+        </button>
+    </div>
+</div>
 <!-- Modal -->
 
 {{ Form::open(['route' => 'matrix.standard_pengecekan.store', 'method' => 'POST']) }}
