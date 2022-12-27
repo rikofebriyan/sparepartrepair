@@ -30,10 +30,11 @@
                 @forelse ($progresspemakaian as $req)
                     <tr>
                         <td>
-
-                            <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
-                                data-bs-target="#asu{{ $req->id }}">
-                                <i class="bi bi-pencil"></i>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#asu{{ $req->id }}"
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size:
+                                .75rem">
+                                Edit
                             </button>
 
                             <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"

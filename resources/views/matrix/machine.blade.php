@@ -69,7 +69,9 @@
                                                                 choose
                                                             </option>
                                                             @foreach ($tab2 as $tab)
-                                                                <option value="{{ $tab->id }}">{{ $tab->name }}
+                                                                <option value="{{ $tab->id }}"
+                                                                    @if ($req->line_id == $tab->id) selected @endif>
+                                                                    {{ $tab->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

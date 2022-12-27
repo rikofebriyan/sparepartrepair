@@ -75,7 +75,9 @@
                                                                 choose
                                                             </option>
                                                             @foreach ($sectzy as $sec)
-                                                                <option value="{{ $sec->id }}">{{ $sec->name }}
+                                                                <option value="{{ $sec->id }}"
+                                                                    @if ($req->section_id == $sec->id) selected @endif>
+                                                                    {{ $sec->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
