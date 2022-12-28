@@ -39,8 +39,8 @@ class WaitingrepairController extends Controller
     {
         // $partr = Waitingrepair::all()->sortByDesc('id');
         $partr = Waitingrepair::leftJoin('progressrepairs', 'progressrepairs.form_input_id', '=', 'waitingrepairs.id')
-        ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
-        ->get();
+            ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
+            ->get();
         // dd($partr);
         return view('partrepair.waitingtable', [
             'reqtzy' => $partr,
@@ -177,7 +177,7 @@ class WaitingrepairController extends Controller
             ->select('progresstrials.*', 'item_standards.item_standard')
             ->get();
 
-        if($formFinish_progressrepair == null) {
+        if ($formFinish_progressrepair == null) {
             $formFinish_progressrepair = (object) [
                 'id' => '',
                 'place_of_repair' => '',
@@ -189,7 +189,7 @@ class WaitingrepairController extends Controller
         }
 
         $formFinish_totalFinish = Finishrepair::where('form_input_id', $formFinish_waitingrepair->id)->first();
-        if($formFinish_totalFinish == null) {
+        if ($formFinish_totalFinish == null) {
             $formFinish_totalFinish = (object) [
                 'code_part_repair' => '',
                 'delivery_date' => '',
@@ -235,7 +235,7 @@ class WaitingrepairController extends Controller
             'section' => $sectionAll,
             'line' => $lineAll,
             'machine' => $machineAll,
-            
+
         ]);
     }
 

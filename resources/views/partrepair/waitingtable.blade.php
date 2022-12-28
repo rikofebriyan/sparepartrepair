@@ -182,22 +182,22 @@
             var table = $('#myTable').DataTable();
 
             $('#allinput').click(function() {
-                table.column(6).search('').draw();
+                table.column(8).search('').draw();
             });
             $('#waiting').click(function() {
-                table.column(6).search('waiting').draw();
+                table.column(8).search('waiting').draw();
             });
             $('#progress').click(function() {
-                table.column(6).search('progress').draw();
+                table.column(8).search('progress').draw();
             });
             $('#sealkit').click(function() {
-                table.column(6).search('Seal Kit').draw();
+                table.column(8).search('Seal Kit').draw();
             });
             $('#trial').click(function() {
-                table.column(6).search('Trial').draw();
+                table.column(8).search('Trial').draw();
             });
             $('#finish').click(function() {
-                table.column(6).search('Finish').draw();
+                table.column(8).search('Finish').draw();
             });
         });
     </script>
