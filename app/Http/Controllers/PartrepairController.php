@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Maker;
 use App\User;
 use App\Machine;
@@ -43,7 +44,9 @@ class PartrepairController extends Controller
         $tahun     = date ('Y');
         $bulan = date('m');
         $tanggal    = date('d');
-        $noUrutAkhir = Waitingrepair::count('reg_sp');
+        $currentDate = Carbon::now()->format('Y-m-d');
+        $noUrutAkhir = Waitingrepair::where('date','=',$currentDate)
+                        ->count('reg_sp');
         $no = 1;
         if($noUrutAkhir) {
         $ticket = $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", abs($noUrutAkhir + 1)) ;
