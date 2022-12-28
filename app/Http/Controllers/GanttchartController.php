@@ -33,8 +33,20 @@ class GanttchartController extends Controller
 // dd($join);
         $count = count(collect($join));
 
+
+
         foreach($join as $index => $value) {
-            // dd($value);
+
+            $date1 = Carbon::now();
+            $date2 = Carbon::parse($value->plan_finish_repair);
+            if ($date1->gt($date2)) {
+                $days = $date1->diffInDays($date2) * -1;
+                $fillcolor = '#dc3545';
+            } else {
+                $days = $date2->diffInDays($date1);
+                $fillcolor ='';
+            }
+            // dd($days);
             $data[$index] =[
                 'id' => $value->id,
                 'created_at' => $value->created_at,
@@ -60,7 +72,9 @@ class GanttchartController extends Controller
                 'actual_start_repair' => $value->actual_start_repair,
                 'actual_finish_repair' => $value->actual_finish_repair,
                 'plan_start_repair' => $value->plan_start_repair,
-                'plan_finish_repair' => $value->plan_finish_repair
+                'plan_finish_repair' => $value->plan_finish_repair,
+                'fillcolor' => $fillcolor,
+                
                         ];
         }
 
