@@ -34,10 +34,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($reqtzy as $req)
+                        @forelse ($join as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
-                                <td>{{ $req->line_id }}</td>
+                                <td>{{ $req->line }}</td>
                                 <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>

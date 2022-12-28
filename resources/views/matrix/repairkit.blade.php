@@ -35,13 +35,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($reqtzy as $req)
+                        @forelse ($join as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
                                 <td>{{ $req->item_code }}</td>
                                 <td>{{ $req->item_name }}</td>
                                 <td>{{ $req->description }}</td>
-                                <td>{{ $req->maker }}</td>
+                                <td>{{ $req->maker_name }}</td>
                                 <td>{{ $req->qty }}</td>
 
 

@@ -23,6 +23,12 @@ class StandardpengecekanController extends Controller
      */
     public function index()
     {
+
+        $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
+                                    ->join('master_spare_parts', 'standard_pengecekans.master_spare_part_id', '=', 'master_spare_parts.id')
+                                    ->select('standard_pengecekans.*', 'item_standards.item_standard', 'master_spare_parts.item_name')
+                                    ->get();
+// dd($join);
         $tabel2 = MasterSparePart::all();
         $tabel3 = ItemStandard::all();
         $partr = StandardPengecekan::all()->sortByDesc('id');
@@ -30,6 +36,7 @@ class StandardpengecekanController extends Controller
             'reqtzy' => $partr,
             'tab2' => $tabel2,
             'tab3' => $tabel3,
+            'join' => $join,
         ]);
     }
 
@@ -58,7 +65,7 @@ class StandardpengecekanController extends Controller
         // ]);
         $data = [
             'master_spare_part_id' => $request->master_spare_part_id,
-            'item_pengecekan_id' => $request->item_standard_id,
+            'item_pengecekan_id' => $request->item_pengecekan_id,
             'operation' => $request->operation,
             'standard_pengecekan_min' => $request->standard_pengecekan_min,
             'standard_pengecekan_max' => $request->standard_pengecekan_max,
@@ -67,14 +74,14 @@ class StandardpengecekanController extends Controller
 
         // create new task
         StandardPengecekan::create($data);
-        Progresstrial::create([
-            'form_input_id' => $request->form_input_id,
-            'item_check_id' => $request->item_standard_id,
-            'operation' => $request->operation,
-            'standard_pengecekan_min' => $request->standard_pengecekan_min,
-            'standard_pengecekan_max' => $request->standard_pengecekan_max,
-            'unit_measurement' => $request->unit_measurement,
-        ]);
+        // Progresstrial::create([
+        //     'form_input_id' => $request->form_input_id,
+        //     'item_check_id' => $request->item_standard_id,
+        //     'operation' => $request->operation,
+        //     'standard_pengecekan_min' => $request->standard_pengecekan_min,
+        //     'standard_pengecekan_max' => $request->standard_pengecekan_max,
+        //     'unit_measurement' => $request->unit_measurement,
+        // ]);
         return redirect()->back()->with('success', 'Your task added successfully!');
     }
 
@@ -109,7 +116,7 @@ class StandardpengecekanController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'standard_pengecekan' => 'required',
+            'operation' => 'required',
         ]);
         StandardPengecekan::find($id)->update($request->all());
         return redirect()->back()->with('success','StandardPengecekan updated successfully');

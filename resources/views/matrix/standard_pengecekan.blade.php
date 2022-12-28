@@ -17,28 +17,34 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Add New Section
+                Add New Standard Pengecekan
             </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Master Spare Part ID</th>
-                            <th scope="col">Item Standard ID</th>
-                            <th scope="col">Standard Pengecekan</th>
+                            <th scope="col">Spare Part</th>
+                            <th scope="col">Item Pengecekan</th>
+                            <th scope="col">Unit Measurement</th>
+                            <th scope="col">Operation</th>
+                            <th scope="col">STD Check Min</th>
+                            <th scope="col">STD Check Max</th>
                             <th scope="col">created_at</th>
                             <th scope="col">updated_at</th>
                             <th scope="col">action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($reqtzy as $req)
+                        @forelse ($join as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
-                                <td>{{ $req->master_spare_part_id }}</td>
-                                <td>{{ $req->item_standard_id }}</td>
-                                <td>{{ $req->standard_pengecekan }}</td>
+                                <td>{{ $req->item_name }}</td>
+                                <td>{{ $req->item_standard }}</td>
+                                <td>{{ $req->unit_measurement }}</td>
+                                <td>{{ $req->operation }}</td>
+                                <td>{{ $req->standard_pengecekan_min }}</td>
+                                <td>{{ $req->standard_pengecekan_max }}</td>
 
 
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
@@ -72,7 +78,9 @@
                                                                 choose
                                                             </option>
                                                             @foreach ($tab2 as $tab)
-                                                                <option value="{{ $tab->id }}">{{ $tab->item_name }}
+                                                                <option value="{{ $tab->id }}"
+                                                                    @if ($req->master_spare_part_id == $tab->id) selected @endif>
+                                                                    {{ $tab->item_name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -80,26 +88,49 @@
 
                                                     {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
-                                                        <label for="item_standard_id">Item Standard ID</label>
-                                                        <select name="item_standard_id" id="item_standard_id"
+                                                        <label for="item_pengecekan_id">Item Pengecekan ID</label>
+                                                        <select name="item_pengecekan_id" id="item_pengecekan_id"
                                                             class="form-control">
                                                             <option value="" disabled selected>
                                                                 choose
                                                             </option>
                                                             @foreach ($tab3 as $tabw)
-                                                                <option value="{{ $tabw->id }}">
+                                                                <option value="{{ $tabw->id }}"
+                                                                    @if ($req->item_pengecekan_id == $tabw->id) selected @endif>
                                                                     {{ $tabw->item_standard }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
 
+                                                    <div class="form-group mt-2">
+                                                        <label for="operation">operation</label>
+                                                        <input type="text" id="operation" name="operation"
+                                                            class="form-control" value="{{ $req->operation }}" required>
+                                                    </div>
+
+
                                                     {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
-                                                        <label for="standard_pengecekan">standard_pengecekan</label>
-                                                        <input type="text" id="standard_pengecekan"
-                                                            name="standard_pengecekan" class="form-control"
-                                                            value="{{ $req->standard_pengecekan }}" required>
+                                                        <label for="standard_pengecekan_min">standard_pengecekan_min</label>
+                                                        <input type="text" id="standard_pengecekan_min"
+                                                            name="standard_pengecekan_min" class="form-control"
+                                                            value="{{ $req->standard_pengecekan_min }}" required>
+                                                    </div>
+
+
+                                                    <div class="form-group mt-2">
+                                                        <label for="standard_pengecekan_max">standard_pengecekan_max</label>
+                                                        <input type="text" id="standard_pengecekan_max"
+                                                            name="standard_pengecekan_max" class="form-control"
+                                                            value="{{ $req->standard_pengecekan_max }}" required>
+                                                    </div>
+
+                                                    <div class="form-group mt-2">
+                                                        <label for="unit_measurement">unit_measurement</label>
+                                                        <input type="text" id="unit_measurement" name="unit_measurement"
+                                                            class="form-control" value="{{ $req->unit_measurement }}"
+                                                            required>
                                                     </div>
 
 
@@ -134,14 +165,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Standard Pengecekan</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
-                        <label for="master_spare_part_id">Section ID</label>
+                        <label for="master_spare_part_id">Spare Part</label>
                         <select name="master_spare_part_id" id="master_spare_part_id" class="form-control">
                             <option value="" disabled selected>
                                 choose
@@ -155,8 +186,8 @@
 
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
-                        <label for="item_standard_id">Section ID</label>
-                        <select name="item_standard_id" id="item_standard_id" class="form-control">
+                        <label for="item_pengecekan_id">Item Pengecekan</label>
+                        <select name="item_pengecekan_id" id="item_pengecekan_id" class="form-control">
                             <option value="" disabled selected>
                                 choose
                             </option>
@@ -168,10 +199,30 @@
                         </select>
                     </div>
 
+                    <div class="form-group mt-2">
+                        <label for="operation">Logical Operation</label>
+                        <input type="text" id="operation" name="operation" class="form-control" value=""
+                            required>
+                    </div>
+
+
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
-                        <label for="standard_pengecekan">standard_pengecekan</label>
-                        <input type="text" id="standard_pengecekan" name="standard_pengecekan" class="form-control"
+                        <label for="standard_pengecekan_min">Standard Pengecekan Min</label>
+                        <input type="text" id="standard_pengecekan_min" name="standard_pengecekan_min"
+                            class="form-control" value="" required>
+                    </div>
+
+
+                    <div class="form-group mt-2">
+                        <label for="standard_pengecekan_max">Standard Pengecekan Max</label>
+                        <input type="text" id="standard_pengecekan_max" name="standard_pengecekan_max"
+                            class="form-control" value="" required>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="unit_measurement">Unit Measurement</label>
+                        <input type="text" id="unit_measurement" name="unit_measurement" class="form-control"
                             value="" required>
                     </div>
 
