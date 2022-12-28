@@ -85,8 +85,8 @@
                             <tr>
                                 <td>{{ $req->id }}</td>
                                 <td>{{ $req->reg_sp }}</td>
-                                <td>{{ $req->plan_start_repair }}</td>
-                                <td>{{ $req->plan_finish_repair }}</td>
+                                <td>{{ Carbon\Carbon::parse($req->plan_start_repair)->format('Y-m-d') }}</td>
+                                <td>{{ Carbon\Carbon::parse($req->plan_finish_repair)->format('Y-m-d') }}</td>
                                 <td>{{ $req->item_name }}</td>
                                 <td>{{ $req->problem }}</td>
                                 <td class="text-center">{{ $req->status_repair }}</td>
