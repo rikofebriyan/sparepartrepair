@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-
-
+@section('css')
+@endsection
 @section('content')
     {{-- @if ($message = Session::get('success'))
         <h6 class="alert alert-success">
@@ -23,15 +23,20 @@
                 <div class="me-2">Flow Repair : </div>
                 <button class="rounded-pill bg-dark text-white text-center px-2 border-white" id="allinput">Register</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-secondary text-white text-center px-2 border-white" id="waiting">Waiting</button>
+                <button class="rounded-pill bg-secondary text-white text-center px-2 border-white"
+                    id="waiting">Waiting</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-warning text-white text-center px-2 border-white" id="progress">On Progress</button>
+                <button class="rounded-pill bg-warning text-white text-center px-2 border-white" id="progress">On
+                    Progress</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-info text-white text-center px-2 border-white" id="sealkit">Seal Kit</button>
+                <button class="rounded-pill bg-info text-white text-center px-2 border-white" id="sealkit">Seal
+                    Kit</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-primary text-white text-center px-2 border-white" id="trial">Trial</button>
+                <button class="rounded-pill bg-primary text-white text-center px-2 border-white"
+                    id="trial">Trial</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-success text-white text-center px-2 border-white" id="finish">Finish</button>
+                <button class="rounded-pill bg-success text-white text-center px-2 border-white"
+                    id="finish">Finish</button>
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -99,7 +104,8 @@
                                             {{ $req->progress }}
                                         </div>
                                     @elseif ($req->progress == 'Seal Kit')
-                                        <div class="rounded-pill bg-info text-white text-center px-2 bg-opacity-50">{{ $req->progress }}
+                                        <div class="rounded-pill bg-info text-white text-center px-2 bg-opacity-50">
+                                            {{ $req->progress }}
                                         </div>
                                     @elseif ($req->progress == 'Trial')
                                         <div class="rounded-pill bg-primary text-white text-center px-2 bg-opacity-50">
@@ -132,7 +138,7 @@
                                     @elseif($req->progress == 'Finish')
                                         {{-- <a class="btn btn-success btn-sm">Finished</a> --}}
                                         <a class="rounded-pill btn btn-success btn-sm col-7"
-                                        href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
 
                                     {{-- <a class="btn btn-success"
@@ -173,6 +179,29 @@
                 order: [
                     [0, 'desc']
                 ],
+
+                "createdRow": function(row, data, dataIndex) {
+
+                    var now = new Date().getTime();
+                    var datestart = new Date(data[2]).getTime();
+                    // alert(datestart);
+                    var dateplan = new Date(data[3]).getTime();
+                    var diff = Math.floor((dateplan - datestart) / (1000 * 60 * 60 * 24));
+                    // alert(diff);
+                    if (diff <= 0) {
+                        $(row).css({
+                            'background-color': '#FFCCCB',
+                            'color': 'black'
+                        });
+                    } else if (diff <= 2) {
+                        $(row).css({
+                            'background-color': '#FAFAD2',
+                            'color': 'black'
+                        });
+                    } else {
+                        $(row);
+                    }
+                }
 
             });
         });

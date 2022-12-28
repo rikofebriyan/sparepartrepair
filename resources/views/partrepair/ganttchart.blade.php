@@ -225,27 +225,17 @@
                                 y: [
                                     new Date('{{ $dt['plan_start_repair'] }}').getTime(),
                                     new Date('{{ $dt['plan_finish_repair'] }}').getTime()
-                                ]
+                                ],
+                                fillColor: '{{ $dt['fillcolor'] }}'
                             },
                         @endforeach
+
                     ]
                 },
-                {
-                    name: 'Actual',
-                    data: [
-                        @foreach ($data as $dt)
-                            {
-                                x: '{{ $dt['id'] . ' ' . $dt['item_name'] }}',
-                                y: [new Date('{{ $dt['actual_start_repair'] }}').getTime(),
-                                    new Date('{{ $dt['actual_finish_repair'] }}').getTime()
-                                ]
-                            },
-                        @endforeach
-                    ]
-                }
+
             ],
             chart: {
-                height: ({{ $count }} * 60) + 100,
+                height: ({{ $count }} * 40) + 100,
                 type: 'rangeBar',
                 offsetY: '15',
                 events: {
