@@ -45,8 +45,9 @@ class PartrepairController extends Controller
         $bulan = date('m');
         $tanggal    = date('d');
         $currentDate = Carbon::now()->format('Y-m-d');
-        $noUrutAkhir = Waitingrepair::where('date','=',$currentDate)
+        $noUrutAkhir = Waitingrepair::where('created_at','>=',$currentDate)
                         ->count('reg_sp');
+        // dd($noUrutAkhir);
         $no = 1;
         if($noUrutAkhir) {
         $ticket = $AWAL . $tahun . $bulan . $tanggal . sprintf("%03s", abs($noUrutAkhir + 1)) ;
