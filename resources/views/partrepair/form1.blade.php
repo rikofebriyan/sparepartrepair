@@ -9,7 +9,7 @@
                     <label for="tanggal" class="col-sm-3 col-form-label">Date
                         Created</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control" id="tanggal" name="date"
+                        <input type="datetime-local" class="form-control bg-secondary text-white" id="tanggal" name="date"
                             value="{{ $waitingrepair->date }}" readonly>
                     </div>
                 </div>
@@ -22,14 +22,14 @@
 
                         <div class="form-check-inline">
                             <input class="form-check-input" type="radio" name="part_from" id="radio1"
-                                value="Belum Pernah Repair" @if ($waitingrepair->part_from == 'Belum Pernah Repair') checked @endif>
+                                value="Belum Pernah Repair" @if ($waitingrepair->part_from == 'Belum Pernah Repair') checked @else disabled @endif>
                             <label class="form-check-label" for="radio1">
                                 Belum Pernah Repair
                             </label>
                         </div>
                         <div class="form-check-inline">
                             <input class="form-check-input" type="radio" name="part_from" id="radio2"
-                                value="Pernah Repair" @if ($waitingrepair->part_from == 'Pernah Repair') checked @endif>
+                                value="Pernah Repair" @if ($waitingrepair->part_from == 'Pernah Repair') checked @else disabled @endif>
                             <label class="form-check-label" for="radio2">
                                 Pernah di Repair
                             </label>
@@ -38,15 +38,32 @@
                     </div>
                 </div>
 
-                <div class="mb-3 row" id="field2" style="display: none">
+                {{-- <div class="mb-3 row" id="field2">
                     <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
                         Repair</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control mb-3" placeholder="Input Kode Part Repair">
+                        <input type="text" class="form-control mb-3 bg-secondary text-white" placeholder="Input Kode Part Repair" readonly>
 
                         <div class="input-group">
-                            <input type="text" class="form-control" id="number_of_repair"
+                            <input type="text" class="form-control bg-secondary text-white" id="number_of_repair"
                                 placeholder="Number of Repair" readonly>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="mb-3 row" id="field2" @if($waitingrepair->part_from == 'Belum Pernah Repair') style="display:none;" @endif>
+                    <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
+                        Repair</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control mb-3 bg-secondary text-white" placeholder="Kode Part Repair"
+                            id="code_part_repair" name="code_part_repair" value="{{ $waitingrepair->code_part_repair }}" readonly>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-secondary text-white" id="number_of_repair"
+                                name="number_of_repair" placeholder="Number of Repair" value="{{ $waitingrepair->number_of_repair }}" readonly>
+                            <label for="number_of_repair" class="col-sm-3 col-form-label ms-3">Times</label>
+                            <div id="number_of_repairFeedback" class="invalid-feedback">
+                                Part Has Been Repaired Over 5 Times. Please Scrap!
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,20 +90,20 @@
                                 @endforeach
                         </select> --}}
                         <div class="input-group">
-                            <input type="text" class="form-control" id="item_code" name="item_code"
+                            <input type="text" class="form-control bg-secondary text-white" id="item_code" name="item_code"
                                 placeholder="Item Code" value="{{ $waitingrepair->item_code }}" readonly>
-                            <input type="text" class="form-control" id="item_name" name="item_name"
+                            <input type="text" class="form-control bg-secondary text-white" id="item_name" name="item_name"
                                 placeholder="Item Name" value="{{ $waitingrepair->item_name }}" readonly>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="description" name="item_type"
+                            <input type="text" class="form-control bg-secondary text-white" id="description" name="item_type"
                                 placeholder="Item Type" value="{{ $waitingrepair->item_type }}" readonly>
                         </div>
 
                         <div class="input-group">
-                            <input type="text" class="form-control number" id="price" name="price"
+                            <input type="text" class="form-control number bg-secondary text-white" id="price" name="price"
                                 placeholder="Price" value="{{ $waitingrepair->price }}" readonly>
-                            <input type="text" class="form-control" id="qty" name="stock_spare_part"
+                            <input type="text" class="form-control bg-secondary text-white" id="qty" name="stock_spare_part"
                                 placeholder="Stock" value="{{ $waitingrepair->stock_spare_part }}" readonly>
                         </div>
 

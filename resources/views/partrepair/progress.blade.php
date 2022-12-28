@@ -13,38 +13,37 @@
             <div class="card-content">
                 <div class="card-body py-2">
                     <div class="list-group list-group-horizontal-sm my-1 py-0 text-center" role="tablist">
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif" id="list-sunday-list" data-bs-toggle="list"
-                            href="#list-sunday" role="tab">Request Form</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Waiting') active @endif"
-                            id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress Form</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Waiting') active @endif" id="list-sunday-list" data-bs-toggle="list"
+                            href="#list-sunday" role="tab">Repair Ticket</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'On Progress') active @endif"
-                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab">Order Part Seal
-                            Kit</a>
+                            id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress Repair</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif"
-                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab">Trial</a>
+                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab">Seal Kit</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif"
-                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab">Finish Form</a>
+                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab">Trial</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif"
+                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab">Finish Repair</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-content text-justify py-2">
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'Finish') show active @endif" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
                 @include('partrepair.form1')
             </div>
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-monday" role="tabpanel"
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-monday" role="tabpanel"
                 aria-labelledby="list-monday-list">
                 @include('partrepair.form2')
             </div>
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-tuesday"
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Seal Kit') show active @endif" id="list-tuesday"
                 role="tabpanel" aria-labelledby="list-tuesday-list">
                 @include('partrepair.form3')
             </div>
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'Seal Kit') show active @endif" id="list-4" role="tabpanel"
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Trial') show active @endif" id="list-4" role="tabpanel"
                 aria-labelledby="list-4-list">
                 @include('partrepair.form4')
             </div>
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'Trial') show active @endif" id="list-5" role="tabpanel"
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Finish') show active @endif" id="list-5" role="tabpanel"
                 aria-labelledby="list-5-list">
                 @include('partrepair.form5')
             </div>
@@ -62,12 +61,16 @@
                 data: "labour_id=" + labour_id,
                 dataType: 'JSON',
                 success: function(data) {
-                    console.log(data)
-                    if (total_time_repair > 0 && data.labour_cost > 0) {
-                        labourCost = total_time_repair * data.labour_cost
+                    if (total_time_repair > 0 && data > 0) {
+                        labourCost = total_time_repair * data
 
                         $('#labour_cost').val(labourCost);
                     }
+                    // if (total_time_repair > 0 && data.labour_cost > 0) {
+                    //     labourCost = total_time_repair * data.labour_cost
+
+                    //     $('#labour_cost').val(labourCost);
+                    // }
                     // var json = data,
                     //     obj = JSON.parse(json);
                     // $('#labour_cost').val(obj.labour_cost);

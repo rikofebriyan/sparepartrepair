@@ -57,11 +57,12 @@ class InfoController extends Controller
 
     public function getlabour(Request $request)
     {
-        $labour_id = $request->get('labour_id');
-        $data = User::where('name', $labour_id)->first();
+        $data_labour_cost = 87500;
+        // $labour_id = $request->get('labour_id');
+        // $data = User::where('name', $labour_id)->first();
         // $withoutbrackets = trim($data, '[]');
         // echo $withoutbrackets;
-        return response()->json($data);
+        return response()->json($data_labour_cost);
     }
 
 

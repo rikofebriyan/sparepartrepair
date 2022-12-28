@@ -116,7 +116,13 @@
 
                         <li class="menu-item  ">
                             <a href="/partrepair/waitingtable" class='menu-link'>
-                                <span><i class="bi bi-table"></i> Table</a></span>
+                                <span><i class="bi bi-table"></i> Table Waiting Repair</a></span>
+                        </li>
+
+                        <li class="menu-item  ">
+                            <a href="{{ asset('partrepair/ganttchart') }}" class='menu-link'>
+                                <span><i class="bi bi-stack"></i> Schedule Chart</span>
+                            </a>
                         </li>
 
                         <li class="menu-item  has-sub">
@@ -199,12 +205,6 @@
 
                                 </div>
                             </div>
-                        </li>
-
-                        <li class="menu-item  ">
-                            <a href="{{ asset('partrepair/ganttchart') }}" class='menu-link'>
-                                <span><i class="bi bi-stack"></i> Schedule Chart</span>
-                            </a>
                         </li>
 
                         {{-- <li class="menu-item  ">

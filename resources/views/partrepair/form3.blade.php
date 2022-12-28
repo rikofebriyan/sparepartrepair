@@ -340,18 +340,18 @@
                                             @endforeach
                                         </select>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="item_code2"
+                                            <input type="text" class="form-control bg-secondary text-white" id="item_code2"
                                                 name="item_code" placeholder="Item Code" readonly>
-                                            <input type="text" class="form-control" id="item_name2"
+                                            <input type="text" class="form-control bg-secondary text-white" id="item_name2"
                                                 name="item_name" placeholder="Item Name" readonly>
                                         </div>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="description2"
+                                            <input type="text" class="form-control bg-secondary text-white" id="description2"
                                                 name="description" placeholder="description" readonly>
                                         </div>
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="price2" name="price"
+                                            <input type="text" class="form-control bg-secondary text-white" id="price2" name="price"
                                                 placeholder="Price" readonly>
                                         </div>
 
@@ -442,8 +442,9 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-md btn-primary">Save</button>
-                                <a href="{{ route('partrepair.progresspemakaian.index') }}"
-                                    class="btn btn-md btn-secondary">back</a>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                {{-- <a href="{{ route('partrepair.progresspemakaian.index') }}"
+                                    class="btn btn-md btn-secondary">back</a> --}}
                             </div>
                         </div>
                     </div>

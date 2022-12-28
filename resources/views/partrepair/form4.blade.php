@@ -95,7 +95,7 @@
 
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Item Code</label>
-                    <select name="master_spare_part_id" id="master_spare_part_id" class="form-control">
+                    <select name="master_spare_part_id" id="master_spare_part_id" class="form-control bg-secondary text-white">
                         <option value="{{ $asu->item_id }}">{{ $asu->item_code }}
                         </option>
                     </select>
@@ -103,19 +103,19 @@
 
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Part Name</label>
-                    <input type="text" class="form-control" value="{{ $asu->item_name }}" disabled>
+                    <input type="text" class="form-control bg-secondary text-white" value="{{ $asu->item_name }}" disabled>
                 </div>
 
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Part Type</label>
-                    <input type="text" class="form-control" value="{{ $asu->item_type }}" disabled>
+                    <input type="text" class="form-control bg-secondary text-white" value="{{ $asu->item_type }}" disabled>
                 </div>
 
                 <div class="form-group mt-2">
-                    <label for="item_standard_id">Item Check</label>
-                    <select name="item_standard_id" id="item_standard_id" class="form-control">
+                    <label for="item_check_id">Item Check</label>
+                    <select name="item_check_id" id="item_check_id" class="form-control">
                         <option value="" disabled selected>
-                            Choose
+                            Choose ...
                         </option>
                         @foreach ($itemstandard as $tabw)
                             <option value="{{ $tabw->id }}">
@@ -129,7 +129,7 @@
                     <label for="operation">Operation</label>
                     <select name="operation" id="operation" class="form-control">
                         <option value="" disabled selected>
-                            Choose
+                            Choose ...
                         </option>
                         <option value="Less Than">Less Than</option>
                         <option value="Greater Than">Greater Than</option>
