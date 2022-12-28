@@ -13,10 +13,11 @@
             <div class="card-content">
                 <div class="card-body py-2">
                     <div class="list-group list-group-horizontal-sm my-1 py-0 text-center" role="tablist">
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Waiting') active @endif" id="list-sunday-list" data-bs-toggle="list"
-                            href="#list-sunday" role="tab">Repair Ticket</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Waiting') active @endif"
+                            id="list-sunday-list" data-bs-toggle="list" href="#list-sunday" role="tab">Repair Ticket</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'On Progress') active @endif"
-                            id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress Repair</a>
+                            id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress
+                            Repair</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif"
                             id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab">Seal Kit</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif"
@@ -28,7 +29,8 @@
             </div>
         </div>
         <div class="tab-content text-justify py-2">
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-sunday" role="tabpanel"
+                aria-labelledby="list-sunday-list">
                 @include('partrepair.form1')
             </div>
             <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-monday" role="tabpanel"
@@ -342,7 +344,7 @@
                 }
             });
 
-            $
+
         });
 
         $(document).ready(function() {
