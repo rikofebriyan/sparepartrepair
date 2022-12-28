@@ -235,7 +235,7 @@
 
             ],
             chart: {
-                height: ({{ $count }} * 60) + 100,
+                height: ({{ $count }} * 40) + 100,
                 type: 'rangeBar',
                 offsetY: '15',
                 events: {
