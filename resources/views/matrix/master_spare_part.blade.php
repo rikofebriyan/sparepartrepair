@@ -59,7 +59,7 @@
 
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
-                                {{-- <td class="text-center d-flex d-inline">
+                                <td class="text-center d-flex d-inline">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
                                         data-bs-target="#asu{{ $req->id }}">
@@ -169,7 +169,7 @@
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
                                     {{ Form::close() }}
-                                </td> --}}
+                                </td>
                             </tr>
                         @empty
                             <tr>
