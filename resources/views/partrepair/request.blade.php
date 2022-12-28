@@ -20,7 +20,7 @@
                             <div class="mb-3 row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Date Created</label>
                                 <div class="col-sm-9">
-                                    <input type="datetime-local" class="form-control" id="tanggal" name="date"
+                                    <input type="datetime-local" class="form-control bg-secondary text-white" id="tanggal" name="date"
                                         value="{{ Carbon\Carbon::now() }}" readonly required>
                                 </div>
                             </div>
@@ -87,20 +87,20 @@
                                     <div class="input-group">
 
                                         <input type="hidden" class="form-control" name="item_id" id="item_id">
-                                        <input type="text" class="form-control" id="item_code" name="item_code"
+                                        <input type="text" class="form-control bg-secondary text-white" id="item_code" name="item_code"
                                             placeholder="Item Code" readonly required>
-                                        <input type="text" class="form-control" id="item_name" name="item_name"
+                                        <input type="text" class="form-control bg-secondary text-white" id="item_name" name="item_name"
                                             placeholder="Item Name" readonly required>
                                     </div>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="description" name="item_type"
+                                        <input type="text" class="form-control bg-secondary text-white" id="description" name="item_type"
                                             placeholder="Item Type" readonly required>
                                     </div>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control number" id="price" name="price"
+                                        <input type="text" class="form-control number bg-secondary text-white" id="price" name="price"
                                             placeholder="Price" readonly required>
-                                        <input type="text" class="form-control" id="qty"
+                                        <input type="text" class="form-control bg-secondary text-white" id="qty"
                                             name="stock_spare_part" placeholder="Stock" readonly required>
                                     </div>
 
@@ -436,6 +436,22 @@
                                 $('#type_of_part').append(`<option value="${id}" ` +
                                     selected + `>${part}</option>`)
                             });
+
+                            if (result['dataPart'].qty == 0) {
+                                $('#status_repair').empty()
+                                $('#status_repair').append(`
+                                    <option disabled>Pilih ...</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Urgent" selected>Urgent</option>
+                                `)
+                            } else {
+                                $('#status_repair').empty()
+                                $('#status_repair').append(`
+                                    <option disabled>Pilih ...</option>
+                                    <option value="Normal" selected>Normal</option>
+                                    <option value="Urgent">Urgent</option>
+                                `)
+                            }
                         }
                     }
                 });
