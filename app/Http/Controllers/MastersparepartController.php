@@ -53,7 +53,9 @@ class MastersparepartController extends Controller
         ]);
 
         // create new task
-        MasterSparePart::create($request->all());
+        $data = $request->all();
+        $data['code_item_description'] = $request->item_code.' | '.$request->item_name.' | '.$request->description;
+        MasterSparePart::create($data);
         return redirect()->route('matrix.master_spare_part.index')->with('success', 'Your task added successfully!');
     }
 
@@ -90,7 +92,10 @@ class MastersparepartController extends Controller
         $this->validate($request, [
             'item_name' => 'required',
         ]);
-        MasterSparePart::find($id)->update($request->all());
+        $data = $request->all();
+        $data['code_item_description'] = $request->item_code.' | '.$request->item_name.' | '.$request->description;
+        MasterSparePart::find($id)->update($data);
+        // MasterSparePart::find($id)->update($request->all());
         return redirect()->route('matrix.master_spare_part.index')->with('success','MasterSparePart updated successfully');
     }
 
