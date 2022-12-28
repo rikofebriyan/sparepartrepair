@@ -13,7 +13,7 @@
             <div class="card-content">
                 <div class="card-body py-2">
                     <div class="list-group list-group-horizontal-sm my-1 py-0 text-center" role="tablist">
-                        <a class="list-group-item list-group-item-action " id="list-sunday-list" data-bs-toggle="list"
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif" id="list-sunday-list" data-bs-toggle="list"
                             href="#list-sunday" role="tab">Request Form</a>
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Waiting') active @endif"
                             id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress Form</a>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="tab-content text-justify py-2">
-            <div class="tab-pane fade" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Finish') show active @endif" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
                 @include('partrepair.form1')
             </div>
             <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-monday" role="tabpanel"

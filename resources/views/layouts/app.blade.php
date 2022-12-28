@@ -207,12 +207,12 @@
                             </a>
                         </li>
 
-                        <li class="menu-item  ">
+                        {{-- <li class="menu-item  ">
                             <a target="_blank" rel="noopener noreferrer" href="{{ asset('index.html') }}"
                                 class='menu-link'>
                                 <span><i class="bi bi-stack"></i> Lihat Template</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </nav>

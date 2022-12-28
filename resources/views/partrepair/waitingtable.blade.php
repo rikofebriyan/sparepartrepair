@@ -126,7 +126,9 @@
                                         <a class="btn btn-success btn-sm"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Finish</a>
                                     @elseif($req->progress == 'Finish')
-                                        <a class="btn btn-success btn-sm">Finished</a>
+                                        {{-- <a class="btn btn-success btn-sm">Finished</a> --}}
+                                        <a class="btn btn-success btn-sm"
+                                        href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
 
                                     {{-- <a class="btn btn-success"

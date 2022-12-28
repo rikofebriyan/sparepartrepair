@@ -90,8 +90,8 @@ class FinishrepairController extends Controller
         } else {
             Finishrepair::find($finish->id)->update($data);
         }
-
-        $request2 = Waitingrepair::find($request->form_input_id)->first();
+        
+        $request2 = Waitingrepair::find($request->form_input_id);
         $request2->progress = 'Finish';
         $request2->save();
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
