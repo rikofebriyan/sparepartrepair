@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Section;
 use App\Line;
 use Illuminate\Http\Request;
@@ -21,12 +22,24 @@ class LineController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request);
+
+        // $join = DB::table('lines')
+        // ->join('sections', 'lines.id', '=', 'sections.id')
+        // ->select('lines.*', 'sections.name as section')
+        // ->get();
+
+        $join = Line::join('sections', 'lines.id', '=', 'sections.id')
+                    ->select('lines.*', 'sections.name as section')
+                    ->get();
+
         $sectionr = Section::all();
         $partr = Line::all()->sortByDesc('id');
+        
+        // dd($join);
         return view('matrix.line', [
             'reqtzy' => $partr,
             'sectzy' => $sectionr,
+            'join' => $join,
         ]);
     }
 

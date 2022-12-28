@@ -34,10 +34,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($reqtzy as $req)
+                        @forelse ($join as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
-                                <td>{{ $req->line_id }}</td>
+                                <td>{{ $req->line }}</td>
                                 <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
@@ -69,7 +69,9 @@
                                                                 choose
                                                             </option>
                                                             @foreach ($tab2 as $tab)
-                                                                <option value="{{ $tab->id }}">{{ $tab->name }}
+                                                                <option value="{{ $tab->id }}"
+                                                                    @if ($req->line_id == $tab->id) selected @endif>
+                                                                    {{ $tab->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

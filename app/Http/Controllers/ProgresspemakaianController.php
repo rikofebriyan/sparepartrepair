@@ -94,7 +94,20 @@ class ProgresspemakaianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'item_code' => 'required',
+        ]);
+
+        // create new task
+        $data = $request->all();
+        
+        if ($request->estimasi_kedatangan != null) {
+        $data['estimasi_kedatangan'] = Carbon::parse($request->estimasi_kedatangan)->format('Y-m-d H:i:s');
+        } else {$data['estimasi_kedatangan'] = null;}
+        Progresspemakaian::find($id)->update($data);
+        // Progresspemakaian::create($data);
+        // Progresspemakaian::create($request->all());
+        return redirect()->back()->with('success','Task added successfully');
     }
 
     /**

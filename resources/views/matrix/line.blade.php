@@ -28,18 +28,18 @@
                             <th scope="col">id</th>
                             <th scope="col">BU</th>
                             <th scope="col">Section ID</th>
-                            <th scope="col">name</th>
+                            <th scope="col">Name</th>
                             <th scope="col">created_at</th>
                             <th scope="col">updated_at</th>
                             <th scope="col">action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($reqtzy as $req)
+                        @forelse ($join as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
                                 <td>{{ $req->bu }}</td>
-                                <td>{{ $req->section_id }}</td>
+                                <td>{{ $req->section }}</td>
                                 <td>{{ $req->name }}</td>
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
@@ -68,14 +68,16 @@
                                                         <input type="text" id="bu" name="bu"
                                                             class="form-control" value="{{ $req->bu }}" required>
                                                     </div>
-                                                    <div class="form-group mt-2">
+                                                    <div class="form-group mt-2">+
                                                         <label for="section_id">Section ID</label>
                                                         <select name="section_id" id="section_id" class="form-control">
                                                             <option value="" disabled selected>
                                                                 choose
                                                             </option>
                                                             @foreach ($sectzy as $sec)
-                                                                <option value="{{ $sec->id }}">{{ $sec->name }}
+                                                                <option value="{{ $sec->id }}"
+                                                                    @if ($req->section_id == $sec->id) selected @endif>
+                                                                    {{ $sec->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

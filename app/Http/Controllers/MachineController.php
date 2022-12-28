@@ -21,11 +21,16 @@ class MachineController extends Controller
      */
     public function index()
     {
+        
+        $join = Machine::join('lines', 'machines.line_id', '=', 'lines.id')
+                    ->select('machines.*', 'lines.name as line')
+                    ->get();
         $tabel2 = Line::all();
         $partr = Machine::all()->sortByDesc('id');
         return view('matrix.machine', [
             'reqtzy' => $partr,
             'tab2' => $tabel2,
+            'join' => $join,
         ]);
     }
 
