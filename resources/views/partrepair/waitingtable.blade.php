@@ -17,8 +17,6 @@
 
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
-            {{-- <a href="#" class="btn btn-md btn-success mb-3 float-right">New
-                Post</a> --}}
             <div class="d-flex d-inline justify-content-center mb-3">
                 <div class="me-2">Flow Repair : </div>
                 <button class="rounded-pill bg-dark text-white text-center px-2 border-white" id="allinput">Register</button>
@@ -43,38 +41,6 @@
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
-                    {{-- <thead>
-                        <tr>
-                            <th scope="col">Ticket No</th>
-                            <th scope="col">Date Created</th>
-                            <th scope="col">Spare Part</th>
-                            <th scope="col">Problem</th>
-                            <th scope="col">Status Repair</th>
-                            <th scope="col">Progress</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for ($i = 0; $i < 20; $i++)
-                            <tr>
-                                <td>RE202211300001</td>
-                                <td>30 Nov 2022</td>
-                                <td>CYL0000001 | Cylinder | MHL2-35Z | SMC</td>
-                                <td>Bocor pada sealkit bagian depan</td>
-                                <td>Urgent</td>
-                                <td>
-                                    <a class="rounded-pill bg-secondary text-dark text-center px-2">Waiting</a>
-                                </td>
-                                <td class="text-center">
-                                    <a class="btn btn-success"
-                                        href="{{ route('partrepair.progresstrial.show', '2') }}">Progress</a>
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', '2'], 'style' => 'display:inline']) }}
-                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                                    {{ Form::close() }}
-                                </td>
-                            </tr>
-                        @endfor
-                    </tbody> --}}
                     <thead>
                         <tr>
                             <th scope="col">Ticket No</th>
@@ -154,7 +120,6 @@
 
                                                     <input type="hidden" name="deleted_by"
                                                         value="{{ Auth::user()->name }}">
-                                                    {{-- {!! Form::hidden('deleted_by', {{ Auth::user()->name }}) !!} --}}
 
                                                     <div class="form-group position-relative has-icon-left mb-4">
                                                         <input type="text" id="reason" name="reason"
@@ -200,8 +165,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
 @endsection
 
 
@@ -282,22 +245,22 @@
             var table = $('#myTable').DataTable();
 
             $('#allinput').click(function() {
-                table.column(7).search('').draw();
+                table.column(6).search('').draw();
             });
             $('#waiting').click(function() {
-                table.column(7).search('waiting').draw();
+                table.column(6).search('waiting').draw();
             });
             $('#progress').click(function() {
-                table.column(7).search('progress').draw();
+                table.column(6).search('progress').draw();
             });
             $('#sealkit').click(function() {
-                table.column(7).search('Seal Kit').draw();
+                table.column(6).search('Seal Kit').draw();
             });
             $('#trial').click(function() {
-                table.column(7).search('Trial').draw();
+                table.column(6).search('Trial').draw();
             });
             $('#finish').click(function() {
-                table.column(7).search('Finish').draw();
+                table.column(6).search('Finish').draw();
             });
         });
     </script>
