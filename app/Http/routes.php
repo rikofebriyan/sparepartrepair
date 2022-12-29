@@ -23,7 +23,6 @@ Route::get('/partrepair', 'PartrepairController@index');
 Route::get('/partrepair/request', 'PartrepairController@request');
 Route::get('/partrepair/ganttchart', 'GanttchartController@index');
 
-
 Route::resource('tasks', 'TaskController');
 Route::resource('partrepair/waitingtable', 'WaitingrepairController');
 Route::resource('partrepair/progresstable', 'ProgressrepairController');
@@ -42,6 +41,7 @@ Route::resource('matrix/item_standard', 'ItemstandardController');
 Route::resource('matrix/code_part_repair', 'CodepartrepairController');
 Route::resource('matrix/category_code', 'CategorycodeController');
 Route::resource('matrix/user', 'UserController');
+Route::resource('Auth/profile', 'ProfileController');
 
 Route::get('/ajax', 'InfoController@index');
 Route::get('/getline', 'InfoController@getline');

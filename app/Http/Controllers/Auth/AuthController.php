@@ -54,7 +54,6 @@ class AuthController extends Controller
             'NPK' => 'required|max:10|unique:users',
             'jabatan' => 'required|max:32',
             'email' => 'required|email|max:255',
-            'labour_cost' => 'required|max:10',
             'password' => 'required|min:4|confirmed',
         ]);
     }
@@ -72,7 +71,6 @@ class AuthController extends Controller
             'NPK' => $data['NPK'],
             'jabatan' => $data['jabatan'],
             'email' => $data['email'],
-            'labour_cost' => $data['labour_cost'],
             'password' => bcrypt($data['password']),
         ]);
     }
