@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="password" name="password" class="form-control form-control-xl"
+                            <input type="password" id="password" name="password" class="form-control form-control-xl"
                                 placeholder="Password" value="{{ old('password') }}">
                             <div class="form-control-icon">
 
@@ -111,7 +111,7 @@
 
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="password_confirm" name="password_confirmation"
+                            <input type="password" id="password_confirm" name="password_confirmation"
                                 class="form-control form-control-xl" placeholder="Konfirmasi Password"
                                 value="{{ old('password_confirm') }}">
                             <div class="form-control-icon">
