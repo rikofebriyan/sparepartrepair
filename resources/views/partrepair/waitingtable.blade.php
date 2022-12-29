@@ -10,7 +10,7 @@
     @endif --}}
     <CENTER>
         <div class="container-fluid">
-            <H2>PART REPAIR : WAITING TABLE </H2>
+            <H2>PART REPAIR : WAITING TABLE</H2>
         </div>
     </CENTER>
 
@@ -19,7 +19,7 @@
         <div class="card-body">
             {{-- <a href="#" class="btn btn-md btn-success mb-3 float-right">New
                 Post</a> --}}
-            <div class="d-flex d-inline justify-content-end mb-3">
+            <div class="d-flex d-inline justify-content-center mb-3">
                 <div class="me-2">Flow Repair : </div>
                 <button class="rounded-pill bg-dark text-white text-center px-2 border-white" id="allinput">Register</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
@@ -37,6 +37,9 @@
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-success text-white text-center px-2 border-white"
                     id="finish">Finish</button>
+                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
+                <button class="rounded-pill bg-danger text-white text-center px-2 border-white" id="delete">
+                    <a href="{{ asset('partrepair/deletedtable') }}" style="color:white">Deleted</a></button>
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -74,7 +77,6 @@
                     </tbody> --}}
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Ticket No</th>
                             <th scope="col">Plan Start</th>
                             <th scope="col">Plan Finish</th>
@@ -88,7 +90,6 @@
                     <tbody>
                         @forelse ($reqtzy as $req)
                             <tr>
-                                <td>{{ $req->id }}</td>
                                 <td>{{ $req->reg_sp }}</td>
                                 <td>{{ Carbon\Carbon::parse($req->plan_start_repair)->format('Y-m-d') }}</td>
                                 <td>{{ Carbon\Carbon::parse($req->plan_finish_repair)->format('Y-m-d') }}</td>
@@ -121,31 +122,72 @@
                                         <a class="rounded-pill btn btn-success btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Progress</a>
                                     @elseif($req->progress == 'On Progress')
-                                        {{-- <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstable.show', $req->id) }}">To Seal Kit</a> --}}
                                         <a class="rounded-pill btn btn-success btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Seal Kit</a>
                                     @elseif($req->progress == 'Seal Kit')
-                                        {{-- <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.progresstrial.show', $req->id) }}">To Trial</a> --}}
                                         <a class="rounded-pill btn btn-success btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Trial</a>
                                     @elseif($req->progress == 'Trial')
-                                        {{-- <a class="btn btn-success btn-sm"
-                                            href="{{ route('partrepair.finishrepair.show', $req->id) }}">To Finish</a> --}}
                                         <a class="rounded-pill btn btn-success btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Finish</a>
                                     @elseif($req->progress == 'Finish')
-                                        {{-- <a class="btn btn-success btn-sm">Finished</a> --}}
                                         <a class="rounded-pill btn btn-success btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
 
-                                    {{-- <a class="btn btn-success"
-                                        href="{{ route('partrepair.waitingtable.show', $req->id) }}">PROGRESS</a> --}}
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', $req->id], 'style' => 'display:inline']) }}
-                                    {{ Form::submit('Delete', ['class' => 'rounded-pill btn btn-danger btn-sm col-5']) }}
-                                    {{ Form::close() }}
+                                    <button type="button" class="rounded-pill btn btn-danger btn-sm col-5"
+                                        data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
+                                        Delete
+                                    </button>
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', $req->id]]) }}
+                                    <div class="modal fade" id="modaldelete{{ $req->id }}" tabindex="-1"
+                                        aria-labelledby="modaldeleteLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="modaldeleteLabel">Yakin mau di delete?
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <input type="hidden" name="deleted_by"
+                                                        value="{{ Auth::user()->name }}">
+                                                    {{-- {!! Form::hidden('deleted_by', {{ Auth::user()->name }}) !!} --}}
+
+                                                    <div class="form-group position-relative has-icon-left mb-4">
+                                                        <input type="text" id="reason" name="reason"
+                                                            class="form-control form-control-xl" placeholder="reason"
+                                                            value="{{ old('reason') }}">
+                                                        <div class="form-control-icon">
+
+                                                            @if ($errors->has('reason'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('reason') }}</strong>
+                                                                </span>
+                                                            @endif
+
+
+                                                            <i class="bi bi-c-circle"></i>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+
+                                                    {{ Form::close() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </td>
                             </tr>
                         @empty
@@ -158,7 +200,36 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @section('script')
     @if ($message = Session::get('success'))

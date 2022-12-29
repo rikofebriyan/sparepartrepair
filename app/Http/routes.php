@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/partrepair', 'PartrepairController@index');
 Route::get('/partrepair/request', 'PartrepairController@request');
 Route::get('/partrepair/ganttchart', 'GanttchartController@index');
+Route::get('/partrepair/deletedtable', 'WaitingrepairController@deleted');
 
 Route::resource('tasks', 'TaskController');
 Route::resource('partrepair/waitingtable', 'WaitingrepairController');
