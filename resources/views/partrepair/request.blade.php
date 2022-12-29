@@ -20,9 +20,8 @@
                             <div class="mb-3 row">
                                 <label for="tanggal" class="col-sm-3 col-form-label">Date Created</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control bg-secondary text-white" id="tanggal"
-                                        name="date" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" readonly
-                                        required>
+                                    <input type="datetime-local" class="form-control bg-secondary text-white" id="tanggal"
+                                        name="date" value="{{ Carbon\Carbon::now() }}" readonly required>
                                 </div>
                             </div>
 
