@@ -36,7 +36,7 @@ class CreateWaitingrepairsTable extends Migration
             $table->string('stock_spare_part')->nullable();
             $table->string('status_repair')->nullable();
             $table->string('progress')->nullable();
-            $table->int('deleted')->nullable();
+            $table->integer('deleted')->nullable();
             $table->string('deleted_by')->nullable();
             $table->string('reason')->nullable();
         });
