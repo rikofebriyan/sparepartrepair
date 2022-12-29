@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="email" name="email" class="form-control form-control-xl"
+                            <input type="email" id="email" name="email" class="form-control form-control-xl"
                                 placeholder="Email" value="{{ old('email') }}">
                             <div class="form-control-icon">
 
