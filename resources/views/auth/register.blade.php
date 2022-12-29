@@ -1,109 +1,150 @@
-@extends('layouts.appold')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                            {{ csrf_field() }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Spare Part System</title>
+    <!-- Styles -->
+    <link href="{{ asset('assets/css/main/app.css') }}" rel="stylesheet">
+    <!-- Scripts -->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+</head>
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Name</label>
+<body>
+    <div id="auth">
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name"
-                                        value="{{ old('name') }}">
-
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('NPK') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">NPK</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="NPK" value="{{ old('NPK') }}">
-
-                                    @if ($errors->has('NPK'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('NPK') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('jabatan') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Jabatan</label>
-                                <div class="col-md-6">
-                                    <select name="jabatan" class="form-control">
-                                        <option value="ADMIN">ADMIN</option>
-                                        <option value="MEMBER">MEMBER</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                        value="{{ old('email') }}">
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password">
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation">
-
-                                    @if ($errors->has('password_confirmation'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-user"></i> Register
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+        <div class="row h-100">
+            <div class="col-lg-6 col-12">
+                <div id="auth-left">
+                    <div class="card">
+                        <a href=""><img class="rounded mx-auto d-block" src="assets/images/logo/logo.svg"
+                                width="160" height="80" alt="Logo"></a>
                     </div>
+                    <center>
+                        <h1>Registration</h1>
+
+                        <p>Silahkan Registrasi menggunakan NPK anda</p>
+                    </center>
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        {{ csrf_field() }}
+
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="name" name="name" class="form-control form-control-xl"
+                                placeholder="Nama" value="{{ old('name') }}">
+                            <div class="form-control-icon">
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="NPK" name="NPK" class="form-control form-control-xl"
+                                placeholder="NPK" value="{{ old('NPK') }}">
+                            <div class="form-control-icon">
+
+                                @if ($errors->has('NPK'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('NPK') }}</strong>
+                                    </span>
+                                @endif
+
+                                <i class="bi bi-person-badge"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="jabatan" name="jabatan" class="form-control form-control-xl"
+                                placeholder="Jabatan" value="{{ old('jabatan') }}">
+                            <div class="form-control-icon">
+
+                                @if ($errors->has('jabatan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('jabatan') }}</strong>
+                                    </span>
+                                @endif
+
+                                <i class="bi bi-c-circle"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="email" name="email" class="form-control form-control-xl"
+                                placeholder="Email" value="{{ old('email') }}">
+                            <div class="form-control-icon">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+
+                                <i class="bi bi-envelope-heart"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="password" name="password" class="form-control form-control-xl"
+                                placeholder="Password" value="{{ old('password') }}">
+                            <div class="form-control-icon">
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+
+                                <i class="bi bi-key"></i>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" id="password_confirm" name="password_confirmation"
+                                class="form-control form-control-xl" placeholder="Konfirmasi Password"
+                                value="{{ old('password_confirm') }}">
+                            <div class="form-control-icon">
+
+                                @if ($errors->has('password_confirm'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirm') }}</strong>
+                                    </span>
+                                @endif
+
+                                <i class="bi bi-key"></i>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <button type="submit"
+                                class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Register</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div id="auth-right">
+
                 </div>
             </div>
         </div>
+
     </div>
-@endsection
+</body>
+
+</html>

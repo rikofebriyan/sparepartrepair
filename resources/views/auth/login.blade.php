@@ -21,7 +21,7 @@
             <div class="col-lg-6 col-12">
                 <div id="auth-left">
                     <div class="card">
-                        <a href="index.html"><img class="rounded mx-auto d-block" src="assets/images/logo/logo.svg"
+                        <a href=""><img class="rounded mx-auto d-block" src="assets/images/logo/logo.svg"
                                 width="160" height="80" alt="Logo"></a>
                     </div>
                     <center>
