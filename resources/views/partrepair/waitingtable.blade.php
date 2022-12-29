@@ -254,9 +254,9 @@
                 "createdRow": function(row, data, dataIndex) {
 
                     var now = new Date().getTime();
-                    var datestart = new Date(data[2]).getTime();
+                    var datestart = new Date(data[1]).getTime();
                     // alert(datestart);
-                    var dateplan = new Date(data[3]).getTime();
+                    var dateplan = new Date(data[2]).getTime();
                     var diff = Math.floor((dateplan - datestart) / (1000 * 60 * 60 * 24));
                     // alert(diff);
                     if (diff <= 0) {
