@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Maker;
 use App\Subcont;
+use App\CategoryCode;
+use App\CodePartRepair;
+use Datatables;
 
 class InfoController extends Controller
 {
@@ -117,4 +120,20 @@ class InfoController extends Controller
         $subcont = Subcont::all();
         return response()->json($subcont);
     }
+
+    public function getcategory(Request $request)
+    {
+        $data = CodePartRepair::all()->sortByDesc('id')->where('category', $request->category)->first();
+        // $data = CodePartRepair::where('number', $request->number)->sortByDesc('id');
+        // dd($data);
+        // return sprintf("%04s", abs($data + 1));
+        // $data = CategoryCode::where('category_code', $request->category_code)->count();
+        return response()->json($data);
+    }
+
+    // public function getmaster(Request $request)
+    // {
+    //     $model = MasterSparePart::all();
+    //     return Datatables::of($model)->make(true);
+    // }
 }

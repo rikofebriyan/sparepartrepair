@@ -8,11 +8,6 @@
             <H2>SECTION TABLE</H2>
         </div>
     </CENTER>
-    @if ($message = Session::get('success'))
-        <h6 class="alert alert-success">
-            {{ $message }}
-        </h6>
-    @endif
 
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
@@ -136,4 +131,17 @@
             });
         });
     </script>
+
+    @if ($message = Session::get('success'))
+        <script>
+            Toastify({
+                text: "{{ $message }}",
+                duration: 2500,
+                close: true,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#4fbe87",
+            }).showToast()
+        </script>
+    @endif
 @endsection
