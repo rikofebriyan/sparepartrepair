@@ -53,5 +53,10 @@ Route::get('/getMaker', 'InfoController@getMaker');
 Route::get('/getTypeOfPart', 'InfoController@getTypeOfPart');
 Route::get('/getSubcont', 'InfoController@getSubcont');
 Route::get('/getcategory', 'InfoController@getcategory');
-
 Route::get('/report', 'HomeController@reportHome');
+
+Route::get('/getmaster', function() {
+    $model = App\MasterSparePart::query();
+ 
+    return Datatables::of($model)->make(true);
+});

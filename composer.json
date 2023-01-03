@@ -11,7 +11,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
-        "nesbot/carbon": "^1.39"
+        "nesbot/carbon": "^1.39",
+        "yajra/laravel-datatables-oracle": "6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -15,6 +15,7 @@ use App\Maker;
 use App\Subcont;
 use App\CategoryCode;
 use App\CodePartRepair;
+use Datatables;
 
 class InfoController extends Controller
 {
@@ -129,4 +130,10 @@ class InfoController extends Controller
         // $data = CategoryCode::where('category_code', $request->category_code)->count();
         return response()->json($data);
     }
+
+    // public function getmaster(Request $request)
+    // {
+    //     $model = MasterSparePart::all();
+    //     return Datatables::of($model)->make(true);
+    // }
 }

@@ -286,11 +286,73 @@
     <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
     <!-- Scripts for Table Page -->
     <script>
-        $(document).ready(function() {
+        $(function() {
             $('#myTable').DataTable({
-                order: [
-                    [0, 'desc']
-                ],
+                processing: true,
+                serverSide: true,
+                ajax: '/getmaster',
+
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'item_code',
+                        name: 'item_code'
+                    },
+                    {
+                        data: 'item_name',
+                        name: 'item_name'
+                    },
+                    {
+                        data: 'description',
+                        name: 'description'
+                    },
+                    {
+                        data: 'qty',
+                        name: 'qty'
+                    },
+                    {
+                        data: 'price',
+                        name: 'price'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'wh_code',
+                        name: 'wh_code'
+                    },
+                    {
+                        data: 'rack_code',
+                        name: 'rack_code'
+                    },
+                    {
+                        data: 'rack_code',
+                        name: 'rack_code'
+                    },
+                    {
+                        data: 'order_point',
+                        name: 'order_point'
+                    },
+                    {
+                        data: 'order_qty',
+                        name: 'order_qty'
+                    },
+                    {
+                        data: 'account_no',
+                        name: 'account_no'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at'
+                    }
+                ]
             });
         });
     </script>
