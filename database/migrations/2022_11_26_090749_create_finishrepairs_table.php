@@ -27,11 +27,11 @@ class CreateFinishrepairsTable extends Migration
             $table->string('f_place_of_repair');
             $table->text('f_analisa');
             $table->text('f_action');
-            $table->string('f_subcont_cost');
-            $table->string('f_labour_cost');
-            $table->string('f_seal_kit_cost');
-            $table->string('f_total_cost_repair');
-            $table->string('f_total_cost_saving');
+            $table->integer('f_subcont_cost');
+            $table->integer('f_labour_cost');
+            $table->integer('f_seal_kit_cost');
+            $table->integer('f_total_cost_repair');
+            $table->integer('f_total_cost_saving');
 
             $table->string('code_part_repair');
             $table->dateTime('delivery_date');

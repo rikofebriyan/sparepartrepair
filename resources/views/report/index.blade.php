@@ -4,48 +4,61 @@
     <div class="content-wrapper container">
 
         <div class="page-content">
+            <div class="page-heading mt-3">
+                <h3>Report Repair</h3>
+            </div>
             <section class="row my-4">
-                <div class="col-12 col-lg-2">
+                <div class="col-12 col-lg-3">
                     <div class="row">
-                        <div class="page-heading">
-                            <h3>Repair Stats</h3>
-                        </div>
                         <div class="col-6 col-lg-12 col-md-6">
                             <div class="card">
                                 <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Cost Saving</h6>
-
-                                        </div>
+                                    <form action="/report" method="get">
+                                        {{-- <div class="mb-3">
+                                        <h6>Bulan</h6>
+                                        <fieldset class="form-group">
+                                            <select class="form-select" id="basicSelect">
+                                                <option value="" selected>Choose ...</option>
+                                                <option>January</option>
+                                                <option>February</option>
+                                                <option>March</option>
+                                            </select>
+                                        </fieldset>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">Rp 999.999.999.999</h6>
+                                    <div class="mb-3">
+                                        <h6>Tahun</h6>
+                                        <fieldset class="form-group">
+                                            <select class="form-select" id="basicSelect">
+                                                <option value="" selected>Choose ...</option>
+                                                <option>2022</option>
+                                                <option>2023</option>
+                                            </select>
+                                        </fieldset>
+                                    </div> --}}
+                                        <div class="mb-3">
+                                            <h6>Group By</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="groupBy" id="groupBy" required>
+                                                    <option value="" disabled>Choose ...</option>
+                                                    <option value="Week" @if ($groupBy == 'Week') selected @endif>Week</option>
+                                                    <option value="Month" @if ($groupBy == 'Month') selected @endif>Month</option>
+                                                </select>
+                                            </fieldset>
                                         </div>
-                                    </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary rounded-pill">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-10">
+                <div class="col-12 col-lg-9">
                     <div class="row">
-                        <div class="page-heading">
-                            <h3>Graph</h3>
-                        </div>
                         <div class="col-12">
                             <div class="card">
-                                {{-- <div class="card-header">
-                                    <h4 class="text-center">On Progress Repair</h4>
-                                </div> --}}
                                 <div class="card-body">
-                                    {{-- <div id="chart-qty-repair"></div> --}}
                                     <div id="chart-qty-repair">
                                         <apexchart type="bar" height="350" :options="chartOptions"
                                             :series="series"></apexchart>
@@ -54,9 +67,6 @@
                             </div>
 
                             <div class="card">
-                                {{-- <div class="card-header">
-                                    <h4>Cost Saving</h4>
-                                </div> --}}
                                 <div class="card-body">
                                     <div id="chart-cost-saving"></div>
                                 </div>
@@ -64,80 +74,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="col-12 col-lg-2">
-                    <div class="row">
-                        <div class="page-heading">
-                            <h3>Repair Stats</h3>
-                        </div>
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Cost Saving</h6>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">Rp 999.999.999.999</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Part Repaired</h6>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">999.999.999 Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Repairman</h6>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">4 Person</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </section>
         </div>
     </div>
@@ -258,8 +194,10 @@
                 },
             },
             xaxis: {
-                categories: ['W1', 'W2', 'W3', 'W4',
-                    'W5',
+                categories: [
+                    @foreach ($qty['xAxis'] as $key)
+                        '{{ $key }}',
+                    @endforeach
                 ],
             },
             yaxis: {
@@ -285,11 +223,21 @@
         var options = {
             series: [{
                     name: "Cost Saving",
-                    data: [450, 520, 380, 240, 330, 260, 210, 200, 600, 800, 150, 100]
+                    // data: [450, 520, 380, 240, 330, 260, 210, 200, 600, 800, 150, 100]
+                    data: [
+                        @foreach ($costSaving['actual'] as $index => $key)
+                            {{ $key }},
+                        @endforeach
+                    ],
                 },
                 {
                     name: 'Target',
-                    data: [1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300]
+                    // data: [1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300]
+                    data: [
+                        @foreach ($costSaving['target'] as $index => $key)
+                            {{ $key }},
+                        @endforeach
+                    ],
                 }
             ],
             chart: {
@@ -323,8 +271,11 @@
                 }
             },
             xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-                    'Oct', 'Nov', 'Dec'
+                // categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct', 'Nov', 'Dec'],
+                categories: [
+                    @foreach ($costSaving['xAxis'] as $key)
+                        '{{ $key }}',
+                    @endforeach
                 ],
             },
             yaxis: {

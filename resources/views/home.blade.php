@@ -5,224 +5,204 @@
 
         <div class="page-content">
             <section class="row my-4">
-                <div class="col-12 col-lg-10">
-                    <div class="row">
-                        <div class="page-heading d-flex justify-content-between">
-                            <div>
-                                <h3>On Progress Repair</h3>
-                            </div>
-                            <div>
-                                <input type="month" class="form-control fw-bold" name="filter_month" id="filter_month"
-                                    value="1989-11">
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        {{-- <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div> --}}
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
-                                            <h6 class="text-muted font-semibold">Input</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $counting['total'] }} pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        {{-- <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon blue mb-2">
-                                                <i class="iconly-boldProfile"></i>
-                                            </div>
-                                        </div> --}}
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
-                                            <h6 class="text-muted font-semibold">Waiting</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $counting['Waiting'] }} Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        {{-- <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon green mb-2">
-                                                <i class="iconly-boldAdd-User"></i>
-                                            </div>
-                                        </div> --}}
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
-                                            <h6 class="text-muted font-semibold">Analisa</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $counting['On Progress'] }} Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        {{-- <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                            <div class="stats-icon red mb-2">
-                                                <i class="iconly-boldBookmark"></i>
-                                            </div>
-                                        </div> --}}
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
-                                            <h6 class="text-muted font-semibold">Prep. Seal Kit</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $counting['Seal Kit'] }} Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        {{-- <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                            <div class="stats-icon red mb-2">
-                                                <i class="iconly-boldBookmark"></i>
-                                            </div>
-                                        </div> --}}
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
-                                            <h6 class="text-muted font-semibold">Trial</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $counting['Trial'] }} Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        {{-- <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                            <div class="stats-icon red mb-2">
-                                                <i class="iconly-boldBookmark"></i>
-                                            </div>
-                                        </div> --}}
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-12">
-                                            <h6 class="text-muted font-semibold">Finish</h6>
-                                            <h6 class="font-extrabold mb-0">{{ $counting['Finish'] }} Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-12 col-lg-12">
+                    <div class="page-heading d-flex justify-content-between">
+                        <div>
+                            <h3>Repair Statistic</h3>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="page-heading">
-                            <h3>Graph</h3>
-                        </div>
-                        <div class="col-12">
+                        <div class="col-lg-3">
                             <div class="card">
-                                {{-- <div class="card-header">
-                                    <h4 class="text-center">On Progress Repair</h4>
-                                </div> --}}
                                 <div class="card-body">
-                                    {{-- <div id="chart-qty-repair"></div> --}}
-                                    <div id="chart-qty-repair">
-                                        <apexchart type="bar" height="350" :options="chartOptions"
-                                            :series="series"></apexchart>
-                                    </div>
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Registered</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                            class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="col-lg-3">
                             <div class="card">
-                                {{-- <div class="card-header">
-                                    <h4>Cost Saving</h4>
-                                </div> --}}
                                 <div class="card-body">
-                                    <div id="chart-cost-saving"></div>
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Waiting</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total On Progress</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Prep. Repair Kit</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total On Trial</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Finished</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Scrap</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Cost Saving</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Type Of Part : Pneumatic</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Type Of Part : Hydraulic</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Type Of Part : Mechanic</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Type Of Part : Electric</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Repair In House</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Repair In Subcont</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Trade In</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Repair Kit Ready</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Repair Kit Not Ready</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Trial Judgement OK</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">1230</h5>
+                                    <p class="card-text">Total Trial Judgement NG</p>
+                                    <a href="#" class="btn btn-primary rounded-pill">View Detail <i
+                                        class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-lg-2">
-                    <div class="row">
-                        <div class="page-heading">
-                            <h3>Repair Stats</h3>
-                        </div>
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Cost Saving</h6>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">Rp 999.999.999.999</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Part Repaired</h6>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">999.999.999 Pcs</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body px-4 py-4-5">
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-3 d-flex justify-content-start ">
-                                            <div class="stats-icon purple mb-2">
-                                                <i class="iconly-boldShow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-9">
-                                            <h6 class="text-muted font-semibold">Total Repairman</h6>
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-12 d-flex justify-content-start ">
-                                            <h6 class="font-extrabold mb-0">4 Person</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
         </div>
     </div>
