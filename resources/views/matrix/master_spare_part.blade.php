@@ -40,7 +40,7 @@
                             <th scope="col">action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {{-- <tbody>
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
@@ -176,7 +176,7 @@
                                 <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
                             </tr>
                         @endforelse
-                    </tbody>
+                    </tbody> --}}
                 </table>
             </div>
         </div>
@@ -195,68 +195,56 @@
                 <div class="modal-body">
 
 
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="item_code">item_code</label>
                         <input type="text" id="item_code" name="item_code" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 2 --}}
                     <div class="form-group mt-2">
                         <label for="item_name">item_name</label>
-                        <input type="text" id="item_name" name="item_name" class="form-control"
-                            value=""required>
+                        <input type="text" id="item_name" name="item_name" class="form-control" value=""required>
                     </div>
 
-                    {{-- FORM COLUMN 3 --}}
                     <div class="form-group mt-2">
                         <label for="description">description</label>
                         <input type="text" id="description" name="description" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 4 --}}
                     <div class="form-group mt-2">
                         <label for="qty">qty</label>
                         <input type="text" id="qty" name="qty" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 5 --}}
                     <div class="form-group mt-2">
                         <label for="price">price</label>
                         <input type="text" id="price" name="price" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 6 --}}
                     <div class="form-group mt-2">
                         <label for="status">status</label>
                         <input type="text" id="status" name="status" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 7 --}}
                     <div class="form-group mt-2">
                         <label for="wh_code">wh_code</label>
                         <input type="text" id="wh_code" name="wh_code" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 8 --}}
                     <div class="form-group mt-2">
                         <label for="rack_code">rack_code</label>
                         <input type="text" id="rack_code" name="rack_code" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 9 --}}
                     <div class="form-group mt-2">
                         <label for="order_point">order_point</label>
                         <input type="text" id="order_point" name="order_point" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 10 --}}
                     <div class="form-group mt-2">
                         <label for="order_qty">order_qty</label>
                         <input type="text" id="order_qty" name="order_qty" class="form-control" required>
                     </div>
 
-                    {{-- FORM COLUMN 11 --}}
                     <div class="form-group mt-2">
                         <label for="account_no">account_no</label>
                         <input type="text" id="account_no" name="account_no" class="form-control" required>
