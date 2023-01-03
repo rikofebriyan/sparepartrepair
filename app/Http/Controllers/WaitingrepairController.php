@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auth;
 use App\Finishrepair;
 use App\User;
 use App\Subcont;
@@ -40,9 +41,23 @@ class WaitingrepairController extends Controller
         // $partr = Waitingrepair::all()->sortByDesc('id');
         $partr = Waitingrepair::leftJoin('progressrepairs', 'progressrepairs.form_input_id', '=', 'waitingrepairs.id')
             ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
+            ->where('deleted',null)
             ->get();
         // dd($partr);
         return view('partrepair.waitingtable', [
+            'reqtzy' => $partr,
+        ]);
+    }
+
+    public function deleted(Request $request)
+    {
+        // $partr = Waitingrepair::all()->sortByDesc('id');
+        $partr = Waitingrepair::leftJoin('progressrepairs', 'progressrepairs.form_input_id', '=', 'waitingrepairs.id')
+            ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
+            ->where('deleted',1)
+            ->get();
+        // dd($partr);
+        return view('partrepair.waitingtabledelete', [
             'reqtzy' => $partr,
         ]);
     }
@@ -268,10 +283,24 @@ class WaitingrepairController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
 
-        Waitingrepair::find($id)->delete();
+        $data = $request->all();
+        $data['deleted'] = 1;
+        $data['reason'] = $request->reason;
+        $data['deleted_by'] = $request->deleted_by;
+        Waitingrepair::find($id)->update($data);
+
+
+        // $waitingrepair = Waitingrepair::where('id', $id)->first();
+        // $data = $request->all();
+        // $data['deleted'] = 1;
+        // $data['reason'] = $request['reason'];
+        
+        // dd($data);
+        // Waitingrepair::find($id)->update($data);
+        
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Task removed successfully');
     }
 }
