@@ -52,3 +52,4 @@ Route::get('/get-number-of-repair', 'InfoController@getNumberOfRepair');
 Route::get('/getMaker', 'InfoController@getMaker');
 Route::get('/getTypeOfPart', 'InfoController@getTypeOfPart');
 Route::get('/getSubcont', 'InfoController@getSubcont');
+Route::get('/getcategory', 'InfoController@getcategory');

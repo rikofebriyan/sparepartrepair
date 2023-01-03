@@ -20,51 +20,52 @@
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">No. Ticket</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_reg_sp" class="form-control border-0" value="{{ $waitingrepair->reg_sp }}"
-                            readonly>
+                        <input type="text" name="f_reg_sp" class="form-control border-0"
+                            value="{{ $waitingrepair->reg_sp }}" readonly>
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Date Created</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_date" class="form-control border-0" value="{{ $waitingrepair->date }}" readonly>
+                        <input type="text" name="f_date" class="form-control border-0"
+                            value="{{ $waitingrepair->date }}" readonly>
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Part Name</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_item_name" class="form-control border-0" value="{{ $waitingrepair->item_name }}"
-                            readonly>
+                        <input type="text" name="f_item_name" class="form-control border-0"
+                            value="{{ $waitingrepair->item_name }}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Part Type</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_item_type" class="form-control border-0" value="{{ $waitingrepair->item_type }}"
-                            readonly>
+                        <input type="text" name="f_item_type" class="form-control border-0"
+                            value="{{ $waitingrepair->item_type }}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Maker</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_maker" class="form-control border-0" value="{{ $waitingrepair->maker }}"
-                            readonly>
+                        <input type="text" name="f_maker" class="form-control border-0"
+                            value="{{ $waitingrepair->maker }}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Price</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_price" class="form-control number border-0" value="{{ $waitingrepair->price }}"
-                            readonly>
+                        <input type="text" name="f_price" class="form-control number border-0"
+                            value="{{ $waitingrepair->price }}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">PIC repair</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_nama_pic" class="form-control border-0" value="{{ $waitingrepair->nama_pic }}"
-                            readonly>
+                        <input type="text" name="f_nama_pic" class="form-control border-0"
+                            value="{{ $waitingrepair->nama_pic }}" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -81,15 +82,15 @@
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Analisa</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_analisa" class="form-control border-0" value="{{ $formFinish_progressrepair->analisa }}"
-                            readonly>
+                        <input type="text" name="f_analisa" class="form-control border-0"
+                            value="{{ $formFinish_progressrepair->analisa }}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">Action</label>
                     <div class="col-sm-9 align-items-center d-flex">
-                        <input type="text" name="f_action" class="form-control border-0" value="{{ $formFinish_progressrepair->action }}"
-                            readonly>
+                        <input type="text" name="f_action" class="form-control border-0"
+                            value="{{ $formFinish_progressrepair->action }}" readonly>
                     </div>
                 </div>
 
@@ -178,14 +179,34 @@
         <div class="card col-4 border p-3 mx-2">
 
             <input type="hidden" name="form_input_id" id="form_input_id" value="{{ $waitingrepair->id }}">
-            <input type="hidden" name="progressrepair_id" id="progressrepair_id" value="{{ $formFinish_progressrepair->id }}">
+            <input type="hidden" name="progressrepair_id" id="progressrepair_id"
+                value="{{ $formFinish_progressrepair->id }}">
+
+            <div class="mb-3 row">
+                <div class="col-sm-3">
+                    <label for="category" class="col-form-label">Category</label>
+                </div>
+                <div class="col-sm-5">
+                    <select class="form-select choices" onchange="categorycodeajax()" id="categorycodejs"
+                        name="category" required>
+                        <option value="" selected>Pilih ...</option>
+                        @foreach ($category as $cat)
+                            <option value="{{ $cat->category_code }}">
+                                {{ $cat->category }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="number" id="number">
 
             <div class="mb-3 row">
                 <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
                     Repair</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="code_part_repair" name="code_part_repair"
-                        value="{{ $formFinish_totalFinish->code_part_repair }}" required>
+                    <input type="text" class="form-control" id="code_part_repair2" name="code_part_repair"
+                        value="{{ $waitingrepair->code_part_repair }}" required>
                 </div>
             </div>
 
@@ -206,7 +227,8 @@
                         name="pic_delivery">
                         <option value="" selected>Pilih ...</option>
                         @foreach ($user as $us)
-                            <option value="{{ $us->name }}" @if($formFinish_totalFinish->pic_delivery == $us->name) selected  @endif>{{ $us->name }}
+                            <option value="{{ $us->name }}" @if ($formFinish_totalFinish->pic_delivery == $us->name) selected @endif>
+                                {{ $us->name }}
                             </option>
                         @endforeach
                     </select>

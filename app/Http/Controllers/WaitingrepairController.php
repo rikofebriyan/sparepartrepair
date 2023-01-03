@@ -15,6 +15,7 @@ use App\MasterSparePart;
 use App\Maker;
 use App\StandardPengecekan;
 use App\ItemStandard;
+use App\CategoryCode;
 
 use App\Http\Requests;
 use App\Machine;
@@ -91,12 +92,13 @@ class WaitingrepairController extends Controller
         $data['section'] = $section->name;
         $data['line'] = $line->name;
         $data['price'] = intval(preg_replace('/[^\d.]/', '', $request->price));
-
+        // dd($data);
         if ($request->get('id') != null) {
             Waitingrepair::find($request->get('id'))->update($data);
         } else {
             Waitingrepair::create($data);
         }
+        
 
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
@@ -215,11 +217,11 @@ class WaitingrepairController extends Controller
         // form 1
         $sectionAll = Section::all();
         $section = $sectionAll->where('name', $waitingrepair->section)->first();
-
         $lineAll = Line::where('section_id', $section->id)->get();
         $line = Line::where('name', $waitingrepair->line)->first();
-
         $machineAll = Machine::where('line_id', $line->id)->get();
+        $categoryAll = CategoryCode::all();
+        $test = 123;
         // $machine = Machine::where('name', $waitingrepair->machine)->first();
         // dd($progresspemakaian);
         return view('partrepair.progress', [
@@ -250,6 +252,8 @@ class WaitingrepairController extends Controller
             'section' => $sectionAll,
             'line' => $lineAll,
             'machine' => $machineAll,
+            'category' => $categoryAll,
+            'test' => $test,
 
         ]);
     }

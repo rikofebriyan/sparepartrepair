@@ -16,6 +16,7 @@ class CreateCategoryCodesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('category');
+            $table->string('category_code');
         });
     }
 

@@ -25,6 +25,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Category</th>
+                            <th scope="col">Category Code</th>
                             <th scope="col">created_at</th>
                             <th scope="col">updated_at</th>
                             <th scope="col">action</th>
@@ -35,6 +36,7 @@
                             <tr>
                                 <td>{{ $req->id }}</td>
                                 <td>{{ $req->category }}</td>
+                                <td>{{ $req->category_code }}</td>
 
 
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
@@ -62,9 +64,16 @@
 
                                                     {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
-                                                        <label for="category_code">Category</label>
-                                                        <input type="text" id="category_code" name="category"
+                                                        <label for="category">Category</label>
+                                                        <input type="text" id="category" name="category"
                                                             class="form-control" value="{{ $req->category }}" required>
+                                                    </div>
+
+                                                    {{-- FORM COLUMN 1 --}}
+                                                    <div class="form-group mt-2">
+                                                        <label for="category_code">Category Code</label>
+                                                        <input type="text" id="category_code" name="category_code"
+                                                            class="form-control" value="{{ $req->category_code }}" required>
                                                     </div>
 
 
@@ -108,8 +117,14 @@
 
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
-                        <label for="category_code">Category</label>
-                        <input type="text" id="category_code" name="category" class="form-control" required>
+                        <label for="category">Category</label>
+                        <input type="text" id="category" name="category" class="form-control" required>
+                    </div>
+
+                    {{-- FORM COLUMN 1 --}}
+                    <div class="form-group mt-2">
+                        <label for="category_code">Category Code</label>
+                        <input type="text" id="category_code" name="category_code" class="form-control" required>
                     </div>
 
 

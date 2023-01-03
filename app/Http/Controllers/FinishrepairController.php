@@ -16,6 +16,7 @@ use App\Progresspemakaian;
 use App\MasterSparePart;
 use App\Progresstrial;
 use App\Finishrepair;
+use App\CodePartRepair;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -94,6 +95,23 @@ class FinishrepairController extends Controller
         $request2 = Waitingrepair::find($request->form_input_id);
         $request2->progress = 'Finish';
         $request2->save();
+
+        $query = Finishrepair::where('code_part_repair',$request->code_part_repair)->first();
+        // dd($query);
+        if ($query =null) {
+            $request3 = new CodePartRepair;
+            $request3->category = $request->category;
+            $request3->number = $request->number;
+            $request3->code_part_repair = $request->code_part_repair;
+            $request3->save();
+        }
+
+        // $request3 = new CodePartRepair;
+        // $request3->category = $request->category;
+        // $request3->number = $request->number;
+        // $request3->code_part_repair = $request->code_part_repair;
+        // $request3->save();
+        // dd($request3);
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
 

@@ -344,6 +344,10 @@
                 }
             });
 
+            function asuasu() {
+                alert('ok');
+            }
+
 
         });
 
@@ -373,4 +377,36 @@
                 $('#notready').hide();
         });
     </script>
+
+    <script>
+        function categorycodeajax() {
+            var category = $("#categorycodejs").val();
+            // alert(category);
+            $.ajax({
+                type: 'GET',
+                url: '/getcategory?category=' + category,
+                // dataType: 'JSON',
+                success: function(data) {
+                    console.log(data);
+                    if (data.number == undefined) {
+                        var code = 0;
+                    } else {
+                        var code = data.number;
+                    };
+
+                    x = (parseInt(code) + 1);
+                    realcode = x.toString().padStart(3, '0');
+                    // alert(realcode);
+                    $('#code_part_repair2').val(category + realcode);
+                    $('#number').val(realcode);
+                }
+            });
+        }
+    </script>
+
+    {{-- <script type="text/javascript">
+        function asuasu() {
+            alert('ok');
+        }
+    </script> --}}
 @endsection
