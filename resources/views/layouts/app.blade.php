@@ -207,6 +207,12 @@
                             </div>
                         </li>
 
+                        <li class="menu-item  ">
+                            <a href="/report" class='menu-link'>
+                                <span><i class="bi bi-grid-fill"></i> Report</span>
+                            </a>
+                        </li>
+
                         {{-- <li class="menu-item  ">
                             <a target="_blank" rel="noopener noreferrer" href="{{ asset('index.html') }}"
                                 class='menu-link'>

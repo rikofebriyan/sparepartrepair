@@ -78,4 +78,44 @@ class HomeController extends Controller
             'counting' => $counting,
         ]);
     }
+
+    public function reportHome()
+    {
+        $dateNow = Carbon::now();
+        $dateNowYear = $dateNow->format('Y');
+        $dateNowMonth = $dateNow->format('m');
+        $stepProgress = ['Waiting', 'On Progress', 'Seal Kit', 'Trial', 'Finish', 'Scrap'];
+        $week = [
+            1 => 7,
+            8 => 14,
+            15 => 21,
+            22 => 28,
+            29 => 31
+        ];
+
+        foreach ($stepProgress as $step) {
+            $counting[$step] = 0;
+            $w = 1;
+            foreach ($week as $start => $finish) {
+                $qty[$step]['W' . $w] = DB::table('waitingrepairs')
+                    ->whereMonth('date', '=', $dateNowMonth)
+                    ->whereYear('date', '=', $dateNowYear)
+                    ->where('progress', $step)
+                    ->whereBetween('date', [Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $start)->format('Y-m-d'), Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $finish)->format('Y-m-d')])
+                    ->count();
+
+                $qty['total']['W' . $w] = DB::table('waitingrepairs')
+                    ->whereMonth('date', '=', $dateNowMonth)
+                    ->whereYear('date', '=', $dateNowYear)
+                    ->whereBetween('date', [Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $start)->format('Y-m-d'), Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $finish)->format('Y-m-d')])
+                    ->count();
+
+                $counting[$step] = $counting[$step] + $qty[$step]['W' . $w];
+                $w++;
+            }
+        }
+        return view('report.index', [
+            'qty' => $qty,
+        ]);
+    }
 }
