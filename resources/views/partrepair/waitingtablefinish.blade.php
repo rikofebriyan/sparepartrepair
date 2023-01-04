@@ -10,37 +10,19 @@
     @endif --}}
     <CENTER>
         <div class="container-fluid">
-            <H2>PART REPAIR : WAITING TABLE</H2>
+            <H2>PART REPAIR : FINISH TABLE</H2>
         </div>
     </CENTER>
 
 
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
-            <div class="d-flex d-inline justify-content-center mb-3">
-                <div class="me-2">Flow Repair : </div>
-                <button class="rounded-pill bg-dark text-white text-center px-2 border-white" id="allinput">Register</button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-secondary text-white text-center px-2 border-white"
-                    id="waiting">Waiting</button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-warning text-white text-center px-2 border-white" id="progress">On
-                    Progress</button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-info text-white text-center px-2 border-white" id="sealkit">Seal
-                    Kit</button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-primary text-white text-center px-2 border-white"
-                    id="trial">Trial</button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-success text-white text-center px-2 border-white" id="delete">
-                    <a href="{{ asset('partrepair/finishtable') }}" style="color:white">Finish</a></button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-danger text-white text-center px-2 border-white" id="delete">
-                    <a href="{{ asset('partrepair/deletedtable') }}" style="color:white">Deleted</a></button>
-            </div>
+            {{-- <a href="#" class="btn btn-md btn-success mb-3 float-right">New
+                Post</a> --}}
+
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
+
                     <thead>
                         <tr>
                             <th scope="col">Ticket No</th>
@@ -61,23 +43,10 @@
                                 <td>{{ Carbon\Carbon::parse($req->plan_finish_repair)->format('Y-m-d') }}</td>
                                 <td>{{ $req->item_name }}</td>
                                 <td>{{ $req->problem }}</td>
-                                <td class="text-center">{{ $req->status_repair }}</td>
+                                <td>{{ $req->status_repair }}</td>
                                 <td>
-                                    @if ($req->progress == 'Waiting')
-                                        <div class="rounded-pill bg-secondary text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}</div>
-                                    @elseif ($req->progress == 'On Progress')
-                                        <div class="rounded-pill bg-warning text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}
-                                        </div>
-                                    @elseif ($req->progress == 'Seal Kit')
-                                        <div class="rounded-pill bg-info text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}
-                                        </div>
-                                    @elseif ($req->progress == 'Trial')
-                                        <div class="rounded-pill bg-primary text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}</div>
-                                    @elseif ($req->progress == 'Finish')
+
+                                    @if ($req->progress == 'Finish')
                                         <div class="rounded-pill bg-success text-white text-center px-2 bg-opacity-50">
                                             {{ $req->progress }}</div>
                                     @endif
@@ -154,6 +123,7 @@
 
 
                                 </td>
+
                             </tr>
                         @empty
                             <tr>
@@ -165,6 +135,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
 @endsection
 
 
@@ -214,29 +186,6 @@
                     [0, 'desc']
                 ],
 
-                "createdRow": function(row, data, dataIndex) {
-
-                    var now = new Date().getTime();
-                    var datestart = new Date(data[1]).getTime();
-                    // alert(datestart);
-                    var dateplan = new Date(data[2]).getTime();
-                    var diff = Math.floor((dateplan - datestart) / (1000 * 60 * 60 * 24));
-                    // alert(diff);
-                    if (diff <= 0) {
-                        $(row).css({
-                            'background-color': '#FFCCCB',
-                            'color': 'black'
-                        });
-                    } else if (diff <= 2) {
-                        $(row).css({
-                            'background-color': '#FAFAD2',
-                            'color': 'black'
-                        });
-                    } else {
-                        $(row);
-                    }
-                }
-
             });
         });
     </script>
@@ -245,22 +194,22 @@
             var table = $('#myTable').DataTable();
 
             $('#allinput').click(function() {
-                table.column(6).search('').draw();
+                table.column(7).search('').draw();
             });
             $('#waiting').click(function() {
-                table.column(6).search('waiting').draw();
+                table.column(7).search('waiting').draw();
             });
             $('#progress').click(function() {
-                table.column(6).search('progress').draw();
+                table.column(7).search('progress').draw();
             });
             $('#sealkit').click(function() {
-                table.column(6).search('Seal Kit').draw();
+                table.column(7).search('Seal Kit').draw();
             });
             $('#trial').click(function() {
-                table.column(6).search('Trial').draw();
+                table.column(7).search('Trial').draw();
             });
             $('#finish').click(function() {
-                table.column(6).search('Finish').draw();
+                table.column(7).search('Finish').draw();
             });
         });
     </script>
