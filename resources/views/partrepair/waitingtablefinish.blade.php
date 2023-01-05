@@ -49,24 +49,18 @@
                                     @if ($req->progress == 'Finish')
                                         <div class="rounded-pill bg-success text-white text-center px-2 bg-opacity-50">
                                             {{ $req->progress }}</div>
+                                    @elseif($req->progress == 'Scrap')
+                                        <div class="rounded-pill bg-danger text-white text-center px-2 bg-opacity-50">
+                                            {{ $req->progress }}</div>
                                     @endif
 
                                 </td>
                                 <td class="text-center">
-                                    @if ($req->progress == 'Waiting')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Progress</a>
-                                    @elseif($req->progress == 'On Progress')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Seal Kit</a>
-                                    @elseif($req->progress == 'Seal Kit')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Trial</a>
-                                    @elseif($req->progress == 'Trial')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Finish</a>
+                                    @if ($req->progress == 'Scrap')
+                                        <a class="rounded-pill btn btn-danger btn-sm col"
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @elseif($req->progress == 'Finish')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
+                                        <a class="rounded-pill btn btn-success btn-sm col"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
 

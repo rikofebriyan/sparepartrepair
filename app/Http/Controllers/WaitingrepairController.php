@@ -44,6 +44,7 @@ class WaitingrepairController extends Controller
             ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
             ->where('deleted',null)
             ->where('progress', '<>', 'finish')
+            ->where('progress', '<>', 'Scrap')
             ->get();
         // dd($partr);
         return view('partrepair.waitingtable', [
@@ -71,6 +72,7 @@ class WaitingrepairController extends Controller
             ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
             ->where('deleted',null)
             ->where('progress', 'finish')
+            ->orWhere('progress', 'Scrap')
             ->get();
         // dd($partr);
         return view('partrepair.waitingtablefinish', [
