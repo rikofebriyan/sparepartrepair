@@ -379,6 +379,18 @@
     </script>
 
     <script>
+        $('#judgement_scrap').change(function() {
+            var val = $(this).val();
+            if (val === "Scrap") {
+                $('#scrap').show(),
+                    $('#saveit').hide()
+            } else
+                $('#scrap').hide(),
+                $('#saveit').show()
+        });
+    </script>
+
+    <script>
         function categorycodeajax() {
             var category = $("#categorycodejs").val();
             // alert(category);

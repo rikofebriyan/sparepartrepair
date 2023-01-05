@@ -9,7 +9,7 @@
                     <label for="place_of_repair" class="col-sm-3 col-form-label">Place
                         Repair</label>
                     <div class="col-sm-5">
-                        <select class="form-select choices" id="showsubcont" name="place_of_repair" required>
+                        <select class="form-select choices" id="showsubcont" name="place_of_repair">
                             <option value="">Pilih ...</option>
                             <option value="In House" @if ($progressrepair2->place_of_repair == 'In House') selected @endif>In House</option>
                             <option value="Subcont" @if ($progressrepair2->place_of_repair == 'Subcont') selected @endif>Subcont</option>
@@ -44,7 +44,7 @@
                 <div class="mb-3 row">
                     <label for="judgement" class="col-sm-3 col-form-label">Judgement</label>
                     <div class="col-sm-9">
-                        <select class="form-select choices" id="judgement" name="judgement" required>
+                        <select class="form-select choices" id="judgement_scrap" name="judgement" required>
                             <option value="">Pilih ...</option>
                             <option value="Continue Repair" @if ($progressrepair2->judgement == 'Continue Repair') selected @endif>Continue
                                 Repair</option>
@@ -123,8 +123,9 @@
                         <label for="total_time_repair" class="col-sm-3 col-form-label">Actual Time
                             Repair</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control bg-secondary text-white" id="selisih" name="total_time_repair"
-                                placeholder="Hours" value="{{ $progressrepair2->total_time_repair }}" readonly>
+                            <input type="text" class="form-control bg-secondary text-white" id="selisih"
+                                name="total_time_repair" placeholder="Hours"
+                                value="{{ $progressrepair2->total_time_repair }}" readonly>
                         </div>
                         <label for="total_time_repair" class="col-sm-2 col-form-label">Hours</label>
                     </div>
@@ -133,8 +134,9 @@
                             <label for="labour_cost" class="col-form-label">Labour Cost</label>
                         </div>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control number bg-secondary text-white" id="labour_cost" name="labour_cost"
-                                value="{{ $progressrepair2->labour_cost }}" placeholder="Labour Cost" readonly>
+                            <input type="text" class="form-control number bg-secondary text-white"
+                                id="labour_cost" name="labour_cost" value="{{ $progressrepair2->labour_cost }}"
+                                placeholder="Labour Cost" readonly>
                         </div>
                     </div>
                 </div>
@@ -243,7 +245,9 @@
                 </div>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="submit" class="btn btn-md btn-primary">Save</button>
+                    <button id="scrap" type="submit" class="btn btn-md btn-danger"
+                        style="display: none">Scrap</button>
+                    <button id="saveit" type="submit" class="btn btn-md btn-primary">Save</button>
                     <a href="{{ route('partrepair.progresstable.index') }}" class="btn btn-md btn-secondary">back</a>
                 </div>
             </div>

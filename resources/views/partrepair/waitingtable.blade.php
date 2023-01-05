@@ -33,8 +33,8 @@
                 <button class="rounded-pill bg-primary text-white text-center px-2 border-white"
                     id="trial">Trial</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-success text-white text-center px-2 border-white"
-                    id="finish">Finish</button>
+                <button class="rounded-pill bg-success text-white text-center px-2 border-white" id="delete">
+                    <a href="{{ asset('partrepair/finishtable') }}" style="color:white">Finish</a></button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-danger text-white text-center px-2 border-white" id="delete">
                     <a href="{{ asset('partrepair/deletedtable') }}" style="color:white">Deleted</a></button>

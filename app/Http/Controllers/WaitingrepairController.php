@@ -43,6 +43,8 @@ class WaitingrepairController extends Controller
         $partr = Waitingrepair::leftJoin('progressrepairs', 'progressrepairs.form_input_id', '=', 'waitingrepairs.id')
             ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
             ->where('deleted',null)
+            ->where('progress', '<>', 'finish')
+            ->where('progress', '<>', 'Scrap')
             ->get();
         // dd($partr);
         return view('partrepair.waitingtable', [
@@ -59,6 +61,21 @@ class WaitingrepairController extends Controller
             ->get();
         // dd($partr);
         return view('partrepair.waitingtabledelete', [
+            'reqtzy' => $partr,
+        ]);
+    }
+
+    public function finish(Request $request)
+    {
+        // $partr = Waitingrepair::all()->sortByDesc('id');
+        $partr = Waitingrepair::leftJoin('progressrepairs', 'progressrepairs.form_input_id', '=', 'waitingrepairs.id')
+            ->select('waitingrepairs.*', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair')
+            ->where('deleted',null)
+            ->where('progress', 'finish')
+            ->orWhere('progress', 'Scrap')
+            ->get();
+        // dd($partr);
+        return view('partrepair.waitingtablefinish', [
             'reqtzy' => $partr,
         ]);
     }

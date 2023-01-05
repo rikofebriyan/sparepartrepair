@@ -111,13 +111,23 @@ class ProgressrepairController extends Controller
             // dd('kosong');
             Progressrepair::create($submit);
         }
-
         $request2 = Waitingrepair::find($request->form_input_id);
-        $request2->progress = 'On Progress';
+
+        if ($request->judgement == 'Scrap') {
+            $request2->progress = 'Scrap';
+        } else {
+            $request2->progress = 'On Progress';
+        }
+        // dd($request2);
         $request2->save();
 
         // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
-        return redirect()->back()->with('success', 'Your task added successfully!');
+        if ($request->judgement == 'Scrap') {
+            return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
+        } else {
+            return redirect()->back()->with('success', 'Your task added successfully!');
+        }
+        
     }
 
     /**
@@ -175,7 +185,13 @@ class ProgressrepairController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['judgement'] = $request->judgement;
+        dd($data);
+        Waitingrepair::find($id)->update($data);
+
+        
+        return redirect()->route('partrepair.waitingtable.index')->with('success', 'Task removed successfully');
     }
 
     /**
