@@ -257,8 +257,22 @@
         $('input.number').number(true)
         $('input.number2').number(true, 2)
 
+        $('span.number').number(true)
+        $('span.number2').number(true, 2)
     });
 </script>
+@if ($message = Session::get('no_waiting_part'))
+    <script>
+        Toastify({
+            text: "{{ $message }}",
+            duration: 2500,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: "#4fbe87",
+        }).showToast()
+    </script>
+@endif
 @yield('script')
 
 </html>

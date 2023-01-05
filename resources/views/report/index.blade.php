@@ -14,34 +14,41 @@
                             <div class="card">
                                 <div class="card-body px-4 py-4-5">
                                     <form action="/report" method="get">
-                                        {{-- <div class="mb-3">
-                                        <h6>Bulan</h6>
-                                        <fieldset class="form-group">
-                                            <select class="form-select" id="basicSelect">
-                                                <option value="" selected>Choose ...</option>
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <div class="mb-3">
-                                        <h6>Tahun</h6>
-                                        <fieldset class="form-group">
-                                            <select class="form-select" id="basicSelect">
-                                                <option value="" selected>Choose ...</option>
-                                                <option>2022</option>
-                                                <option>2023</option>
-                                            </select>
-                                        </fieldset>
-                                    </div> --}}
                                         <div class="mb-3">
                                             <h6>Group By</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="groupBy" id="groupBy" required>
                                                     <option value="" disabled>Choose ...</option>
-                                                    <option value="Week" @if ($groupBy == 'Week') selected @endif>Week</option>
-                                                    <option value="Month" @if ($groupBy == 'Month') selected @endif>Month</option>
+                                                    <option value="Week"
+                                                        @if ($groupBy == 'Week') selected @endif>Week</option>
+                                                    <option value="Month"
+                                                        @if ($groupBy == 'Month') selected @endif>Month</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div id="bulan_div" class="mb-3">
+                                            <h6>Bulan</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="bulan" id="bulan">
+                                                    <option value="" disabled selected>Choose ...</option>
+                                                    @foreach ($month as $index => $mo)
+                                                        <option value="{{ $index }}"
+                                                            @if ($dateNowMonth == $index) selected @endif>
+                                                            {{ $mo }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="mb-3">
+                                            <h6>Tahun</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" name="tahun" id="tahun">
+                                                    <option value="" disabled selected>Choose ...</option>
+                                                    @foreach ($year as $index => $ye)
+                                                        <option value="{{ $ye }}"
+                                                            @if ($dateNowYear == $ye) selected @endif>
+                                                            {{ $ye }}</option>
+                                                    @endforeach
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -132,7 +139,7 @@
                     @endforeach
                 ]
             }, {
-                name: 'Input',
+                name: 'Total Registered',
                 type: 'line',
                 data: [
                     @foreach ($qty['total'] as $index => $key)
@@ -318,11 +325,21 @@
 
     <script>
         $(document).ready(function() {
-            $('#filter_month').on('input', function() {
-                var month = $('#filter_month').val()
+            checkFilter()
 
-                alert(month)
+            $('#groupBy').on('change', function() {
+                checkFilter()
             });
+
+            function checkFilter() {
+                var groupBy = $('#groupBy option:selected').val()
+
+                if (groupBy == 'Month') {
+                    $('#bulan_div').hide()
+                } else {
+                    $('#bulan_div').show()
+                }
+            }
         });
     </script>
 @endsection

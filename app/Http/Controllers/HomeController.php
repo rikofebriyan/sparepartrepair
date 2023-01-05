@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Finishrepair;
 use App\Http\Requests;
+use App\Progresspemakaian;
+use App\Progressrepair;
+use App\Progresstrial;
 use App\Waitingrepair;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,55 +31,37 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $dateNow = Carbon::now();
-        $dateNowYear = $dateNow->format('Y');
-        $dateNowMonth = $dateNow->format('m');
-        $week = [
-            1 => 7,
-            8 => 14,
-            15 => 21,
-            22 => 28,
-            29 => 31
-        ];
-        $stepProgress = ['Waiting', 'On Progress', 'Seal Kit', 'Trial', 'Finish', 'Scrap'];
+        $waitingRepairData = Waitingrepair::all();
+        $progressRepairData = Progressrepair::all();
+        $progressPemakaianData = Progresspemakaian::all();
+        $progressTrialData = Progresstrial::all();
+        $finishRepairData = Finishrepair::all();
 
-        $dataRepairAll = DB::table('waitingrepairs')
-            ->whereMonth('date', '=', Carbon::now()->format('m'))
-            ->whereYear('date', '=', Carbon::now()->format('Y'))
-            ->get();
+        $stepProgress = ['Waiting', 'On Progress', 'Seal Kit', 'Trial', 'Finish'];
+        // counting data
+
+        $data['total_registered'] = $waitingRepairData->count();
 
         foreach ($stepProgress as $step) {
-            $counting[$step] = 0;
-            $w = 1;
-            foreach ($week as $start => $finish) {
-                $qty[$step]['W' . $w] = DB::table('waitingrepairs')
-                    ->whereMonth('date', '=', $dateNowMonth)
-                    ->whereYear('date', '=', $dateNowYear)
-                    ->where('progress', $step)
-                    ->whereBetween('date', [Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $start)->format('Y-m-d'), Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $finish)->format('Y-m-d')])
-                    ->count();
-
-                $qty['total']['W' . $w] = DB::table('waitingrepairs')
-                    ->whereMonth('date', '=', $dateNowMonth)
-                    ->whereYear('date', '=', $dateNowYear)
-                    ->whereBetween('date', [Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $start)->format('Y-m-d'), Carbon::parse($dateNowYear . '-' . $dateNowMonth . '-' . $finish)->format('Y-m-d')])
-                    ->count();
-
-                $counting[$step] = $counting[$step] + $qty[$step]['W' . $w];
-                $w++;
-            }
+            $data['total_' . $step] = $waitingRepairData->where('progress', $step)->count();
         }
 
-        $counting['total'] = 0;
-        foreach ($qty['total'] as $index => $item) {
-            $counting['total'] = $counting['total'] + $item;
-        }
+        $data['total_Scrap'] = $progressRepairData->where('judgement', 'Scrap')->count();
+        $data['total_cost_saving'] = $finishRepairData->sum('f_total_cost_saving');
+        $data['total_pneumatic'] = $waitingRepairData->where('type_of_part', 'Pneumatic')->count();
+        $data['total_hydraulic'] = $waitingRepairData->where('type_of_part', 'Hydraulic')->count();
+        $data['total_mechanic'] = $waitingRepairData->where('type_of_part', 'Mechanic')->count();
+        $data['total_electric'] = $waitingRepairData->where('type_of_part', 'Electric')->count();
+        $data['total_repair_in_house'] = $progressRepairData->where('place_of_repair', 'In House')->count();
+        $data['total_repair_in_subcont'] = $progressRepairData->where('place_of_repair', 'Subcont')->count();
+        $data['total_repair_trade_in'] = $progressRepairData->where('place_of_repair', 'Trade In')->count();
+        $data['total_repair_kit_ready'] = $progressPemakaianData->where('status_part', 'Ready')->count();
+        $data['total_repair_kit_not_ready'] = $progressPemakaianData->where('status_part', 'Not Ready')->count();
+        $data['total_judgement_ok'] = $progressTrialData->where('judgement', 'OK')->count();
+        $data['total_judgement_ng'] = $progressTrialData->where('judgement', 'NG')->count();
 
         return view('home', [
-            'dataRepairAll' => $dataRepairAll,
-            'qty' => $qty,
-            'date' => Carbon::now()->format('Y-m'),
-            'counting' => $counting,
+            'data' => $data,
         ]);
     }
 
@@ -112,6 +98,11 @@ class HomeController extends Controller
             11 => 'Nov',
             12 => 'Dec',
         ];
+
+        $year = [];
+        for ($i = (int) Carbon::now()->format('Y'); $i > (int) Carbon::now()->format('Y') - 10; $i--) {
+            $year[] = $i;
+        }
 
         if ($request->groupBy == 'Week' || $request->groupBy == null) {
             foreach ($stepProgress as $step) {
@@ -183,6 +174,10 @@ class HomeController extends Controller
             'qty' => $qty,
             'costSaving' => $costSaving,
             'groupBy' => $groupBy,
+            'month' => $month,
+            'year' => $year,
+            'dateNowMonth' => $dateNowMonth,
+            'dateNowYear' => $dateNowYear,
         ]);
     }
 }
