@@ -31,6 +31,7 @@ Route::resource('partrepair/progresstable', 'ProgressrepairController');
 Route::resource('partrepair/progresspemakaian', 'ProgresspemakaianController');
 Route::resource('partrepair/progresstrial', 'ProgresstrialController');
 Route::resource('partrepair/finishrepair', 'FinishrepairController');
+Route::resource('partrepair/stockout', 'StockoutController');
 Route::resource('matrix/section', 'SectionController');
 Route::resource('matrix/line', 'LineController');
 Route::resource('matrix/machine', 'MachineController');

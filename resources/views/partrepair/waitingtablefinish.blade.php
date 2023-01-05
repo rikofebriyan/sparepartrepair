@@ -70,56 +70,7 @@
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
 
-                                    <button type="button" class="rounded-pill btn btn-danger btn-sm col-5"
-                                        data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
-                                        Delete
-                                    </button>
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', $req->id]]) }}
-                                    <div class="modal fade" id="modaldelete{{ $req->id }}" tabindex="-1"
-                                        aria-labelledby="modaldeleteLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="modaldeleteLabel">Yakin mau di delete?
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
 
-                                                    <input type="hidden" name="deleted_by"
-                                                        value="{{ Auth::user()->name }}">
-
-                                                    <div class="form-group position-relative has-icon-left mb-4">
-                                                        <input type="text" id="reason" name="reason"
-                                                            class="form-control form-control-xl" placeholder="reason"
-                                                            value="{{ old('reason') }}">
-                                                        <div class="form-control-icon">
-
-                                                            @if ($errors->has('reason'))
-                                                                <span class="help-block">
-                                                                    <strong>{{ $errors->first('reason') }}</strong>
-                                                                </span>
-                                                            @endif
-
-
-                                                            <i class="bi bi-c-circle"></i>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-
-                                                    {{ Form::close() }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
 
                                 </td>
