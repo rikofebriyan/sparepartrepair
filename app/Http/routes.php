@@ -56,6 +56,7 @@ Route::get('/getTypeOfPart', 'InfoController@getTypeOfPart');
 Route::get('/getSubcont', 'InfoController@getSubcont');
 Route::get('/getcategory', 'InfoController@getcategory');
 Route::get('/report', 'HomeController@reportHome');
+Route::get('/partrepair/masterdelete', 'InfoController@masterdelete');
 
 Route::get('/getmaster', function() {
     $model = App\MasterSparePart::query();

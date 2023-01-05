@@ -23,7 +23,7 @@
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">id</th>
                             <th scope="col">item_code</th>
                             <th scope="col">item_name</th>
                             <th scope="col">description</th>
@@ -40,7 +40,7 @@
                             <th scope="col">action</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
+                    <tbody>
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->id }}</td>
@@ -65,7 +65,7 @@
                                         data-bs-target="#asu{{ $req->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.master_spare_part.update', $req->id]]) !!}
+                                    {{-- {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.master_spare_part.update', $req->id]]) !!}
                                     <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
                                         aria-labelledby="modalUpdateBarang" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -80,63 +80,54 @@
                                                 <div class="modal-body">
 
 
-                                                    <!-- FORM COLUMN 1 -->
                                                     <div class="form-group mt-2">
                                                         <label for="item_code">item_code</label>
                                                         <input type="text" id="item_code" name="item_code"
                                                             class="form-control" value="{{ $req->item_code }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 2 -->
                                                     <div class="form-group mt-2">
                                                         <label for="item_name">item_name</label>
                                                         <input type="text" id="item_name" name="item_name"
                                                             class="form-control" value="{{ $req->item_name }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 3 -->
                                                     <div class="form-group mt-2">
                                                         <label for="description">description</label>
                                                         <input type="text" id="description" name="description"
                                                             class="form-control" value="{{ $req->description }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 4 -->
                                                     <div class="form-group mt-2">
                                                         <label for="qty">qty</label>
                                                         <input type="text" id="qty" name="qty"
                                                             class="form-control" value="{{ $req->qty }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 5 -->
                                                     <div class="form-group mt-2">
                                                         <label for="price">price</label>
                                                         <input type="text" id="price" name="price"
                                                             class="form-control" value="{{ $req->price }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 6 -->
                                                     <div class="form-group mt-2">
                                                         <label for="status">status</label>
                                                         <input type="text" id="status" name="status"
                                                             class="form-control" value="{{ $req->status }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 7 -->
                                                     <div class="form-group mt-2">
                                                         <label for="wh_code">wh_code</label>
                                                         <input type="text" id="wh_code" name="wh_code"
                                                             class="form-control" value="{{ $req->wh_code }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 8 -->
                                                     <div class="form-group mt-2">
                                                         <label for="rack_code">rack_code</label>
                                                         <input type="text" id="rack_code" name="rack_code"
                                                             class="form-control" value="{{ $req->rack_code }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 9 -->
                                                     <div class="form-group mt-2">
                                                         <label for="order_point">order_point</label>
                                                         <input type="text" id="order_point" name="order_point"
@@ -144,14 +135,12 @@
                                                             required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 10 -->
                                                     <div class="form-group mt-2">
                                                         <label for="order_qty">order_qty</label>
                                                         <input type="text" id="order_qty" name="order_qty"
                                                             class="form-control" value="{{ $req->order_qty }}" required>
                                                     </div>
 
-                                                    <!-- FORM COLUMN 11 -->
                                                     <div class="form-group mt-2">
                                                         <label for="account_no">account_no</label>
                                                         <input type="text" id="account_no" name="account_no"
@@ -159,12 +148,11 @@
                                                     </div>
 
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
+                                    {!! Form::close() !!} --}}
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.master_spare_part.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
@@ -176,7 +164,7 @@
                                 <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
                             </tr>
                         @endforelse
-                    </tbody> --}}
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -274,6 +262,20 @@
     <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
     <!-- Scripts for Table Page -->
     <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                order: [
+                    [0, 'desc']
+                ],
+            });
+        });
+    </script>
+
+
+
+
+
+    {{-- <script>
         $(function() {
             $('#myTable').DataTable({
                 processing: true,
@@ -317,10 +319,6 @@
                         name: 'rack_code'
                     },
                     {
-                        data: 'rack_code',
-                        name: 'rack_code'
-                    },
-                    {
                         data: 'order_point',
                         name: 'order_point'
                     },
@@ -339,9 +337,26 @@
                     {
                         data: 'updated_at',
                         name: 'updated_at'
-                    }
-                ]
+                    },
+                    {
+                        data: null,
+                        name: 'delete',
+                    },
+                ],
+
+                "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('td:eq(14)', nRow).html('<button class="btn btn-danger delete-button" data-id="' +
+                        aData[1] + '">Delete</button>');
+                }
+            });
+
+            var table = $('#myTable').DataTable();
+
+            $('#myTable tbody').on('click', 'tr', function() {
+                var data = table.row(this).data.id;
+                console.log(data);
+                // alert('You clicked on ' + data[1] + "'s row");
             });
         });
-    </script>
+    </script> --}}
 @endsection
