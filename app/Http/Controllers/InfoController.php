@@ -16,6 +16,7 @@ use App\Subcont;
 use App\CategoryCode;
 use App\CodePartRepair;
 use Datatables;
+use Illuminate\Database\Eloquent\Builder;
 
 class InfoController extends Controller
 {
@@ -138,9 +139,47 @@ class InfoController extends Controller
             'success' => 'Record has been deleted successfully!']);
     }
 
-    // public function getmaster(Request $request)
-    // {
-    //     $model = MasterSparePart::all();
-    //     return Datatables::of($model)->make(true);
-    // }
+    public function getmaster(Request $request)
+    {
+        $model = MasterSparePart::query();
+        return Datatables::of($model)
+        // ->addColumn('action', 'asdasdasdsad')
+        ->addColumn('action', function ($model) {
+            // return '<a href=" echo route(`matrix.master_spare_part.destroy`,'.$model->id.'" class="btn btn-xs btn-primary">Edit</a><form action="/matrix/master_spare_part/'.$model->id.'" method="DELETE" style="display:inline"><button type="submit" class="btn icon btn-danger btn-sm"><i
+            // class="bi bi-trash3"></i></button></form>';
+            return '<form action="' . route('matrix.master_spare_part.destroy', $model->id) . '" method="DELETE" style="display:inline">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form><button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
+            data-bs-target="#modalasu" data-id="'.$model->id.'">
+            <i class="bi bi-pencil"></i>
+        </button>';
+        return $model;
+        })
+        // ->rawColumns(['action'])
+        
+        ->make(true);
+
+    }
+    public function mymodel(Request $request, $id)
+    {
+        $master = MasterSparePart::find($id);
+        return response()->json($master);
+    }
+    public function updatemodel(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            // other validation rules...
+          ]);
+        
+          // Update the item in the database
+          $item->name = $request->name;
+          // etc...
+          $item->save();
+        
+          // Return a response
+          return response()->json([
+            'message' => 'Item updated successfully'
+          ]);
+    }
 }

@@ -234,8 +234,8 @@
 </body>
 
 <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script> --}}
+{{-- <script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script> --}}
 <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
