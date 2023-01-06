@@ -50,97 +50,12 @@
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
-                                        data-bs-target="#asu{{ $req->id }}">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.standard_pengecekan.update', $req->id]]) !!}
-                                    <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
-                                        aria-labelledby="modalUpdateBarang" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Update Barang</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
+          
+                                    {{ Form::open(['method' => 'GET', 'route' => ['matrix.standard_pengecekan.show', $req->id], 'style' => 'display:inline']) }}
+                                    <button type="submit" class="btn icon btn-primary btn-sm me-1">
+                                        <i class="bi bi-pencil"></i></button>
+                                    {{ Form::close() }}
 
-                                                    {{-- FORM COLUMN 1 --}}
-                                                    <div class="form-group mt-2">
-                                                        <label for="master_spare_part_id">Master Spare Part ID</label>
-                                                        <select name="master_spare_part_id" id="master_spare_part_id"
-                                                            class="form-control">
-                                                            <option value="" disabled selected>
-                                                                choose
-                                                            </option>
-                                                            @foreach ($tab2 as $tab)
-                                                                <option value="{{ $tab->id }}"
-                                                                    @if ($req->master_spare_part_id == $tab->id) selected @endif>
-                                                                    {{ $tab->item_name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-
-                                                    {{-- FORM COLUMN 1 --}}
-                                                    <div class="form-group mt-2">
-                                                        <label for="item_pengecekan_id">Item Pengecekan ID</label>
-                                                        <select name="item_pengecekan_id" id="item_pengecekan_id"
-                                                            class="form-control">
-                                                            <option value="" disabled selected>
-                                                                choose
-                                                            </option>
-                                                            @foreach ($tab3 as $tabw)
-                                                                <option value="{{ $tabw->id }}"
-                                                                    @if ($req->item_pengecekan_id == $tabw->id) selected @endif>
-                                                                    {{ $tabw->item_standard }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="operation">operation</label>
-                                                        <input type="text" id="operation" name="operation"
-                                                            class="form-control" value="{{ $req->operation }}" required>
-                                                    </div>
-
-
-                                                    {{-- FORM COLUMN 1 --}}
-                                                    <div class="form-group mt-2">
-                                                        <label for="standard_pengecekan_min">standard_pengecekan_min</label>
-                                                        <input type="text" id="standard_pengecekan_min"
-                                                            name="standard_pengecekan_min" class="form-control"
-                                                            value="{{ $req->standard_pengecekan_min }}" required>
-                                                    </div>
-
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="standard_pengecekan_max">standard_pengecekan_max</label>
-                                                        <input type="text" id="standard_pengecekan_max"
-                                                            name="standard_pengecekan_max" class="form-control"
-                                                            value="{{ $req->standard_pengecekan_max }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="unit_measurement">unit_measurement</label>
-                                                        <input type="text" id="unit_measurement" name="unit_measurement"
-                                                            class="form-control" value="{{ $req->unit_measurement }}"
-                                                            required>
-                                                    </div>
-
-
-                                                    <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {!! Form::close() !!}
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.standard_pengecekan.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
@@ -259,4 +174,17 @@
             });
         });
     </script>
+
+@if ($message = Session::get('standard_pengecekan_edit_success'))
+<script>
+    Toastify({
+        text: "{{ $message }}",
+        duration: 2500,
+        close: true,
+        gravity: "top",
+        position: "center",
+        backgroundColor: "#4fbe87",
+    }).showToast()
+</script>
+@endif
 @endsection
