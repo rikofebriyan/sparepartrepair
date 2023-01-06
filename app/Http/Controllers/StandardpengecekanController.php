@@ -93,7 +93,14 @@ class StandardpengecekanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = StandardPengecekan::find($id);
+        $masterDataPart = MasterSparePart::find($data->master_spare_part_id);
+        $itemPengecekan = ItemStandard::all();
+        return view('matrix.form-edit.standard_pengecekan_edit',[
+            'data' => $data,
+            'masterSparePart' => $masterDataPart,
+            'itemPengecekan' => $itemPengecekan,
+        ]);
     }
 
     /**
@@ -102,8 +109,10 @@ class StandardpengecekanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
+        StandardPengecekan::find($request->id)->update($request->all());
+        return redirect()->route('matrix.standard_pengecekan.index')->with('standard_pengecekan_edit_success','Standard Pengecekan updated successfully');
     }
 
     /**
