@@ -131,6 +131,13 @@ class InfoController extends Controller
         return response()->json($data);
     }
 
+    public function masterdelete($id)
+    {
+        MasterSparePart::find($id)->delete();
+        return response()->json([
+            'success' => 'Record has been deleted successfully!']);
+    }
+
     // public function getmaster(Request $request)
     // {
     //     $model = MasterSparePart::all();
