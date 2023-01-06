@@ -182,56 +182,58 @@
             <input type="hidden" name="progressrepair_id" id="progressrepair_id"
                 value="{{ $formFinish_progressrepair->id }}">
 
-            <div class="mb-3 row">
-                <div class="col-sm-3">
-                    <label for="category" class="col-form-label">Category</label>
+            <div id="finishForm" @if($progressrepair2->place_of_repair == 'Trade In') style="display:none;" @endif>
+                <div class="mb-3 row">
+                    <div class="col-sm-3">
+                        <label for="category" class="col-form-label">Category</label>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-select choices" onchange="categorycodeajax()" id="categorycodejs"
+                            name="category">
+                            <option value="" selected>Pilih ...</option>
+                            @foreach ($category as $cat)
+                                <option value="{{ $cat->category_code }}">
+                                    {{ $cat->category }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <div class="col-sm-5">
-                    <select class="form-select choices" onchange="categorycodeajax()" id="categorycodejs"
-                        name="category" required>
-                        <option value="" selected>Pilih ...</option>
-                        @foreach ($category as $cat)
-                            <option value="{{ $cat->category_code }}">
-                                {{ $cat->category }}
-                            </option>
-                        @endforeach
-                    </select>
+
+                <input type="hidden" name="number" id="number">
+
+                <div class="mb-3 row">
+                    <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
+                        Repair</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="code_part_repair2" name="code_part_repair"
+                            value="{{ $waitingrepair->code_part_repair }}">
+                    </div>
                 </div>
-            </div>
 
-            <input type="hidden" name="number" id="number">
-
-            <div class="mb-3 row">
-                <label for="code_part_repair" class="col-sm-3 col-form-label">Code Part
-                    Repair</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="code_part_repair2" name="code_part_repair"
-                        value="{{ $waitingrepair->code_part_repair }}" required>
+                <div class="mb-3 row">
+                    <label for="delivery_date" class="col-sm-3 col-form-label">Delivery
+                        Date</label>
+                    <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control" id="delivery_date" name="delivery_date"
+                            value="{{ $formFinish_totalFinish->delivery_date }}">
+                    </div>
                 </div>
-            </div>
 
-            <div class="mb-3 row">
-                <label for="delivery_date" class="col-sm-3 col-form-label">Delivery
-                    Date</label>
-                <div class="col-sm-9">
-                    <input type="datetime-local" class="form-control" id="delivery_date" name="delivery_date"
-                        value="{{ $formFinish_totalFinish->delivery_date }}" required>
-                </div>
-            </div>
-
-            <div class="mb-3 row">
-                <label for="pic_delivery" class="col-sm-3 col-form-label">PIC
-                    Delivery</label>
-                <div class="col-sm-9">
-                    <select class="form-select choices" id="isiotomatis" onchange="isi_otomatis()"
-                        name="pic_delivery">
-                        <option value="" selected>Pilih ...</option>
-                        @foreach ($user as $us)
-                            <option value="{{ $us->name }}" @if ($formFinish_totalFinish->pic_delivery == $us->name) selected @endif>
-                                {{ $us->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                <div class="mb-3 row">
+                    <label for="pic_delivery" class="col-sm-3 col-form-label">PIC
+                        Delivery</label>
+                    <div class="col-sm-9">
+                        <select class="form-select choices" id="isiotomatis" onchange="isi_otomatis()"
+                            name="pic_delivery">
+                            <option value="" selected>Pilih ...</option>
+                            @foreach ($user as $us)
+                                <option value="{{ $us->name }}" @if ($formFinish_totalFinish->pic_delivery == $us->name) selected @endif>
+                                    {{ $us->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
 

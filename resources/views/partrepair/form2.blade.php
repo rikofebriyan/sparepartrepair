@@ -158,13 +158,14 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
+                    {{-- dimatikan req user --}}
+                    {{-- <div class="mb-3 row" @if ($progressrepair2->place_of_repair == 'Trade In') style="display: none;" @endif>
                         <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="quotation" name="quotation"
                                 value="{{ $progressrepair2->quotation }}">
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="mb-3 row">
                         <label for="subcont_cost" class="col-sm-3 col-form-label">Cost</label>
@@ -190,7 +191,8 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
+                    {{-- dimatikan req user --}}
+                    {{-- <div id="nomor_pp_div" class="mb-3 row" @if ($progressrepair2->place_of_repair == 'Trade In') style="display: none;" @endif>
                         <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="nomor_pp" name="nomor_pp"
@@ -198,13 +200,13 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 row">
+                    <div id="nomor_po_div" class="mb-3 row" @if ($progressrepair2->place_of_repair == 'Trade In') style="display: none;" @endif>
                         <label for="nomor_po" class="col-sm-3 col-form-label">Nomor PO</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="nomor_po" name="nomor_po"
                                 value="{{ $progressrepair2->nomor_po }}">
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="mb-3 row">
                         <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start

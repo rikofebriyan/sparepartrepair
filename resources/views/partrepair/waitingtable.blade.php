@@ -57,11 +57,11 @@
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->reg_sp }}</td>
-                                <td>{{ Carbon\Carbon::parse($req->plan_start_repair)->format('Y-m-d') }}</td>
-                                <td>{{ Carbon\Carbon::parse($req->plan_finish_repair)->format('Y-m-d') }}</td>
+                                <td>@if($req->plan_start_repair == null) Belum Input @else {{ $req->plan_start_repair }}  @endif</td>
+                                <td>@if($req->plan_finish_repair == null) Belum Input @else {{ $req->plan_finish_repair }}  @endif</td>
                                 <td>{{ $req->item_name }}</td>
                                 <td>{{ $req->problem }}</td>
-                                <td class="text-center">{{ $req->status_repair }}</td>
+                                <td class="text-center"><span class="@if($req->status_repair == 'Urgent') bg-danger text-white px-3 py-2 rounded-pill  @endif">{{ $req->status_repair }}</span></td>
                                 <td>
                                     @if ($req->progress == 'Waiting')
                                         <div class="rounded-pill bg-secondary text-white text-center px-2 bg-opacity-50">
@@ -85,23 +85,23 @@
                                 </td>
                                 <td class="text-center">
                                     @if ($req->progress == 'Waiting')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
+                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Progress</a>
                                     @elseif($req->progress == 'On Progress')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
+                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Seal Kit</a>
                                     @elseif($req->progress == 'Seal Kit')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
+                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Trial</a>
                                     @elseif($req->progress == 'Trial')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
+                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Finish</a>
                                     @elseif($req->progress == 'Finish')
-                                        <a class="rounded-pill btn btn-success btn-sm col-7"
+                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
 
-                                    <button type="button" class="rounded-pill btn btn-danger btn-sm col-5"
+                                    <button type="button" class="rounded-pill btn btn-secondary btn-sm col-5"
                                         data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
                                         Delete
                                     </button>
@@ -166,33 +166,6 @@
         </div>
     </div>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @section('script')
     @if ($message = Session::get('success'))

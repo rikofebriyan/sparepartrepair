@@ -21,6 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         // $tabel2 = Line::all();
         $partr = User::all()->sortByDesc('id');
         return view('matrix.user', [

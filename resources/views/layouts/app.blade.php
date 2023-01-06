@@ -179,11 +179,13 @@
 
                                     <ul class="submenu-group">
 
+                                        @can('admin')
                                         <li class="submenu-item  ">
                                             <a href="{{ asset('matrix/user') }}" class='submenu-link'>User</a>
 
 
                                         </li>
+                                        @endcan
 
                                         <li class="submenu-item  ">
                                             <a href="{{ asset('matrix/section') }}" class='submenu-link'>Section</a>
