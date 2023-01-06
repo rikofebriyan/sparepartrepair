@@ -18,12 +18,12 @@
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'On Progress') active @endif"
                             id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress
                             Repair</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif"
-                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab">Seal Kit</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif"
-                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab">Trial</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif"
-                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab">Finish Repair</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') bg-secondary text-white @endif"
+                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab" @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') disabled @endif>Seal Kit</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') bg-secondary text-white @endif"
+                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab" @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') disabled @endif>Trial</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif @if($progressrepair2->judgement == 'Scrap') bg-secondary text-white @endif"
+                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab" @if($progressrepair2->judgement == 'Scrap') disabled @endif>Finish Repair</a>
                     </div>
                 </div>
             </div>

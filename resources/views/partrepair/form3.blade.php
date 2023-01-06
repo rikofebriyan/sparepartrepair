@@ -20,9 +20,11 @@
                     <th scope="col">Price</th>
                     <th scope="col">Total Price</th>
                     <th scope="col">Status Part</th>
-                    <th scope="col">Quotation</th>
+
+                     {{-- dimatikan req user --}}
+                    {{-- <th scope="col">Quotation</th>
                     <th scope="col">Nomor PP</th>
-                    <th scope="col">Nomor PO</th>
+                    <th scope="col">Nomor PO</th> --}}
                     <th scope="col">Estimasi Kedatangan</th>
                 </tr>
             </thead>
@@ -42,6 +44,7 @@
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
 
+                                        <!-- form edit sealkit -->
                                         {!! Form::model($req, ['method' => 'PATCH', 'route' => ['partrepair.progresspemakaian.update', $req->id]]) !!}
 
                                         <div class="container-fluid justify-content-center py-0">
@@ -146,17 +149,15 @@
                                                                 <div class="col-sm-9">
                                                                     <select class="form-control" id="status_partbaru2"
                                                                         name="status_part">
-                                                                        <option value="{{ $req->status_part }}"
-                                                                            selected disabled>{{ $req->status_part }}
-                                                                        </option>
-                                                                        <option value="Ready">Ready</option>
-                                                                        <option value="Not Ready">Not Ready</option>
+                                                                        <option value="" selected disabled>Choose ...</option>
+                                                                        <option value="Ready" @if($req->status_part == 'Ready') selected @endif>Ready</option>
+                                                                        <option value="Not Ready" @if($req->status_part == 'Not Ready') selected @endif>Not Ready</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
 
-
-                                                            <div class="mb-3 row">
+                                                            {{-- dimatikan req user --}}
+                                                            {{-- <div class="mb-3 row">
                                                                 <label for="quotation"
                                                                     class="col-sm-3 col-form-label">Quotation</label>
                                                                 <div class="col-sm-9">
@@ -186,7 +187,7 @@
                                                                         id="nomor_po" name="nomor_po"
                                                                         value="{{ $req->nomor_po }}">
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
                                                             <div class="mb-3 row">
                                                                 <label for="estimasi_kedatangan"
@@ -227,9 +228,11 @@
                         <td>{{ $req->price }}</td>
                         <td>{{ $req->total_price }}</td>
                         <td>{{ $req->status_part }}</td>
-                        <td>{{ $req->quotation }}</td>
+
+                        {{-- dimatikan req user --}}
+                        {{-- <td>{{ $req->quotation }}</td>
                         <td>{{ $req->nomor_pp }}</td>
-                        <td>{{ $req->nomor_po }}</td>
+                        <td>{{ $req->nomor_po }}</td> --}}
                         <td>{{ $req->estimasi_kedatangan }}</td>
                     </tr>
                 @empty
@@ -302,6 +305,8 @@
 
 
 </div>
+
+<!-- form add new sealkit -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -404,9 +409,9 @@
                                     </div>
                                 </div>
 
-
                                 <div id="notready" style="display: none">
-                                    <div class="mb-3 row">
+                                    {{-- dimatikan req user --}}
+                                    {{-- <div class="mb-3 row">
                                         <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="quotation"
@@ -428,7 +433,7 @@
                                             <input type="text" class="form-control" id="nomor_po"
                                                 name="nomor_po" value="">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="mb-3 row">
                                         <label for="estimasi_kedatangan" class="col-sm-3 col-form-label">Estimasi

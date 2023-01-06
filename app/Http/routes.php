@@ -14,10 +14,11 @@
 
 Route::auth();
 
-Route::get('/', function () {
-    return view('/Auth/login');
-});
+// Route::get('/', function () {
+//     return view('/Auth/login');
+// });
 
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/partrepair', 'PartrepairController@index');
 Route::get('/partrepair/request', 'PartrepairController@request');

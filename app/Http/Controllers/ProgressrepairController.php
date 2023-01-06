@@ -83,12 +83,12 @@ class ProgressrepairController extends Controller
         $submit['total_time_repair'] = $data['total_time_repair'];
         $submit['labour_cost'] =  intval(preg_replace('/[^\d.]/', '', $data['labour_cost']));
         $submit['subcont_name'] = $data['subcont_name'];
-        $submit['quotation'] = $data['quotation'];
+        // $submit['quotation'] = $data['quotation'];
         $submit['subcont_cost'] = $data['subcont_cost'];
         $submit['lead_time'] = $data['lead_time'];
         $submit['time_period'] = $data['time_period'];
-        $submit['nomor_pp'] = $data['nomor_pp'];
-        $submit['nomor_po'] = $data['nomor_po'];
+        // $submit['nomor_pp'] = $data['nomor_pp'];
+        // $submit['nomor_po'] = $data['nomor_po'];
 
         if ($request->place_of_repair == "In House") {
             $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair)->format('Y-m-d H:i:s');
