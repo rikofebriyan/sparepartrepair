@@ -114,10 +114,50 @@
                             </a>
                         </li>
 
-                        <li class="menu-item  ">
-                            <a href="/partrepair/waitingtable" class='menu-link'>
-                                <span><i class="bi bi-table"></i> Table Waiting Repair</a></span>
+                        <li class="menu-item  has-sub">
+                            <a href="#" class='menu-link'>
+                                <span><i class="bi bi-table"></i>Ticket Repair Table</span>
+                            </a>
+                            <div class="submenu ">
+                                <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                                <div class="submenu-group-wrapper">
+
+
+                                    <ul class="submenu-group">
+
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('partrepair/waitingtable') }}"
+                                                class='submenu-link'>Waiting Table</a>
+
+
+                                        </li>
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('partrepair/finishtable') }}"
+                                                class='submenu-link'>Finish Table</a>
+
+
+                                        </li>
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('partrepair/stockout') }}"
+                                                class='submenu-link'>Stockout Table</a>
+
+
+                                        </li>
+                                        <li class="submenu-item  ">
+                                            <a href="{{ asset('partrepair/deletedtable') }}"
+                                                class='submenu-link'>Deleted Table</a>
+
+
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+                            </div>
                         </li>
+
+
+
 
                         <li class="menu-item  ">
                             <a href="{{ asset('partrepair/ganttchart') }}" class='menu-link'>
