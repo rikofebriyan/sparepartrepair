@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 // use App\Line;
 use App\MasterSparePart;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Form;
 use App\Http\Requests;
 
 class MastersparepartController extends Controller
@@ -67,7 +67,8 @@ class MastersparepartController extends Controller
      */
     public function show($id)
     {
-        //
+        MasterSparePart::find($id)->delete();
+        return redirect()->route('matrix.master_spare_part.index')->with('success','Task removed successfully');
     }
 
     /**
@@ -78,6 +79,7 @@ class MastersparepartController extends Controller
      */
     public function edit($id)
     {
+        dd('ok');
     }
 
     /**

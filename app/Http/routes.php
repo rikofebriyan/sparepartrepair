@@ -58,9 +58,12 @@ Route::get('/getSubcont', 'InfoController@getSubcont');
 Route::get('/getcategory', 'InfoController@getcategory');
 Route::get('/report', 'HomeController@reportHome');
 Route::get('/partrepair/masterdelete', 'InfoController@masterdelete');
+Route::get('/getmaster', 'InfoController@getmaster');
+Route::get('/mymodel/{id}', 'InfoController@mymodel');
+Route::patch('/updatemodel/{id}', 'InfoController@updatemodel');
 
-Route::get('/getmaster', function() {
-    $model = App\MasterSparePart::query();
+// Route::get('/getmaster', function() {
+//     $model = App\MasterSparePart::query();
  
-    return Datatables::of($model)->make(true);
-});
+//     return Datatables::of($model)->make(true);
+// });
