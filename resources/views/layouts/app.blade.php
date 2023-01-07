@@ -65,6 +65,16 @@
                             </svg>
                         </div>
 
+                        <a class="position-relative mr-2" href="#" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"">
+                            <i class='bi bi-bell bi-sub fs-4 position-relative'> </i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ $notifcount }}
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </a>
+
                         <div class="dropdown">
                             <a href="#" id="topbarUserDropdown"
                                 class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
@@ -78,19 +88,31 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                                <li><a class="dropdown-item" href="#">My Account</a></li>
+                                {{-- <li><a class="dropdown-item" href="#">My Account</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
-                                </li>
+                                </li> --}}
                                 <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                         </div>
 
                         <!-- Burger button responsive -->
-                        <a href="#" class="burger-btn d-block d-xl-none">
-                            <i class="bi bi-justify fs-3"></i>
-                        </a>
+                        {{-- <a class="nav-link active dropdown-toggle text-gray-600" href="#"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                            aria-controls="offcanvasExample">
+                            <i class='bi bi-bell bi-sub fs-4 position-relative'>
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    99+
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </i>
+                        </a> --}}
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -126,25 +148,29 @@
                                     <ul class="submenu-group">
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/waitingtable') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/waitingtable') }}"
                                                 class='submenu-link'>Waiting Table</a>
 
 
                                         </li>
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/finishtable') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/finishtable') }}"
                                                 class='submenu-link'>Finish Table</a>
 
 
                                         </li>
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/stockout') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/stockout') }}"
                                                 class='submenu-link'>Stockout Table</a>
 
 
                                         </li>
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/deletedtable') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/deletedtable') }}"
                                                 class='submenu-link'>Deleted Table</a>
 
 
@@ -177,15 +203,17 @@
                                     <ul class="submenu-group">
 
                                         @can('admin')
-                                        <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/user') }}" class='submenu-link'>User</a>
+                                            <li class="submenu-item  ">
+                                                <a class="list-group-item list-group-item-action list-group-item-light"
+                                                    href="{{ asset('matrix/user') }}" class='submenu-link'>User</a>
 
 
-                                        </li>
+                                            </li>
                                         @endcan
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/section') }}" class='submenu-link'>Section</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/section') }}" class='submenu-link'>Section</a>
 
 
                                         </li>
@@ -193,7 +221,8 @@
 
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/line') }}" class='submenu-link'>Line</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/line') }}" class='submenu-link'>Line</a>
 
 
                                         </li>
@@ -201,45 +230,53 @@
 
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/machine') }}" class='submenu-link'>Machine</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/machine') }}" class='submenu-link'>Machine</a>
 
 
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/master_spare_part') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/master_spare_part') }}"
                                                 class='submenu-link'>Master Spare Part</a>
 
 
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/standard_pengecekan') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/standard_pengecekan') }}"
                                                 class='submenu-link'>Standard Pengecekan</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/repair_kit') }}" class='submenu-link'>Repair
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/repair_kit') }}" class='submenu-link'>Repair
                                                 Kit</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/item_standard') }}" class='submenu-link'>Item
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/item_standard') }}" class='submenu-link'>Item
                                                 Standard</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/category_code') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/category_code') }}"
                                                 class='submenu-link'>Category
                                                 Code</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/maker') }}" class='submenu-link'>Maker</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/maker') }}" class='submenu-link'>Maker</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/subcont') }}" class='submenu-link'>Subcont</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/subcont') }}" class='submenu-link'>Subcont</a>
                                         </li>
 
                                     </ul>
@@ -264,6 +301,54 @@
                     </ul>
                 </div>
             </nav>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title text-black" id="offcanvasExampleLabel">Delay Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-black">
+                    <ol class="list-group list-group-numbered">
+
+                        @forelse ($notif as $not)
+                            <a href="{{ asset('partrepair/waitingtable/' . $not->id) }}"
+                                class="list-group-item list-group-item-action list-group-item-danger d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">{{ $not->item_name }}</div>
+                                    Plan Finish {{ Carbon\Carbon::parse($not->plan_finish_repair)->format('d M y') }}
+                                </div>
+                                <span class="badge bg-danger rounded-pill">{{ $not->progress }}</span>
+                            </a>
+                        @empty
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Aman</div>
+                                    Tidak ada delay
+                                </div>
+                            </li>
+                        @endforelse
+
+                        {{-- <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Content for list item
+                            </div>
+                            <span class="badge bg-danger rounded-pill">Delay</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Content for list item
+                            </div>
+                            <span class="badge bg-danger rounded-pill">Delay</span>
+                        </li> --}}
+                    </ol>
+
+                </div>
+            </div>
+
 
         </header>
 
