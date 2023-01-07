@@ -32,12 +32,12 @@
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-primary text-white text-center px-2 border-white"
                     id="trial">Trial</button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
+                {{-- <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-success text-white text-center px-2 border-white" id="delete">
                     <a href="{{ asset('partrepair/finishtable') }}" style="color:white">Finish</a></button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-danger text-white text-center px-2 border-white" id="delete">
-                    <a href="{{ asset('partrepair/deletedtable') }}" style="color:white">Deleted</a></button>
+                    <a href="{{ asset('partrepair/deletedtable') }}" style="color:white">Deleted</a></button> --}}
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -57,11 +57,25 @@
                         @forelse ($reqtzy as $req)
                             <tr>
                                 <td>{{ $req->reg_sp }}</td>
-                                <td>@if($req->plan_start_repair == null) Belum Input @else {{ $req->plan_start_repair }}  @endif</td>
-                                <td>@if($req->plan_finish_repair == null) Belum Input @else {{ $req->plan_finish_repair }}  @endif</td>
+                                <td>
+                                    @if ($req->plan_start_repair == null)
+                                        Belum Input
+                                    @else
+                                        {{ $req->plan_start_repair }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($req->plan_finish_repair == null)
+                                        Belum Input
+                                    @else
+                                        {{ $req->plan_finish_repair }}
+                                    @endif
+                                </td>
                                 <td>{{ $req->item_name }}</td>
                                 <td>{{ $req->problem }}</td>
-                                <td class="text-center"><span class="@if($req->status_repair == 'Urgent') bg-danger text-white px-3 py-2 rounded-pill  @endif">{{ $req->status_repair }}</span></td>
+                                <td class="text-center"><span
+                                        class="@if ($req->status_repair == 'Urgent') bg-danger text-white px-3 py-2 rounded-pill @endif">{{ $req->status_repair }}</span>
+                                </td>
                                 <td>
                                     @if ($req->progress == 'Waiting')
                                         <div class="rounded-pill bg-secondary text-white text-center px-2 bg-opacity-50">
