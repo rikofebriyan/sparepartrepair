@@ -88,11 +88,11 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                                <li><a class="dropdown-item" href="#">My Account</a></li>
+                                {{-- <li><a class="dropdown-item" href="#">My Account</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
-                                </li>
+                                </li> --}}
                                 <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                         </div>
@@ -148,25 +148,29 @@
                                     <ul class="submenu-group">
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/waitingtable') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/waitingtable') }}"
                                                 class='submenu-link'>Waiting Table</a>
 
 
                                         </li>
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/finishtable') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/finishtable') }}"
                                                 class='submenu-link'>Finish Table</a>
 
 
                                         </li>
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/stockout') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/stockout') }}"
                                                 class='submenu-link'>Stockout Table</a>
 
 
                                         </li>
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('partrepair/deletedtable') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('partrepair/deletedtable') }}"
                                                 class='submenu-link'>Deleted Table</a>
 
 
@@ -200,14 +204,16 @@
 
                                         @can('admin')
                                             <li class="submenu-item  ">
-                                                <a href="{{ asset('matrix/user') }}" class='submenu-link'>User</a>
+                                                <a class="list-group-item list-group-item-action list-group-item-light"
+                                                    href="{{ asset('matrix/user') }}" class='submenu-link'>User</a>
 
 
                                             </li>
                                         @endcan
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/section') }}" class='submenu-link'>Section</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/section') }}" class='submenu-link'>Section</a>
 
 
                                         </li>
@@ -215,7 +221,8 @@
 
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/line') }}" class='submenu-link'>Line</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/line') }}" class='submenu-link'>Line</a>
 
 
                                         </li>
@@ -223,45 +230,53 @@
 
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/machine') }}" class='submenu-link'>Machine</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/machine') }}" class='submenu-link'>Machine</a>
 
 
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/master_spare_part') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/master_spare_part') }}"
                                                 class='submenu-link'>Master Spare Part</a>
 
 
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/standard_pengecekan') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/standard_pengecekan') }}"
                                                 class='submenu-link'>Standard Pengecekan</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/repair_kit') }}" class='submenu-link'>Repair
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/repair_kit') }}" class='submenu-link'>Repair
                                                 Kit</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/item_standard') }}" class='submenu-link'>Item
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/item_standard') }}" class='submenu-link'>Item
                                                 Standard</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/category_code') }}"
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/category_code') }}"
                                                 class='submenu-link'>Category
                                                 Code</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/maker') }}" class='submenu-link'>Maker</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/maker') }}" class='submenu-link'>Maker</a>
                                         </li>
 
                                         <li class="submenu-item  ">
-                                            <a href="{{ asset('matrix/subcont') }}" class='submenu-link'>Subcont</a>
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ asset('matrix/subcont') }}" class='submenu-link'>Subcont</a>
                                         </li>
 
                                     </ul>
