@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Register the view composer
+        view()->composer('*', \App\Http\Composers\GlobalComposer::class);
     }
 
     /**
