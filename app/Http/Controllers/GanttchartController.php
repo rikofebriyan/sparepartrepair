@@ -29,6 +29,7 @@ class GanttchartController extends Controller
             ->join('progressrepairs', 'waitingrepairs.id', '=', 'progressrepairs.form_input_id')
             ->select('waitingrepairs.*', 'progressrepairs.place_of_repair', 'progressrepairs.analisa', 'progressrepairs.action', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair', 'progressrepairs.actual_start_repair', 'progressrepairs.actual_finish_repair')
             ->where('progress', '<>', 'finish')
+            ->where('progress', '<>', 'Scrap')
             ->get();
         // dd($join);
         $count = count(collect($join));
