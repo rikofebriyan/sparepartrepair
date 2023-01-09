@@ -88,6 +88,8 @@
 
 @section('script')
     <!-- script chart-qty-repair -->
+    <script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
     <script>
         var options = {
             series: [{
