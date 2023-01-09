@@ -207,8 +207,8 @@
                     var datestart = new Date(data[1]).getTime();
                     // alert(datestart);
                     var dateplan = new Date(data[2]).getTime();
-                    var diff = Math.floor((dateplan - datestart) / (1000 * 60 * 60 * 24));
-                    // alert(diff);
+                    var diff = Math.floor((dateplan - now) / (1000 * 60 * 60 * 24));
+                    alert(diff);
                     if (diff <= 0) {
                         $(row).css({
                             'background-color': '#FFCCCB',
