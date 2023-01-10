@@ -18,23 +18,26 @@
                         <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'On Progress') active @endif"
                             id="list-monday-list" data-bs-toggle="list" href="#list-monday" role="tab">Progress
                             Repair</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') bg-secondary text-white @endif"
-                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab" @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') disabled @endif>Seal Kit</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') bg-secondary text-white @endif"
-                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab" @if($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') disabled @endif>Trial</a>
-                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif @if($progressrepair2->judgement == 'Scrap') bg-secondary text-white @endif"
-                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab" @if($progressrepair2->judgement == 'Scrap') disabled @endif>Finish Repair</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Seal Kit') active @endif @if ($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') bg-secondary text-white @endif"
+                            id="list-tuesday-list" data-bs-toggle="list" href="#list-tuesday" role="tab"
+                            @if ($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') disabled @endif>Seal Kit</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Trial') active @endif @if ($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') bg-secondary text-white @endif"
+                            id="list-4-list" data-bs-toggle="list" href="#list-4" role="tab"
+                            @if ($progressrepair2->judgement == 'Scrap' || $progressrepair2->place_of_repair == 'Trade In') disabled @endif>Trial</a>
+                        <a class="list-group-item list-group-item-action @if ($waitingrepair->progress == 'Finish') active @endif @if ($progressrepair2->judgement == 'Scrap') bg-secondary text-white @endif"
+                            id="list-5-list" data-bs-toggle="list" href="#list-5" role="tab"
+                            @if ($progressrepair2->judgement == 'Scrap') disabled @endif>Finish Repair</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-content text-justify py-2">
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-sunday" role="tabpanel"
-                aria-labelledby="list-sunday-list">
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'Waiting') show active @endif" id="list-sunday"
+                role="tabpanel" aria-labelledby="list-sunday-list">
                 @include('partrepair.form1')
             </div>
-            <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-monday" role="tabpanel"
-                aria-labelledby="list-monday-list">
+            <div class="tab-pane fade @if ($waitingrepair->progress == 'On Progress') show active @endif" id="list-monday"
+                role="tabpanel" aria-labelledby="list-monday-list">
                 @include('partrepair.form2')
             </div>
             <div class="tab-pane fade @if ($waitingrepair->progress == 'Seal Kit') show active @endif" id="list-tuesday"
@@ -68,14 +71,6 @@
 
                         $('#labour_cost').val(labourCost);
                     }
-                    // if (total_time_repair > 0 && data.labour_cost > 0) {
-                    //     labourCost = total_time_repair * data.labour_cost
-
-                    //     $('#labour_cost').val(labourCost);
-                    // }
-                    // var json = data,
-                    //     obj = JSON.parse(json);
-                    // $('#labour_cost').val(obj.labour_cost);
                 }
             });
         }
@@ -151,7 +146,6 @@
     <script>
         $('#showsubcont').change(function() {
             var val = $(this).val();
-            // var tradeincost = <?php echo $tradeincost; ?>;
             if (val === "Subcont") {
                 $('#subcont').show()
                 $('#inHouse').hide()
@@ -236,28 +230,6 @@
         </script>
     @endif
 
-    {{-- <script>
-        for (let i = 0; i < 10; i++) {
-            $(document).ready(function() {
-                $('#actual' + i).on('input', function() {
-                    var actual = Number($(this).val());
-                    var actual2 = $(this).val();
-                    var standard = Number($('#standard' + i).val());
-                    var standard2 = $('#standard' + i).val();
-                    if (actual2 == standard2) {
-                        // alert("ok");
-                        $('#judge' + i).val('OK');
-                        // $('#judgeok').show();
-                    } else if (actual >= standard) {
-                        $('#judge' + i).val('OK');
-                        // $('#judgeok').show();
-                    } else
-                        $('#judge' + i).val('NG');
-                    // $('#judgeok').hide();
-                });
-            });
-        }
-    </script> --}}
 
     <script>
         @foreach ($join as $joi)
@@ -415,10 +387,4 @@
             });
         }
     </script>
-
-    {{-- <script type="text/javascript">
-        function asuasu() {
-            alert('ok');
-        }
-    </script> --}}
 @endsection

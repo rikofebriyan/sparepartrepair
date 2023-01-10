@@ -3,11 +3,6 @@
 @section('css')
 @endsection
 @section('content')
-    {{-- @if ($message = Session::get('success'))
-        <h6 class="alert alert-success">
-            {{ $message }}
-        </h6>
-    @endif --}}
     <CENTER>
         <div class="container-fluid">
             <H2>STOCKOUT TABLE</H2>
@@ -18,8 +13,6 @@
     <div class="row">
         <div class="card border-0 shadow rounded overflow-auto col m-2">
             <div class="card-body">
-                {{-- <a href="#" class="btn btn-md btn-success mb-3 float-right">New
-                Post</a> --}}
 
                 <div class="table-responsive-sm">
                     <table id="myTable" class="table table-striped nowrap overflow-auto display text-sm">
@@ -129,28 +122,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-        {{-- <div class="card border-0 shadow rounded overflow-auto col m-2">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div class="p-0">
-                        <h3>Data Stock Repair</h3>
-                    </div>
-                    <div class="p-0">
-                        <a href="/home"><img width="120" height="30"
-                                src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"></a>
-                    </div>
-                </div>
-
-                <div class="divider m-0">
-                    <div class="divider-text">Repair Information</div>
-                </div>
-            </div>
-        </div> --}}
     @endsection
 
 

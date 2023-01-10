@@ -16,13 +16,6 @@
                             <option value="Trade In" @if ($progressrepair2->place_of_repair == 'Trade In') selected @endif>Trade In</option>
                         </select>
                     </div>
-                    {{-- <div class="col-sm-1 ">
-                        <label for="tradein" class="col-form-label">Cost</label>
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" id="tradein" name="tradein"
-                            placeholder="Trade In Cost" readonly>
-                    </div> --}}
                 </div>
 
 
@@ -158,15 +151,6 @@
                         </div>
                     </div>
 
-                    {{-- dimatikan req user --}}
-                    {{-- <div class="mb-3 row" @if ($progressrepair2->place_of_repair == 'Trade In') style="display: none;" @endif>
-                        <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="quotation" name="quotation"
-                                value="{{ $progressrepair2->quotation }}">
-                        </div>
-                    </div> --}}
-
                     <div class="mb-3 row">
                         <label for="subcont_cost" class="col-sm-3 col-form-label">Cost</label>
                         <div class="col-sm-9">
@@ -190,23 +174,6 @@
                             </select>
                         </div>
                     </div>
-
-                    {{-- dimatikan req user --}}
-                    {{-- <div id="nomor_pp_div" class="mb-3 row" @if ($progressrepair2->place_of_repair == 'Trade In') style="display: none;" @endif>
-                        <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nomor_pp" name="nomor_pp"
-                                value="{{ $progressrepair2->nomor_pp }}">
-                        </div>
-                    </div>
-
-                    <div id="nomor_po_div" class="mb-3 row" @if ($progressrepair2->place_of_repair == 'Trade In') style="display: none;" @endif>
-                        <label for="nomor_po" class="col-sm-3 col-form-label">Nomor PO</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nomor_po" name="nomor_po"
-                                value="{{ $progressrepair2->nomor_po }}">
-                        </div>
-                    </div> --}}
 
                     <div class="mb-3 row">
                         <label for="plan_start_repair" class="col-sm-3 col-form-label">Plan Start

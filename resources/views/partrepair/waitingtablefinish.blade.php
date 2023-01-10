@@ -3,11 +3,6 @@
 @section('css')
 @endsection
 @section('content')
-    {{-- @if ($message = Session::get('success'))
-        <h6 class="alert alert-success">
-            {{ $message }}
-        </h6>
-    @endif --}}
     <CENTER>
         <div class="container-fluid">
             <H2>PART REPAIR : FINISH TABLE</H2>
@@ -17,8 +12,6 @@
 
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
-            {{-- <a href="#" class="btn btn-md btn-success mb-3 float-right">New
-                Post</a> --}}
 
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">

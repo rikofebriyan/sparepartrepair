@@ -14,9 +14,6 @@
 
 Route::auth();
 
-// Route::get('/', function () {
-//     return view('/Auth/login');
-// });
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
@@ -26,7 +23,6 @@ Route::get('/partrepair/ganttchart', 'GanttchartController@index');
 Route::get('/partrepair/deletedtable', 'WaitingrepairController@deleted');
 Route::get('/partrepair/finishtable', 'WaitingrepairController@finish');
 
-Route::resource('tasks', 'TaskController');
 Route::resource('partrepair/waitingtable', 'WaitingrepairController');
 Route::resource('partrepair/progresstable', 'ProgressrepairController');
 Route::resource('partrepair/progresspemakaian', 'ProgresspemakaianController');
@@ -61,9 +57,3 @@ Route::get('/partrepair/masterdelete', 'InfoController@masterdelete');
 Route::get('/getmaster', 'InfoController@getmaster');
 Route::get('/mymodel/{id}', 'InfoController@mymodel');
 Route::patch('/updatemodel/{id}', 'InfoController@updatemodel');
-
-// Route::get('/getmaster', function() {
-//     $model = App\MasterSparePart::query();
- 
-//     return Datatables::of($model)->make(true);
-// });

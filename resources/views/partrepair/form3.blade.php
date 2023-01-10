@@ -1,9 +1,6 @@
 <div class="container-fluid justify-content-center py-0">
 
     @if ($message = Session::get('success'))
-        {{-- <h6 class="alert alert-success">
-                {{ $message }}
-            </h6> --}}
     @endif
 
     <div id="field3" class="p-3 mb-3 card border" @if ($countid == 0) style="display: none;" @endif>
@@ -20,11 +17,6 @@
                     <th scope="col">Price</th>
                     <th scope="col">Total Price</th>
                     <th scope="col">Status Part</th>
-
-                     {{-- dimatikan req user --}}
-                    {{-- <th scope="col">Quotation</th>
-                    <th scope="col">Nomor PP</th>
-                    <th scope="col">Nomor PO</th> --}}
                     <th scope="col">Estimasi Kedatangan</th>
                 </tr>
             </thead>
@@ -149,45 +141,17 @@
                                                                 <div class="col-sm-9">
                                                                     <select class="form-control" id="status_partbaru2"
                                                                         name="status_part">
-                                                                        <option value="" selected disabled>Choose ...</option>
-                                                                        <option value="Ready" @if($req->status_part == 'Ready') selected @endif>Ready</option>
-                                                                        <option value="Not Ready" @if($req->status_part == 'Not Ready') selected @endif>Not Ready</option>
+                                                                        <option value="" selected disabled>Choose
+                                                                            ...</option>
+                                                                        <option value="Ready"
+                                                                            @if ($req->status_part == 'Ready') selected @endif>
+                                                                            Ready</option>
+                                                                        <option value="Not Ready"
+                                                                            @if ($req->status_part == 'Not Ready') selected @endif>
+                                                                            Not Ready</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-
-                                                            {{-- dimatikan req user --}}
-                                                            {{-- <div class="mb-3 row">
-                                                                <label for="quotation"
-                                                                    class="col-sm-3 col-form-label">Quotation</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="text" class="form-control"
-                                                                        id="quotation" name="quotation"
-                                                                        value="{{ $req->quotation }}">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="nomor_pp"
-                                                                    class="col-sm-3 col-form-label">Nomor
-                                                                    PP</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="text" class="form-control"
-                                                                        id="nomor_pp" name="nomor_pp"
-                                                                        value="{{ $req->nomor_pp }}">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="nomor_po"
-                                                                    class="col-sm-3 col-form-label">Nomor
-                                                                    PO</label>
-                                                                <div class="col-sm-9">
-                                                                    <input type="text" class="form-control"
-                                                                        id="nomor_po" name="nomor_po"
-                                                                        value="{{ $req->nomor_po }}">
-                                                                </div>
-                                                            </div> --}}
 
                                                             <div class="mb-3 row">
                                                                 <label for="estimasi_kedatangan"
@@ -228,11 +192,6 @@
                         <td>{{ $req->price }}</td>
                         <td>{{ $req->total_price }}</td>
                         <td>{{ $req->status_part }}</td>
-
-                        {{-- dimatikan req user --}}
-                        {{-- <td>{{ $req->quotation }}</td>
-                        <td>{{ $req->nomor_pp }}</td>
-                        <td>{{ $req->nomor_po }}</td> --}}
                         <td>{{ $req->estimasi_kedatangan }}</td>
                     </tr>
                 @empty
@@ -272,19 +231,12 @@
                 data-bs-target="#exampleModal">TAMBAHKAN SEAL KIT</button>
         </div>
         <div class="d-grid gap-2 col @if ($countid == 0) d-block @else d-none @endif" id="fieldrepair">
-            {{-- <button class="btn btn-primary">REPAIR & TRIAL
-                >>></button> --}}
             <button href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
                 class="btn btn-success">REPAIR & TRIAL
                 >>></button>
         </div>
 
         @if ($countid == 0)
-            {{-- <div class="d-grid gap-2 col">
-                <a href="{{ route('partrepair.progresspemakaian.show', $waitingrepair->id) }}"
-                    class="btn btn-success">REPAIR & TRIAL
-                    >>></a>
-            </div> --}}
         @elseif ($countid > $ready)
             <div class="d-grid gap-2 col">
                 <button class="btn btn-primary disabled text-center">REPAIR & TRIAL
@@ -345,19 +297,20 @@
                                             @endforeach
                                         </select>
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-secondary text-white" id="item_code2"
-                                                name="item_code" placeholder="Item Code" readonly>
-                                            <input type="text" class="form-control bg-secondary text-white" id="item_name2"
-                                                name="item_name" placeholder="Item Name" readonly>
+                                            <input type="text" class="form-control bg-secondary text-white"
+                                                id="item_code2" name="item_code" placeholder="Item Code" readonly>
+                                            <input type="text" class="form-control bg-secondary text-white"
+                                                id="item_name2" name="item_name" placeholder="Item Name" readonly>
                                         </div>
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-secondary text-white" id="description2"
-                                                name="description" placeholder="description" readonly>
+                                            <input type="text" class="form-control bg-secondary text-white"
+                                                id="description2" name="description" placeholder="description"
+                                                readonly>
                                         </div>
 
                                         <div class="input-group">
-                                            <input type="text" class="form-control bg-secondary text-white" id="price2" name="price"
-                                                placeholder="Price" readonly>
+                                            <input type="text" class="form-control bg-secondary text-white"
+                                                id="price2" name="price" placeholder="Price" readonly>
                                         </div>
 
                                         <div class="input-group">
@@ -410,30 +363,6 @@
                                 </div>
 
                                 <div id="notready" style="display: none">
-                                    {{-- dimatikan req user --}}
-                                    {{-- <div class="mb-3 row">
-                                        <label for="quotation" class="col-sm-3 col-form-label">Quotation</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="quotation"
-                                                name="quotation" value="">
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 row">
-                                        <label for="nomor_pp" class="col-sm-3 col-form-label">Nomor PP</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="nomor_pp"
-                                                name="nomor_pp" value="">
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 row">
-                                        <label for="nomor_po" class="col-sm-3 col-form-label">Nomor PO</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="nomor_po"
-                                                name="nomor_po" value="">
-                                        </div>
-                                    </div> --}}
 
                                     <div class="mb-3 row">
                                         <label for="estimasi_kedatangan" class="col-sm-3 col-form-label">Estimasi
@@ -447,9 +376,8 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-md btn-primary">Save</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                {{-- <a href="{{ route('partrepair.progresspemakaian.index') }}"
-                                    class="btn btn-md btn-secondary">back</a> --}}
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

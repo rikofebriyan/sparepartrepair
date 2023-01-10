@@ -75,23 +75,6 @@
                     <label for="item_code" class="col-sm-3 col-form-label">Spare
                         Part</label>
                     <div class="col-sm-9">
-
-                        {{-- <div class="input-group">
-                            <input type="text" class="form-control" id="description" name="item_type"
-                                placeholder="Item Type"
-                                value="{{ $waitingrepair->item_code }} | {{ $waitingrepair->item_name }} | {{ $waitingrepair->item_type }}"
-                                readonly>
-                        </div> --}}
-                        {{-- <select class="form-select mb-3 choices" id="isiotomatis" name="item_name"
-                            data-live-search="true" value="{{ $waitingrepair->item_code }}">
-                            <option selected></option>
-                            @foreach ($reqtzy as $req)
-                                    <option value="{{ $req->id }}"> {{ $req->item_code }} |
-                                        {{ $req->item_name }} |
-                                        {{ $req->description }}
-                                    </option>
-                                @endforeach
-                        </select> --}}
                         <div class="input-group">
                             <input type="text" class="form-control bg-secondary text-white" id="item_code"
                                 name="item_code" placeholder="Item Code" value="{{ $waitingrepair->item_code }}"
@@ -116,8 +99,6 @@
 
                         <div class="input-group">
 
-                            {{-- <input type="text" class="form-control" id="maker" name="maker" placeholder="maker"
-                                value="{{ $waitingrepair->maker }}" readonly> --}}
                             <select class="form-control" id="maker" name="maker">
                                 <option value="" selected>Maker ...</option>
                                 @foreach ($maker as $mak)
@@ -127,8 +108,6 @@
                                 @endforeach
                             </select>
 
-                            {{-- <input type="text" class="form-control" id="type_of_part" name="type_of_part"
-                                placeholder="type_of_part" value="{{ $waitingrepair->type_of_part }}" readonly> --}}
                             <select class="form-control" id="type_of_part" name="type_of_part">
                                 <option disabled>Type Of Part ...</option>
                                 <option value="1" @if ($waitingrepair->type_of_part == 1) selected @endif>Mechanic

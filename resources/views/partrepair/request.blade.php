@@ -7,7 +7,6 @@
         <div class="card border text-center mb-2">
             <h3 class="m-2">SPAREPART REPAIR REQUEST FORM</h3>
         </div>
-        {{-- <h3 class="text-center mb-3" style="font-size: 1.3rem; font-weight:bold;">SPAREPART REPAIR REQUEST FORM</h3> --}}
 
         {{ Form::open(['route' => 'partrepair.waitingtable.store', 'method' => 'POST']) }}
         <div class="container-fluid justify-content-center py-0">

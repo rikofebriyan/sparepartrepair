@@ -15,17 +15,10 @@
                     <th scope="col">Unit Measurement</th>
                     <th scope="col">Actual</th>
                     <th scope="col">Judgement</th>
-                    {{-- <th scope="col">Action</th> --}}
                 </tr>
             </thead>
             <tbody>
                 @forelse ($join as $joi)
-                    {{-- <input type="hidden" name="form_input_id{{ $joi->id }}" value="{{ $waitingrepair->id }}">
-                    <input type="hidden" name="id_standard_pengecekan{{ $joi->id }}" value="{{ $joi->item_pengecekan_id }}">
-                    <input type="hidden" name="operation{{ $joi->id }}" value="{{ $joi->operation }}">
-                    <input type="hidden" name="standard_pengecekan_min{{ $joi->id }}" value="{{ $joi->standard_pengecekan_min }}">
-                    <input type="hidden" name="standard_pengecekan_max{{ $joi->id }}" value="{{ $joi->standard_pengecekan_max }}">
-                    <input type="hidden" name="unit_measurement{{ $joi->id }}" value="{{ $joi->unit_measurement }}"> --}}
                     <input type="hidden" name="data[{{ $joi->id }}][id]" value="{{ $joi->id }}">
                     <input type="hidden" name="data[{{ $joi->id }}][form_input_id]"
                         value="{{ $waitingrepair->id }}">
@@ -95,7 +88,8 @@
 
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Item Code</label>
-                    <select name="master_spare_part_id" id="master_spare_part_id" class="form-control bg-secondary text-white">
+                    <select name="master_spare_part_id" id="master_spare_part_id"
+                        class="form-control bg-secondary text-white">
                         <option value="{{ $asu->item_id }}">{{ $asu->item_code }}
                         </option>
                     </select>
@@ -103,12 +97,14 @@
 
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Part Name</label>
-                    <input type="text" class="form-control bg-secondary text-white" value="{{ $asu->item_name }}" disabled>
+                    <input type="text" class="form-control bg-secondary text-white" value="{{ $asu->item_name }}"
+                        disabled>
                 </div>
 
                 <div class="form-group mt-2">
                     <label for="master_spare_part_id">Part Type</label>
-                    <input type="text" class="form-control bg-secondary text-white" value="{{ $asu->item_type }}" disabled>
+                    <input type="text" class="form-control bg-secondary text-white" value="{{ $asu->item_type }}"
+                        disabled>
                 </div>
 
                 <div class="form-group mt-2">

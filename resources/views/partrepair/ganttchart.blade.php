@@ -136,73 +136,8 @@
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
-    {{-- <script src="{{ asset('assets/extensions/frappe-gantt/dist/frappe-gantt.js') }}"></script>
-    <script>
-        var tasks = [{
-                id: 'Task 1',
-                name: 'Redesign website',
-                start: '2016-12-28',
-                end: '2016-12-31',
-                progress: 20,
-                dependencies: 'Task 2, Task 3',
-                custom_class: 'bar-milestone' // optional
-            },
-            {
-                id: 'Task 1',
-                name: 'Redesign 2',
-                start: '2016-12-31',
-                end: '2017-01-02',
-                progress: 20,
-                dependencies: 'Task 2, Task 3',
-                custom_class: 'bar-milestone' // optional
-            },
-            {
-                id: 'Task 1',
-                name: 'Redesign 2',
-                start: '2016-12-31',
-                end: '2017-01-02',
-                progress: 20,
-                dependencies: 'Task 2, Task 3',
-                custom_class: 'bar-milestone' // optional
-            },
-            {
-                id: 'Task 1',
-                name: 'Redesign 2',
-                start: '2016-12-31',
-                end: '2017-01-02',
-                progress: 20,
-                dependencies: 'Task 2, Task 3',
-                custom_class: 'bar-milestone' // optional
-            },
-            {
-                id: 'Task 1',
-                name: 'Redesign 2',
-                start: '2016-12-31',
-                end: '2017-01-02',
-                progress: 20,
-                dependencies: 'Task 2, Task 3',
-                custom_class: 'bar-milestone' // optional
-            },
-            {
-                id: 'Task 1',
-                name: 'Redesign 2',
-                start: '2016-12-31',
-                end: '2017-01-02',
-                progress: 20,
-                dependencies: 'Task 2, Task 3',
-                custom_class: 'bar-milestone' // optional
-            },
-
-
-
-
-
-        ]
-        var gantt = new Gantt("#gantt2", tasks);
-        gantt.change_view_mode('Day') // Quarter Day, Half Day, Day, Week, Month 
-    </script> --}}
+    <script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
 
 
 
@@ -243,14 +178,6 @@
                 events: {
                     dataPointSelection: function(event, chartContext, config) {
                         $('#asu').show(300);
-                        // $("#asu").css({
-                        //     "display": "block",
-                        //     "transition": "width 1s",
-                        // });
-                        // console.log(config.w.globals.labels[config.dataPointIndex]);
-                        // var x = console.log(config.w.globals.labels[config.dataPointIndex]);
-                        // var y = console.log(config);
-                        // console.log(data[config.dataPointIndex]);
                         $('#reg_sp').text(data[config.dataPointIndex].reg_sp);
                         $('#created_at').text(data[config.dataPointIndex].created_at);
                         $('#updated_at').text(data[config.dataPointIndex].updated_at);
@@ -327,22 +254,6 @@
                 type: 'datetime',
                 position: 'top',
             },
-            // tooltip: {
-            //     custom: function({
-            //         series,
-            //         seriesIndex,
-            //         dataPointIndex,
-            //         w
-            //     }) {
-            //         let title = w.globals.tooltip.tooltipTitle.outerHTML;
-            //         let items = "asdasdasd";
-            //         w.globals.tooltip.ttItems.forEach(x => {
-            //             items = items + x.outerHTML
-
-            //         })
-            //         return title + items;
-            //     }
-            // }
         };
 
         var chart = new ApexCharts(document.querySelector("#gantt"), options);
