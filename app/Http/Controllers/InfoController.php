@@ -125,10 +125,6 @@ class InfoController extends Controller
     public function getcategory(Request $request)
     {
         $data = CodePartRepair::all()->sortByDesc('id')->where('category', $request->category)->first();
-        // $data = CodePartRepair::where('number', $request->number)->sortByDesc('id');
-        // dd($data);
-        // return sprintf("%04s", abs($data + 1));
-        // $data = CategoryCode::where('category_code', $request->category_code)->count();
         return response()->json($data);
     }
 

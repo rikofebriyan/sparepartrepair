@@ -57,17 +57,6 @@ class ProgressrepairController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // validated input request
-        // $this->validate($request, [
-        //     'place_of_repair' => 'required',
-        //     'analisa' => 'required',
-        //     'action' => 'required',
-        //     'judgement' => 'required',
-        //     'pic_repair' => 'required',
-        //     'plan_start_repair' => 'required',
-        //     'plan_finish_repair' => 'required',
-        // ]);
 
         $data = $request->all();
         $submit['form_input_id'] = $data['form_input_id'];
@@ -83,12 +72,9 @@ class ProgressrepairController extends Controller
         $submit['total_time_repair'] = $data['total_time_repair'];
         $submit['labour_cost'] =  intval(preg_replace('/[^\d.]/', '', $data['labour_cost']));
         $submit['subcont_name'] = $data['subcont_name'];
-        // $submit['quotation'] = $data['quotation'];
         $submit['subcont_cost'] = $data['subcont_cost'];
         $submit['lead_time'] = $data['lead_time'];
         $submit['time_period'] = $data['time_period'];
-        // $submit['nomor_pp'] = $data['nomor_pp'];
-        // $submit['nomor_po'] = $data['nomor_po'];
 
         if ($request->place_of_repair == "In House") {
             $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair)->format('Y-m-d H:i:s');
@@ -103,12 +89,9 @@ class ProgressrepairController extends Controller
         }
 
         $query = Progressrepair::where('form_input_id', $request->form_input_id)->first();
-        // dd($query);
         if ($query != null) {
-            // dd('ada');
             Progressrepair::where('form_input_id', $request->form_input_id)->update($submit);
         } else {
-            // dd('kosong');
             Progressrepair::create($submit);
         }
         $request2 = Waitingrepair::find($request->form_input_id);
@@ -118,10 +101,8 @@ class ProgressrepairController extends Controller
         } else {
             $request2->progress = 'On Progress';
         }
-        // dd($request2);
         $request2->save();
 
-        // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         if ($request->judgement == 'Scrap') {
             return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         } else {
@@ -146,12 +127,9 @@ class ProgressrepairController extends Controller
         $maker = Maker::all();
         $subcont = Subcont::all();
         $user = User::all();
-        // $progresspemakaian = Progresspemakaian::all(); // original riko febriyan omov
         $progresspemakaian = Progresspemakaian::where('form_input_id', $id)->get();
         $waitingrepair = Waitingrepair::find($id);
         $progressrepair = Progressrepair::where('form_input_id', $id)->first();
-        // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
-        // dd($progressrepair);
         return view('partrepair.progresspemakaian', [
             'waitingrepair'    => $waitingrepair,
             'progressrepair'    => $progressrepair,

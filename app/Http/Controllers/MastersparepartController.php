@@ -21,11 +21,9 @@ class MastersparepartController extends Controller
      */
     public function index()
     {
-        // $tabel2 = Line::all();
         $partr = MasterSparePart::all()->sortByDesc('id');
         return view('matrix.master_spare_part', [
             'reqtzy' => $partr,
-            // 'tab2' => $tabel2,
         ]);
     }
 
@@ -97,7 +95,6 @@ class MastersparepartController extends Controller
         $data = $request->all();
         $data['code_item_description'] = $request->item_code.' | '.$request->item_name.' | '.$request->description;
         MasterSparePart::find($id)->update($data);
-        // MasterSparePart::find($id)->update($request->all());
         return redirect()->route('matrix.master_spare_part.index')->with('success','MasterSparePart updated successfully');
     }
 

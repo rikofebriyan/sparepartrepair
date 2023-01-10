@@ -58,11 +58,6 @@ class StandardpengecekanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // validated input request
-        // $this->validate($request, [
-        //     'standard_pengecekan' => 'required',
-        // ]);
         $data = [
             'master_spare_part_id' => $request->master_spare_part_id,
             'item_pengecekan_id' => $request->item_check_id,

@@ -70,7 +70,6 @@ class ProgresspemakaianController extends Controller
         $request2 = Waitingrepair::find($id);
         $request2->progress = 'Seal Kit';
         $request2->save();
-        // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->back()->with('success','Task added successfully');
     }
 
@@ -119,8 +118,6 @@ class ProgresspemakaianController extends Controller
     public function destroy($id)
     {
         Progresspemakaian::find($id)->delete();
-        // Alert::success('success','Task removed successfully');
-        // return back();
         return redirect()->back()->with('success','Task removed successfully');
     }
 }
