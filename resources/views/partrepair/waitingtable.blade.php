@@ -3,11 +3,6 @@
 @section('css')
 @endsection
 @section('content')
-    {{-- @if ($message = Session::get('success'))
-        <h6 class="alert alert-success">
-            {{ $message }}
-        </h6>
-    @endif --}}
     <CENTER>
         <div class="container-fluid">
             <H2>PART REPAIR : WAITING TABLE</H2>
@@ -32,12 +27,6 @@
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-primary text-white text-center px-2 border-white"
                     id="trial">Trial</button>
-                {{-- <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-success text-white text-center px-2 border-white" id="delete">
-                    <a href="{{ asset('partrepair/finishtable') }}" style="color:white">Finish</a></button>
-                <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
-                <button class="rounded-pill bg-danger text-white text-center px-2 border-white" id="delete">
-                    <a href="{{ asset('partrepair/deletedtable') }}" style="color:white">Deleted</a></button> --}}
             </div>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -205,10 +194,8 @@
 
                     var now = new Date().getTime();
                     var datestart = new Date(data[1]).getTime();
-                    // alert(datestart);
                     var dateplan = new Date(data[2]).getTime();
                     var diff = Math.floor((dateplan - now) / (1000 * 60 * 60 * 24));
-                    // alert(diff);
                     if (diff <= 0) {
                         $(row).css({
                             'background-color': '#FFCCCB',
