@@ -321,7 +321,7 @@
                     <ol class="list-group list-group-numbered">
 
                         @forelse ($notif as $not)
-                            <a href="{{ asset('partrepair/waitingtable/' . $not->id) }}"
+                            <a href="{{ route('partrepair.waitingtable.show', $not->id) }}"
                                 class="list-group-item list-group-item-action list-group-item-danger d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">{{ $not->item_name }}</div>
