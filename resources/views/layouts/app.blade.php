@@ -20,6 +20,7 @@
     <!-- choice -->
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
 
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/riko.css') }}">
     @yield('css')
 
 </head>
