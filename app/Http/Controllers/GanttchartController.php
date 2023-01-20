@@ -31,7 +31,6 @@ class GanttchartController extends Controller
             ->where('progress', '<>', 'finish')
             ->where('progress', '<>', 'Scrap')
             ->get();
-        // dd($join);
         $count = count(collect($join));
 
 
@@ -79,7 +78,6 @@ class GanttchartController extends Controller
                 ];
             }
         } else {
-            // $data = [];
             return redirect()->back()->with('no_waiting_part', 'No Schedule Waiting Part Repair');
         }
 

@@ -76,15 +76,7 @@ class FinishrepairController extends Controller
             'delivery_date' => Carbon::parse($request->delivery_date)->format('Y-m-d H:i:s'),
             'pic_delivery' => $request->pic_delivery,
         ];
-        // validated input request
-        // $this->validate($request, [
-        //     'form_input_id' => 'required',
-        // ]);
 
-        // create new task
-        // Finishrepair::create($request->all());
-        // $data = $request->all();
-        // $data['delivery_date'] = Carbon::parse($request->delivery_date)->format('Y-m-d H:i:s');
         $finish = Finishrepair::where('form_input_id', $request->form_input_id)->first();
         if ($finish == null) {
             Finishrepair::create($data);
@@ -106,13 +98,6 @@ class FinishrepairController extends Controller
             $request3->save();
         }
 
-        // $request3 = new CodePartRepair;
-        // $request3->category = $request->category;
-        // $request3->number = $request->number;
-        // $request3->code_part_repair = $request->code_part_repair;
-        // $request3->save();
-        // dd($request3);
-        // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
 
     }
@@ -132,8 +117,6 @@ class FinishrepairController extends Controller
         $progresspemakaian = Progresspemakaian::all();
         $waitingrepair = Waitingrepair::find($id);
         $progressrepair = Progresspemakaian::where('form_input_id', $id)->first();
-        // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
-        // dd($progressrepair);
         return view('partrepair.formfinishrepair', [
             'waitingrepair'    => $waitingrepair,
             'progressrepair'    => $progressrepair,

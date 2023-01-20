@@ -23,10 +23,6 @@ class LineController extends Controller
     public function index(Request $request)
     {
 
-        // $join = DB::table('lines')
-        // ->join('sections', 'lines.id', '=', 'sections.id')
-        // ->select('lines.*', 'sections.name as section')
-        // ->get();
 
         $join = Line::join('sections', 'lines.id', '=', 'sections.id')
                     ->select('lines.*', 'sections.name as section')
