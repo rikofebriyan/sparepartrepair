@@ -49,17 +49,13 @@
                             </option>
                             <option value="Between" @if ($data->operation == 'Between') selected @endif>Between</option>
                         </select>
-                        {{-- <input type="text" id="operation" name="operation" class="form-control"
-                            value="{{ $data->operation }}" required> --}}
                     </div>
-
 
                     <div id="standard_pengecekan_min_div" class="form-group mt-2">
                         <label for="standard_pengecekan_min">standard_pengecekan_min</label>
                         <input type="text" id="standard_pengecekan_min" name="standard_pengecekan_min"
                             class="form-control" value="{{ $data->standard_pengecekan_min }}">
                     </div>
-
 
                     <div id="standard_pengecekan_max_div" class="form-group mt-2">
                         <label for="standard_pengecekan_max">standard_pengecekan_max</label>

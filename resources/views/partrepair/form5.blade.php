@@ -8,7 +8,7 @@
                         <h3>Summary Finish Details</h3>
                     </div>
                     <div class="p-0">
-                        <a href="/home"><img width="120" height="30"
+                        <a href="{{ route('home') }}"><img width="120" height="30"
                                 src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"></a>
                     </div>
                 </div>

@@ -9,13 +9,10 @@
         </div>
     </CENTER>
 
-
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
-
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
-
                     <thead>
                         <tr>
                             <th scope="col">Ticket No</th>
@@ -51,8 +48,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
 @endsection
 
 

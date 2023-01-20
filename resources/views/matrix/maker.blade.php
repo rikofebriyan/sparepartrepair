@@ -35,8 +35,6 @@
                             <tr>
                                 <td>{{ $req->id }}</td>
                                 <td>{{ $req->name }}</td>
-
-
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
@@ -58,19 +56,12 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="name">name</label>
                                                         <input type="text" id="name" name="name"
                                                             class="form-control" value="{{ $req->name }}" required>
                                                     </div>
-
-
-
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
                                                 </div>
                                             </div>
                                         </div>
@@ -94,7 +85,6 @@
     </div>
 
     <!-- Modal -->
-
     {{ Form::open(['route' => 'matrix.maker.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -104,15 +94,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="name">name</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

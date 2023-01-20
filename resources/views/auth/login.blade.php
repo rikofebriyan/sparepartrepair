@@ -10,8 +10,8 @@
     <!-- Scripts -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/Logo Taci White.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/Logo Taci White.png') }}" type="image/png">
 </head>
 
 <body>
@@ -21,8 +21,9 @@
             <div class="col-lg-6 col-12">
                 <div id="auth-left">
                     <div class="card">
-                        <a href=""><img class="rounded mx-auto d-block" src="assets/images/logo/logo.svg"
-                                width="160" height="80" alt="Logo"></a>
+                        <a href="{{ route('home') }}"><img class="rounded mx-auto d-block"
+                                src="{{ asset('assets/images/logo/logo.png') }}" width="160"
+                                alt="Logo"></a>
                     </div>
                     <center>
                         <h1>Spare Part Repair</h1>
@@ -32,17 +33,17 @@
                     <form role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="NPK" name="NPK" class="form-control form-control-xl"
+                            <input type="text" id="NPK" name="NPK" class="form-control form-control-xl @if($errors->has('NPK')) is-invalid @endif"
                                 placeholder="NPK" value="{{ old('NPK') }}">
                             <div class="form-control-icon">
-
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="invalid-feedback">
                                 @if ($errors->has('NPK'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('NPK') }}</strong>
                                     </span>
                                 @endif
-
-                                <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
@@ -71,7 +72,7 @@
                     <div class="text-center mt-5 text-lg fs-5">
                         <p class="text-gray-600">Don't have an account? <a href="{{ url('/register') }}"
                                 class="font-bold">Signup</a>.</p>
-                        <p><a class="font-bold" href="{{ url('/password/reset') }}">Forgot password?</a>.</p>
+                        {{-- <p><a class="font-bold" href="{{ url('/password/reset') }}">Forgot password?</a>.</p> --}}
                     </div>
                 </div>
             </div>

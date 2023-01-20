@@ -9,14 +9,11 @@
         </div>
     </CENTER>
 
-
     <div class="row">
         <div class="card border-0 shadow rounded overflow-auto col m-2">
             <div class="card-body">
-
                 <div class="table-responsive-sm">
                     <table id="myTable" class="table table-striped nowrap overflow-auto display text-sm">
-
                         <thead>
                             <tr>
                                 <th scope="col">Tiket No</th>
@@ -54,7 +51,6 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-
                                                         <input type="hidden" name="form_input_id"
                                                             value="{{ $req->waitingrepairid }}">
 
@@ -69,7 +65,6 @@
                                                                         <strong>{{ $errors->first('pic') }}</strong>
                                                                     </span>
                                                                 @endif
-
 
                                                                 <i class="bi bi-person-circle"></i>
                                                             </div>
@@ -88,29 +83,20 @@
                                                                     </span>
                                                                 @endif
 
-
                                                                 <i class="bi bi-calendar-week"></i>
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Close</button>
-
                                                         <button type="submit" class="btn btn-primary">Stock Out</button>
-
                                                         {{ Form::close() }}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </td>
-
-
                                 </tr>
                             @empty
                                 <tr>

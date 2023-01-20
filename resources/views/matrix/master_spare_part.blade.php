@@ -40,138 +40,12 @@
                             <th scope="col">action</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
-                        @forelse ($reqtzy as $req)
-                            <tr>
-                                <td>{{ $req->id }}</td>
-                                <td>{{ $req->item_code }}</td>
-                                <td>{{ $req->item_name }}</td>
-                                <td>{{ $req->description }}</td>
-                                <td>{{ $req->qty }}</td>
-                                <td>{{ $req->price }}</td>
-                                <td>{{ $req->status }}</td>
-                                <td>{{ $req->wh_code }}</td>
-                                <td>{{ $req->rack_code }}</td>
-                                <td>{{ $req->order_point }}</td>
-                                <td>{{ $req->order_qty }}</td>
-                                <td>{{ $req->account_no }}</td>
-
-
-                                <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
-                                <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
-                                <td class="text-center d-flex d-inline">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
-                                        data-bs-target="#asu{{ $req->id }}">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    {!! Form::model($req, ['method' => 'PATCH', 'route' => ['matrix.master_spare_part.update', $req->id]]) !!}
-                                    <div class="modal fade" id="asu{{ $req->id }}" tabindex="-1"
-                                        aria-labelledby="modalUpdateBarang" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Update Barang</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="item_code">item_code</label>
-                                                        <input type="text" id="item_code" name="item_code"
-                                                            class="form-control" value="{{ $req->item_code }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="item_name">item_name</label>
-                                                        <input type="text" id="item_name" name="item_name"
-                                                            class="form-control" value="{{ $req->item_name }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="description">description</label>
-                                                        <input type="text" id="description" name="description"
-                                                            class="form-control" value="{{ $req->description }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="qty">qty</label>
-                                                        <input type="text" id="qty" name="qty"
-                                                            class="form-control" value="{{ $req->qty }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="price">price</label>
-                                                        <input type="text" id="price" name="price"
-                                                            class="form-control" value="{{ $req->price }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="status">status</label>
-                                                        <input type="text" id="status" name="status"
-                                                            class="form-control" value="{{ $req->status }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="wh_code">wh_code</label>
-                                                        <input type="text" id="wh_code" name="wh_code"
-                                                            class="form-control" value="{{ $req->wh_code }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="rack_code">rack_code</label>
-                                                        <input type="text" id="rack_code" name="rack_code"
-                                                            class="form-control" value="{{ $req->rack_code }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="order_point">order_point</label>
-                                                        <input type="text" id="order_point" name="order_point"
-                                                            class="form-control" value="{{ $req->order_point }}"
-                                                            required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="order_qty">order_qty</label>
-                                                        <input type="text" id="order_qty" name="order_qty"
-                                                            class="form-control" value="{{ $req->order_qty }}" required>
-                                                    </div>
-
-                                                    <div class="form-group mt-2">
-                                                        <label for="account_no">account_no</label>
-                                                        <input type="text" id="account_no" name="account_no"
-                                                            class="form-control" value="{{ $req->account_no }}" required>
-                                                    </div>
-
-                                                    <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {!! Form::close() !!}
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.master_spare_part.destroy', $req->id], 'style' => 'display:inline']) }}
-                                    <button type="submit" class="btn icon btn-danger btn-sm"><i
-                                            class="bi bi-trash3"></i></button>
-                                    {{ Form::close() }}
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
-                            </tr>
-                        @endforelse
-                    </tbody> --}}
                 </table>
             </div>
         </div>
     </div>
 
     <!-- Modal -->
-
     {{ Form::open(['route' => 'matrix.master_spare_part.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -248,8 +122,6 @@
     </div>
     {{ Form::close() }}
 
-
-    {{-- {!! Form::model($model, ['method' => 'PATCH', 'route' => ['matrix.master_spare_part.update', $model->id]]) !!} --}}
     <div class="modal fade" id="modalasu" tabindex="-1" aria-labelledby="modalUpdateBarang" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -350,27 +222,19 @@
     <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/axios.min.js') }}"></script>
-    {{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
-    <!-- Scripts for Table Page -->
     <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-number/2.1.6/jquery.number.min.js"></script> --}}
+
     <!-- Scripts for Table Page -->
     <script>
         $('#modalasu').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
             var id = button.data('id'); // Extract info from data-* attributes
-            // alert(id);
+
             // Update the modal's content
             var modal = $(this);
             var form = modal.find('form');
-
             modal.find('form').attr('action', '/matrix/master_spare_part/' + id);
-            // modal.find('form').find('input[name="_method"]').val('PATCH');
-
-            // axios.get('/mymodel')
-            //     .then(function(response) {
-            //         console.log(response);
-            //     });
+ 
             // Populate the form with the model 's data
             axios.get('/mymodel/' + id).then(function(response) {
                 modal.find('form').find('input[name="id"]').val(response.data.id);
@@ -385,49 +249,9 @@
                 modal.find('form').find('input[name="order_point"]').val(response.data.order_point);
                 modal.find('form').find('input[name="order_qty"]').val(response.data.order_qty);
                 modal.find('form').find('input[name="account_no"]').val(response.data.account_no);
-                // Add additional form fields as needed
             });
         });
-
-        // $('#modalasu form').on('submit', function(event) {
-        //     event.preventDefault();
-
-        //     var form = $(this);
-        //     var id = form.find('input[name="id"]').val();
-        //     var data = form.serialize();
-        //     // alert(id);
-        //     axios.patch('/updatemodel/' + id, data).then(function(response) {
-
-
-        //         // Update the table row with the updated model data
-        //         var row = $('#myTable').DataTable().row('#' + id);
-        //         row.data(response.data).draw();
-
-        //         console.log(row.data(response.data).draw());
-        //         // Close the modal
-        //         $('#modalasu').modal('hide');
-        //     });
-        // });
     </script>
-
-
-
-
-
-    {{-- <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable({
-                order: [
-                    [0, 'desc']
-                ],
-            });
-        });
-    </script> --}}
-
-
-
-
-
     <script>
         $(function() {
             $('#myTable').DataTable({
@@ -494,16 +318,8 @@
                     {
                         data: 'action',
                         name: 'action'
-                    }
-
-
+                    },
                 ],
-                // columnDefs: [{
-                //     targets: 2,
-                //     className: 'dt-body-center'
-                // }]
-
-
             });
 
 

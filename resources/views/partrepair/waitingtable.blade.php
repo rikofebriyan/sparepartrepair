@@ -9,7 +9,6 @@
         </div>
     </CENTER>
 
-
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
             <div class="d-flex d-inline justify-content-center mb-3">
@@ -103,7 +102,6 @@
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
-
                                     <button type="button" class="rounded-pill btn btn-secondary btn-sm col-5"
                                         data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
                                         Delete
@@ -136,26 +134,19 @@
                                                                 </span>
                                                             @endif
 
-
                                                             <i class="bi bi-c-circle"></i>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
-
                                                     <button type="submit" class="btn btn-danger">Delete</button>
-
                                                     {{ Form::close() }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </td>
                             </tr>
                         @empty

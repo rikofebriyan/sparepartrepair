@@ -43,8 +43,6 @@
                                 <td>{{ $req->description }}</td>
                                 <td>{{ $req->maker_name }}</td>
                                 <td>{{ $req->qty }}</td>
-
-
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
@@ -66,8 +64,6 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="master_spare_part_id">Master Spare Part ID</label>
                                                         <select name="master_spare_part_id" id="master_spare_part_id"
@@ -81,29 +77,21 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="item_code">item_code</label>
                                                         <input type="text" id="item_code" name="item_code"
                                                             class="form-control" value="{{ $req->item_code }}" required>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 2 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="item_name">item_name</label>
                                                         <input type="text" id="item_name" name="item_name"
                                                             class="form-control" value="{{ $req->item_name }}" required>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 3 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="description">description</label>
                                                         <input type="text" id="description" name="description"
                                                             class="form-control" value="{{ $req->description }}" required>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="master_spare_part_id">Master Spare Part ID</label>
                                                         <select name="master_spare_part_id" id="master_spare_part_id"
@@ -117,8 +105,6 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 4 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="qty">qty</label>
                                                         <input type="text" id="qty" name="qty"
@@ -126,7 +112,6 @@
                                                     </div>
 
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +135,6 @@
     </div>
 
     <!-- Modal -->
-
     {{ Form::open(['route' => 'matrix.repair_kit.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -160,9 +144,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="master_spare_part_id">Master Spare Part ID</label>
                         <select name="master_spare_part_id" id="master_spare_part_id" class="form-control">
@@ -175,29 +156,21 @@
                             @endforeach
                         </select>
                     </div>
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="item_code">item_code</label>
                         <input type="text" id="item_code" name="item_code" class="form-control" value=""
                             required>
                     </div>
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="item_name">item_name</label>
                         <input type="text" id="item_name" name="item_name" class="form-control" value=""
                             required>
                     </div>
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="description">description</label>
                         <input type="text" id="description" name="description" class="form-control" value=""
                             required>
                     </div>
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="maker">Maker</label>
                         <select name="maker" id="maker" class="form-control">
@@ -211,8 +184,6 @@
                             @endforeach
                         </select>
                     </div>
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="qty">qty</label>
                         <input type="text" id="qty" name="qty" class="form-control" value=""
