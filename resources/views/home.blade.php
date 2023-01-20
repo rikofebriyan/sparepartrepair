@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="content-wrapper container">
-
         <div class="page-content">
             <div>
                 <center>
@@ -10,77 +9,63 @@
                 </center>
             </div>
 
-
             <div class="container">
-                <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
 
                     <div class="col p-1 mt-0">
-                        <div class="card-box bg-red">
+                        <div class="card-box" style="background-color: rgba(244, 81, 108, 1);">
                             <div class="inner">
-                                <h3 class="text-white"> {{ $data['total_registered'] }} </h3>
+                                <h2 class="text-white"> {{ $data['total_registered'] }} </h2>
                                 <p> Total Registered </p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-users"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('partrepair.waitingtable.index') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col p-1 mt-0">
-                        <div class="card-box bg-blue">
+                        <div class="card-box" style="background-color: #fd7e14;">
                             <div class="inner">
-                                <h3 class="text-white"> {{ $data['total_Waiting'] }} </h3>
+                                <h2 class="text-white"> {{ $data['total_Waiting'] }} </h2>
                                 <p> Total Waiting </p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('partrepair.waitingtable.index') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 
                     <div class="col p-1 mt-0">
-                        <div class="card-box bg-green">
+                        <div class="card-box" style="background-color: rgba(0, 197, 220, 1);">
                             <div class="inner">
-                                <h3 class="text-white">
-                                    {{ $data['total_On Progress'] + $data['total_Trial'] }} </h3>
-                                <p> Total On Progress </p>
+                                <h2 class="text-white">
+                                    {{ $data['total_On Progress'] + $data['total_Seal Kit'] + $data['total_Trial'] }} </h2>
+                                <p> Total Progress </p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-money" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('partrepair.waitingtable.index') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col p-1 mt-0">
-                        <div class="card-box bg-orange">
+                        <div class="card-box" style="background-color: rgba(52, 191, 163, 1);">
                             <div class="inner">
-                                <h3 class="text-white"> {{ $data['total_Finish'] + $data['total_repair_trade_in'] }} </h3>
+                                <h2 class="text-white">
+                                    {{ $data['total_Finish'] + $data['total_repair_trade_in'] + $data['total_Scrap'] }}
+                                </h2>
                                 <p> Total Finish </p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col p-1 mt-0">
-                        <div class="card-box bg-red">
-                            <div class="inner">
-                                <h3 class="text-white"> {{ $data['total_Scrap'] }} </h3>
-                                <p> Total Scrap </p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-users"></i>
-                            </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('finishtable') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
 
             {{-- 
             <div class="row">
@@ -264,6 +249,5 @@
                             </div>
                         </div> --}}
         </div>
-    </div>
     </div>
 @endsection
