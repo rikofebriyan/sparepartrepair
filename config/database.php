@@ -88,6 +88,16 @@ return [
             'prefix' => '',
         ],
 
+        // 'odbc' => [
+        //     'dsn' => 'odbc:OMST32',
+        //     'driver' => 'sqlsrv',
+        //     'pdo' => 'true',
+        //     'host' => env('DB_HOST', 'localhost'),
+        //     'database' => env('DB_DATABASE', 'forge'),
+        //     'username' => env('DB_USERNAME', 'forge'),
+        //     'password' => env('DB_PASSWORD', ''),
+        // ],
+
     ],
 
     /*
