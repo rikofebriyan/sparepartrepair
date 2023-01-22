@@ -60,8 +60,6 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="line_id">Section ID</label>
                                                         <select name="line_id" id="line_id" class="form-control">
@@ -76,15 +74,12 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 2 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="name">Name</label>
                                                         <input type="text" id="name" name="name"
                                                             class="form-control" value="{{ $req->name }}" required>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
                                                 </div>
                                             </div>
                                         </div>
@@ -108,7 +103,6 @@
     </div>
 
     <!-- Modal -->
-
     {{ Form::open(['route' => 'matrix.machine.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

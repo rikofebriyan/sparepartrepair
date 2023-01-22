@@ -4,23 +4,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
 @endsection
 @section('content')
-    <div style="position: absolute; bottom: 15px; right: 10px; font-size: 12px">
-        <a href="" target="_blank">By Febriyan Omov</a>
-    </div>
-
-
-
     <div class="card border text-center mb-2">
         <h3 class="m-2">GANTT CHART SCHEDULE REPAIR</h3>
     </div>
-
     <div class="row m-1" style="transition: width 0.5s">
         <div class="card col border" style="transition: width 0.5s">
             <div id="gantt" class="m-2" style="transition: width 0.5s">
             </div>
         </div>
-
-
         <div class="card col-4 border mx-2" id="asu" style="display: none; transition:width 0.5s; min-height:1000px">
             <div class="row">
                 <div class="col-3">
@@ -29,13 +20,14 @@
                         Hide</a>
                 </div>
             </div>
+
             <div class="p-3">
                 <div class="d-flex justify-content-between">
                     <div class="p-0">
                         <h3>Repair Details</h3>
                     </div>
                     <div class="p-0">
-                        <a href="/home"><img width="120" height="30"
+                        <a href="{{ route('home') }}"><img width="120" height="30"
                                 src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"></a>
                     </div>
                 </div>
@@ -65,13 +57,9 @@
                             <div class="dot-info" data-description="1950">
                                 <span class="year">Finish</span>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <label for="disabledInput" class="col-sm-3 col-form-label">No. Ticket</label>
@@ -126,10 +114,7 @@
                     <label for="disabledInput" class="col-sm-3 col-form-label">Cost</label>
                     <p class="col-sm-9 align-items-center d-flex mb-0" id="price"></p>
                 </div>
-
             </div>
-
-
         </div>
     </div>
     </div>
@@ -138,9 +123,6 @@
 @section('script')
     <script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
-
-
-
     <script>
         jQuery(document).ready(function() {
             jQuery('#hideshow').on('click', function(event) {
@@ -148,7 +130,6 @@
             });
         });
     </script>
-
     <script>
         var data =
             <?php echo json_encode($data); ?>;

@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <div class="card border m-0">
             <div class="card-header py-2">
                 <center>
@@ -365,7 +364,6 @@
     <script>
         function categorycodeajax() {
             var category = $("#categorycodejs").val();
-            // alert(category);
             $.ajax({
                 type: 'GET',
                 url: '/getcategory?category=' + category,
@@ -380,7 +378,6 @@
 
                     x = (parseInt(code) + 1);
                     realcode = x.toString().padStart(3, '0');
-                    // alert(realcode);
                     $('#code_part_repair2').val(category + realcode);
                     $('#number').val(realcode);
                 }

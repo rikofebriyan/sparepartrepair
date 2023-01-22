@@ -10,8 +10,8 @@
     <!-- Scripts -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/Logo Taci White.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/Logo Taci White.png') }}" type="image/png">
 </head>
 
 <body>
@@ -34,33 +34,35 @@
 
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="name" name="name" class="form-control form-control-xl"
+                            <input type="text" id="name" name="name"
+                                class="form-control form-control-xl @if ($errors->has('name')) is-invalid @endif"
                                 placeholder="Nama" value="{{ old('name') }}">
                             <div class="form-control-icon">
-
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="invalid-feedback">
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
-
-                                <i class="bi bi-person"></i>
                             </div>
                         </div>
 
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="NPK" name="NPK" class="form-control form-control-xl"
+                            <input type="text" id="NPK" name="NPK"
+                                class="form-control form-control-xl @if ($errors->has('NPK')) is-invalid @endif"
                                 placeholder="NPK" value="{{ old('NPK') }}">
                             <div class="form-control-icon">
-
+                                <i class="bi bi-person-badge"></i>
+                            </div>
+                            <div class="invalid-feedback">  
                                 @if ($errors->has('NPK'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('NPK') }}</strong>
                                     </span>
                                 @endif
-
-                                <i class="bi bi-person-badge"></i>
                             </div>
                         </div>
 
@@ -95,17 +97,17 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" id="password" name="password" class="form-control form-control-xl"
+                            <input type="password" id="password" name="password" class="form-control form-control-xl @if ($errors->has('password')) is-invalid @endif"
                                 placeholder="Password" value="{{ old('password') }}">
                             <div class="form-control-icon">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-
                                 <i class="bi bi-key"></i>
+                            </div>
+                            <div class="invalid-feedback">  
+                                @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
                             </div>
                         </div>
 

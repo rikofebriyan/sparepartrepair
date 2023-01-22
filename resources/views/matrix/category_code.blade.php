@@ -60,26 +60,17 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="category">Category</label>
                                                         <input type="text" id="category" name="category"
                                                             class="form-control" value="{{ $req->category }}" required>
                                                     </div>
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="category_code">Category Code</label>
                                                         <input type="text" id="category_code" name="category_code"
                                                             class="form-control" value="{{ $req->category_code }}" required>
                                                     </div>
-
-
-
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
                                                 </div>
                                             </div>
                                         </div>
@@ -103,7 +94,6 @@
     </div>
 
     <!-- Modal -->
-
     {{ Form::open(['route' => 'matrix.category_code.store', 'method' => 'POST']) }}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -113,21 +103,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="category">Category</label>
                         <input type="text" id="category" name="category" class="form-control" required>
                     </div>
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="category_code">Category Code</label>
                         <input type="text" id="category_code" name="category_code" class="form-control" required>
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

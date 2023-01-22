@@ -58,19 +58,12 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-
-
-                                                    {{-- FORM COLUMN 1 --}}
                                                     <div class="form-group mt-2">
                                                         <label for="item_standard">item_standard</label>
                                                         <input type="text" id="item_standard" name="item_standard"
                                                             class="form-control" value="{{ $req->item_standard }}" required>
                                                     </div>
-
-
-
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
-                                                    <!--END FORM UPDATE BARANG-->
                                                 </div>
                                             </div>
                                         </div>
@@ -105,13 +98,10 @@
                 </div>
                 <div class="modal-body">
 
-
-                    {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="item_standard">item_standard</label>
                         <input type="text" id="item_standard" name="item_standard" class="form-control" required>
                     </div>
-
 
                 </div>
                 <div class="modal-footer">

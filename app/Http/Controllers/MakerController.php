@@ -21,11 +21,9 @@ class MakerController extends Controller
      */
     public function index()
     {
-        // $tabel2 = Line::all();
         $partr = Maker::all()->sortByDesc('id');
         return view('matrix.maker', [
             'reqtzy' => $partr,
-            // 'tab2' => $tabel2,
         ]);
     }
 

@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <div class="card border text-center mb-2">
             <h3 class="m-2">SPAREPART REPAIR REQUEST FORM</h3>
         </div>
@@ -81,8 +80,6 @@
                                         </select>
                                     </div>
 
-
-
                                     <div class="input-group">
 
                                         <input type="hidden" class="form-control" name="item_id" id="item_id">
@@ -122,7 +119,6 @@
                                 </div>
                             </div>
 
-
                             <div class="mb-3 row">
                                 <label for="serial_number" class="col-sm-3 col-form-label">Serial Number</label>
                                 <div class="col-sm-9">
@@ -138,9 +134,6 @@
                                         required></textarea>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                     <div class="card col border m-2">

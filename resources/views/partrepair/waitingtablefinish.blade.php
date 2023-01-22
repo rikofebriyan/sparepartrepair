@@ -9,13 +9,11 @@
         </div>
     </CENTER>
 
-
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
 
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
-
                     <thead>
                         <tr>
                             <th scope="col">Ticket No</th>
@@ -56,12 +54,7 @@
                                         <a class="rounded-pill btn btn-success btn-sm col"
                                             href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
                                     @endif
-
-
-
-
                                 </td>
-
                             </tr>
                         @empty
                             <tr>
@@ -73,8 +66,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
 @endsection
 
 

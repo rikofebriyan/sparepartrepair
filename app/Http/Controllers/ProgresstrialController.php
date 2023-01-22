@@ -55,35 +55,11 @@ class ProgresstrialController extends Controller
      */
     public function store(Request $request)
     {
-        // $asu = Waitingrepair::where('id', $request->form_input_id)->first();
-        // $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
-        //     ->select('standard_pengecekans.*', 'item_standards.item_standard')
-        //     ->where('standard_pengecekans.master_spare_part_id', $asu->item_id)
-        //     ->get();
-        // $actual = Progresstrial::where('form_input_id', $asu->id)->count();
-        // if ($actual > 0) {
-        //     $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
-        //         ->join('progresstrials', 'progresstrials.standard_pengecekan_id', '=', 'standard_pengecekans.id')
-        //         ->select('standard_pengecekans.*', 'item_standards.item_standard', 'progresstrials.*')
-        //         ->where('standard_pengecekans.master_spare_part_id', $asu->item_id)
-        //         ->get();
-        // } else {
-        //     $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
-        //         ->select('standard_pengecekans.*', 'item_standards.item_standard')
-        //         ->where('standard_pengecekans.master_spare_part_id', $asu->item_id)
-        //         ->get();
-        // }
         $join = Progresstrial::where('form_input_id', $request->form_input_id)
             ->join('item_standards', 'item_standards.id', '=', 'progresstrials.item_check_id')
             ->select('progresstrials.*', 'item_standards.item_standard')
             ->get();
 
-        // $trial = Progresstrial::where('form_input_id', $request->form_input_id)->get();
-        // if ($trial != null) {
-        //     foreach ($trial as $tr) {
-        //         Progresstrial::find($tr->id)->delete();
-        //     }
-        // }
 
         foreach ($join as $joi) {
             $data['form_input_id'] = $request->data[$joi->id]['form_input_id'];
@@ -98,49 +74,10 @@ class ProgresstrialController extends Controller
 
             Progresstrial::find($request->data[$joi->id]['id'])->update($data);
         }
-        // $ok = 'OK';
-        // $request->request->add(['value' => $ok]);
-        // $this->validate($request, [
-        //     'judgement' => 'required|min:2',
-        // ]);
-
-        // $actual_pengecekan = $request->actual_pengecekan;
-        // $judgement = $request->judgement;
-
-        // foreach ($request['actual_pengecekan'] as $key => $val) {
-        //     Progresstrial::create([
-        //         'created_at' => Carbon::now(),
-        //         'updated_at' => Carbon::now(),
-        //         'form_input_id' => $request['form_input_id'][$key],
-        //         'id_standard_pengecekan' => $request['id_standard_pengecekan'][$key],
-        //         'standard_pengecekan' => $request['standard_pengecekan'][$key],
-        //         'actual_pengecekan' => $request['actual_pengecekan'][$key],
-        //         'judgement' => $request['judgement'][$key],
-        //     ]);
-        // }
-
-        // $request = array();
-        // foreach ($_POST['actual_pengecekan'] as $key => $val) {
-        //     $request[] = array(
-        //         'created_at' => Carbon::now(),
-        //         'updated_at' => Carbon::now(),
-        //         'form_input_id' => $_POST['form_input_id'][$key],
-        //         'id_standard_pengecekan' => $_POST['id_standard_pengecekan'][$key],
-        //         'standard_pengecekan' => $_POST['standard_pengecekan'][$key],
-        //         'actual_pengecekan' => $_POST['actual_pengecekan'][$key],
-        //         'judgement' => $_POST['judgement'][$key]
-        //     );
-        // }
-        // Progresstrial::insert($request);
-
-        // dd($request);
 
         $request2 = Waitingrepair::find($request->form_input_id);
         $request2->progress = 'Trial';
         $request2->save();
-        // Waitingrepair::update($request2);
-        // dd($request2);
-        // return redirect()->route('partrepair.waitingtable.index')->with('success', 'Your task added successfully!');
         return redirect()->back()->with('success', 'Your task added successfully!');
     }
 
@@ -154,15 +91,12 @@ class ProgresstrialController extends Controller
     {
 
         $asu = Waitingrepair::where('id', $id)->first();
-        // dd($asu->item_id);
         $join = StandardPengecekan::join('item_standards', 'standard_pengecekans.item_pengecekan_id', '=', 'item_standards.id')
             ->select('standard_pengecekans.*', 'item_standards.item_standard')
             ->where('standard_pengecekans.master_spare_part_id', $asu->item_id)
             ->get();
-        // dd($join);
 
         $itemstandard = ItemStandard::all();
-        // dd($itemstandard);
         $mastersparepart = MasterSparePart::all();
         $maker = Maker::all();
         $subcont = Subcont::all();
@@ -170,9 +104,6 @@ class ProgresstrialController extends Controller
         $progresspemakaian = Progresspemakaian::all();
         $waitingrepair = Waitingrepair::find($id);
         $progressrepair = Progresspemakaian::where('form_input_id', $id)->first();
-        // dd($progressrepair);
-        // $progressrepair = DB::table('Progressrepairs')->where('form_input_id', 10)->get();
-        // dd($progressrepair);
         return view('partrepair.progresstrial', [
             'waitingrepair'    => $waitingrepair,
             'progressrepair'    => $progressrepair,

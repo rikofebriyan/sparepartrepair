@@ -16,12 +16,12 @@ Route::auth();
 
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('/partrepair', 'PartrepairController@index');
-Route::get('/partrepair/request', 'PartrepairController@request');
-Route::get('/partrepair/ganttchart', 'GanttchartController@index');
-Route::get('/partrepair/deletedtable', 'WaitingrepairController@deleted');
-Route::get('/partrepair/finishtable', 'WaitingrepairController@finish');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/partrepair', 'PartrepairController@index')->name('partrepair');
+Route::get('/partrepair/request', 'PartrepairController@request')->name('request');
+Route::get('/partrepair/ganttchart', 'GanttchartController@index')->name('ganttchart');
+Route::get('/partrepair/deletedtable', 'WaitingrepairController@deleted')->name('deletedtable');
+Route::get('/partrepair/finishtable', 'WaitingrepairController@finish')->name('finishtable');
 
 Route::resource('partrepair/waitingtable', 'WaitingrepairController');
 Route::resource('partrepair/progresstable', 'ProgressrepairController');
@@ -52,7 +52,7 @@ Route::get('/getMaker', 'InfoController@getMaker');
 Route::get('/getTypeOfPart', 'InfoController@getTypeOfPart');
 Route::get('/getSubcont', 'InfoController@getSubcont');
 Route::get('/getcategory', 'InfoController@getcategory');
-Route::get('/report', 'HomeController@reportHome');
+Route::get('/report', 'HomeController@reportHome')->name('report');
 Route::get('/partrepair/masterdelete', 'InfoController@masterdelete');
 Route::get('/getmaster', 'InfoController@getmaster');
 Route::get('/mymodel/{id}', 'InfoController@mymodel');
