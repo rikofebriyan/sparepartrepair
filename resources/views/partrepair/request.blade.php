@@ -228,7 +228,7 @@
             var item_name = $("#isiotomatis").val();
             $.ajax({
                 type: 'GET',
-                url: '/ajax/?item_name=' + item_name,
+                url: "{{ route('ajax') }}" + '/?item_name=' + item_name,
                 dataType: 'JSON',
                 success: function(data) {
                     $('#item_id').val(data.id);
@@ -306,7 +306,7 @@
         function getMaker() {
             $.ajax({
                 type: 'GET',
-                url: '/getMaker',
+                url: "{{ route('get-maker') }}",
                 dataType: 'JSON',
                 success: function(result) {
                     $('#maker').empty()
@@ -322,7 +322,7 @@
         function getTypeOfPart() {
             $.ajax({
                 type: 'GET',
-                url: '/getTypeOfPart',
+                url: "{{ route('get-type-of-part') }}",
                 dataType: 'JSON',
                 success: function(result) {
                     $('#type_of_part').empty()
@@ -342,13 +342,12 @@
                 var sectionId = $('#section option:selected').val()
                 $.ajax({
                     type: 'GET',
-                    url: '/getline/?sectionId=' + sectionId,
+                    url: "{{ route('get-line') }}" + '/?sectionId=' + sectionId,
                     dataType: 'JSON',
                     success: function(result) {
                         $('#lineline').empty()
                         $('#lineline').append(
                             '<option value="" disabled selected>Choose</option>')
-                        console.log(result)
                         $.each(result, function(id, value) {
                             $('#lineline').append('<option value="' + id + '">' +
                                 value + '</option>');
@@ -365,13 +364,12 @@
                 var lineId = $('#lineline option:selected').val()
                 $.ajax({
                     type: 'GET',
-                    url: '/getmachine/?lineId=' + lineId,
+                    url: "{{ route('get-machine') }}" + '/?lineId=' + lineId,
                     dataType: 'JSON',
                     success: function(result) {
                         $('#machine').empty()
                         $('#machine').append(
                             '<option value="" disabled selected>Choose</option>')
-                        console.log(result)
                         $.each(result, function(id, value) {
                             $('#machine').append('<option value="' + value + '">' +
                                 value + '</option>');
@@ -384,10 +382,9 @@
                 var codePartRepair = $('#code_part_repair').val()
                 $.ajax({
                     type: 'GET',
-                    url: '/get-number-of-repair/?codePartRepair=' + codePartRepair,
+                    url: "{{ route('get-number-of-repair') }}" + '/?codePartRepair=' + codePartRepair,
                     dataType: 'JSON',
                     success: function(result) {
-                        console.log(result)
                         $('#number_of_repair').val(result['finishRepair'])
                         if (result['finishRepair'] > 5) {
                             $('#number_of_repair').addClass('is-invalid')

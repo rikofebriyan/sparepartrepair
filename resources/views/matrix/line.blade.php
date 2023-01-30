@@ -19,7 +19,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Add New Section
+                Add New
             </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
