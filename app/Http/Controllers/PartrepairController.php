@@ -62,16 +62,16 @@ class PartrepairController extends Controller
 
         $maker = Maker::all();
         $user = User::all();
-        $machine = Machine::all();
+        // $machine = Machine::all();
         $section = Section::all();
-        $line = Line::all();
+        // $line = Line::all();
         // $line = Line::all()->where('section_id', $request->get('id'));
         $partr = MasterSparePart::all()->sortByDesc('id');
         return view('partrepair.request', [
             'reqtzy' => $partr,
             'section' => $section,
-            'line' => $line,
-            'machine' => $machine,
+            // 'line' => $line,
+            // 'machine' => $machine,
             'ticket' => $ticket,
             'user' => $user,
             'maker' => $maker,
