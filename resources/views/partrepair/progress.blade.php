@@ -61,7 +61,7 @@
             var total_time_repair = $('#selisih').val()
             $.ajax({
                 type: 'GET',
-                url: '/getlabour',
+                url: "{{ route('get-labour') }}",
                 data: "labour_id=" + labour_id,
                 dataType: 'JSON',
                 success: function(data) {
@@ -78,7 +78,7 @@
             var item_name = $("#isiotomatis2").val();
             $.ajax({
                 type: 'GET',
-                url: '/ajax/?item_name=' + item_name,
+                url: "{{ route('ajax') }}" + '/?item_name=' + item_name,
                 dataType: 'JSON',
                 success: function(data) {
                     $('#item_name2').val(data.item_name);
@@ -93,7 +93,7 @@
             var item_name = $("#isiotomatis3").val();
             $.ajax({
                 type: 'GET',
-                url: '/ajax/?item_name=' + item_name,
+                url: "{{ route('ajax') }}" + '/?item_name=' + item_name,
                 dataType: 'JSON',
                 success: function(data) {
                     $('#item_name3').val(data.item_name);
@@ -109,7 +109,7 @@
         function isi_otomatis_subcont() {
             $.ajax({
                 type: 'GET',
-                url: '/getSubcont',
+                url: "{{ route('get-subcont') }}",
                 dataType: 'JSON',
                 success: function(data) {
                     $('#subcont_name').empty()
@@ -366,10 +366,9 @@
             var category = $("#categorycodejs").val();
             $.ajax({
                 type: 'GET',
-                url: '/getcategory?category=' + category,
+                url:  "{{ route('get-category') }}" +'/?category=' + category,
                 // dataType: 'JSON',
                 success: function(data) {
-                    console.log(data);
                     if (data.number == undefined) {
                         var code = 0;
                     } else {

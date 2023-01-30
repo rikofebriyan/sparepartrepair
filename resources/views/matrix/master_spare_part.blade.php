@@ -17,7 +17,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Add New Section
+                Add New
             </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -132,7 +132,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/matrix.master_spare_part/0">
+                    <form method="POST" action="">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <input type="hidden" name="_method" value="PATCH">
@@ -233,10 +233,11 @@
             // Update the modal's content
             var modal = $(this);
             var form = modal.find('form');
-            modal.find('form').attr('action', '/matrix/master_spare_part/' + id);
+            modal.find('form').attr('action', "{{ route('matrix.master_spare_part.store') }}/" + id);
  
             // Populate the form with the model 's data
-            axios.get('/mymodel/' + id).then(function(response) {
+            // axios.get('/mymodel/' + id).then(function(response) {
+            axios.get("{{ route('mymodel') }}/?id="+id).then(function(response) {
                 modal.find('form').find('input[name="id"]').val(response.data.id);
                 modal.find('form').find('input[name="item_code"]').val(response.data.item_code);
                 modal.find('form').find('input[name="item_name"]').val(response.data.item_name);
@@ -257,7 +258,7 @@
             $('#myTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '/getmaster',
+                ajax: "{{ route('get-master') }}",
 
                 columns: [{
                         data: 'id',
