@@ -217,7 +217,7 @@
                     <button id="scrap" type="submit" class="btn btn-md btn-danger"
                         style="display: none">Scrap</button>
                     <button id="saveit" type="submit" class="btn btn-md btn-primary">Save</button>
-                    <a href="{{ route('partrepair.progresstable.index') }}" class="btn btn-md btn-secondary">back</a>
+                    <a href="{{ route('partrepair.waitingtable.index') }}" class="btn btn-md btn-secondary">Back</a>
                 </div>
             </div>
         </div>

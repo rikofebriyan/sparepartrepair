@@ -241,7 +241,7 @@
             <div class="mb-3 row">
                 <div class="p-3">
                     <button type="submit" class="btn btn-md btn-primary">Save</button>
-                    <a href="{{ route('partrepair.finishrepair.index') }}" class="btn btn-md btn-secondary">back</a>
+                    <a href="{{ route('partrepair.waitingtable.index') }}" class="btn btn-md btn-secondary">Back</a>
                 </div>
             </div>
         </div>

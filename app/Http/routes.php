@@ -23,7 +23,17 @@ Route::get('/partrepair/ganttchart', 'GanttchartController@index')->name('ganttc
 Route::get('/partrepair/deletedtable', 'WaitingrepairController@deleted')->name('deletedtable');
 Route::get('/partrepair/finishtable', 'WaitingrepairController@finish')->name('finishtable');
 
-Route::resource('partrepair/waitingtable', 'WaitingrepairController');
+// Route::resource('partrepair/waitingtable', 'WaitingrepairController');
+Route::get('/partrepair/waitingtable', 'WaitingrepairController@index')->name('partrepair.waitingtable.index');
+Route::get('/partrepair/waitingtable/{id}', 'WaitingrepairController@waitingRepairForm1')->name('partrepair.waitingtable.show');
+Route::get('/partrepair/waitingtable/form2/{id}', 'WaitingrepairController@waitingRepairForm2')->name('partrepair.waitingtable.show.form2');
+Route::get('/partrepair/waitingtable/form3/{id}', 'WaitingrepairController@waitingRepairForm3')->name('partrepair.waitingtable.show.form3');
+Route::get('/partrepair/waitingtable/form4/{id}', 'WaitingrepairController@waitingRepairForm4')->name('partrepair.waitingtable.show.form4');
+Route::get('/partrepair/waitingtable/form5/{id}', 'WaitingrepairController@waitingRepairForm5')->name('partrepair.waitingtable.show.form5');
+Route::delete('/partrepair/waitingtable/{id}', 'WaitingrepairController@destroy')->name('partrepair.waitingtable.destroy');
+Route::post('/partrepair/waitingtable', 'WaitingrepairController@store')->name('partrepair.waitingtable.store');
+
+
 Route::resource('partrepair/progresstable', 'ProgressrepairController');
 Route::resource('partrepair/progresspemakaian', 'ProgresspemakaianController');
 Route::resource('partrepair/progresstrial', 'ProgresstrialController');

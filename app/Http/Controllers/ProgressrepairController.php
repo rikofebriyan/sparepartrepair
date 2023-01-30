@@ -57,7 +57,6 @@ class ProgressrepairController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->all();
         $submit['form_input_id'] = $data['form_input_id'];
         $submit['place_of_repair'] = $data['place_of_repair'];
@@ -77,17 +76,55 @@ class ProgressrepairController extends Controller
         $submit['time_period'] = $data['time_period'];
 
         if ($request->place_of_repair == "In House") {
-            $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair)->format('Y-m-d H:i:s');
-            $submit['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair)->format('Y-m-d H:i:s');
-            $submit['actual_start_repair'] = Carbon::parse($request->actual_start_repair)->format('Y-m-d H:i:s');
-            $submit['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair)->format('Y-m-d H:i:s');
-        } else  {
-            $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair_subcont)->format('Y-m-d H:i:s');
-            $submit['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair_subcont)->format('Y-m-d H:i:s');
-            $submit['actual_start_repair'] = Carbon::parse($request->actual_start_repair_subcont)->format('Y-m-d H:i:s');
-            $submit['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair_subcont)->format('Y-m-d H:i:s');
-        }
+            if ($request->plan_start_repair != '') {
+                $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair)->format('Y-m-d H:i');
+            } else {
+                $submit['plan_start_repair'] = null;
+            }
 
+            if ($request->plan_finish_repair != '') {
+                $submit['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair)->format('Y-m-d H:i');
+            } else {
+                $submit['plan_finish_repair'] = null;
+            }
+
+            if ($request->actual_start_repair != '') {
+                $submit['actual_start_repair'] = Carbon::parse($request->actual_start_repair)->format('Y-m-d H:i');
+            } else {
+                $submit['actual_start_repair'] = null;
+            }
+
+            if ($request->actual_finish_repair != '') {
+                $submit['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair)->format('Y-m-d H:i');
+            } else {
+                $submit['actual_finish_repair'] = null;
+            }
+        } else  {
+            if ($request->plan_start_repair_subcont != '') {
+                $submit['plan_start_repair'] = Carbon::parse($request->plan_start_repair_subcont)->format('Y-m-d H:i');
+            } else {
+                $submit['plan_start_repair'] = null;
+            }
+
+            if ($request->plan_finish_repair_subcont != '') {
+                $submit['plan_finish_repair'] = Carbon::parse($request->plan_finish_repair_subcont)->format('Y-m-d H:i');
+            } else {
+                $submit['plan_finish_repair'] = null;
+            }
+
+            if ($request->actual_start_repair_subcont != '') {
+                $submit['actual_start_repair'] = Carbon::parse($request->actual_start_repair_subcont)->format('Y-m-d H:i');
+            } else {
+                $submit['actual_start_repair'] = null;
+            }
+
+            if ($request->actual_finish_repair_subcont != '') {
+                $submit['actual_finish_repair'] = Carbon::parse($request->actual_finish_repair_subcont)->format('Y-m-d H:i');
+            } else {
+                $submit['actual_finish_repair'] = null;
+            }
+        }
+        
         $query = Progressrepair::where('form_input_id', $request->form_input_id)->first();
         if ($query != null) {
             Progressrepair::where('form_input_id', $request->form_input_id)->update($submit);

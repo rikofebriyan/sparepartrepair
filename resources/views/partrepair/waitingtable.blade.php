@@ -88,19 +88,19 @@
                                 <td class="text-center">
                                     @if ($req->progress == 'Waiting')
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Progress</a>
+                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Ticket</a>
                                     @elseif($req->progress == 'On Progress')
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Seal Kit</a>
+                                            href="{{ route('partrepair.waitingtable.show.form2', $req->id) }}">To Progress</a>
                                     @elseif($req->progress == 'Seal Kit')
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Trial</a>
+                                            href="{{ route('partrepair.waitingtable.show.form3', $req->id) }}">To Seal Kit</a>
                                     @elseif($req->progress == 'Trial')
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Finish</a>
+                                            href="{{ route('partrepair.waitingtable.show.form4', $req->id) }}">To Trial</a>
                                     @elseif($req->progress == 'Finish')
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">Finished</a>
+                                            href="{{ route('partrepair.waitingtable.show.form5', $req->id) }}">To Finish</a>
                                     @endif
                                     <button type="button" class="rounded-pill btn btn-secondary btn-sm col-5"
                                         data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">

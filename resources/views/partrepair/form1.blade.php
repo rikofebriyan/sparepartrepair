@@ -235,7 +235,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-md btn-primary">Update</button>
-                <a href="{{ route('partrepair.waitingtable.index') }}" class="btn btn-md btn-secondary">back</a>
+                <a href="{{ route('partrepair.waitingtable.index') }}" class="btn btn-md btn-secondary">Back</a>
             </div>
         </div>
     </div>
