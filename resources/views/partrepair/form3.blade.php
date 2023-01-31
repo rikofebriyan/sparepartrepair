@@ -281,21 +281,29 @@
                                 <div class="mb-3 row">
                                     <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                                     <div class="col-sm-9">
-                                        <select class="form-select mb-3 choices" onchange="isi_otomatis_part()"
+                                        {{-- <select class="form-select mb-3 choices" onchange="isi_otomatis_part()"
                                             id="isiotomatis2" name="item_name" data-live-search="true">
                                             <option selected></option>
                                             @foreach ($mastersparepart as $reqm)
-                                                {{-- <option value="{{ $req->id }}">{{ $req->item_code }}
-                                                    |
-                                                    {{ $req->item_name }} |
-                                                    {{ $req->description }}
-                                                </option> --}}
                                                 <option value="{{ $reqm->code_item_description }}">
                                                     {{ $reqm->item_code }} |
                                                     {{ $reqm->item_name }} | {{ $reqm->description }}
                                                 </option>
                                             @endforeach
-                                        </select>
+                                        </select> --}}
+                                        <div class="mb-3">
+                                            <select class="form-select form-select-isiotomatis2" onchange="isi_otomatis_part()"
+                                                id="isiotomatis2" name="item_name" required>
+                                                <option value="" selected></option>
+                                                @foreach ($mastersparepart as $reqm)
+                                                    <option data-custom-properties="{{ $reqm->item_code }}"
+                                                        value="{{ $reqm->code_item_description }}">
+                                                        {{ $reqm->item_code }} |
+                                                        {{ $reqm->item_name }} | {{ $reqm->description }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="input-group">
                                             <input type="text" class="form-control bg-secondary text-white"
                                                 id="item_code2" name="item_code" placeholder="Item Code" readonly>

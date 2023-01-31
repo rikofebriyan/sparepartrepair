@@ -7,6 +7,18 @@
             <h3 class="m-2">SPAREPART REPAIR REQUEST FORM</h3>
         </div>
 
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-error">
+                {{ session('error') }}
+            </div>
+        @endif
+
         {{ Form::open(['route' => 'partrepair.waitingtable.store', 'method' => 'POST']) }}
         <div class="container-fluid justify-content-center py-0">
             <div class="container-fluid">
@@ -55,8 +67,9 @@
                                         id="code_part_repair" name="code_part_repair">
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="number_of_repair"
-                                            name="number_of_repair" placeholder="Number of Repair" readonly>
+                                        <input type="text" class="form-control bg-secondary text-white"
+                                            id="number_of_repair" name="number_of_repair" placeholder="Number of Repair"
+                                            readonly>
                                         <label for="number_of_repair" class="col-sm-3 col-form-label ms-3">Times</label>
                                         <div id="number_of_repairFeedback" class="invalid-feedback">
                                             Part Has Been Repaired Over 5 Times. Please Scrap!
@@ -69,11 +82,21 @@
                                 <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                                 <div class="col-sm-9">
                                     <div id="field3" class="mb-3">
-                                        <select class="form-select choices" onchange="isi_otomatis()" id="isiotomatis"
-                                            name="item_name" data-live-search="true">
+                                        {{-- <select class="form-select choices" onchange="isi_otomatis()" id="isiotomatis"
+                                            name="item_name" data-live-search="true" data-custom-properties="active">
                                             <option selected></option>
                                             @foreach ($reqtzy as $req)
-                                                <option value="{{ $req->code_item_description }}">{{ $req->item_code }} |
+                                                <option data-custom-properties="{{ $req->item_code }}" value="{{ $req->code_item_description }}">{{ $req->item_code }} |
+                                                    {{ $req->item_name }} | {{ $req->description }}
+                                                </option>
+                                            @endforeach
+                                        </select> --}}
+                                        <select class="form-select" onchange="isi_otomatis()" id="isiotomatis"
+                                            name="item_name" required>
+                                            <option value="" selected></option>
+                                            @foreach ($reqtzy as $req)
+                                                <option data-custom-properties="{{ $req->item_code }}"
+                                                    value="{{ $req->code_item_description }}">{{ $req->item_code }} |
                                                     {{ $req->item_name }} | {{ $req->description }}
                                                 </option>
                                             @endforeach
@@ -123,7 +146,7 @@
                                 <label for="serial_number" class="col-sm-3 col-form-label">Serial Number</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="serial_number" name="serial_number"
-                                        placeholder="Input Serial Number" required>
+                                        placeholder="(Kosongkan bila tidak ada serial number)">
                                 </div>
                             </div>
 
@@ -197,22 +220,22 @@
                             <div class="mb-3 row">
                                 <label for="reg_sp" class="col-sm-3 col-form-label">Ticket Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="reg_sp" name="reg_sp"
-                                        value="{{ $ticket }}" readonly required>
+                                    <input type="text" class="form-control bg-secondary text-white" id="reg_sp"
+                                        name="reg_sp" value="{{ $ticket }}" readonly required>
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="progress" class="col-sm-3 col-form-label">Progress</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="progress" name="progress"
-                                        value="Waiting" readonly required>
+                                    <input type="text" class="form-control bg-secondary text-white" id="progress"
+                                        name="progress" value="Waiting" readonly required>
                                 </div>
                             </div>
 
                             <button type="submit" id="btnSubmitFormInput" class="btn btn-md btn-primary">Save</button>
                             <a href="{{ route('partrepair.waitingtable.index') }}"
-                                class="btn btn-md btn-secondary">back</a>
+                                class="btn btn-md btn-secondary">Back</a>
                         </div>
                     </div>
                 </div>
@@ -224,11 +247,20 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+        $('#isiotomatis').select2()
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        });
+
         function isi_otomatis() {
-            var item_name = $("#isiotomatis").val();
+            // alert($('#isiotomatis').find(':selected').data('custom-properties'))
             $.ajax({
                 type: 'GET',
-                url: "{{ route('ajax') }}" + '/?item_name=' + item_name,
+                url: "{{ route('ajax') }}",
+                data: {
+                    // item_name: $('#isiotomatis').val(),
+                    item_name: $('#isiotomatis').find(':selected').data('custom-properties')
+                },
                 dataType: 'JSON',
                 success: function(data) {
                     $('#item_id').val(data.id);
@@ -257,17 +289,6 @@
             });
         }
     </script>
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if (session('error'))
-        <div class="alert alert-error">
-            {{ session('error') }}
-        </div>
-    @endif
     <script>
         function formChoice(x) {
             if (x == 0) {
@@ -382,7 +403,8 @@
                 var codePartRepair = $('#code_part_repair').val()
                 $.ajax({
                     type: 'GET',
-                    url: "{{ route('get-number-of-repair') }}" + '/?codePartRepair=' + codePartRepair,
+                    url: "{{ route('get-number-of-repair') }}" + '/?codePartRepair=' +
+                        codePartRepair,
                     dataType: 'JSON',
                     success: function(result) {
                         $('#number_of_repair').val(result['finishRepair'])

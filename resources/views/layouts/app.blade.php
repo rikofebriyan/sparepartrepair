@@ -19,6 +19,7 @@
 
     <!-- choice -->
     <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.min.css') }}">
+    <link href="{{ asset('select2/dist/css/select2.min.css') }}" rel="stylesheet" />
 
     <link type="text/css" rel="stylesheet" href="{{ asset('css/riko.css') }}">
     @yield('css')
@@ -262,6 +263,7 @@
 
 <!-- choice -->
 <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+<script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>

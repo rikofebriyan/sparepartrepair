@@ -12,40 +12,35 @@
             <div class="card-content">
                 <div class="card-body py-2">
                     <div class="list-group list-group-horizontal-sm my-1 py-0 text-center" role="tablist">
-                        <a class="list-group-item list-group-item-action"
-                            id="list-sunday-list" href="{{ route('partrepair.waitingtable.show', $waitingrepair->id) }}">Repair Ticket</a>
-                        <a class="list-group-item list-group-item-action"
-                            id="list-monday-list" href="{{ route('partrepair.waitingtable.show.form2', $waitingrepair->id) }}">Progress
+                        <a class="list-group-item list-group-item-action" id="list-sunday-list"
+                            href="{{ route('partrepair.waitingtable.show', $waitingrepair->id) }}">Repair Ticket</a>
+                        <a class="list-group-item list-group-item-action" id="list-monday-list"
+                            href="{{ route('partrepair.waitingtable.show.form2', $waitingrepair->id) }}">Progress
                             Repair</a>
-                        <a class="list-group-item list-group-item-action active"
-                            id="list-tuesday-list" href="{{ route('partrepair.waitingtable.show.form3', $waitingrepair->id) }}">Seal Kit</a>
-                        <a class="list-group-item list-group-item-action"
-                            id="list-4-list" href="{{ route('partrepair.waitingtable.show.form4', $waitingrepair->id) }}">Trial</a>
-                        <a class="list-group-item list-group-item-action"
-                            id="list-5-list" href="{{ route('partrepair.waitingtable.show.form5', $waitingrepair->id) }}">Finish Repair</a>
+                        <a class="list-group-item list-group-item-action active" id="list-tuesday-list"
+                            href="{{ route('partrepair.waitingtable.show.form3', $waitingrepair->id) }}">Seal Kit</a>
+                        <a class="list-group-item list-group-item-action" id="list-4-list"
+                            href="{{ route('partrepair.waitingtable.show.form4', $waitingrepair->id) }}">Trial</a>
+                        <a class="list-group-item list-group-item-action" id="list-5-list"
+                            href="{{ route('partrepair.waitingtable.show.form5', $waitingrepair->id) }}">Finish Repair</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-content text-justify py-2">
-            <div class="tab-pane fade" id="list-sunday"
-                role="tabpanel" aria-labelledby="list-sunday-list">
+            <div class="tab-pane fade" id="list-sunday" role="tabpanel" aria-labelledby="list-sunday-list">
                 {{-- @include('partrepair.form1') --}}
             </div>
-            <div class="tab-pane fade" id="list-monday"
-                role="tabpanel" aria-labelledby="list-monday-list">
+            <div class="tab-pane fade" id="list-monday" role="tabpanel" aria-labelledby="list-monday-list">
                 {{-- @include('partrepair.form2') --}}
             </div>
-            <div class="tab-pane fade show active" id="list-tuesday"
-                role="tabpanel" aria-labelledby="list-tuesday-list">
+            <div class="tab-pane fade show active" id="list-tuesday" role="tabpanel" aria-labelledby="list-tuesday-list">
                 @include('partrepair.form3')
             </div>
-            <div class="tab-pane fade" id="list-4" role="tabpanel"
-                aria-labelledby="list-4-list">
+            <div class="tab-pane fade" id="list-4" role="tabpanel" aria-labelledby="list-4-list">
                 {{-- @include('partrepair.form4') --}}
             </div>
-            <div class="tab-pane fade" id="list-5" role="tabpanel"
-                aria-labelledby="list-5-list">
+            <div class="tab-pane fade" id="list-5" role="tabpanel" aria-labelledby="list-5-list">
                 {{-- @include('partrepair.form5') --}}
             </div>
         </div>
@@ -53,6 +48,15 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+        $('#isiotomatis2').select2({
+            dropdownParent: $('#exampleModal'),
+            width: '100%',
+        });
+
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        });
+
         function isi_otomatis() {
             var labour_id = $("#isiotomatis").val();
             var total_time_repair = $('#selisih').val()
@@ -72,10 +76,13 @@
         }
 
         function isi_otomatis_part() {
-            var item_name = $("#isiotomatis2").val();
+            // var item_name = $("#isiotomatis2").val();
             $.ajax({
                 type: 'GET',
-                url: "{{ route('ajax') }}" + '/?item_name=' + item_name,
+                url: "{{ route('ajax') }}",
+                data: {
+                    item_name: $('#isiotomatis2').find(':selected').data('custom-properties'),
+                },
                 dataType: 'JSON',
                 success: function(data) {
                     $('#item_name2').val(data.item_name);
@@ -363,7 +370,7 @@
             var category = $("#categorycodejs").val();
             $.ajax({
                 type: 'GET',
-                url:  "{{ route('get-category') }}" +'/?category=' + category,
+                url: "{{ route('get-category') }}" + '/?category=' + category,
                 // dataType: 'JSON',
                 success: function(data) {
                     if (data.number == undefined) {

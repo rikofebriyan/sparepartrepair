@@ -28,7 +28,8 @@ class InfoController extends Controller
         // $withoutbrackets = trim($data, '[]');
         // echo $withoutbrackets;
 
-        $data = MasterSparePart::where('code_item_description', $request->item_name)->first();
+        // $data = MasterSparePart::where('code_item_description', $request->item_name)->first();
+        $data = MasterSparePart::where('item_code', $request->item_name)->first();
         return response()->json($data);
 
     }
