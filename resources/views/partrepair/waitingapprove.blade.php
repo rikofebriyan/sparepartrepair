@@ -5,13 +5,13 @@
 @section('content')
     <CENTER>
         <div class="container-fluid">
-            <H2>PART REPAIR : WAITING TABLE</H2>
+            <H2>WAITING APPROVAL</H2>
         </div>
     </CENTER>
 
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
-            <div class="d-flex d-inline justify-content-center mb-3">
+            {{-- <div class="d-flex d-inline justify-content-center mb-3">
                 <div class="me-2">Flow Repair : </div>
                 <button class="rounded-pill bg-dark text-white text-center px-2 border-white" id="allinput">Register</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
@@ -26,7 +26,7 @@
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-primary text-white text-center px-2 border-white"
                     id="trial">Trial</button>
-            </div>
+            </div> --}}
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
                     <thead>
@@ -37,7 +37,7 @@
                             <th scope="col">Spare Part</th>
                             <th scope="col">Problem</th>
                             <th class="text-center" scope="col">Status Repair</th>
-                            <th class="text-center" scope="col">Progress</th>
+                            <th class="text-center" scope="col">Section</th>
                             <th class="text-center" scope="col">Action</th>
                         </tr>
                     </thead>
@@ -64,58 +64,83 @@
                                 <td class="text-center"><span
                                         class="@if ($req->status_repair == 'Urgent') bg-danger text-white px-3 py-2 rounded-pill @endif">{{ $req->status_repair }}</span>
                                 </td>
-                                <td>
-                                    @if ($req->progress == 'Waiting')
-                                        <div class="rounded-pill bg-secondary text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}</div>
-                                    @elseif ($req->progress == 'On Progress')
-                                        <div class="rounded-pill bg-warning text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}
-                                        </div>
-                                    @elseif ($req->progress == 'Seal Kit')
-                                        <div class="rounded-pill bg-info text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}
-                                        </div>
-                                    @elseif ($req->progress == 'Trial')
-                                        <div class="rounded-pill bg-primary text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}</div>
-                                    @elseif ($req->progress == 'Finish')
-                                        <div class="rounded-pill bg-success text-white text-center px-2 bg-opacity-50">
-                                            {{ $req->progress }}</div>
-                                    @endif
-
-                                </td>
-                                <td class="text-center">
-                                    @if ($req->progress == 'Waiting')
-                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show', $req->id) }}">To Ticket</a>
-                                    @elseif($req->progress == 'On Progress')
-                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show.form2', $req->id) }}">To
-                                            Progress</a>
-                                    @elseif($req->progress == 'Seal Kit')
-                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show.form3', $req->id) }}">To Seal
-                                            Kit</a>
-                                    @elseif($req->progress == 'Trial')
-                                        <a class="rounded-pill btn btn-primary btn-sm col-7"
-                                            href="{{ route('partrepair.waitingtable.show.form4', $req->id) }}">To Trial</a>
-                                    @elseif($req->progress == 'Finish')
+                                <td>{{ $req->section }}</td>
+                                <td class="text-center d-flex d-inline justify-content-center">
+                                    {{-- 
                                         <a class="rounded-pill btn btn-primary btn-sm col-7"
                                             href="{{ route('partrepair.waitingtable.show.form5', $req->id) }}">To
-                                            Finish</a>
-                                    @endif
-                                    <button type="button" class="rounded-pill btn btn-secondary btn-sm col-5"
-                                        data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
-                                        Delete
-                                    </button>
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingtable.destroy', $req->id]]) }}
+                                            Finish</a> --}}
+                                    @can('Supervisor')
+                                        <button type="button" class="btn btn-sm btn-success rounded-pill mx-2"
+                                            data-bs-toggle="modal" data-bs-target="#modalapprove{{ $req->id }}">
+                                            Approve
+                                        </button>
+                                    @endcan
+
+                                    @can('ADMIN')
+                                        <button type="button" class="btn btn-sm btn-success rounded-pill mx-2"
+                                            data-bs-toggle="modal" data-bs-target="#modalapprove{{ $req->id }}">
+                                            Approve
+                                        </button>
+                                    @endcan
+
+                                    {{ Form::open(['method' => 'PUT', 'route' => ['partrepair.waitingapprove.update', $req->id]]) }}
+                                    <div class="modal fade" id="modalapprove{{ $req->id }}" tabindex="-1"
+                                        aria-labelledby="modalapproveLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+
+
+                                                {{-- <input type="hidden" name="user" value="{{ Auth::user()->name }}"> --}}
+
+                                                <div class="modal-body">
+                                                    <h1 class="modal-title fs-5 mb-1" id="modalapproveLabel">Konfirmasi
+                                                        Approval
+                                                    </h1>
+                                                    <div class="form-group position-relative has-icon-left mb-4">
+                                                        <input type="text" id="approval" name="approval"
+                                                            class="form-control form-control-xl  @if ($errors->has('approval')) is-invalid @endif"
+                                                            placeholder="Tulis siapa yang approve"
+                                                            value="{{ old('approval') }}" required>
+                                                        <div class="form-control-icon">
+
+                                                            @if ($errors->has('approval'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('approval') }}</strong>
+                                                                </span>
+                                                            @endif
+
+                                                            <i class="bi bi-person-check"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    {{-- <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button> --}}
+                                                    <button type="submit" class="btn btn-success">APPROVE</button>
+                                                    {{ Form::close() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @can('Supervisor')
+                                        <button type="button" class="rounded-pill btn btn-danger btn-sm col-5"
+                                            data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
+                                            Reject
+                                        </button>
+                                    @endcan
+                                    @can('ADMIN')
+                                        <button type="button" class="rounded-pill btn btn-danger btn-sm col-5"
+                                            data-bs-toggle="modal" data-bs-target="#modaldelete{{ $req->id }}">
+                                            Reject
+                                        </button>
+                                    @endcan
+                                    {{ Form::open(['method' => 'DELETE', 'route' => ['partrepair.waitingapprove.destroy', $req->id]]) }}
                                     <div class="modal fade" id="modaldelete{{ $req->id }}" tabindex="-1"
                                         aria-labelledby="modaldeleteLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="modaldeleteLabel">Yakin mau di delete?
+                                                    <h1 class="modal-title fs-5" id="modaldeleteLabel">Alasan Reject?
                                                     </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
@@ -127,8 +152,9 @@
 
                                                     <div class="form-group position-relative has-icon-left mb-4">
                                                         <input type="text" id="reason" name="reason"
-                                                            class="form-control form-control-xl" placeholder="reason"
-                                                            value="{{ old('reason') }}" required>
+                                                            class="form-control form-control-xl"
+                                                            placeholder="Tulis alasan reject disini"
+                                                            value="{{ old('reason') }}">
                                                         <div class="form-control-icon">
 
                                                             @if ($errors->has('reason'))
@@ -150,12 +176,10 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
-                            </tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -177,37 +201,7 @@
             }).showToast()
         </script>
     @endif
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable({
-                order: [
-                    [0, 'desc']
-                ],
 
-                "createdRow": function(row, data, dataIndex) {
-
-                    var now = new Date().getTime();
-                    var datestart = new Date(data[1]).getTime();
-                    var dateplan = new Date(data[2]).getTime();
-                    var diff = Math.floor((dateplan - now) / (1000 * 60 * 60 * 24));
-                    if (diff < 0) {
-                        $(row).css({
-                            'background-color': '#FFCCCB',
-                            'color': 'black'
-                        });
-                    } else if (diff <= 2) {
-                        $(row).css({
-                            'background-color': '#FAFAD2',
-                            'color': 'black'
-                        });
-                    } else {
-                        $(row);
-                    }
-                }
-
-            });
-        });
-    </script>
     <script>
         $(document).ready(function() {
             var table = $('#myTable').DataTable();
@@ -230,15 +224,6 @@
             $('#finish').click(function() {
                 table.column(6).search('Finish').draw();
             });
-
-            var waiting = "{{ $progress }}";
-            if (waiting == "waiting") {
-                $('#waiting').click();
-            }
-            if (waiting == "progress") {
-                table.column(6).search('^((?!waiting).)*$', true, false).draw();
-            }
-
         });
     </script>
 @endsection

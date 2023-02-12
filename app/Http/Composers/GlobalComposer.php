@@ -6,6 +6,7 @@ use Illuminate\View\View;
 use App\Waitingrepair;
 use App\Progressrepair;
 use Carbon\Carbon;
+use DB;
 
 class GlobalComposer
 {
@@ -32,9 +33,26 @@ class GlobalComposer
             ->where('deleted',null)
             ->where('plan_finish_repair', '<=', Carbon::now()->subDays(0))
             ->count();
+
+            $waiting_approve = Waitingrepair::all()
+        ->where('progress', 'Waiting')
+        ->where('approval', null)
+        ->where('deleted', null)
+        ->count();
+
+        $allprogress = DB::table('waitingrepairs')
+        ->where('progress','<>', 'Finish')
+        ->whereNotNull('approval')
+        ->where('deleted', null)
+        ->count();  
+
             // dd($notif);
         // $view->with('variableName', 'tester');
         $view->with('notif', $notif);
         $view->with('notifcount', $notifcount);
+        $view->with('waiting_approve', $waiting_approve);
+        $view->with('allprogress', $allprogress);
+
+        
     }
 }

@@ -62,7 +62,7 @@
                                                 <div class="modal-body">
                                                     <div class="form-group mt-2">
                                                         <label for="line_id">Section ID</label>
-                                                        <select name="line_id" id="line_id" class="form-control">
+                                                        <select name="line_id" id="line_id" class="form-control choices">
                                                             <option value="" disabled selected>
                                                                 choose
                                                             </option>
@@ -75,9 +75,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group mt-2">
-                                                        <label for="name">Name</label>
+                                                        <label for="name">Nama Machine / POS</label>
                                                         <input type="text" id="name" name="name"
-                                                            class="form-control" value="{{ $req->name }}" required>
+                                                            class="form-control text-center" value="{{ $req->name }}"
+                                                            required>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
                                                 </div>
@@ -115,8 +116,8 @@
 
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
-                        <label for="line_id">Section ID</label>
-                        <select name="line_id" id="line_id" class="form-control">
+                        <label for="line_id">Section</label>
+                        <select name="line_id" id="line_id" class="form-control choices">
                             <option value="" disabled selected>
                                 choose
                             </option>
@@ -129,7 +130,7 @@
 
                     {{-- FORM COLUMN 2 --}}
                     <div class="form-group mt-2">
-                        <label for="name">Name</label>
+                        <label for="name">Nama Machine / POS</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
 
@@ -163,6 +164,10 @@
                     [0, 'desc']
                 ],
             });
+        });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
         });
     </script>
 @endsection

@@ -29,6 +29,12 @@
 
 <body id="app">
 
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div id="main" class="layout-horizontal">
         <header class="mb-2">
             <div class="header-top">
@@ -79,6 +85,11 @@
                                 <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                             </ul>
                         </div>
+                        <!-- Burger button responsive -->
+                        <a href="#" class="burger-btn d-block d-xl-none">
+                            <i class="bi bi-justify fs-3"></i>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -95,9 +106,31 @@
                                 <span><i class="bi bi-stack"></i> Create Repair Ticket</span>
                             </a>
                         </li>
+                        @can('ADMIN')
+                            <li class="menu-item  ">
+                                <a href="{{ route('partrepair.waitingapprove.index') }}" class='menu-link'>
+                                    <span><i class="fas fa-file-signature"></i> Waiting Approval</span>
+                                    @if ($waiting_approve > 0)
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ $waiting_approve }}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endcan
+                        @can('Supervisor')
+                            <li class="menu-item  ">
+                                <a href="{{ route('partrepair.waitingapprove.index') }}" class='menu-link'>
+                                    <span><i class="bi bi-stack"></i> Waiting Approval</span>
+                                </a>
+                            </li>
+                        @endcan
                         <li class="menu-item  has-sub">
                             <a href="#" class='menu-link'>
                                 <span><i class="bi bi-table"></i>Ticket Repair Table</span>
+                                @if ($allprogress > 0)
+                                    <span
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ $allprogress }}</span>
+                                @endif
                             </a>
                             <div class="submenu ">
                                 <div class="submenu-group-wrapper">
@@ -106,7 +139,10 @@
                                             <a class="list-group-item list-group-item-action list-group-item-light"
                                                 href="{{ route('partrepair.waitingtable.index') }}"
                                                 class='submenu-link'>Waiting
-                                                Table</a>
+                                                Table
+                                                <span class="badge bg-danger rounded-pill">{{ $allprogress }}</span>
+                                            </a>
+
                                         </li>
                                         <li class="submenu-item  ">
                                             <a class="list-group-item list-group-item-action list-group-item-light"
@@ -130,7 +166,7 @@
                         </li>
                         <li class="menu-item  ">
                             <a href="{{ route('ganttchart') }}" class='menu-link'>
-                                <span><i class="bi bi-stack"></i> Schedule Chart</span>
+                                <span><i class="fas fa-calendar-alt"></i> Schedule Chart</span>
                             </a>
                         </li>
                         <li class="menu-item  has-sub">
@@ -141,7 +177,7 @@
                                 <div class="submenu-group-wrapper">
                                     <ul class="submenu-group">
 
-                                        @can('admin')
+                                        @can('ADMIN')
                                             <li class="submenu-item  ">
                                                 <a class="list-group-item list-group-item-action list-group-item-light"
                                                     href="{{ route('matrix.user.index') }}" class='submenu-link'>User</a>
@@ -256,6 +292,7 @@
 
 <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/pages/horizontal-layout.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>

@@ -139,7 +139,7 @@
                     data: [
                         @foreach ($data as $dt)
                             {
-                                x: '{{ $dt['id'] . ' ' . $dt['item_name'] }}',
+                                x: '{{ $dt['nama_pic'] . ' | ' . $dt['item_name'] }}',
                                 y: [
                                     new Date('{{ $dt['plan_start_repair'] }}').getTime(),
                                     new Date('{{ $dt['plan_finish_repair'] }}').getTime()
@@ -160,6 +160,8 @@
                     dataPointSelection: function(event, chartContext, config) {
                         $('#asu').show(300);
                         $('#reg_sp').text(data[config.dataPointIndex].reg_sp);
+                        $('#reg_sp').html(`<a href="{{ url('partrepair/waitingtable/') }}/` + data[config
+                            .dataPointIndex].id + `">` + data[config.dataPointIndex].reg_sp + '</a>');
                         $('#created_at').text(data[config.dataPointIndex].created_at);
                         $('#updated_at').text(data[config.dataPointIndex].updated_at);
                         $('#date').text(data[config.dataPointIndex].date);
@@ -190,7 +192,7 @@
                             $('#trial').prop("checked", true);
                         } else if (data[config.dataPointIndex].progress == "Seal Kit") {
                             $('#sealkit').prop("checked", true);
-                        } else if (data[config.dataPointIndex].progress == "Progress") {
+                        } else if (data[config.dataPointIndex].progress == "On Progress") {
                             $('#progress2').prop("checked", true);
                         } else {
                             $('#waiting').prop("checked", true);
@@ -235,6 +237,36 @@
                 type: 'datetime',
                 position: 'top',
             },
+            annotations: {
+
+                xaxis: [{
+                    x: new Date().getTime(),
+                    borderColor: "#ff0000",
+                    label: {
+                        text: "Hari ini",
+                        style: {
+                            color: "#fff",
+                            background: "#ff0000"
+                        }
+                    }
+                }]
+            },
+            // xaxis: {
+            //     x: new Date().getTime(),
+            //     borderColor: "#999",
+            //     label: {
+            //         text: "Rally",
+            //         style: {
+            //             color: "#fff",
+            //             background: "#775DD0"
+            //         }
+            //     }
+            // },
+            // xaxis: {
+            //     type: "datetime",
+            //     min: new Date("4 Feb 2023").getTime(),
+            //     tickAmount: 6
+            // },
         };
 
         var chart = new ApexCharts(document.querySelector("#gantt"), options);

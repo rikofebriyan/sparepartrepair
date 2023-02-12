@@ -57,7 +57,7 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-person-badge"></i>
                             </div>
-                            <div class="invalid-feedback">  
+                            <div class="invalid-feedback">
                                 @if ($errors->has('NPK'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('NPK') }}</strong>
@@ -67,8 +67,14 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="jabatan" name="jabatan" class="form-control form-control-xl"
+                            <select type="text" id="jabatan" name="jabatan" class="form-control form-control-xl"
                                 placeholder="Jabatan" value="{{ old('jabatan') }}">
+                                <option selected disabled>Pilih Role</option>
+                                <option>Maintenance</option>
+                                <option>RepairMan</option>
+                                <option>Supervisor</option>
+                                <option>Admin</option>
+                            </select>
                             <div class="form-control-icon">
 
                                 @if ($errors->has('jabatan'))
@@ -97,17 +103,18 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" id="password" name="password" class="form-control form-control-xl @if ($errors->has('password')) is-invalid @endif"
+                            <input type="password" id="password" name="password"
+                                class="form-control form-control-xl @if ($errors->has('password')) is-invalid @endif"
                                 placeholder="Password" value="{{ old('password') }}">
                             <div class="form-control-icon">
                                 <i class="bi bi-key"></i>
                             </div>
-                            <div class="invalid-feedback">  
+                            <div class="invalid-feedback">
                                 @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

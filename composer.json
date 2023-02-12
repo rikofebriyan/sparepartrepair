@@ -12,7 +12,9 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
         "nesbot/carbon": "^1.39",
-        "yajra/laravel-datatables-oracle": "6.0"
+        "yajra/laravel-datatables-oracle": "6.0",
+        "phpoffice/phpexcel": "^1.8",
+        "maatwebsite/excel": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

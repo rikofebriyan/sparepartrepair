@@ -45,10 +45,12 @@ class WaitingrepairController extends Controller
             ->where('deleted', null)
             ->where('progress', '<>', 'finish')
             ->where('progress', '<>', 'Scrap')
+            ->where('approval', '<>', null)
             ->get();
         // dd($partr);
         return view('partrepair.waitingtable', [
             'reqtzy' => $partr,
+            'progress' => $request->progress,
         ]);
     }
 
@@ -309,7 +311,7 @@ class WaitingrepairController extends Controller
 
         $data = $request->all();
         $data['deleted'] = 1;
-        $data['reason'] = $request->reason;
+        $data['reason'] = "Deleted: " . $request->reason;
         $data['deleted_by'] = $request->deleted_by;
         Waitingrepair::find($id)->update($data);
 

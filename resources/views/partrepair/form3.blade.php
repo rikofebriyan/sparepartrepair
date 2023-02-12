@@ -292,8 +292,9 @@
                                             @endforeach
                                         </select> --}}
                                         <div class="mb-3">
-                                            <select class="form-select form-select-isiotomatis2" onchange="isi_otomatis_part()"
-                                                id="isiotomatis2" name="item_name" required>
+                                            <select class="form-select form-select-isiotomatis2"
+                                                onchange="isi_otomatis_part()" id="isiotomatis2" name="item_name"
+                                                required>
                                                 <option value="" selected></option>
                                                 @foreach ($mastersparepart as $reqm)
                                                     <option data-custom-properties="{{ $reqm->item_code }}"
@@ -320,20 +321,19 @@
                                             <input type="text" class="form-control bg-secondary text-white"
                                                 id="price2" name="price" placeholder="Price" readonly>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="input-group">
-                                            <select class="form-control" id="maker" name="maker">
-                                                <option selected disabled>Maker ...</option>
-                                                @foreach ($maker as $mak)
-                                                    <option value="{{ $mak->name }}">{{ $mak->name }}
-                                                    </option>
-                                                @endforeach
-                                                {{-- <option value="1">SMC</option>
-                                    <option value="2">IAI</option>
-                                    <option value="3">CKD</option>
-                                    <option value="4">Fanuc</option> --}}
-                                            </select>
-                                        </div>
+                                <div class="mb-3 row">
+                                    <label for="maker" class="col-sm-3 col-form-label">Maker</label>
+                                    <div class="col">
+                                        <select class="form-control choices" id="maker" name="maker" required>
+                                            <option selected disabled>Maker ...</option>
+                                            @foreach ($maker as $mak)
+                                                <option value="{{ $mak->name }}">{{ $mak->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 

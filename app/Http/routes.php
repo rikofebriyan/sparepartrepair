@@ -14,6 +14,11 @@
 
 Route::auth();
 
+Route::group(['middleware' => ['auth', 'ADMIN']], function () {
+    Route::resource('matrix/user', 'UserController');
+});
+
+
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -23,8 +28,8 @@ Route::get('/partrepair/ganttchart', 'GanttchartController@index')->name('ganttc
 Route::get('/partrepair/deletedtable', 'WaitingrepairController@deleted')->name('deletedtable');
 Route::get('/partrepair/finishtable', 'WaitingrepairController@finish')->name('finishtable');
 
-// Route::resource('partrepair/waitingtable', 'WaitingrepairController');
 Route::get('/partrepair/waitingtable', 'WaitingrepairController@index')->name('partrepair.waitingtable.index');
+Route::get('/partrepair/registeredticket', 'RegisteredTicketController@index')->name('partrepair.registeredticket.index');
 Route::get('/partrepair/waitingtable/{id}', 'WaitingrepairController@waitingRepairForm1')->name('partrepair.waitingtable.show');
 Route::get('/partrepair/waitingtable/form2/{id}', 'WaitingrepairController@waitingRepairForm2')->name('partrepair.waitingtable.show.form2');
 Route::get('/partrepair/waitingtable/form3/{id}', 'WaitingrepairController@waitingRepairForm3')->name('partrepair.waitingtable.show.form3');
@@ -50,8 +55,8 @@ Route::resource('matrix/subcont', 'SubcontController');
 Route::resource('matrix/item_standard', 'ItemstandardController');
 Route::resource('matrix/code_part_repair', 'CodepartrepairController');
 Route::resource('matrix/category_code', 'CategorycodeController');
-Route::resource('matrix/user', 'UserController');
 Route::resource('Auth/profile', 'ProfileController');
+Route::resource('partrepair/waitingapprove', 'WaitingApprovalController');
 
 Route::get('/ajax', 'InfoController@index')->name('ajax');
 Route::get('/getline', 'InfoController@getline')->name('get-line');
@@ -67,3 +72,4 @@ Route::get('/partrepair/masterdelete', 'InfoController@masterdelete')->name('par
 Route::get('/getmaster', 'InfoController@getmaster')->name('get-master');
 Route::get('/mymodel', 'InfoController@mymodel')->name('mymodel');
 Route::patch('/updatemodel/{id}', 'InfoController@updatemodel');
+Route::post('/export', 'ExportController@export')->name('export');

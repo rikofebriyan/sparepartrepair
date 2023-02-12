@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+use Illuminate\Support\Facades\Auth;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -28,8 +30,40 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        Gate::define('admin', function(User $user) {
-            return $user->is_admin;
+        Gate::define('ADMIN', function(User $user) {
+            if ($user->jabatan == 'Admin') {
+                // dd($user->jabatan);
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        Gate::define('Supervisor', function(User $user) {
+            if ($user->jabatan == 'Supervisor') {
+                // dd($user->jabatan);
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        Gate::define('Maintenance', function(User $user) {
+            if ($user->jabatan == 'Maintenance') {
+                // dd($user->jabatan);
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        Gate::define('RepairMan', function(User $user) {
+            if ($user->jabatan == 'RepairMan') {
+                // dd($user->jabatan);
+                return true;
+            } else {
+                return false;
+            }
         });
         
     }

@@ -39,6 +39,7 @@ class CreateWaitingrepairsTable extends Migration
             $table->integer('deleted')->nullable();
             $table->string('deleted_by')->nullable();
             $table->string('reason')->nullable();
+            $table->string('approval')->nullable();
         });
     }
 

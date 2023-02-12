@@ -51,64 +51,64 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Master Spare Part</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
 
                     <div class="form-group mt-2">
-                        <label for="item_code">item_code</label>
+                        <label for="item_code">Item_code</label>
                         <input type="text" id="item_code" name="item_code" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="item_name">item_name</label>
+                        <label for="item_name">Item_name</label>
                         <input type="text" id="item_name" name="item_name" class="form-control" value=""required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="description">description</label>
+                        <label for="description">Description</label>
                         <input type="text" id="description" name="description" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="qty">qty</label>
+                        <label for="qty">Qty</label>
                         <input type="text" id="qty" name="qty" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="price">price</label>
+                        <label for="price">Price</label>
                         <input type="text" id="price" name="price" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="status">status</label>
+                        <label for="status">Status</label>
                         <input type="text" id="status" name="status" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="wh_code">wh_code</label>
+                        <label for="wh_code">Wh_code</label>
                         <input type="text" id="wh_code" name="wh_code" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="rack_code">rack_code</label>
+                        <label for="rack_code">Rack_code</label>
                         <input type="text" id="rack_code" name="rack_code" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="order_point">order_point</label>
+                        <label for="order_point">Order_point</label>
                         <input type="text" id="order_point" name="order_point" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="order_qty">order_qty</label>
+                        <label for="order_qty">Order_qty</label>
                         <input type="text" id="order_qty" name="order_qty" class="form-control" required>
                     </div>
 
                     <div class="form-group mt-2">
-                        <label for="account_no">account_no</label>
+                        <label for="account_no">Account_no</label>
                         <input type="text" id="account_no" name="account_no" class="form-control" required>
                     </div>
 
@@ -145,61 +145,61 @@
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="item_name">item_name</label>
+                            <label for="item_name">Item_name</label>
                             <input type="text" id="item_name" name="item_name" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="description">description</label>
+                            <label for="description">Description</label>
                             <input type="text" id="description" name="description" class="form-control"
                                 value="" required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="qty">qty</label>
+                            <label for="qty">Qty</label>
                             <input type="text" id="qty" name="qty" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="price">price</label>
+                            <label for="price">Price</label>
                             <input type="text" id="price" name="price" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="status">status</label>
+                            <label for="status">Status</label>
                             <input type="text" id="status" name="status" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="wh_code">wh_code</label>
+                            <label for="wh_code">Wh_code</label>
                             <input type="text" id="wh_code" name="wh_code" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="rack_code">rack_code</label>
+                            <label for="rack_code">Rack_code</label>
                             <input type="text" id="rack_code" name="rack_code" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="order_point">order_point</label>
+                            <label for="order_point">Order_point</label>
                             <input type="text" id="order_point" name="order_point" class="form-control"
                                 value="" required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="order_qty">order_qty</label>
+                            <label for="order_qty">Order_qty</label>
                             <input type="text" id="order_qty" name="order_qty" class="form-control" value=""
                                 required>
                         </div>
 
                         <div class="form-group mt-2">
-                            <label for="account_no">account_no</label>
+                            <label for="account_no">Account_no</label>
                             <input type="text" id="account_no" name="account_no" class="form-control" value=""
                                 required>
                         </div>
@@ -234,10 +234,10 @@
             var modal = $(this);
             var form = modal.find('form');
             modal.find('form').attr('action', "{{ route('matrix.master_spare_part.store') }}/" + id);
- 
+
             // Populate the form with the model 's data
             // axios.get('/mymodel/' + id).then(function(response) {
-            axios.get("{{ route('mymodel') }}/?id="+id).then(function(response) {
+            axios.get("{{ route('mymodel') }}/?id=" + id).then(function(response) {
                 modal.find('form').find('input[name="id"]').val(response.data.id);
                 modal.find('form').find('input[name="item_code"]').val(response.data.item_code);
                 modal.find('form').find('input[name="item_name"]').val(response.data.item_name);
@@ -252,12 +252,17 @@
                 modal.find('form').find('input[name="account_no"]').val(response.data.account_no);
             });
         });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
+        });
     </script>
     <script>
         $(function() {
             $('#myTable').DataTable({
-                processing: true,
-                serverSide: true,
+                // processing: true,
+                // serverSide: true,
+                "pageLength": 30,
                 ajax: "{{ route('get-master') }}",
 
                 columns: [{

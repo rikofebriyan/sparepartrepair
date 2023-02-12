@@ -95,7 +95,7 @@
                 <div class="modal-body">
 
                     <div class="form-group mt-2">
-                        <label for="name">Name</label>
+                        <label for="name">Nama Section</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
 
@@ -129,6 +129,10 @@
                     [0, 'desc']
                 ],
             });
+        });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
         });
     </script>
 

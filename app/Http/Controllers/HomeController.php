@@ -40,13 +40,31 @@ class HomeController extends Controller
         $stepProgress = ['Waiting', 'On Progress', 'Seal Kit', 'Trial', 'Finish'];
         // counting data
 
-        $data['total_registered'] = $waitingRepairData->count();
+        $data['total_registered'] = $waitingRepairData
+        ->where('deleted', null)
+        ->count();
 
         foreach ($stepProgress as $step) {
-            $data['total_' . $step] = $waitingRepairData->where('progress', $step)->count();
+            $data['total_' . $step] = $waitingRepairData
+            ->where('progress', $step)
+            ->where('deleted', null)
+            ->count();
         }
 
-        $data['total_Scrap'] = $progressRepairData->where('judgement', 'Scrap')->count();
+        $data['total_Waiting_Approve'] = $waitingRepairData
+        ->where('progress', 'Waiting')
+        ->where('approval', null)
+        ->where('deleted', null)
+        ->count();
+
+        $data['total_Waiting_Progress'] = DB::table('waitingrepairs')
+        ->where('progress', 'Waiting')
+        ->whereNotNull('approval')
+        ->where('deleted', null)
+        ->count();  
+
+
+        $data['total_Scrap'] = $waitingRepairData->where('progress', 'Scrap')->count();
         $data['total_cost_saving'] = $finishRepairData->sum('f_total_cost_saving');
         $data['total_pneumatic'] = $waitingRepairData->where('type_of_part', 'Pneumatic')->count();
         $data['total_hydraulic'] = $waitingRepairData->where('type_of_part', 'Hydraulic')->count();

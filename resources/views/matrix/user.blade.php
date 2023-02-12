@@ -62,27 +62,57 @@
                                                     <div class="form-group mt-2">
                                                         <label for="name">Name</label>
                                                         <input type="text" id="name" name="name"
-                                                            class="form-control" value="{{ $req->name }}" required>
+                                                            class="form-control text-center" value="{{ $req->name }}"
+                                                            required>
                                                     </div>
                                                     <div class="form-group mt-2">
                                                         <label for="NPK">NPK</label>
                                                         <input type="text" id="NPK" name="NPK"
-                                                            class="form-control" value="{{ $req->NPK }}" required>
+                                                            class="form-control text-center" value="{{ $req->NPK }}"
+                                                            required>
                                                     </div>
                                                     <div class="form-group mt-2">
                                                         <label for="jabatan">Jabatan</label>
-                                                        <input type="text" id="jabatan" name="jabatan"
-                                                            class="form-control" value="{{ $req->jabatan }}" required>
+                                                        <select class="form-control choices" id="jabatan" name="jabatan"
+                                                            required>
+
+                                                            <option value="1"
+                                                                @if ($req->jabatan == 'Admin') selected @endif>Admin
+                                                            </option>
+                                                            <option value="2"
+                                                                @if ($req->jabatan == 'Maintenance') selected @endif>
+                                                                Maintenance
+                                                            </option>
+                                                            <option value="3"
+                                                                @if ($req->jabatan == 'RepairMan') selected @endif>RepairMan
+                                                            </option>
+                                                            <option value="4"
+                                                                @if ($req->jabatan == 'Supervisor') selected @endif>Supervisor
+                                                            </option>
+                                                        </select>
                                                     </div>
+
+
+                                                    {{-- <select class="form-control choices" id="nama_pic" name="nama_pic"
+                                                        required>
+                                                        <option value="" selected disabled>Pilih ...</option>
+                                                        @foreach ($req as $rq)
+                                                            <option value="{{ $rq->jabatan }}">{{ $rq->jabatan }} |
+                                                                {{ $rq->NPK }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select> --}}
+
                                                     <div class="form-group mt-2">
                                                         <label for="email">Email</label>
                                                         <input type="email" id="email" name="email"
-                                                            class="form-control" value="{{ $req->email }}" required>
+                                                            class="form-control text-center" value="{{ $req->email }}"
+                                                            required>
                                                     </div>
                                                     <div class="form-group mt-2">
-                                                        <label for="password">Password</label>
+                                                        <label for="password">Isi dengan password baru</label>
                                                         <input type="password" id="password" name="password"
-                                                            class="form-control" value="" required>
+                                                            class="form-control text-center" value="" required>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
                                                 </div>
@@ -97,9 +127,6 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
-                            </tr>
                         @endforelse
                     </tbody>
                 </table>

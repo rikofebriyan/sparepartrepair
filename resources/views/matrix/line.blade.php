@@ -66,11 +66,13 @@
                                                     <div class="form-group mt-2">
                                                         <label for="bu">BU</label>
                                                         <input type="text" id="bu" name="bu"
-                                                            class="form-control" value="{{ $req->bu }}" required>
+                                                            class="form-control text-center" value="{{ $req->bu }}"
+                                                            required>
                                                     </div>
-                                                    <div class="form-group mt-2">+
-                                                        <label for="section_id">Section ID</label>
-                                                        <select name="section_id" id="section_id" class="form-control">
+                                                    <div class="form-group mt-2">
+                                                        <label for="section_id">Section</label>
+                                                        <select name="section_id" id="section_id"
+                                                            class="form-control choices">
                                                             <option value="" disabled selected>
                                                                 choose
                                                             </option>
@@ -85,7 +87,8 @@
                                                     <div class="form-group mt-2">
                                                         <label for="name">Name</label>
                                                         <input type="text" id="name" name="name"
-                                                            class="form-control" value="{{ $req->name }}" required>
+                                                            class="form-control text-center" value="{{ $req->name }}"
+                                                            required>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
                                                     <!--END FORM UPDATE BARANG-->
@@ -101,9 +104,6 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
-                            </tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -124,11 +124,12 @@
 
                     <div class="form-group mt-2">
                         <label for="bu">BU</label>
-                        <input type="text" id="bu" name="bu" class="form-control" value="" required>
+                        <input type="text" id="bu" name="bu" class="form-control text-center" value=""
+                            required>
                     </div>
                     <div class="form-group mt-2">
-                        <label for="section_id">Section ID</label>
-                        <select name="section_id" id="section_id" class="form-control">
+                        <label for="section_id">Section</label>
+                        <select name="section_id" id="section_id" class="form-control choices">
                             <option value="" disabled selected>
                                 choose
                             </option>
@@ -139,7 +140,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text" id="name" name="name" class="form-control text-center" required>
                     </div>
 
                 </div>
@@ -172,6 +173,10 @@
                     [0, 'desc']
                 ],
             });
+        });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
         });
     </script>
 @endsection

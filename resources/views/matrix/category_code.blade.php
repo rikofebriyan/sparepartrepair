@@ -17,7 +17,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Add New
+                Add New Category
             </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -99,7 +99,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -141,6 +141,10 @@
                     [0, 'desc']
                 ],
             });
+        });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
         });
     </script>
 @endsection
