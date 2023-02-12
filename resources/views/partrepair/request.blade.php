@@ -82,15 +82,6 @@
                                 <label for="item_code" class="col-sm-3 col-form-label">Spare Part</label>
                                 <div class="col-sm-9">
                                     <div id="field3" class="mb-3">
-                                        {{-- <select class="form-select choices" onchange="isi_otomatis()" id="isiotomatis"
-                                            name="item_name" data-live-search="true" data-custom-properties="active">
-                                            <option selected></option>
-                                            @foreach ($reqtzy as $req)
-                                                <option data-custom-properties="{{ $req->item_code }}" value="{{ $req->code_item_description }}">{{ $req->item_code }} |
-                                                    {{ $req->item_name }} | {{ $req->description }}
-                                                </option>
-                                            @endforeach
-                                        </select> --}}
                                         <select class="form-select" onchange="isi_otomatis()" id="isiotomatis"
                                             name="item_name" required>
                                             <option value="" selected></option>
@@ -122,23 +113,29 @@
                                         <input type="text" class="form-control bg-secondary text-white" id="qty"
                                             name="stock_spare_part" placeholder="Stock" readonly required>
                                     </div>
+                                </div>
 
-                                    <div class="input-group">
-                                        <select class="form-control" id="maker" name="maker" required>
-                                            <option selected disabled>Maker ...</option>
-                                            @foreach ($maker as $mak)
-                                                <option value="{{ $mak->name }}">{{ $mak->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <select class="form-control" id="type_of_part" name="type_of_part" required>
-                                            <option selected disabled>Type Of Part ...</option>
-                                            <option value="1">Mechanic</option>
-                                            <option value="2">Hydraulic</option>
-                                            <option value="3">Pneumatic</option>
-                                            <option value="4">Electric</option>
-                                        </select>
-                                    </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="maker" class="col-sm-3 col-form-label">Maker & Type</label>
+                                <div class="col">
+                                    <select class="form-control choices" id="maker" name="maker" required>
+                                        <option selected disabled>Maker ...</option>
+                                        @foreach ($maker as $mak)
+                                            <option value="{{ $mak->name }}">{{ $mak->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-control choices" id="type_of_part" name="type_of_part" required>
+                                        <option selected disabled>Type Of Part ...</option>
+                                        <option value="1">Mechanic</option>
+                                        <option value="2">Hydraulic</option>
+                                        <option value="3">Pneumatic</option>
+                                        <option value="4">Electric</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -195,13 +192,13 @@
                             <div class="mb-3 row">
                                 <label for="nama_pic" class="col-sm-3 col-form-label">PIC User</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="nama_pic" name="nama_pic" required>
-                                        <option selected disabled>Pilih ...</option>
+                                    <select class="form-control choices" id="nama_pic" name="nama_pic" required>
+                                        <option value="" selected disabled>Pilih ...</option>
                                         @foreach ($user as $us)
-                                            <option value="{{ $us->name }}">{{ $us->name }}
+                                            <option value="{{ $us->name }}">{{ $us->name }} |
+                                                {{ $us->NPK }}
                                             </option>
                                         @endforeach
-                                    </select>
                                     </select>
                                 </div>
                             </div>

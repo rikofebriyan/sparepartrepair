@@ -21935,7 +21935,7 @@ body .bi::before,
   min-width: 200px;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 700px) {
   .layout-horizontal .main-navbar {
     background-color: #f5f7fc;
     overflow: hidden;
@@ -22279,7 +22279,7 @@ body .bi::before,
   min-height: 100vh;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 700px) {
   #main {
     margin-left: 0;
   }

@@ -9,8 +9,8 @@
                     <label for="tanggal" class="col-sm-3 col-form-label">Date
                         Created</label>
                     <div class="col-sm-9">
-                        <input type="datetime-local" class="form-control" id="tanggal"
-                            name="date" value="{{ $waitingrepair->date }}">
+                        <input type="datetime-local" class="form-control" id="tanggal" name="date"
+                            value="{{ $waitingrepair->date }}">
                     </div>
                 </div>
 
@@ -76,48 +76,50 @@
                         Part</label>
                     <div class="col-sm-9">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="item_code"
-                                name="item_code" placeholder="Item Code" value="{{ $waitingrepair->item_code }}">
-                            <input type="text" class="form-control" id="item_name"
-                                name="item_name" placeholder="Item Name" value="{{ $waitingrepair->item_name }}">
+                            <input type="text" class="form-control" id="item_code" name="item_code"
+                                placeholder="Item Code" value="{{ $waitingrepair->item_code }}">
+                            <input type="text" class="form-control" id="item_name" name="item_name"
+                                placeholder="Item Name" value="{{ $waitingrepair->item_name }}">
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="description"
-                                name="item_type" placeholder="Item Type" value="{{ $waitingrepair->item_type }}">
-                        </div>
-
-                        <div class="input-group">
-                            <input type="text" class="form-control number" id="price"
-                                name="price" placeholder="Price" value="{{ $waitingrepair->price }}">
-                            <input type="text" class="form-control" id="qty"
-                                name="stock_spare_part" placeholder="Stock"
-                                value="{{ $waitingrepair->stock_spare_part }}">
+                            <input type="text" class="form-control" id="description" name="item_type"
+                                placeholder="Item Type" value="{{ $waitingrepair->item_type }}">
                         </div>
 
                         <div class="input-group">
-
-                            <select class="form-control" id="maker" name="maker">
-                                <option value="" selected>Maker ...</option>
-                                @foreach ($maker as $mak)
-                                    <option value="{{ $mak->name }}"
-                                        @if ($waitingrepair->maker == $mak->name) selected @endif>{{ $mak->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-
-                            <select class="form-control" id="type_of_part" name="type_of_part">
-                                <option disabled>Type Of Part ...</option>
-                                <option value="1" @if ($waitingrepair->type_of_part == 1) selected @endif>Mechanic
-                                </option>
-                                <option value="2" @if ($waitingrepair->type_of_part == 2) selected @endif>Hydraulic
-                                </option>
-                                <option value="3" @if ($waitingrepair->type_of_part == 3) selected @endif>Pneumatic
-                                </option>
-                                <option value="4" @if ($waitingrepair->type_of_part == 4) selected @endif>Electric
-                                </option>
-                            </select>
+                            <input type="text" class="form-control number" id="price" name="price"
+                                placeholder="Price" value="{{ $waitingrepair->price }}">
+                            <input type="text" class="form-control" id="qty" name="stock_spare_part"
+                                placeholder="Stock" value="{{ $waitingrepair->stock_spare_part }}">
                         </div>
                     </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="maker" class="col-sm-3 col-form-label">Maker & Type</label>
+                    <div class="col">
+                        <select class="form-control choices" id="maker" name="maker" required>
+                            <option selected disabled>Maker ...</option>
+                            @foreach ($maker as $mak)
+                                <option value="{{ $mak->name }}" @if ($waitingrepair->maker == $mak->name) selected @endif>
+                                    {{ $mak->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select class="form-control choices" id="type_of_part" name="type_of_part" required>
+                            <option disabled>Type Of Part ...</option>
+                            <option value="1" @if ($waitingrepair->type_of_part == 1) selected @endif>Mechanic
+                            </option>
+                            <option value="2" @if ($waitingrepair->type_of_part == 2) selected @endif>Hydraulic
+                            </option>
+                            <option value="3" @if ($waitingrepair->type_of_part == 3) selected @endif>Pneumatic
+                            </option>
+                            <option value="4" @if ($waitingrepair->type_of_part == 4) selected @endif>Electric
+                            </option>
+                        </select>
+                    </div>
+
                 </div>
 
 
@@ -193,8 +195,10 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="status_repair" name="status_repair">
                             <option disabled>Pilih ...</option>
-                            <option value="Normal" @if ($waitingrepair->status_repair == 'Normal') selected @endif>Normal</option>
-                            <option value="Urgent" @if ($waitingrepair->status_repair == 'Urgent') selected @endif>Urgent</option>
+                            <option value="Normal" @if ($waitingrepair->status_repair == 'Normal') selected @endif>Normal
+                            </option>
+                            <option value="Urgent" @if ($waitingrepair->status_repair == 'Urgent') selected @endif>Urgent
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -202,11 +206,12 @@
                 <div class="mb-3 row">
                     <label for="nama_pic" class="col-sm-3 col-form-label">PIC User</label>
                     <div class="col-sm-9">
-                        <select class="form-control" id="nama_pic" name="nama_pic">
-                            <option disabled>Pilih ...</option>
+                        <select class="form-control choices" id="nama_pic" name="nama_pic">
+                            <option value="" disabled>Pilih ...</option>
                             @foreach ($user as $us)
                                 <option value="{{ $us->name }}"
-                                    @if ($waitingrepair->nama_pic == $us->name) selected @endif>{{ $us->name }}
+                                    @if ($waitingrepair->nama_pic == $us->name) selected @endif>
+                                    {{ $us->name }} | {{ $us->NPK }}
                                 </option>
                             @endforeach
                         </select>
@@ -218,16 +223,16 @@
                     <label for="reg_sp" class="col-sm-3 col-form-label">Ticket
                         Number</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control bg-secondary text-white" id="reg_sp" name="reg_sp"
-                            value="{{ $waitingrepair->reg_sp }}" readonly>
+                        <input type="text" class="form-control bg-secondary text-white" id="reg_sp"
+                            name="reg_sp" value="{{ $waitingrepair->reg_sp }}" readonly>
                     </div>
                 </div>
 
                 <div class="mb-3 row">
                     <label for="progress" class="col-sm-3 col-form-label">Progress</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control bg-secondary text-white" id="progres" name="progress"
-                            value="{{ $waitingrepair->progress }}" readonly>
+                        <input type="text" class="form-control bg-secondary text-white" id="progres"
+                            name="progress" value="{{ $waitingrepair->progress }}" readonly>
                     </div>
                 </div>
 

@@ -3,10 +3,18 @@
 @section('content')
     <div class="content-wrapper container">
         <div class="page-content">
-            <div>
-                <center>
-                    <h2>SPARE PART REPAIR STATISTIC</h2>
-                </center>
+            <div class="row my-2">
+                <div class="col sm-8">
+                    <h2 class="mb-0">SPARE PART REPAIR STATISTIC</h2>
+                </div>
+                <div class="col align-self-end">
+                    <a href="{{ route('partrepair.registeredticket.index') }}">
+                        <h3 class="text-end align-middle mb-0">
+                            Total Registered : {{ $data['total_registered'] }}
+                            <i class="fa fa-tools mb-1"></i>
+                        </h3>
+                    </a>
+                </div>
             </div>
 
             <div class="container">
@@ -15,25 +23,27 @@
                     <div class="col p-1 mt-0">
                         <div class="card-box" style="background-color: rgba(244, 81, 108, 1);">
                             <div class="inner">
-                                <h2 class="text-white"> {{ $data['total_registered'] }} </h2>
-                                <p> Total Registered </p>
+                                <h2 class="text-white"> {{ $data['total_Waiting_Approve'] }} </h2>
+                                <h5 class="text-white"> Waiting Approval </h5>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-users"></i>
+                                <i class="fas fa-file-signature"></i>
                             </div>
-                            <a href="{{ route('partrepair.waitingtable.index') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('partrepair.waitingapprove.index') }}" class="card-box-footer">View More <i
+                                    class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col p-1 mt-0">
                         <div class="card-box" style="background-color: #fd7e14;">
                             <div class="inner">
-                                <h2 class="text-white"> {{ $data['total_Waiting'] }} </h2>
-                                <p> Total Waiting </p>
+                                <h2 class="text-white"> {{ $data['total_Waiting_Progress'] }} </h2>
+                                <h5 class="text-white"> Total Waiting Progress </h5>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                <i class="fas fa-history"></i>
                             </div>
-                            <a href="{{ route('partrepair.waitingtable.index') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('partrepair.waitingtable.index') }}/?progress=waiting"
+                                class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 
@@ -42,26 +52,28 @@
                             <div class="inner">
                                 <h2 class="text-white">
                                     {{ $data['total_On Progress'] + $data['total_Seal Kit'] + $data['total_Trial'] }} </h2>
-                                <p> Total Progress </p>
+                                <h5 class="text-white"> Total Progress </h5>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-money" aria-hidden="true"></i>
+                                <i class="fas fa-running"></i>
                             </div>
-                            <a href="{{ route('partrepair.waitingtable.index') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('partrepair.waitingtable.index') }}/?progress=progress"
+                                class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col p-1 mt-0">
                         <div class="card-box" style="background-color: rgba(52, 191, 163, 1);">
                             <div class="inner">
                                 <h2 class="text-white">
-                                    {{ $data['total_Finish'] + $data['total_repair_trade_in'] + $data['total_Scrap'] }}
+                                    {{ $data['total_Finish'] + $data['total_Scrap'] }}
                                 </h2>
-                                <p> Total Finish </p>
+                                <h5 class="text-white"> Total Finish </h5>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <i class="fas fa-check"></i>
                             </div>
-                            <a href="{{ route('finishtable') }}" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('finishtable') }}" class="card-box-footer">View More <i
+                                    class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>

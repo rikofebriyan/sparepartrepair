@@ -17,7 +17,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Add New
+                Add New Maker
             </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -90,12 +90,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Maker</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group mt-2">
-                        <label for="name">name</label>
+                        <label for="name">Nama Maker</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                 </div>
@@ -128,6 +128,10 @@
                     [0, 'desc']
                 ],
             });
+        });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
         });
     </script>
 @endsection

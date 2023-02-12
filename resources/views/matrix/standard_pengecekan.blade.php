@@ -50,7 +50,7 @@
                                 <td>{{ $req->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
-          
+
                                     {{ Form::open(['method' => 'GET', 'route' => ['matrix.standard_pengecekan.show', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-primary btn-sm me-1">
                                         <i class="bi bi-pencil"></i></button>
@@ -88,21 +88,30 @@
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="master_spare_part_id">Spare Part</label>
-                        <select name="master_spare_part_id" id="master_spare_part_id" class="form-control">
-                            <option value="" disabled selected>
-                                choose
-                            </option>
+                        <select class="form-select form-select-isiotomatis2" id="isiotomatis2" name="master_spare_part_id"
+                            onchange="isi_otomatis_part()" required>
+                            <option value="" selected></option>
                             @foreach ($tab2 as $tab)
-                                <option value="{{ $tab->id }}">{{ $tab->item_name }}
+                                <option data-custom-properties="{{ $tab->item_code }}"
+                                    value="{{ $tab->code_item_description }}">
+                                    {{ $tab->item_code }} |
+                                    {{ $tab->item_name }} | {{ $tab->description }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
 
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-secondary text-white" id="item_name"
+                            placeholder="Item Name" readonly>
+                        <input type="hidden" class="form-control bg-secondary text-white" id="item_id"
+                            name="master_spare_part_id" placeholder="Item Name" readonly>
+                    </div>
+
                     {{-- FORM COLUMN 1 --}}
                     <div class="form-group mt-2">
                         <label for="item_pengecekan_id">Item Pengecekan</label>
-                        <select name="item_pengecekan_id" id="item_pengecekan_id" class="form-control">
+                        <select name="item_check_id" id="item_check_id" class="form-control">
                             <option value="" disabled selected>
                                 choose
                             </option>
@@ -116,8 +125,7 @@
 
                     <div class="form-group mt-2">
                         <label for="operation">Logical Operation</label>
-                        <input type="text" id="operation" name="operation" class="form-control" value=""
-                            required>
+                        <input type="text" id="operation" name="operation" class="form-control" value="" required>
                     </div>
 
 
@@ -154,17 +162,33 @@
 @endsection
 
 @section('script')
-    <!-- Main Script -->
-    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-    <!-- Scripts for Table Page -->
-    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
-    <!-- Scripts for Table Page -->
+    <script type="text/javascript">
+        $('#isiotomatis2').select2({
+            dropdownParent: $('#exampleModal'),
+            width: '100%',
+        });
+
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        });
+
+        function isi_otomatis_part() {
+            // var item_name = $("#isiotomatis2").val();
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('ajax') }}",
+                data: {
+                    item_name: $('#isiotomatis2').find(':selected').data('custom-properties'),
+                },
+                dataType: 'JSON',
+                success: function(data) {
+                    $('#item_name').val(data.item_name);
+                    $('#item_id').val(data.id);
+                }
+            });
+        }
+    </script>
+
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable({
@@ -175,16 +199,29 @@
         });
     </script>
 
-@if ($message = Session::get('standard_pengecekan_edit_success'))
-<script>
-    Toastify({
-        text: "{{ $message }}",
-        duration: 2500,
-        close: true,
-        gravity: "top",
-        position: "center",
-        backgroundColor: "#4fbe87",
-    }).showToast()
-</script>
-@endif
+    @if ($message = Session::get('standard_pengecekan_edit_success'))
+        <script>
+            Toastify({
+                text: "{{ $message }}",
+                duration: 2500,
+                close: true,
+                gravity: "top",
+                position: "center",
+                backgroundColor: "#4fbe87",
+            }).showToast()
+        </script>
+
+
+
+        {{-- <script type="text/javascript">
+            $('#isiotomatis2').select2({
+                dropdownParent: $('#exampleModal'),
+                width: '100%',
+            });
+
+            $(document).on('select2:open', () => {
+                document.querySelector('.select2-search__field').focus();
+            });
+        </script> --}}
+    @endif
 @endsection

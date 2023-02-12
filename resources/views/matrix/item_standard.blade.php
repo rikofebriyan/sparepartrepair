@@ -17,7 +17,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md btn-success mb-3 float-right" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
-                Add New
+                Add New Item Standard
             </button>
             <div class="table-responsive-sm">
                 <table id="myTable" class="table table-striped nowrap overflow-auto display">
@@ -76,9 +76,6 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
-                            </tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -93,13 +90,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Section</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item Standard</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                     <div class="form-group mt-2">
-                        <label for="item_standard">item_standard</label>
+                        <label for="item_standard">Item_standard</label>
                         <input type="text" id="item_standard" name="item_standard" class="form-control" required>
                     </div>
 
@@ -133,6 +130,10 @@
                     [0, 'desc']
                 ],
             });
+        });
+
+        $('#exampleModal').on("shown.bs.modal", function() {
+            $(this).find(".form-control:first").focus();
         });
     </script>
 @endsection

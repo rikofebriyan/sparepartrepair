@@ -47,7 +47,7 @@
                                 <td>{{ $req->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td class="text-center d-flex d-inline">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
+                                    {{-- <button type="button" class="btn icon btn-primary btn-sm me-1" data-bs-toggle="modal"
                                         data-bs-target="#asu{{ $req->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
@@ -64,19 +64,6 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="form-group mt-2">
-                                                        <label for="master_spare_part_id">Master Spare Part ID</label>
-                                                        <select name="master_spare_part_id" id="master_spare_part_id"
-                                                            class="form-control">
-                                                            <option value="" disabled selected>
-                                                                choose
-                                                            </option>
-                                                            @foreach ($tab2 as $tab)
-                                                                <option value="{{ $tab->id }}">{{ $tab->item_name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
                                                     <div class="form-group mt-2">
                                                         <label for="item_code">item_code</label>
                                                         <input type="text" id="item_code" name="item_code"
@@ -116,7 +103,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
+                                    {!! Form::close() !!} --}}
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.repair_kit.destroy', $req->id], 'style' => 'display:inline']) }}
                                     <button type="submit" class="btn icon btn-danger btn-sm"><i
                                             class="bi bi-trash3"></i></button>
@@ -124,9 +111,6 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td class="text-center text-mute" colspan="4">Data post tidak tersedia</td>
-                            </tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -144,7 +128,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <div class="form-group mt-2">
+                        <label for="master_spare_part_id">Spare Part</label>
+                        <select class="form-select form-select-isiotomatis2" id="isiotomatis2" name="master_spare_part_id"
+                            onchange="isi_otomatis_part()" required>
+                            <option value="" selected></option>
+                            @foreach ($tab2 as $tab)
+                                <option data-custom-properties="{{ $tab->item_code }}"
+                                    value="{{ $tab->code_item_description }}">
+                                    {{ $tab->item_code }} |
+                                    {{ $tab->item_name }} | {{ $tab->description }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="hidden" class="form-control bg-secondary text-white" id="item_id2"
+                            name="master_spare_part_id" placeholder="Item Name" readonly>
+                    </div>
+
+                    {{-- <div class="form-group mt-2">
                         <label for="master_spare_part_id">Master Spare Part ID</label>
                         <select name="master_spare_part_id" id="master_spare_part_id" class="form-control">
                             <option value="" disabled selected>
@@ -155,25 +159,25 @@
                                 </option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-group mt-2">
                         <label for="item_code">item_code</label>
-                        <input type="text" id="item_code" name="item_code" class="form-control" value=""
-                            required>
+                        <input type="text" id="item_code2" name="item_code" class="form-control bg-secondary text-white"
+                            value="" required readonly>
                     </div>
                     <div class="form-group mt-2">
                         <label for="item_name">item_name</label>
-                        <input type="text" id="item_name" name="item_name" class="form-control" value=""
-                            required>
+                        <input type="text" id="item_name2" name="item_name" class="form-control bg-secondary text-white"
+                            value="" required readonly>
                     </div>
                     <div class="form-group mt-2">
                         <label for="description">description</label>
-                        <input type="text" id="description" name="description" class="form-control" value=""
-                            required>
+                        <input type="text" id="description2" name="description"
+                            class="form-control bg-secondary text-white" value="" required readonly>
                     </div>
                     <div class="form-group mt-2">
                         <label for="maker">Maker</label>
-                        <select name="maker" id="maker" class="form-control">
+                        <select name="maker" id="maker" class="form-control choices">
                             <option value="" disabled selected>
                                 choose
                             </option>
@@ -186,8 +190,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <label for="qty">qty</label>
-                        <input type="text" id="qty" name="qty" class="form-control" value=""
-                            required>
+                        <input type="text" id="qty" name="qty" class="form-control" value="" required>
                     </div>
 
                 </div>
@@ -202,17 +205,34 @@
 @endsection
 
 @section('script')
-    <!-- Main Script -->
-    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('fontawesome/js/brands.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('fontawesome/js/solid.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('fontawesome/js/fontawesome.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-    <!-- Scripts for Table Page -->
-    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
-    <!-- Scripts for Table Page -->
+    <script type="text/javascript">
+        $('#isiotomatis2').select2({
+            dropdownParent: $('#exampleModal'),
+            width: '100%',
+        });
+
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        });
+
+        function isi_otomatis_part() {
+            // var item_name = $("#isiotomatis2").val();
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('ajax') }}",
+                data: {
+                    item_name: $('#isiotomatis2').find(':selected').data('custom-properties'),
+                },
+                dataType: 'JSON',
+                success: function(data) {
+                    $('#description2').val(data.description);
+                    $('#item_code2').val(data.item_code);
+                    $('#item_name2').val(data.item_name);
+                    $('#item_id2').val(data.id);
+                }
+            });
+        }
+    </script>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable({
