@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Response; //new
-use Illuminate\Support\Facades\Input;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Facades\Session;
-use PHPExcel_Cell_DataType;
-use \PHPExcel_Style_NumberFormat;
 use App\Http\Controllers\Controller;
 use App\Waitingrepair;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use PHPExcel_IOFactory;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+
 
 class ExportController extends Controller
 {
@@ -22,165 +17,100 @@ class ExportController extends Controller
         $end_date = $request->end_date;
 
         $users = Waitingrepair::whereBetween('created_at', [$start_date, $end_date])
-        ->where('deleted', null)
-        ->select(
-            'date as tanggal',
-            'part_from', 
-            'code_part_repair',
-            'number_of_repair',
-            'reg_sp',
-            'section',
-            'line',
-            'machine',
-            'item_id',
-            'item_code',
-            'item_name',
-            'item_type',
-            'maker',
-            'serial_number',
-            'problem',
-            'nama_pic',
-            'price',
-            'status_repair',
-            'progress'
+            ->where('deleted', null)
+            ->select(
+                'date as tanggal',
+                'part_from',
+                'code_part_repair',
+                'number_of_repair',
+                'reg_sp',
+                'section',
+                'line',
+                'machine',
+                'item_id',
+                'item_code',
+                'item_name',
+                'item_type',
+                'maker',
+                'serial_number',
+                'problem',
+                'nama_pic',
+                'price',
+                'status_repair',
+                'progress'
             )
-        ->get();
-        
+            ->get();
+
         $header = array(
-            'tanggal',
-            'part_from', 
-            'code_part_repair',
-            'number_of_repair',
-            'reg_sp',
-            'section',
-            'line',
-            'machine',
-            'item_id',
-            'item_code',
-            'item_name',
-            'item_type',
-            'maker',
-            'serial_number',
-            'problem',
-            'nama_pic',
-            'price',
-            'status_repair',
-            'progress'
+            'Tanggal',
+            'Part From',
+            'Code Part Repair',
+            'Number of Repair',
+            'Reg SP',
+            'Section',
+            'Line',
+            'Machine',
+            'Item ID',
+            'Item Code',
+            'Item Name',
+            'Item Type',
+            'Maker',
+            'Serial Number',
+            'Problem',
+            'Nama PIC',
+            'Price',
+            'Status Repair',
+            'Progress'
         );
-        $file = public_path('tester.xlsx');
 
-        $objPHPExcel = PHPExcel_IOFactory::load($file);
-        $sheet = $objPHPExcel->getSheetByName('I-Mirs');
-            if($sheet == null){
-            $sheet = $objPHPExcel->createSheet();
-            $sheet->setTitle('I-Mirs');
-            }
-        $objPHPExcel->setActiveSheetIndex($objPHPExcel->getIndex($sheet));
-
-        $sheet = $objPHPExcel->getActiveSheet();
-            $sheet->fromArray([$header], null, 'A1');
-            $sheet->fromArray($users->toArray(), null, 'A2');
-            $sheet->setAutoFilter('A1:'.$sheet->getHighestColumn().$sheet->getHighestRow());
-
-        $file2 = public_path('I-Mirs Data.xlsx');
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save($file2);
-
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="I-Mirs Data Table.xlsx"');
-        header('Cache-Control: max-age=0');
-
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $temp_file = tempnam(sys_get_temp_dir(), 'excel');
-        $objWriter->save($temp_file);   
-        $objWriter->save('php://output');
-    }
-
-
-    public function export2(Request $request)
-    {
-        $start_date = $request->start_date;
-        $end_date = $request->end_date;
-
-        $users = Waitingrepair::whereBetween('created_at', [$start_date, $end_date])
-        ->where('deleted', null)
-        ->select(
-            'date as tanggal',
-            'part_from', 
-            'code_part_repair',
-            'number_of_repair',
-            'reg_sp',
-            'section',
-            'line',
-            'machine',
-            'item_id',
-            'item_code',
-            'item_name',
-            'item_type',
-            'maker',
-            'serial_number',
-            'problem',
-            'nama_pic',
-            'price',
-            'status_repair',
-            'progress'
-            )
-        ->get();
-        
-        $header = array();
-        foreach ($users[0] as $key => $value) {
-            $header[] = $key;
+        $spreadsheet = IOFactory::load(public_path('I-Mirs Export.xlsx'));
+        $sheet = $spreadsheet->getSheetByName('Sheet Export');
+        if ($sheet == null) {
+            $sheet = new Worksheet($spreadsheet, 'Sheet Export');
+            $spreadsheet->addSheet($sheet);
         }
 
-        $filename = 'I-Mirs';
-        $file = public_path('tester.xlsx');
+        $sheet->fromArray([$header], null, 'A1');
+        $sheet->fromArray($users->toArray(), null, 'A2');
 
-        $objPHPExcel = PHPExcel_IOFactory::load($file);
-        $objPHPExcel->createSheet();
-        $objPHPExcel->setActiveSheetIndex($objPHPExcel->getSheetCount() - 1);
-        $objPHPExcel->getActiveSheet()->setTitle('New sheet');
-        $sheet = $objPHPExcel->getActiveSheet();
-            $sheet->fromArray([$header], null, 'A1');
-            $sheet->fromArray($users->toArray(), null, 'A2');
-        // $excel = Excel::create($file, function($excel) use ($users) {
-        //     $excel->sheet('Sheet 1', function($sheet) use ($users) {
-        //         $sheet->fromArray($users->toArray());
-        //     });
-        // });
+        $start_date_formatted = date("d-m-y", strtotime($start_date));
+        $end_date_formatted = date("d-m-y", strtotime($end_date));
+        $fileName = "I-Mirs Export " . $start_date_formatted . " sampai " . $end_date_formatted . ".xlsx";
 
-
-
-
-
-
-        // $objPHPExcel->createSheet();
-        // $objPHPExcel->setActiveSheetIndex($objPHPExcel->getSheetCount() - 1);
-        // $objPHPExcel->getActiveSheet()->setTitle('New sheet');
-        // $objPHPExcel->getActiveSheet()->setCellValue('A1', 'Hello world!');
-
-        $file2 = public_path('tester2.xlsx');
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save($file2);
-
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="tester2.xlsx"');
-        header('Cache-Control: max-age=0');
-
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $temp_file = tempnam(sys_get_temp_dir(), 'excel');
-        $objWriter->save($temp_file);   
-        $objWriter->save('php://output');
-        // $excel = Excel::create($filename, function($excel) use ($users) {
-        //     $excel->sheet('Sheet 1', function($sheet) use ($users) {
-        //         $sheet->fromArray($users->toArray());
-        //         $highestRow = $sheet->getHighestRow();
-        //         for ($i = 2; $i <= $highestRow; $i++) {
-        //             $cell = $sheet->getCell('A' . $i);
-        //             $cell = PHPExcel_Style_NumberFormat::NUMERIC;
-        //         $cell->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_DATETIME);
-        //         }
-        //     });
-        // });
-        // return $excel->download('xlsx');
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        return response()->stream(function () use ($writer) {
+            $writer->save('php://output');
+        }, 200, [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"'
+        ]);
     }
 }
+
+
+ // $row = $sheet->getHighestRow() + 1;
+        // $sheet->setCellValue('A1', 'Tanggal');
+        // $sheet->setCellValue('B1', 'Part From');
+        // $sheet->setCellValue('D1', 'Code Part Repair');
+        // $sheet->setCellValue('E1', 'Number of Repair');
+        // $sheet->setCellValue('F1', 'Reg SP');
+        // $sheet->setCellValue('G1', 'Section');
+        // $sheet->setCellValue('H1', 'Line');
+        // $sheet->setCellValue('I1', 'Machine');
+        // $sheet->setCellValue('J1', 'Item ID');
+        // $sheet->setCellValue('K1', 'Item Code');
+        // $sheet->setCellValue('L1', 'Item Name');
+        // $sheet->setCellValue('M1', 'Item Type');
+        // $sheet->setCellValue('N1', 'Maker');
+        // $sheet->setCellValue('P1', 'Serial Number');
+        // $sheet->setCellValue('Q1', 'Problem');
+        // $sheet->setCellValue('R1', 'Nama PIC');
+        // $sheet->setCellValue('S1', 'Price');
+        // $sheet->setCellValue('T1', 'Status Repair');
+        // $sheet->setCellValue('U1', 'Progress');
+        // foreach ($users as $user) {
+        //     $sheet->setCellValue('A' . $row, $user->name);
+        //     $sheet->setCellValue('B' . $row, $user->email);
+        //     $sheet->setCellValue('C' . $row, $user->created_at);
+        //     $row++;
+        // }
