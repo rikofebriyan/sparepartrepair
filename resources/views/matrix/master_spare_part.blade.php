@@ -229,10 +229,11 @@
         $('#modalasu').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
             var id = button.data('id'); // Extract info from data-* attributes
-
+            console.log(this);
             // Update the modal's content
             var modal = $(this);
             var form = modal.find('form');
+            console.log(form);
             modal.find('form').attr('action', "{{ route('matrix.master_spare_part.store') }}/" + id);
 
             // Populate the form with the model 's data
@@ -253,16 +254,16 @@
             });
         });
 
-        $('#exampleModal').on("shown.bs.modal", function() {
+        $('#modalasu').on("shown.bs.modal", function() {
             $(this).find(".form-control:first").focus();
         });
     </script>
     <script>
         $(function() {
             $('#myTable').DataTable({
-                // processing: true,
-                // serverSide: true,
-                "pageLength": 30,
+                processing: true,
+                serverSide: true,
+                // "pageLength": 30,
                 ajax: "{{ route('get-master') }}",
 
                 columns: [{
@@ -323,7 +324,9 @@
                     },
                     {
                         data: 'action',
-                        name: 'action'
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
                     },
                 ],
             });

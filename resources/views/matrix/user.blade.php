@@ -76,17 +76,17 @@
                                                         <select class="form-control choices" id="jabatan" name="jabatan"
                                                             required>
 
-                                                            <option value="1"
+                                                            <option value="Admin"
                                                                 @if ($req->jabatan == 'Admin') selected @endif>Admin
                                                             </option>
-                                                            <option value="2"
+                                                            <option value="Maintenance"
                                                                 @if ($req->jabatan == 'Maintenance') selected @endif>
                                                                 Maintenance
                                                             </option>
-                                                            <option value="3"
+                                                            <option value="RepairMan"
                                                                 @if ($req->jabatan == 'RepairMan') selected @endif>RepairMan
                                                             </option>
-                                                            <option value="4"
+                                                            <option value="Supervisor"
                                                                 @if ($req->jabatan == 'Supervisor') selected @endif>Supervisor
                                                             </option>
                                                         </select>
@@ -110,9 +110,10 @@
                                                             required>
                                                     </div>
                                                     <div class="form-group mt-2">
-                                                        <label for="password">Isi dengan password baru</label>
-                                                        <input type="password" id="password" name="password"
-                                                            class="form-control text-center" value="" required>
+                                                        {{-- <label for="password">Isi dengan password baru</label> --}}
+                                                        <input type="hidden" id="password" name="password"
+                                                            class="form-control text-center" value="{{ $req->password }}"
+                                                            required>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Perbarui Data</button>
                                                 </div>

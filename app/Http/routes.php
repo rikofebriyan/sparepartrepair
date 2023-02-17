@@ -37,6 +37,7 @@ Route::get('/partrepair/waitingtable/form4/{id}', 'WaitingrepairController@waiti
 Route::get('/partrepair/waitingtable/form5/{id}', 'WaitingrepairController@waitingRepairForm5')->name('partrepair.waitingtable.show.form5');
 Route::delete('/partrepair/waitingtable/{id}', 'WaitingrepairController@destroy')->name('partrepair.waitingtable.destroy');
 Route::post('/partrepair/waitingtable', 'WaitingrepairController@store')->name('partrepair.waitingtable.store');
+Route::put('/partrepair/progresstable/revision/{id}', 'ProgressrepairController@revision')->name('partrepair.progress.revision');
 
 
 Route::resource('partrepair/progresstable', 'ProgressrepairController');
@@ -71,5 +72,6 @@ Route::get('/report', 'HomeController@reportHome')->name('report');
 Route::get('/partrepair/masterdelete', 'InfoController@masterdelete')->name('part-repair-master-delete');
 Route::get('/getmaster', 'InfoController@getmaster')->name('get-master');
 Route::get('/mymodel', 'InfoController@mymodel')->name('mymodel');
+Route::get('/mymodelrevision', 'InfoController@mymodelrevision')->name('mymodelrevision');
 Route::patch('/updatemodel/{id}', 'InfoController@updatemodel');
 Route::post('/export', 'ExportController@export')->name('export');

@@ -182,13 +182,17 @@ class ProgressrepairController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @param  \Illuminate\Http\Request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $this->validate($request, [
+            'reason_revision' => 'required',
+        ]);
+        Progressrepair::find($id)->update($request->all());
+        return redirect()->back()->with('success','Section updated successfully');
     }
 
     /**
@@ -220,5 +224,19 @@ class ProgressrepairController extends Controller
         
         Progressrepair::find($id)->delete();
         return redirect()->route('partrepair.progresstable.index')->with('success','Task removed successfully');
+    }
+    public function revision(Request $request, $id)
+    {
+        $this->validate($request, [
+            'plan_finish_revision' => 'required',
+        ]);
+        $data = $request->all();
+        $data['plan_start_revision'] = Carbon::parse($request->plan_start_revision)->format('Y-m-d H:i:s');
+        $data['plan_finish_revision'] = Carbon::parse($request->plan_finish_revision)->format('Y-m-d H:i:s');
+        // dd($data);
+        Progressrepair::find($id)->update($data);
+
+        
+        return redirect()->back()->with('success','Task updated successfully');
     }
 }

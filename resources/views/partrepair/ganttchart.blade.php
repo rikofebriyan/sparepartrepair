@@ -2,33 +2,46 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
+    <style>
+        .apexcharts-toolbar {
+            position: absolute;
+            right: auto;
+            left: 10px;
+        }
+    </style>
 @endsection
 @section('content')
-    <div class="card border text-center mb-2">
-        <h3 class="m-2">GANTT CHART SCHEDULE REPAIR</h3>
+    <div class="row">
+        <div class="col-7 card border text-center mb-2 ">
+            <h3 class="m-2">GANTT CHART SCHEDULE REPAIR</h3>
+        </div>
+        <div class="col card border text-center mb-2  d-flex d-inline justify-content-center">
+            <div>Delay : <span class="badge rounded-pill border border-dark"
+                    style="background-color: #FF6d78; color:#FF6d78">FFFFFF</span>
+                On Schedule : <span class="badge rounded-pill border border-dark"
+                    style="background-color: #58bdff; color:#58bdff">FFFFFF</span>
+                Re-Schedule : <span class="badge rounded-pill border border-dark"
+                    style="background-color: #aa9958; color:#aa9958">FFFFFF</span>
+            </div>
+        </div>
     </div>
+
     <div class="row m-1" style="transition: width 0.5s">
-        <div class="card col border" style="transition: width 0.5s">
+        <div class="card col border" style="transition: width 0.5s;">
             <div id="gantt" class="m-2" style="transition: width 0.5s">
             </div>
         </div>
-        <div class="card col-4 border mx-2" id="asu" style="display: none; transition:width 0.5s; min-height:1000px">
-            <div class="row">
-                <div class="col-3">
-                    <a href="#" type="button" id="hideshow" class="btn icon icon-left btn-light border mt-2"><i
-                            data-feather="x"></i>
-                        Hide</a>
-                </div>
-            </div>
-
+        <div class="card col-4 border mx-2 small" id="asu"
+            style="display: none; transition:width 0.5s; min-height:1000px; position: fixed; right:0; top:0;">
             <div class="p-3">
-                <div class="d-flex justify-content-between">
-                    <div class="p-0">
-                        <h3>Repair Details</h3>
+                <div class="row d-flex justify-content-between align-items-center">
+                    <div class="col d-flex justify-content-between">
+                        <a href="#" type="button" id="hideshow" class="btn icon icon-left btn-light border"><i
+                                data-feather="x"></i>
+                            Hide</a>
                     </div>
-                    <div class="p-0">
-                        <a href="{{ route('home') }}"><img width="120" height="30"
-                                src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo"></a>
+                    <div class="col d-flex justify-content-between align-items-center">
+                        <h4 class="m-0">Repair Details</h4>
                     </div>
                 </div>
 
@@ -114,15 +127,95 @@
                     <label for="disabledInput" class="col-sm-3 col-form-label">Cost</label>
                     <p class="col-sm-9 align-items-center d-flex mb-0" id="price"></p>
                 </div>
+
+                <div class="divider m-0">
+                    <div class="divider-text">Plan</div>
+                </div>
+
+                <div class="row">
+                    <label for="disabledInput" class="col-sm-3 col-form-label">Plan Start</label>
+                    <p class="col-sm-9 align-items-center d-flex mb-0" id="plan_start_repair"></p>
+                </div>
+
+                <div class="row">
+                    <label for="disabledInput" class="col-sm-3 col-form-label">Plan Finish</label>
+                    <p class="col-sm-9 align-items-center d-flex mb-0" id="plan_finish_repair"></p>
+                </div>
+
+                <div class="row m-3">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1">
+                        Revision Planning
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Revision Planning</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="POST" action="">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        {{-- <input type="hidden" name="_method" value="PATCH"> --}}
+                        <input type="text" class="form-control" name="id" value="">
+
+                        <div class="mb-3 row d-flex justify-content-between align-items-center">
+                            <label for="plan_start_revision" class="col-sm-3 col-form-label">Plan Start
+                                Revision</label>
+                            <div class="col-sm-9">
+                                <input type="datetime-local" class="form-control" name="plan_start_revision"
+                                    id="plan_start_revision" value="">
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex justify-content-between align-items-center">
+                            <label for="plan_finish_revision" class="col-sm-3 col-form-label">Plan Finish
+                                Revision</label>
+                            <div class="col-sm-9">
+                                <input type="datetime-local" class="form-control" name="plan_finish_revision"
+                                    id="plan_finish_revision" value="">
+                            </div>
+                        </div>
+                        <div class="mb-3 row d-flex justify-content-between align-items-center">
+                            <label for="reason_revision" class="col-sm-3 col-form-label">Alasan Revisi?</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="reason_revision" name="reason_revision" rows="3"
+                                    placeholder="Tulis Alasan Disini"></textarea>
+                            </div>
+                        </div>
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
     </div>
 @endsection
 
 @section('script')
     <script type="text/javascript" src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/axios.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/moment.min.js') }}"></script>
     <script>
         jQuery(document).ready(function() {
             jQuery('#hideshow').on('click', function(event) {
@@ -130,9 +223,11 @@
             });
         });
     </script>
+    <script></script>
     <script>
         var data =
             <?php echo json_encode($data); ?>;
+
         var options = {
             series: [{
                     name: 'Plan',
@@ -141,14 +236,19 @@
                             {
                                 x: '{{ $dt['nama_pic'] . ' | ' . $dt['item_name'] }}',
                                 y: [
-                                    new Date('{{ $dt['plan_start_repair'] }}').getTime(),
-                                    new Date('{{ $dt['plan_finish_repair'] }}').getTime()
+                                    @if ($dt['reason_revision'] === null)
+                                        new Date('{{ $dt['plan_start_repair'] }}').getTime(),
+                                            new Date('{{ $dt['plan_finish_repair'] }}').getTime()
+                                    @else
+                                        new Date('{{ $dt['plan_start_revision'] }}').getTime(),
+                                            new Date('{{ $dt['plan_finish_revision'] }}').getTime()
+                                    @endif
                                 ],
                                 fillColor: '{{ $dt['fillcolor'] }}'
                             },
                         @endforeach
-
                     ]
+
                 },
 
             ],
@@ -158,10 +258,54 @@
                 offsetY: '15',
                 events: {
                     dataPointSelection: function(event, chartContext, config) {
+
+
+
+
+                        $('#exampleModal1').on('show.bs.modal', function(event) {
+                            var id = data[config.dataPointIndex].id;
+                            var modal = $("#exampleModal1");
+                            var form = modal.find('form');
+                            modal.find('form').attr('action',
+                                "{{ route('partrepair.progress.revision', ':id') }}".replace(/:id\/?/,
+                                    id));
+                            modal.find('form').find('input[name="id"]').val(data[config
+                                .dataPointIndex].id);
+                            modal.find('form').find('input[name="plan_start_revision"]').val(data[config
+                                .dataPointIndex].plan_start_repair);
+                            modal.find('form').find('input[name="plan_finish_revision"]').val(data[config
+                                    .dataPointIndex]
+                                .plan_finish_repair);
+
+
+                        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         $('#asu').show(300);
                         $('#reg_sp').text(data[config.dataPointIndex].reg_sp);
-                        $('#reg_sp').html(`<a href="{{ url('partrepair/waitingtable/') }}/` + data[config
-                            .dataPointIndex].id + `">` + data[config.dataPointIndex].reg_sp + '</a>');
+                        $('#reg_sp').html(
+                            `<a href="{{ url('partrepair/waitingtable/') }}/` + data[
+                                config
+                                .dataPointIndex].id + `">` + data[config.dataPointIndex]
+                            .reg_sp +
+                            '</a>');
                         $('#created_at').text(data[config.dataPointIndex].created_at);
                         $('#updated_at').text(data[config.dataPointIndex].updated_at);
                         $('#date').text(data[config.dataPointIndex].date);
@@ -177,14 +321,17 @@
                         $('#maker').text(data[config.dataPointIndex].maker);
                         $('#problem').text(data[config.dataPointIndex].problem);
                         $('#price').text(data[config.dataPointIndex].price);
-                        $('#place_of_repair').text(data[config.dataPointIndex].place_of_repair);
+                        $('#place_of_repair').text(data[config.dataPointIndex]
+                            .place_of_repair);
                         $('#status_repair').text(data[config.dataPointIndex].status_repair);
                         $('#progress').text(data[config.dataPointIndex].progress);
                         $('#item_type').text(data[config.dataPointIndex].item_type);
                         $('#analisa').text(data[config.dataPointIndex].analisa);
                         $('#action').text(data[config.dataPointIndex].action);
-                        $('#plan_start_repair').text(data[config.dataPointIndex].plan_start_repair);
-                        $('#plan_finish_repair').text(data[config.dataPointIndex].plan_finish_repair);
+                        $('#plan_start_repair').text(moment(data[config.dataPointIndex]
+                            .plan_start_repair).format('DD-MMM-YYYY'));
+                        $('#plan_finish_repair').text(moment(data[config.dataPointIndex].plan_finish_repair).format(
+                            'DD-MMM-YYYY'));
                         $('#item_type').text(data[config.dataPointIndex].item_type);
                         if (data[config.dataPointIndex].progress == "Finish") {
                             $('#finish').prop("checked", true);
@@ -237,36 +384,47 @@
                 type: 'datetime',
                 position: 'top',
             },
+            toolbar: {
+                show: true,
+            },
+            grid: {
+                show: true,
+                xaxis: {
+                    lines: {
+                        show: true
+                    }
+                },
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        fontSize: '12px', // ukuran font label
+                        lineHeight: '10000px', // jarak antara baris
+                    },
+                },
+            },
             annotations: {
 
                 xaxis: [{
                     x: new Date().getTime(),
-                    borderColor: "#ff0000",
+                    borderColor: "#00bbaa",
                     label: {
-                        text: "Hari ini",
+                        text: 'Hari ini    :',
                         style: {
                             color: "#fff",
-                            background: "#ff0000"
+                            background: "#00bbaa",
+                            fontSize: '12px',
                         }
                     }
                 }]
             },
-            // xaxis: {
-            //     x: new Date().getTime(),
-            //     borderColor: "#999",
-            //     label: {
-            //         text: "Rally",
-            //         style: {
-            //             color: "#fff",
-            //             background: "#775DD0"
-            //         }
-            //     }
-            // },
-            // xaxis: {
-            //     type: "datetime",
-            //     min: new Date("4 Feb 2023").getTime(),
-            //     tickAmount: 6
-            // },
+
+
         };
 
         var chart = new ApexCharts(document.querySelector("#gantt"), options);

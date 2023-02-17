@@ -3,17 +3,24 @@
 @section('css')
 @endsection
 @section('content')
-    <CENTER>
-        <div class="container-fluid">
-            <H2>PART REPAIR : WAITING TABLE</H2>
+    <div class="row">
+        <div class="col-8 card border text-center mb-2 ">
+            <h2 class="m-2">WAITING TABLE</h2>
         </div>
-    </CENTER>
-
+        <div class="col card border text-center mb-2 mx-2 d-flex justify-content-center">
+            <div>Near Delay : <span class="badge rounded-pill border border-dark"
+                    style="background-color: #FAFAD2; color:#FAFAD2">FFFFFF</span>
+                Delay : <span class="badge rounded-pill border border-dark"
+                    style="background-color: #FFCCCB; color:#FFCCCB">FFFFFF</span>
+            </div>
+        </div>
+    </div>
     <div class="card border-0 shadow rounded overflow-auto">
         <div class="card-body">
             <div class="d-flex d-inline justify-content-center mb-3">
                 <div class="me-2">Flow Repair : </div>
-                <button class="rounded-pill bg-dark text-white text-center px-2 border-white" id="allinput">Register</button>
+                <button class="rounded-pill bg-dark text-white text-center px-2 border-white"
+                    id="allinput">Register</button>
                 <div class="px-2"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="rounded-pill bg-secondary text-white text-center px-2 border-white"
                     id="waiting">Waiting</button>

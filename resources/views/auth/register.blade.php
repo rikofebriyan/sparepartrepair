@@ -72,8 +72,6 @@
                                 <option selected disabled>Pilih Role</option>
                                 <option>Maintenance</option>
                                 <option>RepairMan</option>
-                                <option>Supervisor</option>
-                                <option>Admin</option>
                             </select>
                             <div class="form-control-icon">
 

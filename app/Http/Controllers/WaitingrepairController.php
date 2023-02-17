@@ -46,6 +46,7 @@ class WaitingrepairController extends Controller
             ->where('progress', '<>', 'finish')
             ->where('progress', '<>', 'Scrap')
             ->where('approval', '<>', null)
+            ->orderBy('id')
             ->get();
         // dd($partr);
         return view('partrepair.waitingtable', [

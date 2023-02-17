@@ -33,7 +33,9 @@ class CreateProgressrepairsTable extends Migration
             $table->integer('lead_time')->nullable();
             $table->string('time_period')->nullable();
             $table->string('nomor_pp')->nullable();
-            $table->string('nomor_po')->nullable();
+            $table->string('reason_revision')->nullable();
+            $table->dateTime('plan_start_revision')->nullable();
+            $table->dateTime('plan_finish_revision')->nullable();
         });
     }
 
