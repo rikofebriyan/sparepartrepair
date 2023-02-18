@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('css')
+    {{-- <style>
+        .dataTables_wrapper table {
+            font-size: 14px;
+        }
+    </style> --}}
 @endsection
 @section('content')
     <div class="row">
@@ -42,6 +47,7 @@
                             <th scope="col">Plan Start</th>
                             <th scope="col">Plan Finish</th>
                             <th scope="col">Spare Part</th>
+                            <th scope="col">Item Code</th>
                             <th scope="col">Problem</th>
                             <th class="text-center" scope="col">Status Repair</th>
                             <th class="text-center" scope="col">Progress</th>
@@ -67,6 +73,7 @@
                                     @endif
                                 </td>
                                 <td>{{ $req->item_name }}</td>
+                                <td>{{ $req->item_code }}</td>
                                 <td>{{ $req->problem }}</td>
                                 <td class="text-center"><span
                                         class="@if ($req->status_repair == 'Urgent') bg-danger text-white px-3 py-2 rounded-pill @endif">{{ $req->status_repair }}</span>
