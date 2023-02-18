@@ -36,6 +36,7 @@ class CreateProgressrepairsTable extends Migration
             $table->string('reason_revision')->nullable();
             $table->dateTime('plan_start_revision')->nullable();
             $table->dateTime('plan_finish_revision')->nullable();
+            $table->dateTime('notified_at')->nullable();
         });
     }
 
