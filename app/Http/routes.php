@@ -75,3 +75,6 @@ Route::get('/mymodel', 'InfoController@mymodel')->name('mymodel');
 Route::get('/mymodelrevision', 'InfoController@mymodelrevision')->name('mymodelrevision');
 Route::patch('/updatemodel/{id}', 'InfoController@updatemodel');
 Route::post('/export', 'ExportController@export')->name('export');
+// Route::get('/write-email', 'OutlookController@writeEmail');
+
+// Route::get('/send-email', 'EmailController@sendEmail');

@@ -27,7 +27,7 @@ class GanttchartController extends Controller
     {
         $join = DB::table('waitingrepairs')
             ->join('progressrepairs', 'waitingrepairs.id', '=', 'progressrepairs.form_input_id')
-            ->select('waitingrepairs.*', 'progressrepairs.place_of_repair', 'progressrepairs.analisa', 'progressrepairs.action', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair', 'progressrepairs.actual_start_repair', 'progressrepairs.actual_finish_repair', 'progressrepairs.plan_start_revision', 'progressrepairs.plan_finish_revision', 'progressrepairs.reason_revision')
+            ->select('waitingrepairs.*', 'progressrepairs.place_of_repair', 'progressrepairs.analisa', 'progressrepairs.action', 'progressrepairs.plan_start_repair', 'progressrepairs.plan_finish_repair', 'progressrepairs.actual_start_repair', 'progressrepairs.actual_finish_repair', 'progressrepairs.plan_start_revision', 'progressrepairs.plan_finish_revision', 'progressrepairs.reason_revision', 'progressrepairs.id as progressid')
             ->where('progress', '<>', 'finish')
             ->where('progress', '<>', 'Scrap')
             ->where('approval', '<>', null)
@@ -84,6 +84,7 @@ class GanttchartController extends Controller
                     'plan_start_revision' => $value->plan_start_revision,
                     'plan_finish_revision' => $value->plan_finish_revision,
                     'reason_revision' => $value->reason_revision,
+                    'progressid' => $value->progressid,
                     'fillcolor' => $fillcolor,
 
                 ];

@@ -170,7 +170,7 @@
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         {{-- <input type="hidden" name="_method" value="PATCH"> --}}
-                        <input type="text" class="form-control" name="id" value="">
+                        <input type="hidden" class="form-control" name="id" value="">
 
                         <div class="mb-3 row d-flex justify-content-between align-items-center">
                             <label for="plan_start_revision" class="col-sm-3 col-form-label">Plan Start
@@ -263,7 +263,7 @@
 
 
                         $('#exampleModal1').on('show.bs.modal', function(event) {
-                            var id = data[config.dataPointIndex].id;
+                            var id = data[config.dataPointIndex].progressid;
                             var modal = $("#exampleModal1");
                             var form = modal.find('form');
                             modal.find('form').attr('action',
