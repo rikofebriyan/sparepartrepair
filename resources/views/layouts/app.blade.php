@@ -160,6 +160,11 @@
                                                 href="{{ route('deletedtable') }}" class='submenu-link'>Deleted
                                                 Table</a>
                                         </li>
+                                        <li class="submenu-item  ">
+                                            <a class="list-group-item list-group-item-action list-group-item-light"
+                                                href="{{ route('partrepair.registeredticket.index') }}"
+                                                class='submenu-link'>Total Registered</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
