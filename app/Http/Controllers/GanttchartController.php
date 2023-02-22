@@ -34,6 +34,7 @@ class GanttchartController extends Controller
             ->orderBy('reg_sp', 'desc')
             ->get();
         $count = count(collect($join));
+        // dd($count);
 
 
         if ($join != null) {
@@ -41,7 +42,7 @@ class GanttchartController extends Controller
 
                 $date1 = Carbon::now();
                 $date2 = Carbon::parse($value->plan_finish_repair);
-                // dd($value->reason_revision);
+                $date3 = Carbon::parse($value->plan_finish_revision);
                 if ($value->reason_revision != null) {
                     $fillcolor = '#aa9958';
                 } else {
@@ -54,7 +55,14 @@ class GanttchartController extends Controller
                     }
                 }
                 
-                // dd($days);
+                    if ($date1->gt($date3)) {
+                        $days = $date1->diffInDays($date3) * -1;
+                        $fillcolorrev = '#dc3545';
+                    } else {
+                        $days = $date3->diffInDays($date1);
+                        $fillcolorrev = '';
+                    }
+            
                 $data[$index] = [
                     'id' => $value->id,
                     'created_at' => $value->created_at,
@@ -86,14 +94,13 @@ class GanttchartController extends Controller
                     'reason_revision' => $value->reason_revision,
                     'progressid' => $value->progressid,
                     'fillcolor' => $fillcolor,
+                    'fillcolorrev' => $fillcolorrev,
 
                 ];
             }
         } else {
             return redirect()->back()->with('no_waiting_part', 'No Schedule Waiting Part Repair');
         }
-
-        // dd($data);
         return view('partrepair/ganttchart', [
             'count' => $count,
             'data' => $data

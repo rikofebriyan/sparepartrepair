@@ -230,11 +230,13 @@ class ProgressrepairController extends Controller
         $this->validate($request, [
             'plan_finish_revision' => 'required',
         ]);
-        $data = $request->all();
+        $data['reason_revision'] = $request->reason_revision;
         $data['plan_start_revision'] = Carbon::parse($request->plan_start_revision)->format('Y-m-d H:i:s');
         $data['plan_finish_revision'] = Carbon::parse($request->plan_finish_revision)->format('Y-m-d H:i:s');
-        // dd($data);
-        Progressrepair::find($id)->update($data);
+        // dd($request->id);
+        // Progressrepair::find($request->id)->update($data);
+        progressrepair::where('form_input_id', $id)->first()->update($data);
+
 
         
         return redirect()->back()->with('success','Task updated successfully');

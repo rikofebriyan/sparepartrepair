@@ -138,8 +138,8 @@
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Plan Finish</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="plan_finish_repair"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label">Plan Revision</label>
+                    <p class="col-sm-9 align-items-center d-flex mb-0" id="plan_start_revision"></p>
                 </div>
 
                 <div class="row m-3">
@@ -192,7 +192,7 @@
                             <label for="reason_revision" class="col-sm-3 col-form-label">Alasan Revisi?</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="reason_revision" name="reason_revision" rows="3"
-                                    placeholder="Tulis Alasan Disini"></textarea>
+                                    placeholder="Tulis Alasan Disini" required></textarea>
                             </div>
                         </div>
 
@@ -228,23 +228,29 @@
         var data =
             <?php echo json_encode($data); ?>;
 
+
         var options = {
             series: [{
                     name: 'Plan',
                     data: [
-                        @foreach ($data as $dt)
+                        @foreach ($data as $index => $dt)
                             {
-                                x: '{{ $dt['nama_pic'] . ' | ' . $dt['item_name'] }}',
+                                x: '{{ $index + 1 }}.{{ $dt['nama_pic'] . ' | ' . $dt['item_name'] }}',
                                 y: [
-                                    @if ($dt['reason_revision'] === null)
-                                        new Date('{{ $dt['plan_start_repair'] }}').getTime(),
-                                            new Date('{{ $dt['plan_finish_repair'] }}').getTime()
-                                    @else
-                                        new Date('{{ $dt['plan_start_revision'] }}').getTime(),
-                                            new Date('{{ $dt['plan_finish_revision'] }}').getTime()
-                                    @endif
+                                    new Date('{{ $dt['plan_start_repair'] }}').getTime(),
+                                    new Date('{{ $dt['plan_finish_repair'] }}').getTime()
                                 ],
-                                fillColor: '{{ $dt['fillcolor'] }}'
+                                fillColor: '{{ $dt['fillcolor'] }}',
+                            },
+                        @endforeach
+                        @foreach ($data as $index => $dt)
+                            {
+                                x: '{{ $index + 1 }}.{{ $dt['nama_pic'] . ' | ' . $dt['item_name'] }}',
+                                y: [
+                                    new Date('{{ $dt['plan_start_revision'] }}').getTime(),
+                                    new Date('{{ $dt['plan_finish_revision'] }}').getTime()
+                                ],
+                                fillColor: '{{ $dt['fillcolorrev'] }}'
                             },
                         @endforeach
                     ]
@@ -256,25 +262,33 @@
                 height: ({{ $count }} * 40) + 100,
                 type: 'rangeBar',
                 offsetY: '15',
-                events: {
-                    dataPointSelection: function(event, chartContext, config) {
+                events:
 
+                {
+                    dataPointSelection: function(event, chartContext, config) {
+                        var count = {{ $count }};
+                        if (config.dataPointIndex >= count) {
+                            var datapoint = config.dataPointIndex - count;
+                        } else {
+                            var datapoint = config.dataPointIndex;
+                        };
+                        // console.log(data[datapoint]);
 
 
 
                         $('#exampleModal1').on('show.bs.modal', function(event) {
-                            var id = data[config.dataPointIndex].progressid;
+                            var id = data[datapoint].id;
                             var modal = $("#exampleModal1");
                             var form = modal.find('form');
                             modal.find('form').attr('action',
-                                "{{ route('partrepair.progress.revision', ':id') }}".replace(/:id\/?/,
+                                "{{ route('partrepair.progress.revision', ':id') }}".replace(
+                                    /:id\/?/,
                                     id));
-                            modal.find('form').find('input[name="id"]').val(data[config
-                                .dataPointIndex].id);
-                            modal.find('form').find('input[name="plan_start_revision"]').val(data[config
-                                .dataPointIndex].plan_start_repair);
-                            modal.find('form').find('input[name="plan_finish_revision"]').val(data[config
-                                    .dataPointIndex]
+                            modal.find('form').find('input[name="id"]').val(data[datapoint].id);
+                            modal.find('form').find('input[name="plan_start_revision"]').val(data[
+                                datapoint].plan_finish_repair);
+                            modal.find('form').find('input[name="plan_finish_revision"]').val(data[
+                                    datapoint]
                                 .plan_finish_repair);
 
 
@@ -299,47 +313,51 @@
 
 
                         $('#asu').show(300);
-                        $('#reg_sp').text(data[config.dataPointIndex].reg_sp);
+                        $('#reg_sp').text(data[datapoint].reg_sp);
                         $('#reg_sp').html(
                             `<a href="{{ url('partrepair/waitingtable/') }}/` + data[
-                                config
-                                .dataPointIndex].id + `">` + data[config.dataPointIndex]
+                                datapoint].id + `">` + data[datapoint]
                             .reg_sp +
                             '</a>');
-                        $('#created_at').text(data[config.dataPointIndex].created_at);
-                        $('#updated_at').text(data[config.dataPointIndex].updated_at);
-                        $('#date').text(data[config.dataPointIndex].date);
-                        $('#nama_pic').text(data[config.dataPointIndex].nama_pic);
-                        $('#item_name').text(data[config.dataPointIndex].item_name);
-                        $('#date').text(data[config.dataPointIndex].date);
-                        $('#part_from').text(data[config.dataPointIndex].part_from);
-                        $('#section').text(data[config.dataPointIndex].section);
-                        $('#line').text(data[config.dataPointIndex].line);
-                        $('#machine').text(data[config.dataPointIndex].machine);
-                        $('#item_code').text(data[config.dataPointIndex].item_code);
-                        $('#item_type').text(data[config.dataPointIndex].item_type);
-                        $('#maker').text(data[config.dataPointIndex].maker);
-                        $('#problem').text(data[config.dataPointIndex].problem);
-                        $('#price').text(data[config.dataPointIndex].price);
-                        $('#place_of_repair').text(data[config.dataPointIndex]
+                        $('#created_at').text(data[datapoint].created_at);
+                        $('#updated_at').text(data[datapoint].updated_at);
+                        $('#date').text(data[datapoint].date);
+                        $('#nama_pic').text(data[datapoint].nama_pic);
+                        $('#item_name').text(data[datapoint].item_name);
+                        $('#date').text(data[datapoint].date);
+                        $('#part_from').text(data[datapoint].part_from);
+                        $('#section').text(data[datapoint].section);
+                        $('#line').text(data[datapoint].line);
+                        $('#machine').text(data[datapoint].machine);
+                        $('#item_code').text(data[datapoint].item_code);
+                        $('#item_type').text(data[datapoint].item_type);
+                        $('#maker').text(data[datapoint].maker);
+                        $('#problem').text(data[datapoint].problem);
+                        $('#price').text(data[datapoint].price);
+                        $('#place_of_repair').text(data[datapoint]
                             .place_of_repair);
-                        $('#status_repair').text(data[config.dataPointIndex].status_repair);
-                        $('#progress').text(data[config.dataPointIndex].progress);
-                        $('#item_type').text(data[config.dataPointIndex].item_type);
-                        $('#analisa').text(data[config.dataPointIndex].analisa);
-                        $('#action').text(data[config.dataPointIndex].action);
-                        $('#plan_start_repair').text(moment(data[config.dataPointIndex]
-                            .plan_start_repair).format('DD-MMM-YYYY'));
-                        $('#plan_finish_repair').text(moment(data[config.dataPointIndex].plan_finish_repair).format(
-                            'DD-MMM-YYYY'));
-                        $('#item_type').text(data[config.dataPointIndex].item_type);
-                        if (data[config.dataPointIndex].progress == "Finish") {
+                        $('#status_repair').text(data[datapoint].status_repair);
+                        $('#progress').text(data[datapoint].progress);
+                        $('#item_type').text(data[datapoint].item_type);
+                        $('#analisa').text(data[datapoint].analisa);
+                        $('#action').text(data[datapoint].action);
+                        $('#id').text(data[datapoint].progressid);
+                        $('#plan_start_repair').text(moment(data[datapoint]
+                            .plan_start_repair).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
+                                datapoint]
+                            .plan_finish_repair).format('DD-MMM-YYYY'));
+                        $('#plan_start_revision').text(moment(data[datapoint]
+                            .plan_start_revision).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
+                                datapoint]
+                            .plan_finish_revision).format('DD-MMM-YYYY'));
+                        $('#item_type').text(data[datapoint].item_type);
+                        if (data[datapoint].progress == "Finish") {
                             $('#finish').prop("checked", true);
-                        } else if (data[config.dataPointIndex].progress == "Trial") {
+                        } else if (data[datapoint].progress == "Trial") {
                             $('#trial').prop("checked", true);
-                        } else if (data[config.dataPointIndex].progress == "Seal Kit") {
+                        } else if (data[datapoint].progress == "Seal Kit") {
                             $('#sealkit').prop("checked", true);
-                        } else if (data[config.dataPointIndex].progress == "On Progress") {
+                        } else if (data[datapoint].progress == "On Progress") {
                             $('#progress2').prop("checked", true);
                         } else {
                             $('#waiting').prop("checked", true);
@@ -354,7 +372,12 @@
                     var a = new Date(val[0]).getTime();
                     var b = new Date(val[1]).getTime();
                     var diff = Math.ceil((b - a) / (1000 * 3600 * 24));
-                    return diff + (diff > 1 ? ' days' : ' day');
+                    if (diff >= 1) {
+                        return diff + (diff > 1 ? ' days' : ' day');
+                    } else {
+                        return ''
+                    }
+
                 },
                 offsetX: 0,
             },

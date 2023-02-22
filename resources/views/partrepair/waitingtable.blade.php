@@ -227,22 +227,22 @@
             var table = $('#myTable').DataTable();
 
             $('#allinput').click(function() {
-                table.column(6).search('').draw();
+                table.column(7).search('').draw();
             });
             $('#waiting').click(function() {
-                table.column(6).search('waiting').draw();
+                table.column(7).search('waiting').draw();
             });
             $('#progress').click(function() {
-                table.column(6).search('progress').draw();
+                table.column(7).search('progress').draw();
             });
             $('#sealkit').click(function() {
-                table.column(6).search('Seal Kit').draw();
+                table.column(7).search('Seal Kit').draw();
             });
             $('#trial').click(function() {
-                table.column(6).search('Trial').draw();
+                table.column(7).search('Trial').draw();
             });
             $('#finish').click(function() {
-                table.column(6).search('Finish').draw();
+                table.column(7).search('Finish').draw();
             });
 
             var waiting = "{{ $progress }}";
@@ -250,7 +250,7 @@
                 $('#waiting').click();
             }
             if (waiting == "progress") {
-                table.column(6).search('^((?!waiting).)*$', true, false).draw();
+                table.column(7).search('^((?!waiting).)*$', true, false).draw();
             }
 
         });
