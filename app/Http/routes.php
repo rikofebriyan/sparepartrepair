@@ -38,6 +38,7 @@ Route::get('/partrepair/waitingtable/form5/{id}', 'WaitingrepairController@waiti
 Route::delete('/partrepair/waitingtable/{id}', 'WaitingrepairController@destroy')->name('partrepair.waitingtable.destroy');
 Route::post('/partrepair/waitingtable', 'WaitingrepairController@store')->name('partrepair.waitingtable.store');
 Route::put('/partrepair/progresstable/revision/{id}', 'ProgressrepairController@revision')->name('partrepair.progress.revision');
+Route::put('/partrepair/progresstable/delay/{id}', 'ProgressrepairController@delay')->name('partrepair.progress.delay');
 
 
 Route::resource('partrepair/progresstable', 'ProgressrepairController');

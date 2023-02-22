@@ -75,28 +75,28 @@
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">No. Ticket</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="reg_sp"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">No. Ticket</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="reg_sp"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">PIC Repair</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="nama_pic"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">PIC Repair</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="nama_pic"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Item Name</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="item_name"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Item Name</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="item_name"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Progress</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="progress"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Progress</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="progress"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Repair Place</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="place_of_repair"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Repair Place</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="place_of_repair"></p>
                 </div>
 
                 <div class="divider m-0">
@@ -104,18 +104,18 @@
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Problem</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="problem"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Problem</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="problem"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Analisa</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="analisa"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Analisa</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="analisa"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Action</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="action"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Action</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="action"></p>
                 </div>
 
 
@@ -124,8 +124,8 @@
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Cost</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="price"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Cost</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="price"></p>
                 </div>
 
                 <div class="divider m-0">
@@ -133,21 +133,36 @@
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Plan Start</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="plan_start_repair"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Plan Start</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="plan_start_repair"></p>
                 </div>
 
                 <div class="row">
-                    <label for="disabledInput" class="col-sm-3 col-form-label">Plan Revision</label>
-                    <p class="col-sm-9 align-items-center d-flex mb-0" id="plan_start_revision"></p>
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Plan Revision</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="plan_start_revision"></p>
                 </div>
 
-                <div class="row m-3">
+                <div class="row">
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Delay Reason</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="reason_delay"></p>
+                </div>
+
+                <div class="row">
+                    <label for="disabledInput" class="col-sm-3 col-form-label p-1">Revisi Reason</label>
+                    <p class="col-sm-9 align-items-center d-flex m-0 p-1" id="reason_revision"></p>
+                </div>
+
+                <div class="row m-1">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal1">
-                        Revision Planning
+                    <button type="button" class="btn btn-danger col m-1" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
+                        Delay Reason
                     </button>
+                    <button type="button" class="btn btn-primary col m-1" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal1">
+                        Revision Plan
+                    </button>
+
                 </div>
 
             </div>
@@ -192,6 +207,43 @@
                             <label for="reason_revision" class="col-sm-3 col-form-label">Alasan Revisi?</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" id="reason_revision" name="reason_revision" rows="3"
+                                    placeholder="Tulis Alasan Disini" required></textarea>
+                            </div>
+                        </div>
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Revision Planning</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="POST" action="">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
+                        {{-- <input type="hidden" name="_method" value="PATCH"> --}}
+                        <input type="text" class="form-control" name="id" value="">
+
+                        <div class="mb-3 row d-flex justify-content-between align-items-center">
+                            <label for="reason_delay" class="col-sm-3 col-form-label">Alasan Delay?</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="reason_delay" name="reason_delay" rows="3"
                                     placeholder="Tulis Alasan Disini" required></textarea>
                             </div>
                         </div>
@@ -294,6 +346,19 @@
 
                         });
 
+                        $('#exampleModal2').on('show.bs.modal', function(event) {
+                            var id = data[datapoint].id;
+                            var modal = $("#exampleModal2");
+                            var form = modal.find('form');
+                            modal.find('form').attr('action',
+                                "{{ route('partrepair.progress.delay', ':id') }}".replace(
+                                    /:id\/?/,
+                                    id));
+                            modal.find('form').find('input[name="id"]').val(data[datapoint].id);
+
+
+                        });
+
 
 
 
@@ -350,6 +415,8 @@
                             .plan_start_revision).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
                                 datapoint]
                             .plan_finish_revision).format('DD-MMM-YYYY'));
+                        $('#reason_delay').text(data[datapoint].reason_delay);
+                        $('#reason_revision').text(data[datapoint].reason_revision);
                         $('#item_type').text(data[datapoint].item_type);
                         if (data[datapoint].progress == "Finish") {
                             $('#finish').prop("checked", true);

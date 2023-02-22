@@ -241,4 +241,18 @@ class ProgressrepairController extends Controller
         
         return redirect()->back()->with('success','Task updated successfully');
     }
+
+    public function delay(Request $request, $id)
+    {
+        $this->validate($request, [
+            'reason_delay' => 'required',
+        ]);
+        $data['reason_delay'] = $request->reason_delay;
+        // dd($data);
+        progressrepair::where('form_input_id', $id)->first()->update($data);
+
+
+        
+        return redirect()->back()->with('success','Task updated successfully');
+    }
 }
