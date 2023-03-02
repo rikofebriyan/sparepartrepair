@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login - Spare Part System</title>
     <!-- Styles -->
     <link href="{{ asset('assets/css/main/app.css') }}" rel="stylesheet">
@@ -22,8 +23,7 @@
                 <div id="auth-left">
                     <div class="card">
                         <a href="{{ route('home') }}"><img class="rounded mx-auto d-block"
-                                src="{{ asset('assets/images/logo/logo.png') }}" width="160"
-                                alt="Logo"></a>
+                                src="{{ asset('assets/images/logo/logo.png') }}" width="160" alt="Logo"></a>
                     </div>
                     <center>
                         <h1>Spare Part Repair</h1>
@@ -33,7 +33,8 @@
                     <form role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" id="NPK" name="NPK" class="form-control form-control-xl @if($errors->has('NPK')) is-invalid @endif"
+                            <input type="text" id="NPK" name="NPK"
+                                class="form-control form-control-xl @if ($errors->has('NPK')) is-invalid @endif"
                                 placeholder="NPK" value="{{ old('NPK') }}">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
