@@ -30,7 +30,17 @@
 
                         <p>Silahkan Registrasi menggunakan NPK anda</p>
                     </center>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            <strong>{{ session('error') }}</strong>
+                        </div>
+                    @endif
+                    @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        <strong>{{ session('success') }}</strong>
+                    </div>
+                @endif
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('submit-register') }}">
                         {{ csrf_field() }}
 
 
@@ -68,36 +78,42 @@
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <select type="text" id="jabatan" name="jabatan" class="form-control form-control-xl"
-                                placeholder="Jabatan" value="{{ old('jabatan') }}">
-                                <option selected disabled>Pilih Role</option>
-                                <option>Maintenance</option>
-                                <option>RepairMan</option>
+                            {{-- {{ dd($errors) }} --}}
+                            <select type="text" id="jabatan" name="jabatan"
+                                class="form-control form-control-xl @if ($errors->has('jabatan')) is-invalid @endif"
+                                placeholder="Jabatan">
+                                <option value="">Pilih Role</option>
+                                <option value="Maintenance" @if ($errors->first('jabatan') == 'Maintenance') selected @endif>
+                                    Maintenance</option>
+                                <option value="RepairMan" @if ($errors->first('jabatan') == 'RepairMan') selected @endif>RepairMan
+                                </option>
                             </select>
                             <div class="form-control-icon">
+                                <i class="bi bi-c-circle"></i>
+                            </div>
 
+                            <div class="invalid-feedback">
                                 @if ($errors->has('jabatan'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('jabatan') }}</strong>
                                     </span>
                                 @endif
-
-                                <i class="bi bi-c-circle"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="email" id="email" name="email" class="form-control form-control-xl"
+                            <input type="email" id="email" name="email"
+                                class="form-control form-control-xl @if ($errors->has('email')) is-invalid @endif"
                                 placeholder="Email" value="{{ old('email') }}">
                             <div class="form-control-icon">
-
+                                <i class="bi bi-envelope-heart"></i>
+                            </div>
+                            <div class="invalid-feedback">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-
-                                <i class="bi bi-envelope-heart"></i>
                             </div>
                         </div>
 
@@ -120,17 +136,17 @@
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" id="password_confirm" name="password_confirmation"
-                                class="form-control form-control-xl" placeholder="Konfirmasi Password"
-                                value="{{ old('password_confirm') }}">
+                                class="form-control form-control-xl @if ($errors->has('password_confirmation')) is-invalid @endif" placeholder="Konfirmasi Password"
+                                value="{{ old('password_confirmation') }}">
                             <div class="form-control-icon">
-
-                                @if ($errors->has('password_confirm'))
+                                <i class="bi bi-key"></i>
+                            </div>
+                            <div class="invalid-feedback">
+                                @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirm') }}</strong>
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
                                 @endif
-
-                                <i class="bi bi-key"></i>
                             </div>
                         </div>
 

@@ -30,7 +30,7 @@
 
                         <p>Silahkan Login menggunakan NPK anda</p>
                     </center>
-                    <form role="form" method="POST" action="{{ url('/login') }}">
+                    <form role="form" method="post" action="{{ route('submit-login') }}">
                         {{ csrf_field() }}
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" id="NPK" name="NPK"
@@ -71,7 +71,7 @@
                         <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-5">
-                        <p class="text-gray-600">Don't have an account? <a href="{{ url('/register') }}"
+                        <p class="text-gray-600">Don't have an account? <a href="{{ route('register') }}"
                                 class="font-bold">Signup</a>.</p>
                         {{-- <p><a class="font-bold" href="{{ url('/password/reset') }}">Forgot password?</a>.</p> --}}
                     </div>

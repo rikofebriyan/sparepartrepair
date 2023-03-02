@@ -11,8 +11,14 @@
 |
 */
 
+// login routes
+Route::get('/login', 'LoginController@login')->name('login')->middleware('guest');
+Route::post('/submit-login', 'LoginController@submitLogin')->name('submit-login')->middleware('guest');
+Route::get('/logout', 'LoginController@logout')->name('logout')->middleware('auth');
+Route::get('/register', 'LoginController@register')->name('register')->middleware('guest');
+Route::post('/submit-register', 'LoginController@submitRegister')->name('submit-register')->middleware('guest');
 
-Route::auth();
+// Route::auth();
 
 Route::group(['middleware' => ['auth', 'ADMIN']], function () {
     Route::resource('matrix/user', 'UserController');
