@@ -411,13 +411,34 @@
                             .plan_start_repair).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
                                 datapoint]
                             .plan_finish_repair).format('DD-MMM-YYYY'));
-                        $('#plan_start_revision').text(moment(data[datapoint]
-                            .plan_start_revision).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
-                                datapoint]
-                            .plan_finish_revision).format('DD-MMM-YYYY'));
-                        $('#reason_delay').text(data[datapoint].reason_delay);
-                        $('#reason_revision').text(data[datapoint].reason_revision);
+
+                        if (data[datapoint].plan_start_revision == null) {
+                            $('#plan_start_revision').text("--");
+                        } else {
+                            $('#plan_start_revision').text(moment(data[datapoint]
+                                .plan_start_revision).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
+                                    datapoint]
+                                .plan_finish_revision).format('DD-MMM-YYYY'));
+                        }
+
+
+
+                        if (data[datapoint].reason_delay == null) {
+                            $('#reason_delay').text("--");
+                        } else {
+                            $('#reason_delay').text(data[datapoint].reason_delay);
+                        }
+
+                        if (data[datapoint].reason_revision == null) {
+                            $('#reason_revision').text("--");
+                        } else {
+                            $('#reason_revision').text(data[datapoint].reason_revision);
+                        }
+
+
                         $('#item_type').text(data[datapoint].item_type);
+
+
                         if (data[datapoint].progress == "Finish") {
                             $('#finish').prop("checked", true);
                         } else if (data[datapoint].progress == "Trial") {
@@ -502,12 +523,12 @@
 
                 xaxis: [{
                     x: new Date().getTime(),
-                    borderColor: "#00bbaa",
+                    borderColor: "#ff0000",
                     label: {
                         text: 'Hari ini    :',
                         style: {
                             color: "#fff",
-                            background: "#00bbaa",
+                            background: "#ff0000",
                             fontSize: '12px',
                         }
                     }
