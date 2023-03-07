@@ -229,7 +229,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Revision Planning</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Alasan Delay</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -238,7 +238,7 @@
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         {{-- <input type="hidden" name="_method" value="PATCH"> --}}
-                        <input type="text" class="form-control" name="id" value="">
+                        <input type="hidden" class="form-control" name="id" value="">
 
                         <div class="mb-3 row d-flex justify-content-between align-items-center">
                             <label for="reason_delay" class="col-sm-3 col-form-label">Alasan Delay?</label>
