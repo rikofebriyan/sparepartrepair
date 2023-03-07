@@ -229,7 +229,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Revision Planning</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Alasan Delay</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -238,7 +238,7 @@
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         {{-- <input type="hidden" name="_method" value="PATCH"> --}}
-                        <input type="text" class="form-control" name="id" value="">
+                        <input type="hidden" class="form-control" name="id" value="">
 
                         <div class="mb-3 row d-flex justify-content-between align-items-center">
                             <label for="reason_delay" class="col-sm-3 col-form-label">Alasan Delay?</label>
@@ -411,13 +411,34 @@
                             .plan_start_repair).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
                                 datapoint]
                             .plan_finish_repair).format('DD-MMM-YYYY'));
-                        $('#plan_start_revision').text(moment(data[datapoint]
-                            .plan_start_revision).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
-                                datapoint]
-                            .plan_finish_revision).format('DD-MMM-YYYY'));
-                        $('#reason_delay').text(data[datapoint].reason_delay);
-                        $('#reason_revision').text(data[datapoint].reason_revision);
+
+                        if (data[datapoint].plan_start_revision == null) {
+                            $('#plan_start_revision').text("--");
+                        } else {
+                            $('#plan_start_revision').text(moment(data[datapoint]
+                                .plan_start_revision).format('DD-MMM-YYYY') + '  s/d  ' + moment(data[
+                                    datapoint]
+                                .plan_finish_revision).format('DD-MMM-YYYY'));
+                        }
+
+
+
+                        if (data[datapoint].reason_delay == null) {
+                            $('#reason_delay').text("--");
+                        } else {
+                            $('#reason_delay').text(data[datapoint].reason_delay);
+                        }
+
+                        if (data[datapoint].reason_revision == null) {
+                            $('#reason_revision').text("--");
+                        } else {
+                            $('#reason_revision').text(data[datapoint].reason_revision);
+                        }
+
+
                         $('#item_type').text(data[datapoint].item_type);
+
+
                         if (data[datapoint].progress == "Finish") {
                             $('#finish').prop("checked", true);
                         } else if (data[datapoint].progress == "Trial") {
@@ -502,12 +523,12 @@
 
                 xaxis: [{
                     x: new Date().getTime(),
-                    borderColor: "#00bbaa",
+                    borderColor: "#ff0000",
                     label: {
                         text: 'Hari ini    :',
                         style: {
                             color: "#fff",
-                            background: "#00bbaa",
+                            background: "#ff0000",
                             fontSize: '12px',
                         }
                     }

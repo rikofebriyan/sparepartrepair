@@ -19,11 +19,15 @@
     <div id="auth">
 
         <div class="row h-100">
+
+
             <div class="col-lg-6 col-12">
-                <div id="auth-left">
+
+                <div id="auth-left" class="py-3">
+                    <a href="home" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Kembali</a>
                     <div class="card">
-                        <a href=""><img class="rounded mx-auto d-block" src="assets/images/logo/logo.svg"
-                                width="160" height="80" alt="Logo"></a>
+                        <a href="{{ route('home') }}"><img class="rounded mx-auto d-block"
+                                src="{{ asset('assets/images/logo/logo.png') }}" width="160" alt="Logo"></a>
                     </div>
                     <center>
                         <h1>Registration</h1>
@@ -36,11 +40,12 @@
                         </div>
                     @endif
                     @if (session()->has('success'))
-                    <div class="alert alert-success">
-                        <strong>{{ session('success') }}</strong>
-                    </div>
-                @endif
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('submit-register') }}">
+                        <div class="alert alert-success">
+                            <strong>{{ session('success') }}</strong>
+                        </div>
+                    @endif
+                    <form class="form-horizontal" role="form" method="POST"
+                        action="{{ route('submit-register') }}">
                         {{ csrf_field() }}
 
 
@@ -136,8 +141,8 @@
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" id="password_confirm" name="password_confirmation"
-                                class="form-control form-control-xl @if ($errors->has('password_confirmation')) is-invalid @endif" placeholder="Konfirmasi Password"
-                                value="{{ old('password_confirmation') }}">
+                                class="form-control form-control-xl @if ($errors->has('password_confirmation')) is-invalid @endif"
+                                placeholder="Konfirmasi Password" value="{{ old('password_confirmation') }}">
                             <div class="form-control-icon">
                                 <i class="bi bi-key"></i>
                             </div>
@@ -154,7 +159,7 @@
 
                         <div class="form-group">
                             <button type="submit"
-                                class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Register</button>
+                                class="btn btn-primary btn-block btn-lg shadow-lg mt-3">Register</button>
                         </div>
 
 

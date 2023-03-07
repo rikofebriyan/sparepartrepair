@@ -10,7 +10,7 @@
                 <div class="col align-self-end">
                     <a href="{{ route('partrepair.registeredticket.index') }}">
                         <h3 class="text-end align-middle mb-0">
-                            Total Registered : {{ $data['total_registered'] }}
+                            History Ticket : {{ $data['total_registered'] }}
                             <i class="fa fa-tools mb-1"></i>
                         </h3>
                     </a>

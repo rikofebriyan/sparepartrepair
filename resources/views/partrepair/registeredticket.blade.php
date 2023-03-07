@@ -5,7 +5,7 @@
 @section('content')
     <CENTER>
         <div class="container-fluid">
-            <H2>ALL REGISTERED TICKET</H2>
+            <H2>ALL HISTORY TICKET</H2>
         </div>
     </CENTER>
 

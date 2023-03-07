@@ -66,7 +66,8 @@
                                     </div>
                                     {!! Form::close() !!}
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['matrix.section.destroy', $req->id], 'style' => 'display:inline']) }}
-                                    <button type="submit" class="btn icon btn-danger btn-sm"><i
+                                    <button type="submit" class="btn icon btn-danger btn-sm"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i
                                             class="bi bi-trash3"></i></button>
                                     {{ Form::close() }}
                                 </td>
